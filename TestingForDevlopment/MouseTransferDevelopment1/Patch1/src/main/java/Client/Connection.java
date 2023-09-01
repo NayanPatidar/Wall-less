@@ -11,12 +11,27 @@ public class Connection {
 
 	InetAddress inetAddress;
 
+	{
+		try {
+			inetAddress = InetAddress.getByName("10.200.233.131");
+		} catch (UnknownHostException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	;
+
 	public Connection() {
 		establishConnection();
 	}
 
 	private void establishConnection() {
 		UDPConnection();
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
 		TCPConnection();
 	}
 
@@ -27,12 +42,12 @@ public class Connection {
 		try {
 			// UDP Socket
 			datagramSocket = new DatagramSocket(port);
-			inetAddress = InetAddress.getByName("server Ip");
 
 			byte[] receiveData = new byte[1024];
 			DatagramPacket datagramPacket = new DatagramPacket(receiveData, receiveData.length);
 			datagramSocket.receive(datagramPacket);
 			String receivedMsg = new String(datagramPacket.getData(), 0, datagramPacket.getLength());
+			System.out.println("Here");
 
 			if (receivedMsg.equals("StartingUDP")){
 				System.out.println("Got the Msg From Server");
