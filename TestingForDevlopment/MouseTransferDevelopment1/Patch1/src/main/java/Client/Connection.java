@@ -4,10 +4,9 @@ import java.io.IOException;
 import java.net.*;
 
 public class Connection {
-	DatagramSocket datagramSocketForReceiving;
-	DatagramSocket datagramSocketForSending;
-	int senderPort = 12346;
-	int receivingPort = 12345;
+	DatagramSocket datagramSocket;
+	int port = 12346;
+
 	InetAddress inetAddress;
 
 	public Connection() {
@@ -15,32 +14,36 @@ public class Connection {
 	}
 
 	private void establishConnection() {
+		UDPConnection();
+		TCPConnection();
+	}
+
+	private void UDPConnection() {
+		String message = "Got it";
+		byte[] sendData = message.getBytes();
+
 		try {
-			inetAddress = InetAddress.getByName("10.200.233.99");
-			DatagramSocket datagramSocket = new DatagramSocket();
+			// UDP Socket
+			datagramSocket = new DatagramSocket(port);
+			inetAddress = InetAddress.getByName("server Ip");
 
 			byte[] receiveData = new byte[1024];
-			DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+			DatagramPacket datagramPacket = new DatagramPacket(receiveData, receiveData.length);
+			datagramSocket.receive(datagramPacket);
+			String receivedMsg = new String(datagramPacket.getData(), 0, receiveData.length);
 
-			datagramSocket.receive(receivePacket);
-
-			String responseMessage = new String(receivePacket.getData(), 0, receivePacket.getLength());
-			System.out.println("Response from server: " + responseMessage);
-
-
+			if (receivedMsg.equals("Starting")){
+				System.out.println("Got the Msg From Server");
+				DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, inetAddress, port);
+				datagramSocket.send(sendPacket);
+			}
 
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
-//		try {
-//			datagramSocketForSending = new DatagramSocket(senderPort);
-//			datagramSocketForReceiving = new DatagramSocket(receivingPort);
-//
-//
-//		} catch (SocketException e) {
-//			throw new RuntimeException(e);
-//		}
+	}
 
+	private void TCPConnection() {
 
 	}
 }
