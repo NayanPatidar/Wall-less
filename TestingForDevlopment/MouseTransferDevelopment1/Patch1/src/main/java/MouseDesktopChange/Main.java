@@ -35,6 +35,7 @@ public class Main {
     private void UDPConnectionValidation() {
         try {
             datagramSocket = new DatagramSocket(port);
+            inetAddress = InetAddress.getByName("10.200.233.99");
             byte[] receiveData = new byte[1024];
 
             System.out.println("Server started on port 12345");
@@ -46,20 +47,19 @@ public class Main {
 
                 DatagramPacket datagramPacket = new DatagramPacket(sendData, sendData.length, inetAddress, 12345);
                 datagramSocket.send(datagramPacket);
+                System.out.println("Sent");
 
                 // Receiving the response from Client
                 DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
                 datagramSocket.receive(receivePacket);
 
                 String receivedMsg = new String(receivePacket.getData(), 0, receivePacket.getLength());
+
                 if (receivedMsg.equals("Got it")){
                     System.out.println("Got the Message from Client: " + receivedMsg);
                     break;
                 }
-
-
             }
-
         } catch (IOException e) {
 	        throw new RuntimeException(e);
         }
