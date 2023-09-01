@@ -8,18 +8,16 @@ import java.net.*;
 public class Main {
 
     static JFrame jFrame = new JFrame();
-    DatagramSocket datagramSocketForSending;
-    DatagramSocket datagramSocketForReceiving;
+    DatagramSocket datagramSocket;
 
-    int senderPort = 12345;
-    int receivingPort = 12346;
+    int port = 12345;
+
     InetAddress inetAddress;
     public Main(){
 
         // Creating a JFrame
 
         final Toolkit toolkit = Toolkit.getDefaultToolkit();
-
         Dimension screenSize = toolkit.getScreenSize();
         int screenWidth = screenSize.width;
         int screenHeight = screenSize.height;
@@ -30,42 +28,52 @@ public class Main {
         jFrame.setAlwaysOnTop(true);
 //        creatingThreads(jFrame);
 
+        UDPConnectionValidation();
+        TCPConnectionValidation();
+
+    }
+    private void UDPConnectionValidation() {
         try {
-
-            // First making the connection for Sending the Packets
-            String message = "Starting";
-            byte[] sendData = message.getBytes();
-            inetAddress = InetAddress.getByName("ok");
-            datagramSocketForSending = new DatagramSocket(senderPort);
-
-            DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, inetAddress, senderPort);
-            datagramSocketForSending.send(sendPacket);
-
-            // Second making the connection for Receiving the Packets
+            datagramSocket = new DatagramSocket(port);
             byte[] receiveData = new byte[1024];
 
-            DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
-            datagramSocketForReceiving.receive(receivePacket);
+            System.out.println("Server started on port 12345");
 
-            String receivedMsg = new String(receivePacket.getData(), 0, receivePacket.getLength());
-            if (receivedMsg.equals("Got it")){
-                GUIAndMouse(datagramSocketForSending, datagramSocketForReceiving);
+            while (true) {
+                // Sending the Message First
+                String MessageToSend = "Starting";
+                byte[] sendData = MessageToSend.getBytes();
+
+                DatagramPacket datagramPacket = new DatagramPacket(sendData, sendData.length, inetAddress, 12345);
+                datagramSocket.send(datagramPacket);
+
+                // Receiving the response from Client
+                DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+                datagramSocket.receive(receivePacket);
+
+                String receivedMsg = new String(receivePacket.getData(), 0, receivePacket.getLength());
+                if (receivedMsg.equals("Got it")){
+                    System.out.println("Got the Message from Client: " + receivedMsg);
+                    break;
+                }
+
+
             }
 
-
         } catch (IOException e) {
-            throw new RuntimeException(e);
+	        throw new RuntimeException(e);
         }
     }
 
-    private void GUIAndMouse(DatagramSocket datagramSocketForSending, DatagramSocket datagramSocketForReceiving) {
+    private void TCPConnectionValidation() {
+
     }
 
     public void GUIAndMouse(){
         SharedData sharedData = new SharedData();
 
-        Thread threadA = new Thread(new GUI(jFrame, sharedData,datagramSocketForSending, datagramSocketForReceiving));
-        Thread threadB = new Thread(new MouseClicks(jFrame , sharedData,datagramSocketForSending, datagramSocketForReceiving) );
+        Thread threadA = new Thread(new GUI(jFrame, sharedData, datagramSocket ));
+        Thread threadB = new Thread(new MouseClicks(jFrame , sharedData, datagramSocket) );
 
         threadA.start();
         threadB.start();
