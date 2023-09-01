@@ -39,7 +39,7 @@ public class Main {
 
         if (connectionEstablished){
             System.out.println("Threads Started");
-//            GUIAndMouse();
+            GUIAndMouse();
         }
 
     }
