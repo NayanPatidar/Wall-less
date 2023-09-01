@@ -3,14 +3,19 @@ package MouseDesktopChange;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.*;
 
 public class Main {
 
     static JFrame jFrame = new JFrame();
+
     DatagramSocket datagramSocket;
+    ServerSocket serverSocket;
 
     int port = 12345;
+    int portTCP = 12346;
 
     InetAddress inetAddress;
     public Main(){
@@ -42,7 +47,7 @@ public class Main {
 
             while (true) {
                 // Sending the Message First
-                String MessageToSend = "Starting";
+                String MessageToSend = "StartingUDP";
                 byte[] sendData = MessageToSend.getBytes();
 
                 DatagramPacket datagramPacket = new DatagramPacket(sendData, sendData.length, inetAddress, 12345);
@@ -66,6 +71,32 @@ public class Main {
     }
 
     private void TCPConnectionValidation() {
+        try {
+            serverSocket = new ServerSocket(portTCP);
+            System.out.println("TCP server is listening on port " + portTCP);
+            Socket clientSocket = serverSocket.accept();
+            System.out.println("Client connected :" + clientSocket.getInetAddress());
+
+            String sendingUDPMsg = "StartingTCP";
+            OutputStream outputStream = clientSocket.getOutputStream();
+            byte[] sendingMsg = sendingUDPMsg.getBytes();
+            outputStream.write(sendingMsg);
+
+            InputStream inputStream = clientSocket.getInputStream();
+            byte[] buffer = new byte[1024];
+            int bytesRead;
+            String clientMessage;
+
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                clientMessage = new String(buffer, 0, bytesRead);
+                System.out.println("Received from client: " + clientMessage);
+            }
+
+            System.out.println();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

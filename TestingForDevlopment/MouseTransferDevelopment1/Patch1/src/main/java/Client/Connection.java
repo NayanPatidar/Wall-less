@@ -1,11 +1,13 @@
 package Client;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.*;
 
 public class Connection {
 	DatagramSocket datagramSocket;
-	int port = 12346;
+	int port = 12345;
+	int portTCP = 12346;
 
 	InetAddress inetAddress;
 
@@ -32,7 +34,7 @@ public class Connection {
 			datagramSocket.receive(datagramPacket);
 			String receivedMsg = new String(datagramPacket.getData(), 0, datagramPacket.getLength());
 
-			if (receivedMsg.equals("Starting")){
+			if (receivedMsg.equals("StartingUDP")){
 				System.out.println("Got the Msg From Server");
 				DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, inetAddress, port);
 				datagramSocket.send(sendPacket);
@@ -45,5 +47,28 @@ public class Connection {
 
 	private void TCPConnection() {
 
+		try {
+			Socket clientSocket = new Socket(inetAddress, portTCP);
+			System.out.println("Connected to server: " + inetAddress);
+
+			InputStream inputStream = clientSocket.getInputStream();
+			byte[] buffer = new byte[1024];
+			int bytesRead;
+			String serverMessage = "";
+
+			while ((bytesRead = inputStream.read(buffer)) != -1) {
+				serverMessage = new String(buffer, 0, bytesRead);
+				System.out.println("Received from server: " + serverMessage);
+			}
+
+			if (serverMessage.equals("StartingTCP")){
+				System.out.println("Got the message from server:" + serverMessage);
+			}
+
+
+
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }
