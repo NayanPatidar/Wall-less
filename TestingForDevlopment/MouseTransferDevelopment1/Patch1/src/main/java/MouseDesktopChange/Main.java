@@ -16,6 +16,7 @@ public class Main {
 
     int port = 12345;
     int portTCP = 12346;
+    boolean connectionEstablished = false;
 
     InetAddress inetAddress;
     public Main(){
@@ -31,10 +32,15 @@ public class Main {
         jFrame.setUndecorated(true);
         jFrame.setOpacity(0.05f);
         jFrame.setAlwaysOnTop(true);
-//        creatingThreads(jFrame);
+
 
         UDPConnectionValidation();
         TCPConnectionValidation();
+
+        if (connectionEstablished){
+            System.out.println("Threads Started");
+//            GUIAndMouse();
+        }
 
     }
     private void UDPConnectionValidation() {
@@ -84,15 +90,10 @@ public class Main {
 
             InputStream inputStream = clientSocket.getInputStream();
             byte[] buffer = new byte[1024];
-            int bytesRead;
-            String clientMessage;
-
-            while ((bytesRead = inputStream.read(buffer)) != -1) {
-                clientMessage = new String(buffer, 0, bytesRead);
-                System.out.println("Received from client: " + clientMessage);
-            }
-
-            System.out.println();
+            int bytesRead = inputStream.read(buffer);
+            String clientMessage = new String(buffer, 0, bytesRead);
+            System.out.println("Received from client: " + clientMessage);
+            connectionEstablished = true;
 
         } catch (IOException e) {
             throw new RuntimeException(e);

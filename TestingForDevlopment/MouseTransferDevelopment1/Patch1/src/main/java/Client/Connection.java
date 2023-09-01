@@ -8,6 +8,7 @@ public class Connection {
 	DatagramSocket datagramSocket;
 	int port = 12345;
 	int portTCP = 12346;
+	boolean connectionEstablished;
 
 	InetAddress inetAddress;
 
@@ -18,8 +19,6 @@ public class Connection {
 			throw new RuntimeException(e);
 		}
 	}
-
-	;
 
 	public Connection() {
 		establishConnection();
@@ -62,22 +61,20 @@ public class Connection {
 
 	private void TCPConnection() {
 
-		try {
-			Socket clientSocket = new Socket(inetAddress, portTCP);
+		try (Socket clientSocket = new Socket(inetAddress, portTCP)){
+
 			System.out.println("Connected to server: " + inetAddress);
 
 			InputStream inputStream = clientSocket.getInputStream();
 			byte[] buffer = new byte[1024];
-			int bytesRead;
-			String serverMessage = "";
+			int bytesRead = inputStream.read(buffer);
+			String serverMessage = new String(buffer, 0, bytesRead);
+			System.out.println("Received from server: " + serverMessage);
 
-			while ((bytesRead = inputStream.read(buffer)) != -1) {
-				serverMessage = new String(buffer, 0, bytesRead);
-				System.out.println("Received from server: " + serverMessage);
-			}
 
 			if (serverMessage.equals("StartingTCP")){
 				System.out.println("Got the message from server:" + serverMessage);
+				connectionEstablished = true;
 			}
 
 
