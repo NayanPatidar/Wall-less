@@ -30,7 +30,7 @@ public class Connection {
 			byte[] receiveData = new byte[1024];
 			DatagramPacket datagramPacket = new DatagramPacket(receiveData, receiveData.length);
 			datagramSocket.receive(datagramPacket);
-			String receivedMsg = new String(datagramPacket.getData(), 0, receiveData.length);
+			String receivedMsg = new String(datagramPacket.getData(), 0, datagramPacket.getLength());
 
 			if (receivedMsg.equals("Starting")){
 				System.out.println("Got the Msg From Server");
