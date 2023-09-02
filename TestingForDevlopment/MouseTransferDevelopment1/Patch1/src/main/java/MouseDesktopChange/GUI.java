@@ -30,17 +30,17 @@ public class GUI implements Runnable {
 
     @Override
     public void run() {
+        System.out.println("Got into run of GUI");
         while (true){
             Point mousePosition = MouseInfo.getPointerInfo().getLocation();
-
             // If the mouse position is less than 80 then starting the share coordinates
             // and bringing the transparent frame on the pc
 
             if (mousePosition.getX() < 80 && (sharedData.getForGui() == 1)){
-                new CoordinatesSending(socket, datagramSocket, inetAddress, port, portTCP);
                 System.out.println("Leaving Screen");
                 jFrame.setVisible(true);
                 sharedData.setForGui(0);
+                new CoordinatesSending(socket, datagramSocket, inetAddress, port, portTCP);
 
             } else if (mousePosition.getX() >= 80 && (sharedData.getForGui() == 0)) {
                 System.out.println("Entered Screen");
