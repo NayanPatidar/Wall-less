@@ -112,8 +112,8 @@ public class Main {
 
         try {
             threadA.join();
-            threadB.join();
-            System.out.println("Here");
+//            threadB.join();
+            System.out.println("Threads closed");
 
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
