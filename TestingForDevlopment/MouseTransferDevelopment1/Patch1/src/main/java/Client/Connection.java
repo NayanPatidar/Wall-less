@@ -7,6 +7,7 @@ import java.net.*;
 
 public class Connection {
 	DatagramSocket datagramSocket;
+	Socket clientSocket;
 	int port = 12345;
 	int portTCP = 12346;
 	boolean connectionEstablished;
@@ -33,8 +34,8 @@ public class Connection {
 			throw new RuntimeException(e);
 		}
 		TCPConnection();
-		if (connectionEstablished == true){
-
+		if (connectionEstablished){
+				new ServerMouse(clientSocket, datagramSocket, portTCP, portTCP);
 		}
 	}
 
@@ -63,10 +64,10 @@ public class Connection {
 		}
 	}
 
-	private void TCPConnection() {
+	public void TCPConnection() {
 
-		try (Socket clientSocket = new Socket(inetAddress, portTCP)){
-
+		try {
+			 clientSocket = new Socket(inetAddress, portTCP);
 			System.out.println("Connected to server: " + inetAddress);
 
 			InputStream inputStream = clientSocket.getInputStream();
