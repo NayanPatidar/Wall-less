@@ -47,6 +47,15 @@ public class CoordinatesSending {
 	}
 
 	public void sendingCoordinates(){
+		Point First = MouseInfo.getPointerInfo().getLocation();
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		Dimension dimension = toolkit.getScreenSize();
+		try {
+			Robot robot = new Robot();
+			robot.mouseMove(dimension.width, First.y);
+		} catch (AWTException e) {
+			throw new RuntimeException(e);
+		}
 
 		while (!stop){
 			Point cursorInfo = MouseInfo.getPointerInfo().getLocation();
