@@ -58,7 +58,8 @@ public class CoordinatesSending {
 			DatagramPacket packet = new DatagramPacket(sendData, sendData.length, inetAddress, port);
 			try {
 				datagramSocket.send(packet);
-			} catch (IOException e) {
+				Thread.sleep(2);
+			} catch (IOException | InterruptedException e) {
 				throw new RuntimeException(e);
 			}
 		}
