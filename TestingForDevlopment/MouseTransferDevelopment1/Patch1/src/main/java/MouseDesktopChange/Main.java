@@ -32,7 +32,7 @@ public class Main {
         jFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         jFrame.setUndecorated(true);
         jFrame.setOpacity(0.05f);
-        jFrame.setAlwaysOnTop(true);
+        jFrame.setAlwaysOnTop(false);
 
 
         UDPConnectionValidation();
@@ -42,6 +42,7 @@ public class Main {
             System.out.println("Threads Started");
             GUIAndMouse();
         }
+        System.out.println("ENDED");
 
     }
     private void UDPConnectionValidation() {

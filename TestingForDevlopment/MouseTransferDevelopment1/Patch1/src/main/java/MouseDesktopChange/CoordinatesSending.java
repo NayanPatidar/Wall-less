@@ -13,8 +13,9 @@ public class CoordinatesSending {
 	int port;
 	int portTCP;
 	boolean stop = false;
+	String message = "ok";
 
-	CoordinatesSending(Socket socket, DatagramSocket datagramSocket, InetAddress inetAddress, int port, int portTCP){
+					CoordinatesSending(Socket socket, DatagramSocket datagramSocket, InetAddress inetAddress, int port, int portTCP){
 		this.socket = socket;
 		this.datagramSocket = datagramSocket;
 		this.inetAddress = inetAddress;
@@ -47,7 +48,7 @@ public class CoordinatesSending {
 
 	public void sendingCoordinates(){
 
-		while (stop){
+		while (!stop){
 			Point cursorInfo = MouseInfo.getPointerInfo().getLocation();
 			int x = cursorInfo.x;
 			int y = cursorInfo.y;
@@ -67,18 +68,20 @@ public class CoordinatesSending {
 
 		while (true) {
 			try {
-				System.out.println("Client connected: " + socket.getInetAddress());
+//				System.out.println("Client connected: " + socket.getInetAddress());
 				BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
 				try {
-					String message;
+					 message = reader.readLine();
+
 					while ((message = reader.readLine()) != null) {
 						if (message.equalsIgnoreCase("stop")) {
-							stop = true;
+							// If the "stop" message is received, exit the loop
 							System.out.println("Received 'stop' message. Stopping...");
 							break;
 						}
 					}
+
 				} catch (IOException e) {
 						System.err.println("Error reading message from client: " + e.getMessage());
 				}

@@ -41,7 +41,7 @@ public class ServerMouse {
 				datagramSocket.receive(packet);
 
 				String receivedMsg = new String(packet.getData(), 0, packet.getLength());
-				String[] parts = receivedMsg.split(receivedMsg);
+				String[] parts = receivedMsg.split(" ");
 				int x = Integer.parseInt(parts[0]);
 				int y = Integer.parseInt(parts[1]);
 				movement(x, y);
