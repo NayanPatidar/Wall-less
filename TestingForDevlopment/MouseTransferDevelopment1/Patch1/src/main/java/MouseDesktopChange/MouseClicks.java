@@ -2,18 +2,19 @@ package MouseDesktopChange;
 
 import javax.swing.*;
 import java.net.DatagramSocket;
+import java.net.Socket;
 
 public class MouseClicks implements Runnable {
     static private JFrame jFrame;
     private int val = 0;
     private SharedData sharedData;
-    DatagramSocket datagramSocket;
+    Socket socket;
     MouseFunctionality mouseFunctionality;
 
-    public MouseClicks(JFrame jFrame, SharedData sharedData, DatagramSocket datagramSocket) {
+    public MouseClicks(JFrame jFrame, SharedData sharedData, Socket socket) {
         MouseClicks.jFrame = jFrame;
         this.sharedData = sharedData;
-        this.datagramSocket = datagramSocket;
+        this.socket = socket;
     }
 
     @Override
@@ -22,6 +23,7 @@ public class MouseClicks implements Runnable {
         while (true){
             if ((sharedData.getForMouseClicks() == 0) && (val == 0)){
                 System.out.println("Calling Mouse Functionality");
+
                 SwingUtilities.invokeLater(() -> {
                     mouseFunctionality = new MouseFunctionality(jFrame);
                 });

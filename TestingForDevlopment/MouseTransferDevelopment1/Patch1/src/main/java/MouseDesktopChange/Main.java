@@ -13,6 +13,7 @@ public class Main {
 
     DatagramSocket datagramSocket;
     ServerSocket serverSocket;
+    Socket socket;
 
     int port = 12345;
     int portTCP = 12346;
@@ -80,15 +81,15 @@ public class Main {
         try {
             serverSocket = new ServerSocket(portTCP);
             System.out.println("TCP server is listening on port " + portTCP);
-            Socket clientSocket = serverSocket.accept();
-            System.out.println("Client connected :" + clientSocket.getInetAddress());
+            socket = serverSocket.accept();
+            System.out.println("Client connected :" + socket.getInetAddress());
 
             String sendingUDPMsg = "StartingTCP";
-            OutputStream outputStream = clientSocket.getOutputStream();
+            OutputStream outputStream = socket.getOutputStream();
             byte[] sendingMsg = sendingUDPMsg.getBytes();
             outputStream.write(sendingMsg);
 
-            InputStream inputStream = clientSocket.getInputStream();
+            InputStream inputStream = socket.getInputStream();
             byte[] buffer = new byte[1024];
             int bytesRead = inputStream.read(buffer);
             String clientMessage = new String(buffer, 0, bytesRead);
@@ -104,8 +105,8 @@ public class Main {
     public void GUIAndMouse(){
         SharedData sharedData = new SharedData();
 
-        Thread threadA = new Thread(new GUI(jFrame, sharedData, datagramSocket ));
-        Thread threadB = new Thread(new MouseClicks(jFrame , sharedData, datagramSocket) );
+        Thread threadA = new Thread(new GUI(jFrame, sharedData, socket, inetAddress, datagramSocket, serverSocket, portTCP, port));
+        Thread threadB = new Thread(new MouseClicks(jFrame , sharedData, socket) );
 
         threadA.start();
         threadB.start();
