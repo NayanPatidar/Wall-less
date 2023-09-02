@@ -33,6 +33,9 @@ public class Connection {
 			throw new RuntimeException(e);
 		}
 		TCPConnection();
+		if (connectionEstablished == true){
+
+		}
 	}
 
 	private void UDPConnection() {
