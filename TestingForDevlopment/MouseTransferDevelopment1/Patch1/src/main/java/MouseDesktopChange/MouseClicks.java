@@ -1,7 +1,6 @@
 package MouseDesktopChange;
 
 import javax.swing.*;
-import java.net.DatagramSocket;
 import java.net.Socket;
 
 public class MouseClicks implements Runnable {

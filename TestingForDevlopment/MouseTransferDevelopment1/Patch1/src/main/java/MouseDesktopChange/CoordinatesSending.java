@@ -78,8 +78,21 @@ public class CoordinatesSending {
 			int x = cursorInfo.x;
 			int y = cursorInfo.y;
 //			System.out.println(y);
+			int X = gettingX(x, y);
+			int Y = gettingY(x, y);
+
+			String msg = X + " " + Y;
+			byte[] sendData = msg.getBytes();
+
+			DatagramPacket packet = new DatagramPacket(sendData, sendData.length, inetAddress, port);
+			try {
+				datagramSocket.send(packet);
+				Thread.sleep(2);
+			} catch (IOException | InterruptedException e) {
+				throw new RuntimeException(e);
 
 
+			}
 		}
 	}
 
@@ -105,17 +118,18 @@ public class CoordinatesSending {
 	}
 
 	public int gettingY(int x, int y){
-		if (loopNumY == 1) {
-			if (y >= ServerHeight){
+		if (loopNumY == 1){
+			if (y > ServerHeight-2){
+//				System.out.println("Got it");
+				robot.mouseMove(x, ServerHeight-(ClientHeight-ServerHeight));
 				loopNumY = 2;
-				robot.mouseMove(x, ClientHeight-(ClientHeight-ServerHeight));
 			}
 			return y;
-
 		} else if (loopNumY == 2) {
-			if (y < ClientHeight-(ClientHeight-ServerHeight)){
+//			System.out.println("Reached");
+			if (y < ServerHeight-(ClientHeight-ServerHeight)){
+				robot.mouseMove(x, ServerHeight-2);
 				loopNumY = 1;
-				robot.mouseMove(x, ServerHeight);
 			}
 			return y+(ClientHeight-ServerHeight);
 		}
