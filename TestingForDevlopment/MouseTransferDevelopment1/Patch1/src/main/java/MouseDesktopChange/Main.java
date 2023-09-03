@@ -14,6 +14,7 @@ public class Main {
     DatagramSocket datagramSocket;
     ServerSocket serverSocket;
     Socket socket;
+    String clientScreenSize;
 
     int port = 12345;
     int portTCP = 12346;
@@ -67,8 +68,10 @@ public class Main {
                 datagramSocket.receive(receivePacket);
 
                 String receivedMsg = new String(receivePacket.getData(), 0, receivePacket.getLength());
-
-                if (receivedMsg.equals("Got it")){
+                String[] clientMsg = receivedMsg.split("  ");
+                System.out.println(clientMsg[0]);
+                clientScreenSize = clientMsg[1];
+                if (clientMsg[0].equals("Got it")){
                     System.out.println("Got the Message from Client: " + receivedMsg);
                     break;
                 }
@@ -106,7 +109,7 @@ public class Main {
     public void GUIAndMouse(){
         SharedData sharedData = new SharedData();
 
-        Thread threadA = new Thread(new GUI(jFrame, sharedData, socket, inetAddress, datagramSocket, serverSocket, portTCP, port));
+        Thread threadA = new Thread(new GUI(jFrame, sharedData, socket, inetAddress, datagramSocket, serverSocket, portTCP, port, clientScreenSize));
         Thread threadB = new Thread(new MouseClicks(jFrame , sharedData, socket) );
 
         threadA.start();
