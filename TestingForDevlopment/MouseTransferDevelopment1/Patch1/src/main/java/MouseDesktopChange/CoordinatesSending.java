@@ -17,6 +17,9 @@ public class CoordinatesSending {
 	String clientScreenSize = " ";
 	int ClientWidth;
 	int ClientHeight;
+	int ServerWidth;
+	int ServerHeight;
+	int loopNum = 1;
 
 	CoordinatesSending(Socket socket, DatagramSocket datagramSocket, InetAddress inetAddress, int port, int portTCP, String clientScreenSize){
 		this.socket = socket;
@@ -54,6 +57,8 @@ public class CoordinatesSending {
 		Point First = MouseInfo.getPointerInfo().getLocation();
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Dimension dimension = toolkit.getScreenSize();
+		ServerHeight = dimension.height;
+		ServerWidth = dimension.width;
 		try {
 			Robot robot = new Robot();
 			robot.mouseMove(dimension.width, First.y);
@@ -65,15 +70,19 @@ public class CoordinatesSending {
 			Point cursorInfo = MouseInfo.getPointerInfo().getLocation();
 			int x = cursorInfo.x;
 			int y = cursorInfo.y;
-			String msg = x + " " + y;
-			byte[] sendData = msg.getBytes();
 
-			DatagramPacket packet = new DatagramPacket(sendData, sendData.length, inetAddress, port);
-			try {
-				datagramSocket.send(packet);
-				Thread.sleep(2);
-			} catch (IOException | InterruptedException e) {
-				throw new RuntimeException(e);
+			if (loopNum == 1) {
+
+				String msg = x+(ClientWidth-ServerWidth) + " " + y;
+				byte[] sendData = msg.getBytes();
+
+				DatagramPacket packet = new DatagramPacket(sendData, sendData.length, inetAddress, port);
+				try {
+					datagramSocket.send(packet);
+					Thread.sleep(2);
+				} catch (IOException | InterruptedException e) {
+					throw new RuntimeException(e);
+				}
 			}
 		}
 	}
