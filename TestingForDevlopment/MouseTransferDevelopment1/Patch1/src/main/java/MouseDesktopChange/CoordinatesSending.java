@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.*;
+import java.util.concurrent.Callable;
 
 public class CoordinatesSending {
 	Robot robot;
@@ -29,7 +30,8 @@ public class CoordinatesSending {
 	int ClientHeight;
 	int ServerWidth;
 	int ServerHeight;
-	int loopNum = 1;
+	int loopNumX = 1;
+	int loopNumY = 1;
 
 	CoordinatesSending(Socket socket, DatagramSocket datagramSocket, InetAddress inetAddress, int port, int portTCP, String clientScreenSize){
 		this.socket = socket;
@@ -76,44 +78,48 @@ public class CoordinatesSending {
 			int x = cursorInfo.x;
 			int y = cursorInfo.y;
 //			System.out.println(y);
-			if (loopNum == 1) {
 
-				String msg = x+(ClientWidth-ServerWidth) + " " + y;
-				byte[] sendData = msg.getBytes();
 
-				DatagramPacket packet = new DatagramPacket(sendData, sendData.length, inetAddress, port);
-				try {
-					datagramSocket.send(packet);
-					Thread.sleep(2);
-				} catch (IOException | InterruptedException e) {
-					throw new RuntimeException(e);
-				}
-
-				if (x < 1){
-					loopNum = 2;
-					robot.mouseMove(ClientWidth - ServerWidth, y);
-				}
-			} else if (loopNum == 2){
-				String msg = x + " " + y;
-				byte[] sendData = msg.getBytes();
-
-				DatagramPacket packet = new DatagramPacket(sendData, sendData.length, inetAddress, port);
-				try {
-					datagramSocket.send(packet);
-					Thread.sleep(2);
-				} catch (IOException | InterruptedException e) {
-					throw new RuntimeException(e);
-				}
-
-				if (x > (ClientWidth-ServerWidth) ){
-//					System.out.println("Here");
-					loopNum = 1;
-					System.out.println(x + " " + y);
-					robot.mouseMove(1, y);
-				}
-
-			}
 		}
+	}
+
+	public int gettingX(int x, int y){
+		if (loopNumX == 1) {
+
+			int msg = x+(ClientWidth-ServerWidth);
+
+			if (x < 1){
+				loopNumX = 2;
+				robot.mouseMove(ClientWidth - ServerWidth, y);
+			}
+			return msg;
+
+		} else if (loopNumX == 2){
+			if (x > (ClientWidth-ServerWidth) ){
+				loopNumX = 1;
+				robot.mouseMove(1, y);
+			}
+			return x;
+		}
+		return 0;
+	}
+
+	public int gettingY(int x, int y){
+		if (loopNumY == 1) {
+			if (y >= ServerHeight){
+				loopNumY = 2;
+				robot.mouseMove(x, ClientHeight-(ClientHeight-ServerHeight));
+			}
+			return y;
+
+		} else if (loopNumY == 2) {
+			if (y < ClientHeight-(ClientHeight-ServerHeight)){
+				loopNumY = 1;
+				robot.mouseMove(x, ServerHeight);
+			}
+			return y+(ClientHeight-ServerHeight);
+		}
+		return 0;
 	}
 
 	public void notifyingToStop() {
@@ -146,6 +152,5 @@ public class CoordinatesSending {
 				throw new RuntimeException(e);
 			}
 		}
-
 	}
 }
