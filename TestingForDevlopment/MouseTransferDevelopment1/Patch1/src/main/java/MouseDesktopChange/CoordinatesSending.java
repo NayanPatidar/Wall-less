@@ -7,6 +7,16 @@ import java.io.InputStreamReader;
 import java.net.*;
 
 public class CoordinatesSending {
+	Robot robot;
+
+	{
+		try {
+			robot = new Robot();
+		} catch (AWTException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
 	Socket socket;
 	DatagramSocket datagramSocket;
 	InetAddress inetAddress;
@@ -59,18 +69,13 @@ public class CoordinatesSending {
 		Dimension dimension = toolkit.getScreenSize();
 		ServerHeight = dimension.height;
 		ServerWidth = dimension.width;
-		try {
-			Robot robot = new Robot();
-			robot.mouseMove(dimension.width, First.y);
-		} catch (AWTException e) {
-			throw new RuntimeException(e);
-		}
+		robot.mouseMove(dimension.width, First.y);
 
 		while (!stop){
 			Point cursorInfo = MouseInfo.getPointerInfo().getLocation();
 			int x = cursorInfo.x;
 			int y = cursorInfo.y;
-
+//			System.out.println(y);
 			if (loopNum == 1) {
 
 				String msg = x+(ClientWidth-ServerWidth) + " " + y;
@@ -83,6 +88,30 @@ public class CoordinatesSending {
 				} catch (IOException | InterruptedException e) {
 					throw new RuntimeException(e);
 				}
+
+				if (x < 1){
+					loopNum = 2;
+					robot.mouseMove(ClientWidth - ServerWidth, y);
+				}
+			} else if (loopNum == 2){
+				String msg = x + " " + y;
+				byte[] sendData = msg.getBytes();
+
+				DatagramPacket packet = new DatagramPacket(sendData, sendData.length, inetAddress, port);
+				try {
+					datagramSocket.send(packet);
+					Thread.sleep(2);
+				} catch (IOException | InterruptedException e) {
+					throw new RuntimeException(e);
+				}
+
+				if (x > (ClientWidth-ServerWidth) ){
+//					System.out.println("Here");
+					loopNum = 1;
+					System.out.println(x + " " + y);
+					robot.mouseMove(1, y);
+				}
+
 			}
 		}
 	}
