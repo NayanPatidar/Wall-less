@@ -14,13 +14,17 @@ public class CoordinatesSending {
 	int portTCP;
 	boolean stop = false;
 	String message = "ok";
+	String clientScreenSize = " ";
+	int ClientWidth;
+	int ClientHeight;
 
-					CoordinatesSending(Socket socket, DatagramSocket datagramSocket, InetAddress inetAddress, int port, int portTCP){
+	CoordinatesSending(Socket socket, DatagramSocket datagramSocket, InetAddress inetAddress, int port, int portTCP, String clientScreenSize){
 		this.socket = socket;
 		this.datagramSocket = datagramSocket;
 		this.inetAddress = inetAddress;
 		this.port = port;
 		this.portTCP = portTCP;
+		this.clientScreenSize = clientScreenSize;
 		operator();
 	}
 
@@ -75,6 +79,11 @@ public class CoordinatesSending {
 	}
 
 	public void notifyingToStop() {
+		String[] clientScreen = clientScreenSize.split(" ");
+		ClientHeight = Integer.parseInt(clientScreen[0]);
+		ClientWidth = Integer.parseInt(clientScreen[1]);
+		System.out.println("Client Height is : " + ClientHeight);
+		System.out.println("Client Width is :" + ClientWidth);
 
 		while (true) {
 			try {

@@ -16,8 +16,9 @@ public class GUI implements Runnable {
     InetAddress inetAddress;
     int port ;
     int portTCP;
+    String clientScreenSize;
 
-    public GUI(JFrame jFrame, SharedData sharedData, Socket socket, InetAddress inetAddress, DatagramSocket datagramSocket, ServerSocket serverSocket, int portTCP, int port) {
+    public GUI(JFrame jFrame, SharedData sharedData, Socket socket, InetAddress inetAddress, DatagramSocket datagramSocket, ServerSocket serverSocket, int portTCP, int port, String clientScreenSize) {
         this.socket = socket;
         this.sharedData = sharedData;
         this.jFrame = jFrame;
@@ -26,6 +27,7 @@ public class GUI implements Runnable {
         this.portTCP = portTCP;
         this.port = port;
         this.serverSocket = serverSocket;
+        this.clientScreenSize = clientScreenSize;
     }
 
     @Override
@@ -40,7 +42,7 @@ public class GUI implements Runnable {
                 System.out.println("Leaving Screen");
                 jFrame.setVisible(true);
                 sharedData.setForGui(0);
-                new CoordinatesSending(socket, datagramSocket, inetAddress, port, portTCP);
+                new CoordinatesSending(socket, datagramSocket, inetAddress, port, portTCP, clientScreenSize);
 
             } else if (mousePosition.getX() >= 80 && (sharedData.getForGui() == 0)) {
                 System.out.println("Entered Screen");
