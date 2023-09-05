@@ -1,36 +1,51 @@
 package Client;
 
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
+import java.awt.*;
+import java.io.IOException;
+import java.net.*;
 
 public class ConnectionClient {
 	DatagramSocket datagramSocket;
+	InetAddress inetAddress;
+
+	{
+		try {
+			inetAddress = InetAddress.getByName("10.200.233.131");
+		} catch (UnknownHostException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	int portUDP = 12345;
 
 	public ConnectionClient(){
 		UDPConnection();
 	}
 
 	public void UDPConnection() {
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		Dimension dimension = toolkit.getScreenSize();
+		String message = "Got it" + "  " + (int)dimension.getHeight() + " " + (int)dimension.getWidth();
+		byte[] sendData = message.getBytes();
+
 		try {
-			datagramSocket = new DatagramSocket();
+			// UDP Socket
+			datagramSocket = new DatagramSocket(12345);
 
-			while (true) {
-				byte[] receiveData = new byte[1024];
-				DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
-				datagramSocket.receive(receivePacket);
-				String serverMessage = new String(receivePacket.getData(), 0, receivePacket.getLength());
-				System.out.println("Server: " + serverMessage);
+			byte[] receiveData = new byte[1024];
+			DatagramPacket datagramPacket = new DatagramPacket(receiveData, receiveData.length);
+			datagramSocket.receive(datagramPacket);
+			String receivedMsg = new String(datagramPacket.getData(), 0, datagramPacket.getLength());
+			System.out.println("Here");
 
-				if (serverMessage.equals("StartingUDP")) {
-					String acknowledgment = "Got it";
-					byte[] acknowledgmentData = acknowledgment.getBytes();
-					DatagramPacket acknowledgmentPacket = new DatagramPacket(acknowledgmentData, acknowledgmentData.length,
-									receivePacket.getAddress(), receivePacket.getPort());
-					datagramSocket.send(acknowledgmentPacket);
-				}
+			if (receivedMsg.equals("StartingUDP")){
+				System.out.println("Got the Msg From Server");
+				DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, inetAddress, portUDP);
+				datagramSocket.send(sendPacket);
 			}
-		} catch (Exception e) {
-			System.out.println("Error Found: " + e.getMessage());
+
+		} catch (IOException e) {
+			throw new RuntimeException(e);
 		}
 	}
 }

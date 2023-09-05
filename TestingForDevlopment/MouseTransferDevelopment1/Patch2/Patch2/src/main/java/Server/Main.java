@@ -52,44 +52,60 @@ public class Main {
 
 		System.out.println("Threads Started");
 //			GUIAndMouse();
-		System.out.println("ENDED");
+//		System.out.println("ENDED");
 
 	}
 
 	private void UDPConnectionValidation() {
 		// Making the UDP Connection
-
-	}
-
-	private void UDPReceiving(){
 		try {
 			datagramSocket = new DatagramSocket(portUDP);
-
-			do {
-				byte[] receiveData = new byte[1024];
-				DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
-				datagramSocket.receive(receivePacket);
-				msgFromClient = new String(receivePacket.getData(), 0, receivePacket.getLength());
-				System.out.println("Received from client: " + msgFromClient);
-			} while (!msgFromClient.equals("Got it"));
-		} catch (IOException e) {
+		} catch (SocketException e) {
 			throw new RuntimeException(e);
 		}
-	}
 
-	private void UDPSending(){
+		Thread senderThread = new Thread(() -> {
+			try {
+				System.out.println("Starting senderThread");
+				String sendClient = "StartingUDP";
+
+				do {
+					byte[] sendData = sendClient.getBytes();
+					DatagramPacket acknowledgmentPacket = new DatagramPacket(sendData, sendData.length,
+									inetAddress, portUDP);
+					datagramSocket.send(acknowledgmentPacket);
+
+				} while (!msgFromClient.equals("Got it"));
+				System.out.println("Exiting the senderThread");
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+		});
+
+		Thread receiverThread = new Thread(() -> {
+			try {
+				System.out.println("Starting receiverThread");
+				do {
+					byte[] receiveData = new byte[1024];
+					DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+					datagramSocket.receive(receivePacket);
+					msgFromClient = new String(receivePacket.getData(), 0, receivePacket.getLength());
+					System.out.println("Received from client: " + msgFromClient);
+				} while (!msgFromClient.equals("Got it"));
+				System.out.println("Exiting the receiverThread");
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+		});
+
+		senderThread.start();
+		receiverThread.start();
 		try {
-			datagramSocket = new DatagramSocket(portUDP);
-			String sendClient = "StartingUDP";
+			receiverThread.join();
+			senderThread.join();
 
-			do {
-				byte[] sendData = sendClient.getBytes();
-				DatagramPacket acknowledgmentPacket = new DatagramPacket(sendData, sendData.length,
-								inetAddress, portUDP);
-				datagramSocket.send(acknowledgmentPacket);
-
-			} while (!msgFromClient.equals("Got it"));
-		} catch (IOException e) {
+		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
 		}
 	}
