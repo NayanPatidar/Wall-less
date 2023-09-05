@@ -49,7 +49,7 @@ public class Main {
     private void UDPConnectionValidation() {
         try {
             datagramSocket = new DatagramSocket(port);
-            inetAddress = InetAddress.getByName("10.200.233.99");
+            inetAddress = InetAddress.getByName("10.200.233.131");
             byte[] receiveData = new byte[1024];
 
             System.out.println("Server started on port 12345");
