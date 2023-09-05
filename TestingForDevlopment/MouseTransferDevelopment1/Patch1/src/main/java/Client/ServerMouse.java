@@ -2,6 +2,7 @@ package Client;
 
 import java.awt.*;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.Socket;
@@ -11,6 +12,7 @@ public class ServerMouse {
 	Socket clientSocket;
 	int port ;
 	int portTCP ;
+	Toolkit toolkit = Toolkit.getDefaultToolkit();
 
 	Robot robot;
 
@@ -32,20 +34,34 @@ public class ServerMouse {
 	}
 
 	private void Operator() {
+		Dimension dimension = toolkit.getScreenSize();
 		try {
 			System.out.println("Listening on the port :" + port);
 			byte[] buffer = new byte[1024];
 
 			while (true) {
-				DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
-				datagramSocket.receive(packet);
+				Point cursor = MouseInfo.getPointerInfo().getLocation();
+				if (dimension.getWidth()-1 <= cursor.getX()){
 
-				String receivedMsg = new String(packet.getData(), 0, packet.getLength());
-				String[] parts = receivedMsg.split(" ");
-				int x = Integer.parseInt(parts[0]);
-				int y = Integer.parseInt(parts[1]);
-				movement(x, y);
+					OutputStream outputStream = clientSocket.getOutputStream();
 
+					String message = "stop";
+					byte[] messageBytes = message.getBytes();
+					System.out.println("Sent the message");
+
+					outputStream.write(messageBytes);
+					outputStream.flush();
+					// Hide the cursor
+				} else if (dimension.getWidth()-1 > cursor.getX()) {
+					DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
+					datagramSocket.receive(packet);
+
+					String receivedMsg = new String(packet.getData(), 0, packet.getLength());
+					String[] parts = receivedMsg.split(" ");
+					int x = Integer.parseInt(parts[0]);
+					int y = Integer.parseInt(parts[1]);
+					movement(x, y);
+				}
 			}
 		} catch (IOException e) {
 			throw new RuntimeException(e);

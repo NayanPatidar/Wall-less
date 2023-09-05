@@ -1,5 +1,6 @@
 package Client;
 
+import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -16,7 +17,7 @@ public class Connection {
 
 	{
 		try {
-			inetAddress = InetAddress.getByName("10.200.233.99");
+			inetAddress = InetAddress.getByName("10.200.233.36");
 		} catch (UnknownHostException e) {
 			throw new RuntimeException(e);
 		}
@@ -29,7 +30,7 @@ public class Connection {
 	private void establishConnection() {
 		UDPConnection();
 		try {
-			Thread.sleep(10000);
+			Thread.sleep(4000);
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
 		}
@@ -40,7 +41,9 @@ public class Connection {
 	}
 
 	private void UDPConnection() {
-		String message = "Got it";
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		Dimension dimension = toolkit.getScreenSize();
+		String message = "Got it" + "  " + (int)dimension.getHeight() + " " + (int)dimension.getWidth();
 		byte[] sendData = message.getBytes();
 
 		try {
