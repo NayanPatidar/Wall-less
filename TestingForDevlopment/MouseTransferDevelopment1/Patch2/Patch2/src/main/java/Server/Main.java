@@ -16,11 +16,20 @@ public class Main {
 	Socket socket;
 	String clientScreenSize;
 
-	int port = 12345;
+	int portUDP = 12345;
 	int portTCP = 12346;
 	boolean connectionEstablished = false;
 
 	InetAddress inetAddress;
+	String msgFromClient = "";
+
+	{
+		try {
+			inetAddress = InetAddress.getByName("10.200.233.99");
+		} catch (UnknownHostException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
 	public Main() {
 
@@ -48,11 +57,44 @@ public class Main {
 	}
 
 	private void UDPConnectionValidation() {
+		// Making the UDP Connection
 
+	}
+
+	private void UDPReceiving(){
+		try {
+			datagramSocket = new DatagramSocket(portUDP);
+
+			do {
+				byte[] receiveData = new byte[1024];
+				DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+				datagramSocket.receive(receivePacket);
+				msgFromClient = new String(receivePacket.getData(), 0, receivePacket.getLength());
+				System.out.println("Received from client: " + msgFromClient);
+			} while (!msgFromClient.equals("Got it"));
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	private void UDPSending(){
+		try {
+			datagramSocket = new DatagramSocket(portUDP);
+			String sendClient = "StartingUDP";
+
+			do {
+				byte[] sendData = sendClient.getBytes();
+				DatagramPacket acknowledgmentPacket = new DatagramPacket(sendData, sendData.length,
+								inetAddress, portUDP);
+				datagramSocket.send(acknowledgmentPacket);
+
+			} while (!msgFromClient.equals("Got it"));
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	private void TCPConnectionValidation() {
 
 	}
-
 }
