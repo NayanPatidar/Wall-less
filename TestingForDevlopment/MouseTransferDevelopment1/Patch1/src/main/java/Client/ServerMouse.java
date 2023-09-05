@@ -42,11 +42,12 @@ public class ServerMouse {
 			while (true) {
 				Point cursor = MouseInfo.getPointerInfo().getLocation();
 				if (dimension.getWidth()-1 <= cursor.getX()){
+
 					OutputStream outputStream = clientSocket.getOutputStream();
 
 					String message = "stop";
 					byte[] messageBytes = message.getBytes();
-
+					System.out.println("Sent the message");
 
 					outputStream.write(messageBytes);
 					outputStream.flush();
