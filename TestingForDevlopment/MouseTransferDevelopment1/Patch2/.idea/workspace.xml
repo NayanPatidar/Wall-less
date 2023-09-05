@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="415f1adc-022f-4388-beed-b56ed265edc7" name="Changes" comment="New Way For UDP Connection">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Client/ConnectionClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Client/ConnectionClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Client/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Client/Start.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Server/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
