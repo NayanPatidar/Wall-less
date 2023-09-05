@@ -10,6 +10,8 @@ public class Connection {
 	public boolean UDPConnection = false;
 	public boolean TCPConnection = false;
 
+	InetAddress inetAddress;
+
 	public Connection(){
 		UDPClientReceiver();
 		TCPClientReceiver();
@@ -17,6 +19,8 @@ public class Connection {
 
 	public void UDPClientReceiver(){
 		try (DatagramSocket clientSocket = new DatagramSocket()) {
+
+			inetAddress = clientSocket.getInetAddress();
 			// Prepare a DatagramPacket for receiving data from the server
 			byte[] receiveData = new byte[1024];
 			DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
@@ -42,7 +46,7 @@ public class Connection {
 	}
 
 	public void TCPClientReceiver(){
-		String serverHost = "ServerIP"; // Server's hostname or IP address
+		String serverHost = inetAddress.getHostName(); // Server's hostname or IP address
 		final int serverPort = 12346; // Server's TCP port
 		String serverMsg = "Got it";
 		byte[] buffer = serverMsg.getBytes();
