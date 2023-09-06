@@ -3,6 +3,7 @@ package Server;
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.*;
 
@@ -70,7 +71,7 @@ public class CoordinatesSending {
 		Dimension dimension = toolkit.getScreenSize();
 		ServerHeight = dimension.height;
 		ServerWidth = dimension.width;
-		robot.mouseMove(dimension.width, First.y);
+		robot.mouseMove(dimension.width - 2, First.y);
 
 		while (!stop){
 			Point cursorInfo = MouseInfo.getPointerInfo().getLocation();
@@ -147,18 +148,22 @@ public class CoordinatesSending {
 			try {
 				System.out.println(socket.getInetAddress());
 				System.out.println("Waiting for msg");
-				while (true) {
-					message = reader.readLine();
-					System.out.println(message);
 
-					if (message != null) {
-						if (message.equals("stop")) {
-							// If the "stop" message is received, exit the loop
-							System.out.println("Received 'stop' message. Stopping...");
-							stop = true;
-							break;
-						}
+				while (!stop) {
+					System.out.println(socket.isInputShutdown());
+
+					InputStream inputStream = socket.getInputStream();
+					byte[] buffer = new byte[1024];
+					int bytesRead = inputStream.read(buffer);
+					String clientMessage = new String(buffer, 0, bytesRead);
+					System.out.println("Received from client: " + clientMessage);
+
+					if (clientMessage.equals("stop")){
+						System.out.println("Stopping receiving ...");
+						stop = true;
 					}
+
+
 				}
 			} catch (IOException e) {
 				System.err.println("Error reading message from client: " + e.getMessage());
