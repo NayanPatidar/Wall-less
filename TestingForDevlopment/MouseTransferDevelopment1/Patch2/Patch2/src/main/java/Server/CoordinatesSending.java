@@ -1,7 +1,9 @@
 package Server;
 
 import java.awt.*;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.*;
 
 public class CoordinatesSending {
@@ -77,6 +79,7 @@ public class CoordinatesSending {
 //			System.out.println(y);
 			int X = gettingX(x, y);
 			int Y = gettingY(x, y);
+//			System.out.println(X + " " + Y);
 
 			String msg = X + " " + Y;
 			byte[] sendData = msg.getBytes();
@@ -87,8 +90,6 @@ public class CoordinatesSending {
 				Thread.sleep(2);
 			} catch (IOException | InterruptedException e) {
 				throw new RuntimeException(e);
-
-
 			}
 		}
 	}
@@ -134,6 +135,37 @@ public class CoordinatesSending {
 	}
 
 	public void notifyingToStop() {
+		String[] clientScreen = clientScreenSize.split(" ");
+		ClientHeight = Integer.parseInt(clientScreen[0]);
+		ClientWidth = Integer.parseInt(clientScreen[1]);
+		System.out.println("Client Height is : " + ClientHeight);
+		System.out.println("Client Width is :" + ClientWidth);
+
+		try {
+			BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			System.out.println(socket.isConnected());
+			try {
+				System.out.println(socket.getInetAddress());
+				System.out.println("Waiting for msg");
+				while (true) {
+					message = reader.readLine();
+					System.out.println(message);
+
+					if (message != null) {
+						if (message.equals("stop")) {
+							// If the "stop" message is received, exit the loop
+							System.out.println("Received 'stop' message. Stopping...");
+							stop = true;
+							break;
+						}
+					}
+				}
+			} catch (IOException e) {
+				System.err.println("Error reading message from client: " + e.getMessage());
+			}
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 
 	}
 }

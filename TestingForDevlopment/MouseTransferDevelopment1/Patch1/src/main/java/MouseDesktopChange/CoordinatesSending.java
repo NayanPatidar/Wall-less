@@ -145,7 +145,7 @@ public class CoordinatesSending {
 
 		while (true) {
 			try {
-//				System.out.println("Client connected: " + socket.getInetAddress());
+				System.out.println("Client connected: " + socket.getInetAddress());
 				BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
 				try {
