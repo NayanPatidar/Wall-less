@@ -14,7 +14,7 @@ public class ConnectionClient {
 
 	{
 		try {
-			inetAddress = InetAddress.getByName("10.200.233.36");
+			inetAddress = InetAddress.getByName("10.200.233.67");
 		} catch (UnknownHostException e) {
 			throw new RuntimeException(e);
 		}
@@ -27,7 +27,7 @@ public class ConnectionClient {
 	public ConnectionClient(){
 		UDPConnection();
 		try {
-			Thread.sleep(3);
+			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
 		}

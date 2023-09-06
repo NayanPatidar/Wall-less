@@ -13,6 +13,14 @@ public class ReceivingCoordinates implements Runnable{
 	Socket clientSocket;
 	Robot robot;
 
+	{
+		try {
+			robot = new Robot();
+		} catch (AWTException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
 
 	public ReceivingCoordinates(DatagramSocket datagramSocket, InetAddress inetAddress, Socket clientSocket) {
 		this.datagramSocket = datagramSocket;
@@ -36,6 +44,7 @@ public class ReceivingCoordinates implements Runnable{
 			String[] parts = receivedMsg.split(" ");
 			int x = Integer.parseInt(parts[0]);
 			int y = Integer.parseInt(parts[1]);
+//			System.out.println(x);
 			movement(x, y);
 		}
 	}
