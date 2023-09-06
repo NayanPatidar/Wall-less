@@ -9,6 +9,7 @@ import java.net.Socket;
 
 public class ReceivingCoordinates implements Runnable{
 	DatagramSocket datagramSocket;
+	PositionCheck positionCheck;
 	InetAddress inetAddress;
 	Socket clientSocket;
 	Robot robot;
@@ -32,7 +33,7 @@ public class ReceivingCoordinates implements Runnable{
 	public void run() {
 //		System.out.println("Listening on the port :" + 12346);
 		byte[] buffer = new byte[1024];
-		while (true){
+		while (!positionCheck.stop){
 			DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
 			try {
 				datagramSocket.receive(packet);
@@ -45,11 +46,7 @@ public class ReceivingCoordinates implements Runnable{
 			int x = Integer.parseInt(parts[0]);
 			int y = Integer.parseInt(parts[1]);
 //			System.out.println(x);
-			movement(x, y);
+			robot.mouseMove(x, y);
 		}
-	}
-
-	private void movement(int x, int y) {
-		robot.mouseMove(x, y);
 	}
 }
