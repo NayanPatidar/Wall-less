@@ -17,7 +17,7 @@ public class Connection {
 
 	{
 		try {
-			inetAddress = InetAddress.getByName("10.200.233.36");
+			inetAddress = InetAddress.getByName("10.200.233.67");
 		} catch (UnknownHostException e) {
 			throw new RuntimeException(e);
 		}

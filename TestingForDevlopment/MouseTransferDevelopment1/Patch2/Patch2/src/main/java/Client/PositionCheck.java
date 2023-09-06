@@ -23,10 +23,10 @@ public class PositionCheck implements Runnable{
 	@Override
 	public void run() {
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
-		Point cursor = MouseInfo.getPointerInfo().getLocation();
 
 		while (true) {
-			if (cursor.getX() >= toolkit.getScreenSize().width - 1) {
+			Point cursor = MouseInfo.getPointerInfo().getLocation();
+			if (cursor.getX() >= toolkit.getScreenSize().width - 2) {
 
 				OutputStream outputStream = null;
 				try {
@@ -40,7 +40,8 @@ public class PositionCheck implements Runnable{
 				System.out.println("Sent the message");
 
 				try {
-					outputStream.write(messageBytes);
+                    assert outputStream != null;
+                    outputStream.write(messageBytes);
 					outputStream.flush();
 
 				} catch (IOException e) {
