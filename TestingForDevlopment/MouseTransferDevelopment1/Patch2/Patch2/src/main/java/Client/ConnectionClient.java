@@ -26,6 +26,11 @@ public class ConnectionClient {
 
 	public ConnectionClient(){
 		UDPConnection();
+		try {
+			Thread.sleep(3);
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
 		TCPConnection();
 	}
 

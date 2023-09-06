@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.*;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
 
@@ -25,7 +26,7 @@ public class Main {
 
 	{
 		try {
-			inetAddress = InetAddress.getByName("10.200.233.36");
+			inetAddress = InetAddress.getByName("10.200.233.99");
 		} catch (UnknownHostException e) {
 			throw new RuntimeException(e);
 		}
@@ -74,11 +75,12 @@ public class Main {
 					DatagramPacket acknowledgmentPacket = new DatagramPacket(sendData, sendData.length,
 									inetAddress, portUDP);
 					datagramSocket.send(acknowledgmentPacket);
+					TimeUnit.SECONDS.sleep(3);
 
 				} while (!msgFromClient.equals("Got it"));
 				System.out.println("Exiting the senderThread");
 
-			} catch (IOException e) {
+			} catch (IOException | InterruptedException e) {
 				throw new RuntimeException(e);
 			}
 		});
