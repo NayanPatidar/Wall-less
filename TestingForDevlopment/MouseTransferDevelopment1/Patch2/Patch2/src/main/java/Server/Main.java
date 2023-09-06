@@ -52,9 +52,28 @@ public class Main {
 
 
 		System.out.println("Threads Started");
-//			GUIAndMouse();
+			GUIAndMouse();
 		System.out.println("ENDED");
 
+	}
+
+	private void GUIAndMouse() {
+		SharedData sharedData = new SharedData();
+
+		Thread threadA = new Thread(new GUI(jFrame, sharedData, socket, inetAddress, datagramSocket, serverSocket, portTCP, portUDP, clientScreenSize));
+		Thread threadB = new Thread(new MouseClicks(jFrame, sharedData, socket, datagramSocket) );
+
+		threadA.start();
+		threadB.start();
+
+		try {
+			threadA.join();
+			threadB.join();
+			System.out.println("Threads closed");
+
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	private void UDPConnectionValidation() {
@@ -75,7 +94,9 @@ public class Main {
 					DatagramPacket acknowledgmentPacket = new DatagramPacket(sendData, sendData.length,
 									inetAddress, portUDP);
 					datagramSocket.send(acknowledgmentPacket);
-					TimeUnit.SECONDS.sleep(3);
+
+					TimeUnit.SECONDS.sleep(2);
+					System.out.println("Sent");
 
 				} while (!msgFromClient.equals("Got it"));
 				System.out.println("Exiting the senderThread");
@@ -92,7 +113,10 @@ public class Main {
 					byte[] receiveData = new byte[1024];
 					DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
 					datagramSocket.receive(receivePacket);
-					msgFromClient = new String(receivePacket.getData(), 0, receivePacket.getLength());
+					String msg = new String(receivePacket.getData(), 0, receivePacket.getLength());
+					String[] arr = msg.split("  ");
+					msgFromClient = arr[0];
+					clientScreenSize = arr[1];
 					System.out.println("Received from client: " + msgFromClient);
 				} while (!msgFromClient.equals("Got it"));
 				System.out.println("Exiting the receiverThread");
