@@ -32,6 +32,7 @@ public class ConnectionClient {
 			throw new RuntimeException(e);
 		}
 		TCPConnection();
+		new ClientMouse(datagramSocket, inetAddress, clientSocket, portTCP, portUDP);
 	}
 
 	public void UDPConnection() {
