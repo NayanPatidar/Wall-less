@@ -52,7 +52,7 @@ public class Main {
 
 		System.out.println("Threads Started");
 //			GUIAndMouse();
-//		System.out.println("ENDED");
+		System.out.println("ENDED");
 
 	}
 
@@ -111,6 +111,26 @@ public class Main {
 	}
 
 	private void TCPConnectionValidation() {
+		try {
+			serverSocket = new ServerSocket(portTCP);
+			System.out.println("TCP server is listening on port " + portTCP);
+			socket = serverSocket.accept();
+			System.out.println("Client connected :" + socket.getInetAddress());
 
+			String sendingUDPMsg = "StartingTCP";
+			OutputStream outputStream = socket.getOutputStream();
+			byte[] sendingMsg = sendingUDPMsg.getBytes();
+			outputStream.write(sendingMsg);
+
+			InputStream inputStream = socket.getInputStream();
+			byte[] buffer = new byte[1024];
+			int bytesRead = inputStream.read(buffer);
+			String clientMessage = new String(buffer, 0, bytesRead);
+			System.out.println("Received from client: " + clientMessage);
+			connectionEstablished = true;
+
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }
