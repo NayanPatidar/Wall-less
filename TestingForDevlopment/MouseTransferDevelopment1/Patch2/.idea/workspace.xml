@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="415f1adc-022f-4388-beed-b56ed265edc7" name="Changes" comment="New Way For UDP Connection">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Client/ConnectionClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Client/ConnectionClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Client/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Client/Start.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Server/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -16,6 +14,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/../../.." value="Patch2" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="ProjectColorInfo">{
@@ -34,6 +37,26 @@
     &quot;last_opened_file_path&quot;: &quot;D:/Java Projects/Wall-less/TestingForDevlopment/MouseTransferDevelopment1/Patch2&quot;
   }
 }</component>
+  <component name="RunManager">
+    <configuration name="Start" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Server.Start" />
+      <module name="Patch2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Start" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
