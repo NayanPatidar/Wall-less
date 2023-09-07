@@ -24,7 +24,6 @@ public class CoordinatesSending {
 	int portUDP;
 	int portTCP;
 	boolean stop = false;
-	String message = "ok";
 	String clientScreenSize = " ";
 	int ClientWidth;
 	int ClientHeight;
@@ -44,21 +43,17 @@ public class CoordinatesSending {
 	}
 
 	private void operator() {
-		Thread notification = new Thread(() -> {
-			System.out.println("Thread to get notified is running !!");
-			notifyingToStop();
-		});
 
 		Thread sendingPosition = new Thread(() -> {
+			String[] clientScreen = clientScreenSize.split(" ");
+			ClientHeight = Integer.parseInt(clientScreen[0]);
+			ClientWidth = Integer.parseInt(clientScreen[1]);
 			System.out.println("Thread to sending the position is running !!");
 			sendingCoordinates();
 		});
-
-		notification.start();
 		sendingPosition.start();
 
 		try {
-			notification.join();
 			sendingPosition.join();
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
@@ -71,16 +66,14 @@ public class CoordinatesSending {
 		Dimension dimension = toolkit.getScreenSize();
 		ServerHeight = dimension.height;
 		ServerWidth = dimension.width;
-		robot.mouseMove(dimension.width - 2, First.y);
+		robot.mouseMove(dimension.width - 3, First.y);
 
 		while (!stop){
 			Point cursorInfo = MouseInfo.getPointerInfo().getLocation();
 			int x = cursorInfo.x;
 			int y = cursorInfo.y;
-//			System.out.println(y);
 			int X = gettingX(x, y);
 			int Y = gettingY(x, y);
-//			System.out.println(X + " " + Y);
 
 			String msg = X + " " + Y;
 			byte[] sendData = msg.getBytes();
@@ -88,7 +81,13 @@ public class CoordinatesSending {
 			DatagramPacket packet = new DatagramPacket(sendData, sendData.length, inetAddress, portUDP);
 			try {
 				datagramSocket.send(packet);
-				Thread.sleep(2);
+				if(X > ClientWidth-2 ){
+					stop = true;
+					System.out.println("Here");
+					robot.mouseMove(6,Y);
+					break;
+				}
+				Thread.sleep(1);
 			} catch (IOException | InterruptedException e) {
 				throw new RuntimeException(e);
 			}
@@ -97,9 +96,7 @@ public class CoordinatesSending {
 
 	public int gettingX(int x, int y){
 		if (loopNumX == 1) {
-
 			int msg = x+(ClientWidth-ServerWidth);
-
 			if (x < 1){
 				loopNumX = 2;
 				robot.mouseMove(ClientWidth - ServerWidth, y);
@@ -119,13 +116,11 @@ public class CoordinatesSending {
 	public int gettingY(int x, int y){
 		if (loopNumY == 1){
 			if (y > ServerHeight-2){
-//				System.out.println("Got it");
 				robot.mouseMove(x, ServerHeight-(ClientHeight-ServerHeight));
 				loopNumY = 2;
 			}
 			return y;
 		} else if (loopNumY == 2) {
-//			System.out.println("Reached");
 			if (y < ServerHeight-(ClientHeight-ServerHeight)){
 				robot.mouseMove(x, ServerHeight-2);
 				loopNumY = 1;
@@ -135,42 +130,35 @@ public class CoordinatesSending {
 		return 0;
 	}
 
-	public void notifyingToStop() {
-		String[] clientScreen = clientScreenSize.split(" ");
-		ClientHeight = Integer.parseInt(clientScreen[0]);
-		ClientWidth = Integer.parseInt(clientScreen[1]);
-		System.out.println("Client Height is : " + ClientHeight);
-		System.out.println("Client Width is :" + ClientWidth);
-
-		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			System.out.println(socket.isConnected());
-			try {
-				System.out.println(socket.getInetAddress());
-				System.out.println("Waiting for msg");
-
-				while (!stop) {
-					System.out.println(socket.isInputShutdown());
-
-					InputStream inputStream = socket.getInputStream();
-					byte[] buffer = new byte[1024];
-					int bytesRead = inputStream.read(buffer);
-					String clientMessage = new String(buffer, 0, bytesRead);
-					System.out.println("Received from client: " + clientMessage);
-
-					if (clientMessage.equals("stop")){
-						System.out.println("Stopping receiving ...");
-						stop = true;
-					}
 
 
-				}
-			} catch (IOException e) {
-				System.err.println("Error reading message from client: " + e.getMessage());
-			}
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-
-	}
+//		try {
+//			BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+//			System.out.println(socket.isConnected());
+//			try {
+//				System.out.println(socket.getInetAddress());
+//				System.out.println("Waiting for msg");
+//
+//				while (!stop) {
+//					System.out.println(socket.isInputShutdown());
+//
+//					InputStream inputStream = socket.getInputStream();
+//					byte[] buffer = new byte[1024];
+//					int bytesRead = inputStream.read(buffer);
+//					String clientMessage = new String(buffer, 0, bytesRead);
+//					System.out.println("Received from client: " + clientMessage);
+//
+//					if (clientMessage.equals("stop")){
+//						System.out.println("Stopping receiving ...");
+//						stop = true;
+//					}
+//
+//
+//				}
+//			} catch (IOException e) {
+//				System.err.println("Error reading message from client: " + e.getMessage());
+//			}
+//		} catch (IOException e) {
+//			throw new RuntimeException(e);
+//		}
 }
