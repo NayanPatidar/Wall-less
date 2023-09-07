@@ -6,6 +6,7 @@ import java.io.OutputStream;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.concurrent.TimeUnit;
 
 public class PositionCheck implements Runnable{
 	DatagramSocket datagramSocket;
@@ -13,6 +14,7 @@ public class PositionCheck implements Runnable{
 	Socket clientSocket;
 	OutputStream outputStream;
 	Robot robot;
+	static public boolean stopMessageSent = false;
 
 	{
 		try {
@@ -30,24 +32,37 @@ public class PositionCheck implements Runnable{
 		this.outputStream = outputStream;
 	}
 
+	public PositionCheck(){
+
+	}
+
 	@Override
 	public void run() {
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		String message = "stop";
+		ReceivingCoordinates receivingCoordinates = new ReceivingCoordinates();
 
-		while (!stop) {
-			Point cursor = MouseInfo.getPointerInfo().getLocation();
-			if (cursor.getX() >= toolkit.getScreenSize().width - 2) {
-				String message = "stop";
+		while (true) {
+				Point cursor = MouseInfo.getPointerInfo().getLocation();
+			if (cursor.getX() >= toolkit.getScreenSize().width - 1 && stopMessageSent) {
 				byte[] messageBytes = message.getBytes();
 				try {
 					outputStream.write(messageBytes);
 					outputStream.flush();
-					robot.mouseMove(350,350);
-					stop = true;
+					System.out.println("here");
+					robot.mouseMove((int) (cursor.getX()-3),cursor.y);
+					stopMessageSent  = false;
+					Thread.sleep(10);
+					ReceivingCoordinates.allowed = true;
+
+
 				} catch (IOException e) {
-					System.out.println("Got an exception :" + e.getMessage());
-				}
-			}
+					System.out.println("Got an exception: " + e.getMessage());
+				} catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+
+            }
 		}
 	}
 }
