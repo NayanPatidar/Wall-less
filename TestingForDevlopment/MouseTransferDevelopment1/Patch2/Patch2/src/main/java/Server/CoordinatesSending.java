@@ -83,11 +83,10 @@ public class CoordinatesSending {
 				datagramSocket.send(packet);
 				if(X > ClientWidth-2 ){
 					stop = true;
-					System.out.println("Here");
 					robot.mouseMove(6,Y);
 					break;
 				}
-				Thread.sleep(1);
+				Thread.sleep(2);
 			} catch (IOException | InterruptedException e) {
 				throw new RuntimeException(e);
 			}
