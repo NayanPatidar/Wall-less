@@ -41,8 +41,7 @@ public class GUI implements Runnable {
 				System.out.println("Leaving Screen");
 				jFrame.setVisible(true);
 				sharedData.setForGui(0);
-				CoordinatesSending coordinatesSending = new CoordinatesSending(socket, datagramSocket, inetAddress, portUDP, portTCP, clientScreenSize);
-				System.out.println("Left Screen");
+				new CoordinatesSending(socket, datagramSocket, inetAddress, portUDP, portTCP, clientScreenSize);
 			} else if (cursor.getX() >= 5 && (sharedData.getForGui() == 0)) {
 				System.out.println("Entering Screen");
 				jFrame.dispose();

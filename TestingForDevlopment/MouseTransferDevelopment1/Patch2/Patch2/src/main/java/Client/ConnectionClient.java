@@ -50,7 +50,6 @@ public class ConnectionClient {
 			DatagramPacket datagramPacket = new DatagramPacket(receiveData, receiveData.length);
 			datagramSocket.receive(datagramPacket);
 			String receivedMsg = new String(datagramPacket.getData(), 0, datagramPacket.getLength());
-			System.out.println("Here");
 
 			if (receivedMsg.equals("StartingUDP")){
 				System.out.println("Got the Msg From Server");

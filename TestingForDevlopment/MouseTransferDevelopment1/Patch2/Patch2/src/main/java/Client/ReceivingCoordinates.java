@@ -30,6 +30,9 @@ public class ReceivingCoordinates implements Runnable{
 
 	@Override
 	public void run() {
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		Dimension dimension = toolkit.getScreenSize().getSize();
+
 		byte[] buffer = new byte[1024];
 		while (true){
 			DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
@@ -43,6 +46,11 @@ public class ReceivingCoordinates implements Runnable{
 			int x = Integer.parseInt(parts[0]);
 			int y = Integer.parseInt(parts[1]);
 			robot.mouseMove(x, y);
+
+			if (x >= dimension.width-2){
+				System.out.println("Left Screen");
+				robot.mouseMove(750,350);
+			}
 		}
 	}
 }
