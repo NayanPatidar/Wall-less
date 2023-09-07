@@ -9,10 +9,11 @@ import java.net.Socket;
 
 public class ReceivingCoordinates implements Runnable{
 	DatagramSocket datagramSocket;
-	PositionCheck positionCheck;
+	PositionCheck positionCheck = new PositionCheck();
 	InetAddress inetAddress;
 	Socket clientSocket;
 	Robot robot;
+	static boolean allowed = true;
 
 	{
 		try {
@@ -29,18 +30,25 @@ public class ReceivingCoordinates implements Runnable{
 		this.clientSocket = clientSocket;
 	}
 
+	public ReceivingCoordinates(){
+
+	}
+
 	@Override
 	public void run() {
 //		System.out.println("Listening on the port :" + 12346);
 		byte[] buffer = new byte[1024];
-		while (!positionCheck.stop){
+		while (true){
 			DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
 			try {
 				datagramSocket.receive(packet);
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
-
+			if (allowed) {
+				PositionCheck.stopMessageSent = true;
+				allowed =false;
+			}
 			String receivedMsg = new String(packet.getData(), 0, packet.getLength());
 			String[] parts = receivedMsg.split(" ");
 			int x = Integer.parseInt(parts[0]);

@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="415f1adc-022f-4388-beed-b56ed265edc7" name="Changes" comment="Mouse+Cursor Added">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Patch1/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Patch1/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Patch1/src/main/java/MouseDesktopChange/CoordinatesSending.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Patch1/src/main/java/MouseDesktopChange/CoordinatesSending.java" afterDir="false" />
+    <list default="true" id="415f1adc-022f-4388-beed-b56ed265edc7" name="Changes" comment="Minor Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Client/ClientMouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Client/ClientMouse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Client/ConnectionClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Client/ConnectionClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Client/PositionCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Client/PositionCheck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Server/CoordinatesSending.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Server/CoordinatesSending.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Server/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Client/ReceivingCoordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Client/ReceivingCoordinates.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +52,7 @@
       <recent name="Server" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Start">
+  <component name="RunManager" selected="Application.Client.Start">
     <configuration name="Client.Start" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client.Start" />
       <module name="Patch2" />
@@ -86,8 +81,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Start" />
         <item itemvalue="Application.Client.Start" />
+        <item itemvalue="Application.Start" />
         <item itemvalue="Application.Start" />
       </list>
     </recent_temporary>
