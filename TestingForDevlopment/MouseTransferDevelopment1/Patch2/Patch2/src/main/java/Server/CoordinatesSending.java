@@ -39,6 +39,7 @@ public class CoordinatesSending {
 		this.portUDP = port;
 		this.portTCP = portTCP;
 		this.clientScreenSize = clientScreenSize;
+
 		operator();
 	}
 
