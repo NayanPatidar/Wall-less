@@ -1,6 +1,7 @@
 package Client;
 
 import java.awt.*;
+import java.awt.event.InputEvent;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -42,9 +43,9 @@ public class ReceivingCoordinates implements Runnable{
 				throw new RuntimeException(e);
 			}
 			String receivedMsg = new String(packet.getData(), 0, packet.getLength());
-
 			if (receivedMsg.startsWith("C:")) {
-				String[] parts = receivedMsg.split(" ");
+				String msg = receivedMsg.substring(2);
+				String[] parts = msg.split(" ");
 				int x = Integer.parseInt(parts[0]);
 				int y = Integer.parseInt(parts[1]);
 				robot.mouseMove(x, y);
@@ -53,6 +54,22 @@ public class ReceivingCoordinates implements Runnable{
 					System.out.println("Left Screen");
 					robot.mouseMove(750,350);
 				}
+			} else if (receivedMsg.startsWith("B:")) {
+				String msg = receivedMsg.substring(2);
+                switch (msg) {
+                    case "1" -> {
+                        robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
+                        robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
+                    }
+                    case "2" -> {
+                        robot.mousePress(InputEvent.BUTTON2_DOWN_MASK);
+                        robot.mouseRelease(InputEvent.BUTTON2_DOWN_MASK);
+                    }
+                    case "3" -> {
+                        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+                        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+                    }
+                }
 			}
 
 

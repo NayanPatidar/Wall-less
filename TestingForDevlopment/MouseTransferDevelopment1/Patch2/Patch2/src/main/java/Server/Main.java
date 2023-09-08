@@ -61,7 +61,7 @@ public class Main {
 		SharedData sharedData = new SharedData();
 
 		Thread threadA = new Thread(new GUI(jFrame, sharedData, socket, inetAddress, datagramSocket, serverSocket, portTCP, portUDP, clientScreenSize));
-		Thread threadB = new Thread(new MouseClicks(jFrame, sharedData, socket, datagramSocket) );
+		Thread threadB = new Thread(new MouseClicks(jFrame, sharedData, socket, datagramSocket, inetAddress, portUDP) );
 
 		threadA.start();
 		threadB.start();
