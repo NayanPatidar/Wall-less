@@ -76,7 +76,7 @@ public class CoordinatesSending {
 			int X = gettingX(x, y);
 			int Y = gettingY(x, y);
 
-			String msg = X + " " + Y;
+			String msg = "C:" + X + " " + Y;
 			byte[] sendData = msg.getBytes();
 
 			DatagramPacket packet = new DatagramPacket(sendData, sendData.length, inetAddress, portUDP);

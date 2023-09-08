@@ -42,15 +42,20 @@ public class ReceivingCoordinates implements Runnable{
 				throw new RuntimeException(e);
 			}
 			String receivedMsg = new String(packet.getData(), 0, packet.getLength());
-			String[] parts = receivedMsg.split(" ");
-			int x = Integer.parseInt(parts[0]);
-			int y = Integer.parseInt(parts[1]);
-			robot.mouseMove(x, y);
 
-			if (x >= dimension.width-2){
-				System.out.println("Left Screen");
-				robot.mouseMove(750,350);
+			if (receivedMsg.startsWith("C:")) {
+				String[] parts = receivedMsg.split(" ");
+				int x = Integer.parseInt(parts[0]);
+				int y = Integer.parseInt(parts[1]);
+				robot.mouseMove(x, y);
+
+				if (x >= dimension.width-2){
+					System.out.println("Left Screen");
+					robot.mouseMove(750,350);
+				}
 			}
+
+
 		}
 	}
 }

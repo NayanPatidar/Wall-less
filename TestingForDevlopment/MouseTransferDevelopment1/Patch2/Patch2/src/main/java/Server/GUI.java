@@ -45,6 +45,7 @@ public class GUI implements Runnable {
 				Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(blankImage, new Point(0, 0), "blankCursor");
 				jFrame.setCursor(blankCursor);
 				new CoordinatesSending(socket, datagramSocket, inetAddress, portUDP, portTCP, clientScreenSize);
+
 			} else if (cursor.getX() >= 5 && (sharedData.getForGui() == 0)) {
 				System.out.println("Entering Screen");
 				jFrame.dispose();

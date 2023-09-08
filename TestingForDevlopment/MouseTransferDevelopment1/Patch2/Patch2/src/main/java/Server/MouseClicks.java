@@ -28,7 +28,7 @@ public class MouseClicks implements Runnable {
 				System.out.println("Calling Mouse Functionality");
 
 				SwingUtilities.invokeLater(() -> {
-					mouseFunctionality = new MouseFunctionality(jFrame);
+					mouseFunctionality = new MouseFunctionality(jFrame,datagramSocket);
 				});
 				val ++;
 			} else if ((sharedData.getForMouseClicks() == 1) && (val == 1)){
