@@ -3,13 +3,14 @@ package Server;
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.net.DatagramSocket;
 
 public class MouseFunctionality  {
 
 	static private JFrame jFrame;
 	private final MouseAdapter mouseAdapter;
 
-	public MouseFunctionality(JFrame frame) {
+	public MouseFunctionality(JFrame frame, DatagramSocket datagramSocket) {
 		jFrame = frame;
 
 		mouseAdapter = new MouseAdapter() {
