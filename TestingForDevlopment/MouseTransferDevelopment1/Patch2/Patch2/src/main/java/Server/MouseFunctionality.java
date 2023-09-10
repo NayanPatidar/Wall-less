@@ -15,43 +15,89 @@ public class MouseFunctionality  {
 
 	public MouseFunctionality(JFrame frame, DatagramSocket datagramSocket, InetAddress inetAddress,int portUDP) {
 		jFrame = frame;
-		String leftClick = "B:3";
-		String middleClick = "B:2";
-		String rightClick = "B:1";
-		byte[] bufferLeft = leftClick.getBytes();
-		byte[] bufferRight = rightClick.getBytes();
-		byte[] bufferMiddle= middleClick.getBytes();
-		DatagramPacket packetLeft = new DatagramPacket(bufferLeft, bufferLeft.length, inetAddress, portUDP);
-		DatagramPacket packetMiddle = new DatagramPacket(bufferMiddle, bufferMiddle.length, inetAddress, portUDP);
-		DatagramPacket packetRight = new DatagramPacket(bufferRight, bufferRight.length, inetAddress, portUDP);
+		String leftClickPressed = "B:3";
+		String middleClickPressed = "B:2";
+		String rightClickPressed = "B:1";
+		byte[] bufferLeftPressed = leftClickPressed.getBytes();
+		byte[] bufferRightPressed = rightClickPressed.getBytes();
+		byte[] bufferMiddlePressed = middleClickPressed.getBytes();
+		String leftClickReleased = "B:3'";
+		String middleClickReleased = "B:2'";
+		String rightClickReleased = "B:1'";
+		byte[] bufferLeftReleased = leftClickReleased.getBytes();
+		byte[] bufferRightReleased = rightClickReleased.getBytes();
+		byte[] bufferMiddleReleased = middleClickReleased.getBytes();
+		DatagramPacket packetLeftReleased = new DatagramPacket(bufferLeftReleased, bufferLeftReleased.length, inetAddress, portUDP);
+		DatagramPacket packetMiddleReleased = new DatagramPacket(bufferMiddleReleased, bufferMiddleReleased.length, inetAddress, portUDP);
+		DatagramPacket packetRightReleased = new DatagramPacket(bufferRightReleased, bufferRightReleased.length, inetAddress, portUDP);
+		DatagramPacket packetLeftPressed = new DatagramPacket(bufferLeftPressed, bufferLeftPressed.length, inetAddress, portUDP);
+		DatagramPacket packetMiddlePressed = new DatagramPacket(bufferMiddlePressed, bufferMiddlePressed.length, inetAddress, portUDP);
+		DatagramPacket packetRightPressed = new DatagramPacket(bufferRightPressed, bufferRightPressed.length, inetAddress, portUDP);
 
 
 
 		mouseAdapter = new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-
+			public void mousePressed(MouseEvent e){
 				if (e.getButton() == MouseEvent.BUTTON1) {
-					System.out.println("Left Button");
+					System.out.println("Left Button Pressed");
+
 					try {
-						datagramSocket.send(packetLeft);
+						datagramSocket.send(packetLeftPressed);
 					} catch (IOException ex) {
 						throw new RuntimeException(ex);
 					}
+
 				} else if (e.getButton() == MouseEvent.BUTTON2) {
-					System.out.println("Middle Button");
+					System.out.println("Middle Button Pressed");
+
 					try {
-						datagramSocket.send(packetMiddle);
+						datagramSocket.send(packetMiddlePressed);
 					} catch (IOException ex) {
 						throw new RuntimeException(ex);
 					}
+
 				} else if (e.getButton() == MouseEvent.BUTTON3) {
-					System.out.println("Right Button");
+					System.out.println("Right Button Pressed");
+
 					try {
-						datagramSocket.send(packetRight);
+						datagramSocket.send(packetRightPressed);
 					} catch (IOException ex) {
 						throw new RuntimeException(ex);
 					}
+
+				}
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				if (e.getButton() == MouseEvent.BUTTON1) {
+					System.out.println("Left Button Released");
+
+					try {
+						datagramSocket.send(packetLeftReleased);
+					} catch (IOException ex) {
+						throw new RuntimeException(ex);
+					}
+
+				} else if (e.getButton() == MouseEvent.BUTTON2) {
+					System.out.println("Middle Button Released");
+
+					try {
+						datagramSocket.send(packetMiddleReleased);
+					} catch (IOException ex) {
+						throw new RuntimeException(ex);
+					}
+
+				} else if (e.getButton() == MouseEvent.BUTTON3) {
+					System.out.println("Right Button Released");
+
+					try {
+						datagramSocket.send(packetRightReleased);
+					} catch (IOException ex) {
+						throw new RuntimeException(ex);
+					}
+
 				}
 			}
 		};
