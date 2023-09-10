@@ -59,16 +59,22 @@ public class ReceivingCoordinates implements Runnable{
                 switch (msg) {
                     case "1" -> {
                         robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
-                        robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
                     }
+										case "1'" -> {
+											robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
+										}
                     case "2" -> {
-                        robot.mousePress(InputEvent.BUTTON2_DOWN_MASK);
+	                    robot.mousePress(InputEvent.BUTTON2_DOWN_MASK);
+                    }
+										case "2'" -> {
                         robot.mouseRelease(InputEvent.BUTTON2_DOWN_MASK);
                     }
                     case "3" -> {
-                        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-                        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+	                    robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
                     }
+										case "3'" -> {
+											robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+										}
                 }
 			}
 
