@@ -26,7 +26,7 @@ public class Main {
 
 	{
 		try {
-			inetAddress = InetAddress.getByName("10.200.233.99");
+			inetAddress = InetAddress.getByName("10.200.233.126");
 		} catch (UnknownHostException e) {
 			throw new RuntimeException(e);
 		}
@@ -62,6 +62,8 @@ public class Main {
 
 		Thread threadA = new Thread(new GUI(jFrame, sharedData, socket, inetAddress, datagramSocket, serverSocket, portTCP, portUDP, clientScreenSize));
 		Thread threadB = new Thread(new MouseClicks(jFrame, sharedData, socket, datagramSocket, inetAddress, portUDP) );
+		Thread threadC = new Thread(new ButtonClicks(jFrame, sharedData, socket, datagramSocket, inetAddress, portUDP) );
+
 
 		threadA.start();
 		threadB.start();

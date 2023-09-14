@@ -35,7 +35,6 @@ public class MouseFunctionality  {
 		DatagramPacket packetRightPressed = new DatagramPacket(bufferRightPressed, bufferRightPressed.length, inetAddress, portUDP);
 
 
-
 		mouseAdapter = new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e){
