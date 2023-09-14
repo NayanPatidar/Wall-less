@@ -14,7 +14,6 @@ public class TCPClient {
 		while (true) {
 
 			String message = in.readLine();
-			System.out.println("Client received: " + message);
 
 			String[] position = message.split(" ");
 			robot.mouseMove(Integer.parseInt(position[0]), Integer.parseInt(position[1]));

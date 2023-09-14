@@ -4,6 +4,8 @@ public 	class SharedData {
 	// It is the shared data according to which the threads are working with
 	public static volatile int forGui = 1;
 	public static volatile int forMouseClicks;
+	public static volatile int forButtonClicks;
+
 	public int getForGui(){
 		return forGui;
 	}
@@ -15,5 +17,10 @@ public 	class SharedData {
 	public int getForMouseClicks(){
 		forMouseClicks = forGui;
 		return forMouseClicks;
+	}
+
+	public int getForButtonClicks(){
+		forButtonClicks = forGui;
+		return forButtonClicks;
 	}
 }
