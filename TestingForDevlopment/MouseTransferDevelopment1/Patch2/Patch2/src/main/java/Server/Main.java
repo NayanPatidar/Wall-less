@@ -26,7 +26,7 @@ public class Main {
 
 	{
 		try {
-			inetAddress = InetAddress.getByName("10.200.233.126");
+			inetAddress = InetAddress.getByName("10.200.233.99");
 		} catch (UnknownHostException e) {
 			throw new RuntimeException(e);
 		}
@@ -67,10 +67,12 @@ public class Main {
 
 		threadA.start();
 		threadB.start();
+		threadC.start();
 
 		try {
 			threadA.join();
 			threadB.join();
+			threadC.join();
 			System.out.println("Threads closed");
 
 		} catch (InterruptedException e) {
