@@ -10,7 +10,7 @@ import java.net.InetAddress;
 
 public class KeyboardFunctionality  {
 	static private JFrame jFrame;
-	public static KeyListener keyListener;
+	private final KeyListener keyListener;
 
 	public KeyboardFunctionality(JFrame jFrame, DatagramSocket datagramSocket, InetAddress inetAddress, int portUDP) {
 
@@ -194,9 +194,15 @@ public class KeyboardFunctionality  {
 		DatagramPacket packet_yKey_pressed = new DatagramPacket(yKey_pressed, yKey_pressed.length, inetAddress, portUDP);
 		DatagramPacket packet_zKey_pressed = new DatagramPacket(zKey_pressed, zKey_pressed.length, inetAddress, portUDP);
 
-		jFrame.addKeyListener(new KeyListener() {
+		keyListener = new KeyListener() {
+
 			@Override
 			public void keyTyped(KeyEvent e) {
+
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
 				switch (e.getKeyChar()) {
 					case 'a' -> {
 						try {
@@ -615,21 +621,15 @@ public class KeyboardFunctionality  {
 			}
 
 			@Override
-			public void keyPressed(KeyEvent e) {
-				int keyCode = e.getKeyCode();
-				System.out.println("Key Pressed has the code : " + keyCode);
-			}
-
-			@Override
 			public void keyReleased(KeyEvent e) {
-				int keyCode = e.getKeyCode();
-				System.out.println("Key Released has the code : " + keyCode);
+
 			}
-		});
+		};
 		jFrame.addKeyListener(keyListener);
 		}
 
-	public void disposeMouseListener() {
+	public void removeKeyListener() {
 		jFrame.removeKeyListener(keyListener);
+		System.out.println("KeyListener removed");
 	}
 }
