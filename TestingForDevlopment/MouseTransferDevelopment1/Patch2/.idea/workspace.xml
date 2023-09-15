@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="415f1adc-022f-4388-beed-b56ed265edc7" name="Changes" comment="Keyboard Buttons Testing">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Client/ConnectionClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Client/ConnectionClient.java" afterDir="false" />
+    <list default="true" id="415f1adc-022f-4388-beed-b56ed265edc7" name="Changes" comment="Adding KeyCodes">
       <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Client/ReceivingCoordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Client/ReceivingCoordinates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/KeybaordListener/KeyboardListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/KeybaordListener/KeyboardListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Server/ButtonClicks.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Server/ButtonClicks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Server/KeyboardFunctionality.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Server/KeyboardFunctionality.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Server/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +212,15 @@
       <option name="project" value="LOCAL" />
       <updated>1694437947963</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Adding KeyCodes">
+      <option name="closed" value="true" />
+      <created>1694782399373</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1694782399373</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -233,7 +235,8 @@
     <MESSAGE value="Mouse Pressing&amp;Releasing" />
     <MESSAGE value="Testing For TCP" />
     <MESSAGE value="Server&amp;Java for TCP" />
-    <option name="LAST_COMMIT_MESSAGE" value="Server&amp;Java for TCP" />
+    <MESSAGE value="Adding KeyCodes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding KeyCodes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
