@@ -37,7 +37,7 @@ public class ButtonClicks implements Runnable {
 			} else if ((sharedData.getForMouseClicks() == 1) && (val == 1)){
 				System.out.println("Disposing Keyboard Functionality");
 				if (keyboardFunctionality != null) {
-//					keyboardFunctionality.();
+					keyboardFunctionality.disposeMouseListener();
 				}
 				jFrame.dispose();
 				val --;

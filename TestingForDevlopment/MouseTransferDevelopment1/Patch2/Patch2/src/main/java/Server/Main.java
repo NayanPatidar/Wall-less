@@ -67,10 +67,12 @@ public class Main {
 
 		threadA.start();
 		threadB.start();
+		threadC.start();
 
 		try {
 			threadA.join();
 			threadB.join();
+			threadC.join();
 			System.out.println("Threads closed");
 
 		} catch (InterruptedException e) {
