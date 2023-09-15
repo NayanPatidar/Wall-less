@@ -371,10 +371,63 @@ public class ReceivingCoordinates implements Runnable{
 						robot.keyRelease(KeyEvent.VK_Z);
 						System.out.println("Pressed 'Z' key");
 						break;
-					case 46: // Delete key
+					case 127: // Delete key
 						robot.keyPress(KeyEvent.VK_DELETE);
 						robot.keyRelease(KeyEvent.VK_DELETE);
 						System.out.println("Pressed Delete key");
+						break;
+
+					case 38: // Up Arrow
+						robot.keyPress(KeyEvent.VK_UP);
+						robot.keyRelease(KeyEvent.VK_UP);
+						System.out.println("Up Arrow Key");
+						break;
+					case 40: // Down Arrow
+						robot.keyPress(KeyEvent.VK_DOWN);
+						robot.keyRelease(KeyEvent.VK_DOWN);
+						System.out.println("Down Arrow Key");
+						break;
+					case 37: // Left Arrow
+						robot.keyPress(KeyEvent.VK_LEFT);
+						robot.keyRelease(KeyEvent.VK_LEFT);
+						System.out.println("Left Arrow Key");
+						break;
+					case 39: // Right Arrow
+						robot.keyPress(KeyEvent.VK_RIGHT);
+						robot.keyRelease(KeyEvent.VK_RIGHT);
+						System.out.println("Right Arrow Key");
+						break;
+					case 44: // Comma (,)
+						System.out.println("Comma (,) Key");
+						// Send your datagram for Comma key
+						break;
+					case 46: // Period (.)
+						System.out.println("Period (.) Key");
+						// Send your datagram for Period key
+						break;
+					case 47: // Slash (/)
+						System.out.println("Slash (/) Key");
+						// Send your datagram for Slash key
+						break;
+					case 92: // Backslash (\)
+						System.out.println("Backslash (\\) Key");
+						// Send your datagram for Backslash key
+						break;
+					case 91: // Open Bracket ([)
+						System.out.println("Open Bracket ([) Key");
+						// Send your datagram for Open Bracket key
+						break;
+					case 93: // Close Bracket (])
+						System.out.println("Close Bracket (]) Key");
+						// Send your datagram for Close Bracket key
+						break;
+					case 59: // Semicolon (;)
+						System.out.println("Semicolon (;) Key");
+						// Send your datagram for Semicolon key
+						break;
+					case 222: // Quote (')
+						System.out.println("Quote (') Key");
+						// Send your datagram for Quote key
 						break;
 				}
 			}
