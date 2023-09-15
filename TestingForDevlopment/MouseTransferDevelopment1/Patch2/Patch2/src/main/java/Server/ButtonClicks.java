@@ -6,6 +6,7 @@ import java.net.InetAddress;
 import java.net.Socket;
 
 public class ButtonClicks implements Runnable {
+
 	static private JFrame jFrame;
 	private int val = 0;
 	private final SharedData sharedData;
@@ -27,17 +28,17 @@ public class ButtonClicks implements Runnable {
 	@Override
 	public void run() {
 		while (true){
-			if ((sharedData.getForMouseClicks() == 0) && (val == 0)){
+			if ((sharedData.getForButtonClicks() == 0) && (val == 0)){
 				System.out.println("Calling Keyboard Functionality");
 
 				SwingUtilities.invokeLater(() -> {
 					keyboardFunctionality = new KeyboardFunctionality(jFrame,datagramSocket, inetAddress, portUDP);
 				});
 				val ++;
-			} else if ((sharedData.getForMouseClicks() == 1) && (val == 1)){
-				System.out.println("Disposing Keyboard Functionality");
+			} else if ((sharedData.getForButtonClicks() == 1) && (val == 1)){
 				if (keyboardFunctionality != null) {
-					keyboardFunctionality.disposeMouseListener();
+					System.out.println("Disposing Keyboard Functionality");
+					keyboardFunctionality.removeKeyListener();
 				}
 				jFrame.dispose();
 				val --;
