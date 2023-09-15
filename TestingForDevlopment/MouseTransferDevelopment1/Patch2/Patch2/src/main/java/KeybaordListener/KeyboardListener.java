@@ -12,7 +12,7 @@ public class KeyboardListener implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		int keyCode = e.getKeyCode();
+		int keyCode = e.getKeyChar();
 		System.out.println("Key Pressed has the code : " + keyCode);
 	}
 

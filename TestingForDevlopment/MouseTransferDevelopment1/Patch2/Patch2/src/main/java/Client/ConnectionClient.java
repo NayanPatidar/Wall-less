@@ -43,7 +43,6 @@ public class ConnectionClient {
 		byte[] sendData = message.getBytes();
 
 		try {
-			// UDP Socket
 			datagramSocket = new DatagramSocket(12345);
 
 			byte[] receiveData = new byte[1024];

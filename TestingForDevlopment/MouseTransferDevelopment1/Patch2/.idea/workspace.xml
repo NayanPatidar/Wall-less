@@ -4,21 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="415f1adc-022f-4388-beed-b56ed265edc7" name="Changes" comment="Server&amp;Java for TCP">
-      <change afterPath="$PROJECT_DIR$/Patch2/src/main/java/KeybaordListener/KeyboardListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Patch2/src/main/java/KeybaordListener/Start.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Patch2/src/main/java/Server/ButtonClicks.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Patch2/src/main/java/Server/KeyboardFunctionality.java" afterDir="false" />
+    <list default="true" id="415f1adc-022f-4388-beed-b56ed265edc7" name="Changes" comment="Keyboard Buttons Testing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch2/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Client/ConnectionClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Client/ConnectionClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Client/ReceivingCoordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Client/ReceivingCoordinates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/KeybaordListener/KeyboardListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/KeybaordListener/KeyboardListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Server/ButtonClicks.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Server/ButtonClicks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Server/KeyboardFunctionality.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Server/KeyboardFunctionality.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Server/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Server/MouseFunctionality.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Server/MouseFunctionality.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Server/SharedData.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Server/SharedData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/TCP/Client.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/TCP/Server.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/TCP/TCPClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/TCP/TCPClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/TCP/TCPServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/TCP/TCPServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
