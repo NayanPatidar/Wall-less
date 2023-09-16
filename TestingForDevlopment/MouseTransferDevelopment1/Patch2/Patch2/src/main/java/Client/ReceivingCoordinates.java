@@ -128,7 +128,7 @@ public class ReceivingCoordinates implements Runnable{
 						System.out.println("Pressed Backspace key");
 						break;
 					case 20: // Caps Lock key
-						toolkit.setLockingKeyState(KeyEvent.VK_CAPS_LOCK, !toolkit.getLockingKeyState(KeyEvent.VK_CAPS_LOCK));
+						robot.keyPress(KeyEvent.VK_CAPS_LOCK);
 						System.out.println("Toggled Caps Lock");
 						break;
 					case 112: // F1 key

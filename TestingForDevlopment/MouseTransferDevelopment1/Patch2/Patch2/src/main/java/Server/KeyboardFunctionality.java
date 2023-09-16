@@ -791,6 +791,15 @@
 								throw new RuntimeException(ex);
 							}
 							break;
+						case KeyEvent.VK_PERIOD:
+							System.out.println("Period Key");
+							try {
+								datagramSocket.send(packetPeriodKey);
+							} catch (IOException ex) {
+								throw new RuntimeException(ex);
+							}
+							break;
+
 					}
 				}
 
