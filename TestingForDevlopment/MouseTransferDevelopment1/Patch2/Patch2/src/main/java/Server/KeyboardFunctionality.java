@@ -238,6 +238,10 @@
 			byte[] closeBracketKeyBytes = closeBracketKey.getBytes();
 			DatagramPacket packetCloseBracketKey = new DatagramPacket(closeBracketKeyBytes, closeBracketKeyBytes.length, inetAddress, portUDP);
 
+			String semicolonKey = "K:59";
+			byte[] semicolonKeyBytes = semicolonKey.getBytes();
+			DatagramPacket packetSemicolonKey = new DatagramPacket(semicolonKeyBytes, semicolonKeyBytes.length, inetAddress, portUDP);
+
 			keyListener = new KeyListener() {
 
 				@Override
@@ -711,7 +715,7 @@
 						case KeyEvent.VK_SEMICOLON:
 							System.out.println("Semicolon Key");
 							try {
-								datagramSocket.send(packetCommaKey);
+								datagramSocket.send(packetSemicolonKey);
 							} catch (IOException ex) {
 								throw new RuntimeException(ex);
 							}
@@ -774,6 +778,15 @@
 							System.out.println("Right Arrow Key");
 							try {
 								datagramSocket.send(packetArrowRightKey);
+							} catch (IOException ex) {
+								throw new RuntimeException(ex);
+							}
+							break;
+						// Comma Key
+						case KeyEvent.VK_COMMA:
+							System.out.println("Comma Key");
+							try {
+								datagramSocket.send(packetCommaKey);
 							} catch (IOException ex) {
 								throw new RuntimeException(ex);
 							}
