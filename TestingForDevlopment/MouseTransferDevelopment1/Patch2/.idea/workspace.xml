@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="415f1adc-022f-4388-beed-b56ed265edc7" name="Changes" comment="Minor Changes">
+    <list default="true" id="415f1adc-022f-4388-beed-b56ed265edc7" name="Changes" comment="Server Releasing Added ...">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Server/KeyboardFunctionality.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Server/KeyboardFunctionality.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Server/MouseClicks.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Server/MouseClicks.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +242,15 @@
       <option name="project" value="LOCAL" />
       <updated>1694782808373</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Server Releasing Added ...">
+      <option name="closed" value="true" />
+      <created>1694845998420</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1694845998420</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -261,7 +267,8 @@
     <MESSAGE value="Adding KeyCodes" />
     <MESSAGE value="Adding KeyCodes For Rest Keys" />
     <MESSAGE value="Minor Changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Changes" />
+    <MESSAGE value="Server Releasing Added ..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Server Releasing Added ..." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
