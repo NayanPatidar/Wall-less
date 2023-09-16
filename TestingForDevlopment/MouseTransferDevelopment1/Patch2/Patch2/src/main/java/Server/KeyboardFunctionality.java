@@ -80,8 +80,9 @@
 			String pageDownKey = "K:34";
 			String numLockKey = "K:144";
 			String homeKey = "K:36";
+			String backtickKey = "K:192";
 
-
+			byte[] backtickKeyBytes = backtickKey.getBytes();
 			byte[] deleteKey_pressed = deleteKey.getBytes();
 			byte[] spaceKey_pressed = spaceKey.getBytes();
 			byte[] enterKey_pressed = enterKey.getBytes();
@@ -211,6 +212,7 @@
 			DatagramPacket packetPageDownKey = new DatagramPacket(pageDownKeyBytes, pageDownKeyBytes.length, inetAddress, portUDP);
 			DatagramPacket packetNumLockKey = new DatagramPacket(numLockKeyBytes, numLockKeyBytes.length, inetAddress, portUDP);
 			DatagramPacket packetHomeKey = new DatagramPacket(homeKeyBytes, homeKeyBytes.length, inetAddress, portUDP);
+			DatagramPacket packetBacktickKey = new DatagramPacket(backtickKeyBytes, backtickKeyBytes.length, inetAddress, portUDP);
 
 			String quoteKey = "K:222"; // Quote key (')
 			byte[] quoteKeyBytes = quoteKey.getBytes();
@@ -868,6 +870,14 @@
 								datagramSocket.send(packetHomeKey);
 							} catch (IOException ex) {
 								throw new RuntimeException(ex);
+							}
+							break;
+						case 192: // Backtick/Grave Accent key
+							System.out.println("Backtick/Grave Accent Key");
+							try {
+								datagramSocket.send(packetBacktickKey);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
 							}
 							break;
 					}
