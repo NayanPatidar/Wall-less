@@ -128,7 +128,7 @@ public class ReceivingCoordinates implements Runnable{
 						System.out.println("Pressed Backspace key");
 						break;
 					case 20: // Caps Lock key
-						toolkit.setLockingKeyState(KeyEvent.VK_CAPS_LOCK, !toolkit.getLockingKeyState(KeyEvent.VK_CAPS_LOCK));
+						robot.keyPress(KeyEvent.VK_CAPS_LOCK);
 						System.out.println("Toggled Caps Lock");
 						break;
 					case 112: // F1 key
@@ -399,35 +399,83 @@ public class ReceivingCoordinates implements Runnable{
 						break;
 					case 44: // Comma (,)
 						System.out.println("Comma (,) Key");
-						// Send your datagram for Comma key
+						robot.keyPress(KeyEvent.VK_COMMA);
+						robot.keyRelease(KeyEvent.VK_COMMA);
 						break;
 					case 46: // Period (.)
 						System.out.println("Period (.) Key");
-						// Send your datagram for Period key
+						robot.keyPress(KeyEvent.VK_PERIOD);
+						robot.keyRelease(KeyEvent.VK_PERIOD);
 						break;
 					case 47: // Slash (/)
 						System.out.println("Slash (/) Key");
-						// Send your datagram for Slash key
+						robot.keyPress(KeyEvent.VK_SLASH);
+						robot.keyRelease(KeyEvent.VK_SLASH);
 						break;
 					case 92: // Backslash (\)
 						System.out.println("Backslash (\\) Key");
-						// Send your datagram for Backslash key
+						robot.keyPress(KeyEvent.VK_BACK_SLASH);
+						robot.keyRelease(KeyEvent.VK_BACK_SLASH);
 						break;
 					case 91: // Open Bracket ([)
 						System.out.println("Open Bracket ([) Key");
-						// Send your datagram for Open Bracket key
+						robot.keyPress(KeyEvent.VK_OPEN_BRACKET);
+						robot.keyRelease(KeyEvent.VK_OPEN_BRACKET);
 						break;
 					case 93: // Close Bracket (])
 						System.out.println("Close Bracket (]) Key");
-						// Send your datagram for Close Bracket key
+						robot.keyPress(KeyEvent.VK_CLOSE_BRACKET);
+						robot.keyRelease(KeyEvent.VK_CLOSE_BRACKET);
 						break;
 					case 59: // Semicolon (;)
 						System.out.println("Semicolon (;) Key");
-						// Send your datagram for Semicolon key
+						robot.keyPress(KeyEvent.VK_SEMICOLON);
+						robot.keyRelease(KeyEvent.VK_SEMICOLON);
 						break;
 					case 222: // Quote (')
 						System.out.println("Quote (') Key");
-						// Send your datagram for Quote key
+						robot.keyPress(KeyEvent.VK_QUOTE);
+						robot.keyRelease(KeyEvent.VK_QUOTE);
+						break;
+					case KeyEvent.VK_EQUALS: // Equals (=) key
+						robot.keyPress(KeyEvent.VK_EQUALS);
+						robot.keyRelease(KeyEvent.VK_EQUALS);
+						System.out.println("Pressed Equals (=) key");
+						break;
+					case KeyEvent.VK_MINUS: // Minus (-) key
+						robot.keyPress(KeyEvent.VK_MINUS);
+						robot.keyRelease(KeyEvent.VK_MINUS);
+						System.out.println("Pressed Minus (-) key");
+						break;
+					case KeyEvent.VK_END: // End key
+						robot.keyPress(KeyEvent.VK_END);
+						robot.keyRelease(KeyEvent.VK_END);
+						System.out.println("Pressed End key");
+						break;
+					case KeyEvent.VK_PAGE_DOWN: // Page Down key
+						robot.keyPress(KeyEvent.VK_PAGE_DOWN);
+						robot.keyRelease(KeyEvent.VK_PAGE_DOWN);
+						System.out.println("Pressed Page Down key");
+						break;
+					case KeyEvent.VK_PAGE_UP: // Page Up key
+						robot.keyPress(KeyEvent.VK_PAGE_UP);
+						robot.keyRelease(KeyEvent.VK_PAGE_UP);
+						System.out.println("Pressed Page Up key");
+						break;
+					case KeyEvent.VK_NUM_LOCK: // Num Lock key
+						robot.keyPress(KeyEvent.VK_NUM_LOCK);
+						robot.keyRelease(KeyEvent.VK_NUM_LOCK);
+						System.out.println("Pressed Num Lock key");
+						break;
+					case KeyEvent.VK_HOME: // Home key
+						robot.keyPress(KeyEvent.VK_HOME);
+						robot.keyRelease(KeyEvent.VK_HOME);
+						System.out.println("Pressed Home key");
+						break;
+					case 192: // Backtick/Grave Accent key
+						System.out.println("Backtick/Grave Accent Key");
+						robot.keyPress(KeyEvent.VK_BACK_QUOTE);
+						robot.keyRelease(KeyEvent.VK_BACK_QUOTE);
 						break;
 				}
 			}
