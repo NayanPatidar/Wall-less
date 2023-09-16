@@ -7,15 +7,19 @@
 	import java.net.DatagramPacket;
 	import java.net.DatagramSocket;
 	import java.net.InetAddress;
-	import java.nio.file.WatchKey;
 
 	public class KeyboardFunctionality  {
 		static private JFrame jFrame;
 		private final KeyListener keyListener;
 
+		boolean alt = false;
+		boolean ctrl = false;
+		boolean shift = false;
+
 		public KeyboardFunctionality(JFrame jFrame, DatagramSocket datagramSocket, InetAddress inetAddress, int portUDP) {
 
 			KeyboardFunctionality.jFrame = jFrame;
+
 
 			String spaceKey = "K:32";
 			String enterKey = "K:10";
@@ -651,6 +655,7 @@
 						}
 						case 't' -> {
 							try {
+								System.out.println("Pressing t");
 								datagramSocket.send(packet_tKey_pressed);
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
@@ -932,32 +937,6 @@
 							}
 							break;
 						}
-						case KeyEvent.VK_SHIFT: {
-							System.out.println("Shift Key");
-							try {
-								datagramSocket.send(packet_shiftKey_pressed);
-							} catch (IOException ex) {
-								System.out.println(ex.getLocalizedMessage());
-							}							break;
-						}
-						case KeyEvent.VK_CONTROL: {
-							System.out.println("Ctrl Key");
-							try {
-								datagramSocket.send(packet_ctrlKey_pressed);
-							} catch (IOException ex) {
-								System.out.println(ex.getLocalizedMessage());
-							}
-							break;
-						}
-						case KeyEvent.VK_ALT: {
-							System.out.println("Alt Key");
-							try {
-								datagramSocket.send(packet_altKey_pressed);
-							} catch (IOException ex) {
-								System.out.println(ex.getLocalizedMessage());
-							}
-							break;
-						}
 						case KeyEvent.VK_OPEN_BRACKET:
 							System.out.println("Open Bracket Key");
 							try {
@@ -1131,11 +1110,48 @@
 								System.out.println(ex.getLocalizedMessage());
 							}
 							break;
+						case KeyEvent.VK_SHIFT: {
+							if (!shift){
+								System.out.println("Shift Key Pressed");
+								try {
+									datagramSocket.send(packet_shiftKey_pressed);
+									shift=true;
+								} catch (IOException ex) {
+									System.out.println(ex.getLocalizedMessage());
+								}
+								break;
+							}
+						}
+						case KeyEvent.VK_CONTROL: {
+							if (!ctrl) {
+								System.out.println("Ctrl Key Pressed");
+								try {
+									datagramSocket.send(packet_ctrlKey_pressed);
+									ctrl = true;
+								} catch (IOException ex) {
+									System.out.println(ex.getLocalizedMessage());
+								}
+								break;
+							}
+						}
+						case KeyEvent.VK_ALT: {
+							if (!alt) {
+								System.out.println("Alt Key Pressed");
+								try {
+									datagramSocket.send(packet_altKey_pressed);
+									alt = true;
+								} catch (IOException ex) {
+									System.out.println(ex.getLocalizedMessage());
+								}
+								break;
+							}
+						}
 					}
 				}
 
 				@Override
 				public void keyReleased(KeyEvent e) {
+
 					switch (e.getKeyChar()) {
 						case 'a' -> {
 							try {
@@ -1271,7 +1287,6 @@
 							}
 						}
 						case 't' -> {
-							System.out.println("Pressing t");
 							try {
 								datagramSocket.send(tKeyReleasedPacket);
 							} catch (IOException ex) {
@@ -1554,33 +1569,6 @@
 							}
 							break;
 						}
-						case KeyEvent.VK_SHIFT: {
-							System.out.println("Shift Key");
-							try {
-								datagramSocket.send(shiftKeyReleasedPacket);
-							} catch (IOException ex) {
-								System.out.println(ex.getLocalizedMessage());
-							}
-							break;
-						}
-						case KeyEvent.VK_CONTROL: {
-							System.out.println("Ctrl Key");
-							try {
-								datagramSocket.send(ctrlKeyReleasedPacket);
-							} catch (IOException ex) {
-								System.out.println(ex.getLocalizedMessage());
-							}
-							break;
-						}
-						case KeyEvent.VK_ALT: {
-							System.out.println("Alt Key");
-							try {
-								datagramSocket.send(altKeyReleasedPacket);
-							} catch (IOException ex) {
-								System.out.println(ex.getLocalizedMessage());
-							}
-							break;
-						}
 						case KeyEvent.VK_OPEN_BRACKET:
 							System.out.println("Open Bracket Key");
 							try {
@@ -1754,6 +1742,41 @@
 								System.out.println(ex.getLocalizedMessage());
 							}
 							break;
+					}
+
+					// CTRL SHIFT ALT PRESS AND RELEASE
+					switch (e.getKeyCode()){
+
+						case KeyEvent.VK_SHIFT: {
+							System.out.println("Shift Key Released");
+							try {
+								datagramSocket.send(shiftKeyReleasedPacket);
+								shift  = false;
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_CONTROL: {
+							System.out.println("Ctrl Key Released");
+							try {
+								datagramSocket.send(ctrlKeyReleasedPacket);
+								ctrl = false;
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_ALT: {
+							System.out.println("Alt Key Released");
+							try {
+								datagramSocket.send(altKeyReleasedPacket);
+								alt = false;
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
 					}
 				}
 			};
