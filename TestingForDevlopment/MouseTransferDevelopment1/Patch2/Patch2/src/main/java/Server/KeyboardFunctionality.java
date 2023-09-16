@@ -1271,6 +1271,7 @@
 							}
 						}
 						case 't' -> {
+							System.out.println("Pressing t");
 							try {
 								datagramSocket.send(tKeyReleasedPacket);
 							} catch (IOException ex) {
