@@ -12,9 +12,14 @@
 		static private JFrame jFrame;
 		private final KeyListener keyListener;
 
+		boolean alt = false;
+		boolean ctrl = false;
+		boolean shift = false;
+
 		public KeyboardFunctionality(JFrame jFrame, DatagramSocket datagramSocket, InetAddress inetAddress, int portUDP) {
 
 			KeyboardFunctionality.jFrame = jFrame;
+
 
 			String spaceKey = "K:32";
 			String enterKey = "K:10";
@@ -82,6 +87,97 @@
 			String homeKey = "K:36";
 			String backtickKey = "K:192";
 			String pageUpKey = "K:33";
+			String quoteKey = "K:222"; // Quote key (')
+			String semicolonKey = "K:59";
+			String periodKey = "K:46"; // Period key (.)
+			String commaKey = "K:44"; // Comma key (,)
+			String arrowUpKey = "K:38"; // Arrow Up key
+			String arrowDownKey = "K:40"; // Arrow Down key
+			String closeBracketKey = "K:93"; // Close Bracket key (])
+			String openBracketKey = "K:91"; // Open Bracket key ([)
+			String arrowLeftKey = "K:37"; // Arrow Left key
+			String arrowRightKey = "K:39"; // Arrow Right key
+			String backslashKey = "K:92"; // Backslash key (\)
+			String forwardSlashKey = "K:47"; // Forward Slash key (/)
+
+			String spaceKey_released = "K:32'";
+			String enterKey_released = "K:10'";
+			String tabKey_released = "K:9'";
+			String shiftKey_released = "K:16'";
+			String ctrlKey_released = "K:17'";
+			String altKey_released = "K:18'";
+			String escKey_released = "K:27'";
+			String backspaceKey_released = "K:8'";
+			String capsLockKey_released = "K:20'";
+			String f1Key_released = "K:112'";
+			String f2Key_released = "K:113'";
+			String f3Key_released = "K:114'";
+			String f4Key_released = "K:115'";
+			String f5Key_released = "K:116'";
+			String f6Key_released = "K:117'";
+			String f7Key_released = "K:118'";
+			String f8Key_released = "K:119'";
+			String f9Key_released = "K:120'";
+			String f10Key_released = "K:121'";
+			String f11Key_released = "K:122'";
+			String f12Key_released = "K:123'";
+			String num0Key_released = "K:48'";
+			String num1Key_released = "K:49'";
+			String num2Key_released = "K:50'";
+			String num3Key_released = "K:51'";
+			String num4Key_released = "K:52'";
+			String num5Key_released = "K:53'";
+			String num6Key_released = "K:54'";
+			String num7Key_released = "K:55'";
+			String num8Key_released = "K:56'";
+			String num9Key_released = "K:57'";
+			String aKey_released = "K:65'";
+			String bKey_released = "K:66'";
+			String cKey_released = "K:67'";
+			String dKey_released = "K:68'";
+			String eKey_released = "K:69'";
+			String fKey_released = "K:70'";
+			String gKey_released = "K:71'";
+			String hKey_released = "K:72'";
+			String iKey_released = "K:73'";
+			String jKey_released = "K:74'";
+			String kKey_released = "K:75'";
+			String lKey_released = "K:76'";
+			String mKey_released = "K:77'";
+			String nKey_released = "K:78'";
+			String oKey_released = "K:79'";
+			String pKey_released = "K:80'";
+			String qKey_released = "K:81'";
+			String rKey_released = "K:82'";
+			String sKey_released = "K:83'";
+			String tKey_released = "K:84'";
+			String uKey_released = "K:85'";
+			String vKey_released = "K:86'";
+			String wKey_released = "K:87'";
+			String xKey_released = "K:88'";
+			String yKey_released = "K:89'";
+			String zKey_released = "K:90'";
+			String deleteKey_released = "K:46'";
+			String equalKey_released = "K:61'";
+			String minusKey_released = "K:45'";
+			String endKey_released = "K:35'";
+			String pageDownKey_released = "K:34'";
+			String numLockKey_released = "K:144'";
+			String homeKey_released = "K:36'";
+			String backtickKey_released = "K:192'";
+			String pageUpKey_released = "K:33'";
+			String quoteKey_released = "K:222'"; // Quote key (')
+			String semicolonKey_released = "K:59'";
+			String periodKey_released = "K:46'"; // Period key (.)
+			String commaKey_released = "K:44'"; // Comma key (,)
+			String arrowUpKey_released = "K:38'"; // Arrow Up key
+			String arrowDownKey_released = "K:40'"; // Arrow Down key
+			String closeBracketKey_released = "K:93'"; // Close Bracket key (])
+			String openBracketKey_released = "K:91'"; // Open Bracket key ([)
+			String arrowLeftKey_released = "K:37'"; // Arrow Left key
+			String arrowRightKey_released = "K:39'"; // Arrow Right key
+			String backslashKey_released = "K:92'"; // Backslash key (\)
+			String forwardSlashKey_released = "K:47'"; // Forward Slash key (/)
 
 			byte[] pageUpKeyBytes = pageUpKey.getBytes();
 			byte[] backtickKeyBytes = backtickKey.getBytes();
@@ -150,6 +246,86 @@
 			byte[] numLockKeyBytes = numLockKey.getBytes();
 			byte[] homeKeyBytes = homeKey.getBytes();
 
+			byte[] spaceKey_released_bytes = spaceKey_released.getBytes();
+			byte[] enterKey_released_bytes = enterKey_released.getBytes();
+			byte[] tabKey_released_bytes = tabKey_released.getBytes();
+			byte[] shiftKey_released_bytes = shiftKey_released.getBytes();
+			byte[] ctrlKey_released_bytes = ctrlKey_released.getBytes();
+			byte[] altKey_released_bytes = altKey_released.getBytes();
+			byte[] escKey_released_bytes = escKey_released.getBytes();
+			byte[] backspaceKey_released_bytes = backspaceKey_released.getBytes();
+			byte[] capsLockKey_released_bytes = capsLockKey_released.getBytes();
+			byte[] f1Key_released_bytes = f1Key_released.getBytes();
+			byte[] f2Key_released_bytes = f2Key_released.getBytes();
+			byte[] f3Key_released_bytes = f3Key_released.getBytes();
+			byte[] f4Key_released_bytes = f4Key_released.getBytes();
+			byte[] f5Key_released_bytes = f5Key_released.getBytes();
+			byte[] f6Key_released_bytes = f6Key_released.getBytes();
+			byte[] f7Key_released_bytes = f7Key_released.getBytes();
+			byte[] f8Key_released_bytes = f8Key_released.getBytes();
+			byte[] f9Key_released_bytes = f9Key_released.getBytes();
+			byte[] f10Key_released_bytes = f10Key_released.getBytes();
+			byte[] f11Key_released_bytes = f11Key_released.getBytes();
+			byte[] f12Key_released_bytes = f12Key_released.getBytes();
+			byte[] num0Key_released_bytes = num0Key_released.getBytes();
+			byte[] num1Key_released_bytes = num1Key_released.getBytes();
+			byte[] num2Key_released_bytes = num2Key_released.getBytes();
+			byte[] num3Key_released_bytes = num3Key_released.getBytes();
+			byte[] num4Key_released_bytes = num4Key_released.getBytes();
+			byte[] num5Key_released_bytes = num5Key_released.getBytes();
+			byte[] num6Key_released_bytes = num6Key_released.getBytes();
+			byte[] num7Key_released_bytes = num7Key_released.getBytes();
+			byte[] num8Key_released_bytes = num8Key_released.getBytes();
+			byte[] num9Key_released_bytes = num9Key_released.getBytes();
+			byte[] aKey_released_bytes = aKey_released.getBytes();
+			byte[] bKey_released_bytes = bKey_released.getBytes();
+			byte[] cKey_released_bytes = cKey_released.getBytes();
+			byte[] dKey_released_bytes = dKey_released.getBytes();
+			byte[] eKey_released_bytes = eKey_released.getBytes();
+			byte[] fKey_released_bytes = fKey_released.getBytes();
+			byte[] gKey_released_bytes = gKey_released.getBytes();
+			byte[] hKey_released_bytes = hKey_released.getBytes();
+			byte[] iKey_released_bytes = iKey_released.getBytes();
+			byte[] jKey_released_bytes = jKey_released.getBytes();
+			byte[] kKey_released_bytes = kKey_released.getBytes();
+			byte[] lKey_released_bytes = lKey_released.getBytes();
+			byte[] mKey_released_bytes = mKey_released.getBytes();
+			byte[] nKey_released_bytes = nKey_released.getBytes();
+			byte[] oKey_released_bytes = oKey_released.getBytes();
+			byte[] pKey_released_bytes = pKey_released.getBytes();
+			byte[] qKey_released_bytes = qKey_released.getBytes();
+			byte[] rKey_released_bytes = rKey_released.getBytes();
+			byte[] sKey_released_bytes = sKey_released.getBytes();
+			byte[] tKey_released_bytes = tKey_released.getBytes();
+			byte[] uKey_released_bytes = uKey_released.getBytes();
+			byte[] vKey_released_bytes = vKey_released.getBytes();
+			byte[] wKey_released_bytes = wKey_released.getBytes();
+			byte[] xKey_released_bytes = xKey_released.getBytes();
+			byte[] yKey_released_bytes = yKey_released.getBytes();
+			byte[] zKey_released_bytes = zKey_released.getBytes();
+			byte[] deleteKey_released_bytes = deleteKey_released.getBytes();
+			byte[] equalKey_released_bytes = equalKey_released.getBytes();
+			byte[] minusKey_released_bytes = minusKey_released.getBytes();
+			byte[] endKey_released_bytes = endKey_released.getBytes();
+			byte[] pageDownKey_released_bytes = pageDownKey_released.getBytes();
+			byte[] numLockKey_released_bytes = numLockKey_released.getBytes();
+			byte[] homeKey_released_bytes = homeKey_released.getBytes();
+			byte[] backtickKey_released_bytes = backtickKey_released.getBytes();
+			byte[] pageUpKey_released_bytes = pageUpKey_released.getBytes();
+			byte[] quoteKey_released_bytes = quoteKey_released.getBytes();
+			byte[] semicolonKey_released_bytes = semicolonKey_released.getBytes();
+			byte[] periodKey_released_bytes = periodKey_released.getBytes();
+			byte[] commaKey_released_bytes = commaKey_released.getBytes();
+			byte[] arrowUpKey_released_bytes = arrowUpKey_released.getBytes();
+			byte[] arrowDownKey_released_bytes = arrowDownKey_released.getBytes();
+			byte[] closeBracketKey_released_bytes = closeBracketKey_released.getBytes();
+			byte[] openBracketKey_released_bytes = openBracketKey_released.getBytes();
+			byte[] arrowLeftKey_released_bytes = arrowLeftKey_released.getBytes();
+			byte[] arrowRightKey_released_bytes = arrowRightKey_released.getBytes();
+			byte[] backslashKey_released_bytes = backslashKey_released.getBytes();
+			byte[] forwardSlashKey_released_bytes = forwardSlashKey_released.getBytes();
+
+
 			DatagramPacket packet_deleteKey_pressed = new DatagramPacket(deleteKey_pressed, deleteKey_pressed.length, inetAddress, portUDP);
 			DatagramPacket packet_spaceKey_pressed = new DatagramPacket(spaceKey_pressed, spaceKey_pressed.length, inetAddress, portUDP);
 			DatagramPacket packet_enterKey_pressed = new DatagramPacket(enterKey_pressed, enterKey_pressed.length, inetAddress, portUDP);
@@ -217,51 +393,120 @@
 			DatagramPacket packetBacktickKey = new DatagramPacket(backtickKeyBytes, backtickKeyBytes.length, inetAddress, portUDP);
 			DatagramPacket packetPageUpKey = new DatagramPacket(pageUpKeyBytes, pageUpKeyBytes.length, inetAddress, portUDP);
 
-			String quoteKey = "K:222"; // Quote key (')
+			DatagramPacket spaceKeyReleasedPacket = new DatagramPacket(spaceKey_released_bytes, spaceKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket enterKeyReleasedPacket = new DatagramPacket(enterKey_released_bytes, enterKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket tabKeyReleasedPacket = new DatagramPacket(tabKey_released_bytes, tabKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket shiftKeyReleasedPacket = new DatagramPacket(shiftKey_released_bytes, shiftKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket ctrlKeyReleasedPacket = new DatagramPacket(ctrlKey_released_bytes, ctrlKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket altKeyReleasedPacket = new DatagramPacket(altKey_released_bytes, altKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket escKeyReleasedPacket = new DatagramPacket(escKey_released_bytes, escKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket backspaceKeyReleasedPacket = new DatagramPacket(backspaceKey_released_bytes, backspaceKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket capsLockKeyReleasedPacket = new DatagramPacket(capsLockKey_released_bytes, capsLockKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket f1KeyReleasedPacket = new DatagramPacket(f1Key_released_bytes, f1Key_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket f2KeyReleasedPacket = new DatagramPacket(f2Key_released_bytes, f2Key_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket f3KeyReleasedPacket = new DatagramPacket(f3Key_released_bytes, f3Key_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket f4KeyReleasedPacket = new DatagramPacket(f4Key_released_bytes, f4Key_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket f5KeyReleasedPacket = new DatagramPacket(f5Key_released_bytes, f5Key_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket f6KeyReleasedPacket = new DatagramPacket(f6Key_released_bytes, f6Key_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket f7KeyReleasedPacket = new DatagramPacket(f7Key_released_bytes, f7Key_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket f8KeyReleasedPacket = new DatagramPacket(f8Key_released_bytes, f8Key_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket f9KeyReleasedPacket = new DatagramPacket(f9Key_released_bytes, f9Key_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket f10KeyReleasedPacket = new DatagramPacket(f10Key_released_bytes, f10Key_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket f11KeyReleasedPacket = new DatagramPacket(f11Key_released_bytes, f11Key_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket f12KeyReleasedPacket = new DatagramPacket(f12Key_released_bytes, f12Key_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket num0KeyReleasedPacket = new DatagramPacket(num0Key_released_bytes, num0Key_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket num1KeyReleasedPacket = new DatagramPacket(num1Key_released_bytes, num1Key_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket num2KeyReleasedPacket = new DatagramPacket(num2Key_released_bytes, num2Key_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket num3KeyReleasedPacket = new DatagramPacket(num3Key_released_bytes, num3Key_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket num4KeyReleasedPacket = new DatagramPacket(num4Key_released_bytes, num4Key_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket num5KeyReleasedPacket = new DatagramPacket(num5Key_released_bytes, num5Key_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket num6KeyReleasedPacket = new DatagramPacket(num6Key_released_bytes, num6Key_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket num7KeyReleasedPacket = new DatagramPacket(num7Key_released_bytes, num7Key_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket num8KeyReleasedPacket = new DatagramPacket(num8Key_released_bytes, num8Key_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket num9KeyReleasedPacket = new DatagramPacket(num9Key_released_bytes, num9Key_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket aKeyReleasedPacket = new DatagramPacket(aKey_released_bytes, aKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket bKeyReleasedPacket = new DatagramPacket(bKey_released_bytes, bKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket cKeyReleasedPacket = new DatagramPacket(cKey_released_bytes, cKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket dKeyReleasedPacket = new DatagramPacket(dKey_released_bytes, dKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket eKeyReleasedPacket = new DatagramPacket(eKey_released_bytes, eKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket fKeyReleasedPacket = new DatagramPacket(fKey_released_bytes, fKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket gKeyReleasedPacket = new DatagramPacket(gKey_released_bytes, gKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket hKeyReleasedPacket = new DatagramPacket(hKey_released_bytes, hKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket iKeyReleasedPacket = new DatagramPacket(iKey_released_bytes, iKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket jKeyReleasedPacket = new DatagramPacket(jKey_released_bytes, jKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket kKeyReleasedPacket = new DatagramPacket(kKey_released_bytes, kKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket lKeyReleasedPacket = new DatagramPacket(lKey_released_bytes, lKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket mKeyReleasedPacket = new DatagramPacket(mKey_released_bytes, mKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket nKeyReleasedPacket = new DatagramPacket(nKey_released_bytes, nKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket oKeyReleasedPacket = new DatagramPacket(oKey_released_bytes, oKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket pKeyReleasedPacket = new DatagramPacket(pKey_released_bytes, pKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket qKeyReleasedPacket = new DatagramPacket(qKey_released_bytes, qKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket rKeyReleasedPacket = new DatagramPacket(rKey_released_bytes, rKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket sKeyReleasedPacket = new DatagramPacket(sKey_released_bytes, sKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket tKeyReleasedPacket = new DatagramPacket(tKey_released_bytes, tKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket uKeyReleasedPacket = new DatagramPacket(uKey_released_bytes, uKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket vKeyReleasedPacket = new DatagramPacket(vKey_released_bytes, vKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket wKeyReleasedPacket = new DatagramPacket(wKey_released_bytes, wKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket xKeyReleasedPacket = new DatagramPacket(xKey_released_bytes, xKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket yKeyReleasedPacket = new DatagramPacket(yKey_released_bytes, yKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket zKeyReleasedPacket = new DatagramPacket(zKey_released_bytes, zKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket deleteKeyReleasedPacket = new DatagramPacket(deleteKey_released_bytes, deleteKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket equalKeyReleasedPacket = new DatagramPacket(equalKey_released_bytes, equalKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket minusKeyReleasedPacket = new DatagramPacket(minusKey_released_bytes, minusKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket endKeyReleasedPacket = new DatagramPacket(endKey_released_bytes, endKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket pageDownKeyReleasedPacket = new DatagramPacket(pageDownKey_released_bytes, pageDownKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket numLockKeyReleasedPacket = new DatagramPacket(numLockKey_released_bytes, numLockKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket homeKeyReleasedPacket = new DatagramPacket(homeKey_released_bytes, homeKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket backtickKeyReleasedPacket = new DatagramPacket(backtickKey_released_bytes, backtickKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket pageUpKeyReleasedPacket = new DatagramPacket(pageUpKey_released_bytes, pageUpKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket quoteKeyReleasedPacket = new DatagramPacket(quoteKey_released_bytes, quoteKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket semicolonKeyReleasedPacket = new DatagramPacket(semicolonKey_released_bytes, semicolonKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket periodKeyReleasedPacket = new DatagramPacket(periodKey_released_bytes, periodKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket commaKeyReleasedPacket = new DatagramPacket(commaKey_released_bytes, commaKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket arrowUpKeyReleasedPacket = new DatagramPacket(arrowUpKey_released_bytes, arrowUpKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket arrowDownKeyReleasedPacket = new DatagramPacket(arrowDownKey_released_bytes, arrowDownKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket closeBracketKeyReleasedPacket = new DatagramPacket(closeBracketKey_released_bytes, closeBracketKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket openBracketKeyReleasedPacket = new DatagramPacket(openBracketKey_released_bytes, openBracketKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket arrowLeftKeyReleasedPacket = new DatagramPacket(arrowLeftKey_released_bytes, arrowLeftKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket arrowRightKeyReleasedPacket = new DatagramPacket(arrowRightKey_released_bytes, arrowRightKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket backslashKeyReleasedPacket = new DatagramPacket(backslashKey_released_bytes, backslashKey_released_bytes.length, inetAddress, portUDP);
+			DatagramPacket forwardSlashKeyReleasedPacket = new DatagramPacket(forwardSlashKey_released_bytes, forwardSlashKey_released_bytes.length, inetAddress, portUDP);
+
+
+
 			byte[] quoteKeyBytes = quoteKey.getBytes();
 			DatagramPacket packetQuoteKey = new DatagramPacket(quoteKeyBytes, quoteKeyBytes.length, inetAddress, portUDP);
 
-			String periodKey = "K:46"; // Period key (.)
 			byte[] periodKeyBytes = periodKey.getBytes();
 			DatagramPacket packetPeriodKey = new DatagramPacket(periodKeyBytes, periodKeyBytes.length, inetAddress, portUDP);
 
-			String commaKey = "K:44"; // Comma key (,)
 			byte[] commaKeyBytes = commaKey.getBytes();
 			DatagramPacket packetCommaKey = new DatagramPacket(commaKeyBytes, commaKeyBytes.length, inetAddress, portUDP);
 
-			String arrowUpKey = "K:38"; // Arrow Up key
 			byte[] arrowUpKeyBytes = arrowUpKey.getBytes();
 			DatagramPacket packetArrowUpKey = new DatagramPacket(arrowUpKeyBytes, arrowUpKeyBytes.length, inetAddress, portUDP);
 
-			String arrowDownKey = "K:40"; // Arrow Down key
 			byte[] arrowDownKeyBytes = arrowDownKey.getBytes();
 			DatagramPacket packetArrowDownKey = new DatagramPacket(arrowDownKeyBytes, arrowDownKeyBytes.length, inetAddress, portUDP);
 
-			String arrowLeftKey = "K:37"; // Arrow Left key
 			byte[] arrowLeftKeyBytes = arrowLeftKey.getBytes();
 			DatagramPacket packetArrowLeftKey = new DatagramPacket(arrowLeftKeyBytes, arrowLeftKeyBytes.length, inetAddress, portUDP);
 
-			String arrowRightKey = "K:39"; // Arrow Right key
 			byte[] arrowRightKeyBytes = arrowRightKey.getBytes();
 			DatagramPacket packetArrowRightKey = new DatagramPacket(arrowRightKeyBytes, arrowRightKeyBytes.length, inetAddress, portUDP);
 
-			String forwardSlashKey = "K:47"; // Forward Slash key (/)
 			byte[] forwardSlashKeyBytes = forwardSlashKey.getBytes();
 			DatagramPacket packetForwardSlashKey = new DatagramPacket(forwardSlashKeyBytes, forwardSlashKeyBytes.length, inetAddress, portUDP);
 
-			String backslashKey = "K:92"; // Backslash key (\)
 			byte[] backslashKeyBytes = backslashKey.getBytes();
 			DatagramPacket packetBackslashKey = new DatagramPacket(backslashKeyBytes, backslashKeyBytes.length, inetAddress, portUDP);
 
-			String openBracketKey = "K:91"; // Open Bracket key ([)
 			byte[] openBracketKeyBytes = openBracketKey.getBytes();
 			DatagramPacket packetOpenBracketKey = new DatagramPacket(openBracketKeyBytes, openBracketKeyBytes.length, inetAddress, portUDP);
 
-			String closeBracketKey = "K:93"; // Close Bracket key (])
 			byte[] closeBracketKeyBytes = closeBracketKey.getBytes();
 			DatagramPacket packetCloseBracketKey = new DatagramPacket(closeBracketKeyBytes, closeBracketKeyBytes.length, inetAddress, portUDP);
 
-			String semicolonKey = "K:59";
 			byte[] semicolonKeyBytes = semicolonKey.getBytes();
 			DatagramPacket packetSemicolonKey = new DatagramPacket(semicolonKeyBytes, semicolonKeyBytes.length, inetAddress, portUDP);
 
@@ -410,6 +655,7 @@
 						}
 						case 't' -> {
 							try {
+								System.out.println("Pressing t");
 								datagramSocket.send(packet_tKey_pressed);
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
@@ -691,32 +937,6 @@
 							}
 							break;
 						}
-						case KeyEvent.VK_SHIFT: {
-							System.out.println("Shift Key");
-							try {
-								datagramSocket.send(packet_shiftKey_pressed);
-							} catch (IOException ex) {
-								System.out.println(ex.getLocalizedMessage());
-							}							break;
-						}
-						case KeyEvent.VK_CONTROL: {
-							System.out.println("Ctrl Key");
-							try {
-								datagramSocket.send(packet_ctrlKey_pressed);
-							} catch (IOException ex) {
-								System.out.println(ex.getLocalizedMessage());
-							}
-							break;
-						}
-						case KeyEvent.VK_ALT: {
-							System.out.println("Alt Key");
-							try {
-								datagramSocket.send(packet_altKey_pressed);
-							} catch (IOException ex) {
-								System.out.println(ex.getLocalizedMessage());
-							}
-							break;
-						}
 						case KeyEvent.VK_OPEN_BRACKET:
 							System.out.println("Open Bracket Key");
 							try {
@@ -890,12 +1110,674 @@
 								System.out.println(ex.getLocalizedMessage());
 							}
 							break;
+						case KeyEvent.VK_SHIFT: {
+							if (!shift){
+								System.out.println("Shift Key Pressed");
+								try {
+									datagramSocket.send(packet_shiftKey_pressed);
+									shift=true;
+								} catch (IOException ex) {
+									System.out.println(ex.getLocalizedMessage());
+								}
+								break;
+							}
+						}
+						case KeyEvent.VK_CONTROL: {
+							if (!ctrl) {
+								System.out.println("Ctrl Key Pressed");
+								try {
+									datagramSocket.send(packet_ctrlKey_pressed);
+									ctrl = true;
+								} catch (IOException ex) {
+									System.out.println(ex.getLocalizedMessage());
+								}
+								break;
+							}
+						}
+						case KeyEvent.VK_ALT: {
+							if (!alt) {
+								System.out.println("Alt Key Pressed");
+								try {
+									datagramSocket.send(packet_altKey_pressed);
+									alt = true;
+								} catch (IOException ex) {
+									System.out.println(ex.getLocalizedMessage());
+								}
+								break;
+							}
+						}
 					}
 				}
 
 				@Override
 				public void keyReleased(KeyEvent e) {
 
+					switch (e.getKeyChar()) {
+						case 'a' -> {
+							try {
+								datagramSocket.send(aKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case 'b' -> {
+							try {
+								datagramSocket.send(bKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case 'c' -> {
+							try {
+								datagramSocket.send(cKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case 'd' -> {
+							try {
+								datagramSocket.send(dKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case 'e' -> {
+							try {
+								datagramSocket.send(eKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case 'f' -> {
+							try {
+								datagramSocket.send(fKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case 'g' -> {
+							try {
+								datagramSocket.send(gKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case 'h' -> {
+							try {
+								datagramSocket.send(hKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case 'i' -> {
+							try {
+								datagramSocket.send(iKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case 'j' -> {
+							try {
+								datagramSocket.send(jKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case 'k' -> {
+							try {
+								datagramSocket.send(kKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case 'l' -> {
+							try {
+								datagramSocket.send(lKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case 'm' -> {
+							try {
+								datagramSocket.send(mKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case 'n' -> {
+							try {
+								datagramSocket.send(nKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case 'o' -> {
+							try {
+								datagramSocket.send(oKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case 'p' -> {
+							try {
+								datagramSocket.send(pKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case 'q' -> {
+							try {
+								datagramSocket.send(qKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case 'r' -> {
+							try {
+								datagramSocket.send(rKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case 's' -> {
+							try {
+								datagramSocket.send(sKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case 't' -> {
+							try {
+								datagramSocket.send(tKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case 'u' -> {
+							try {
+								datagramSocket.send(uKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case 'v' -> {
+							try {
+								datagramSocket.send(vKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case 'w' -> {
+							try {
+								datagramSocket.send(wKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case 'x' -> {
+							try {
+								datagramSocket.send(xKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case 'y' -> {
+							try {
+								datagramSocket.send(yKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case 'z' -> {
+							try {
+								datagramSocket.send(zKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '0' -> {
+							try {
+								datagramSocket.send(num0KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '1' -> {
+							try {
+								datagramSocket.send(num1KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '2' -> {
+							try {
+								datagramSocket.send(num2KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '3' -> {
+							try {
+								datagramSocket.send(num3KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '4' -> {
+							try {
+								datagramSocket.send(num4KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '5' -> {
+							try {
+								datagramSocket.send(num5KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '6' -> {
+							try {
+								datagramSocket.send(num6KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '7' -> {
+							try {
+								datagramSocket.send(num7KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '8' -> {
+							try {
+								datagramSocket.send(num8KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '9' -> {
+							try {
+								datagramSocket.send(num9KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case ' ' -> {
+							try {
+								datagramSocket.send(spaceKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '\n' -> {
+							try {
+								datagramSocket.send(enterKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '\t' -> {
+							try {
+								datagramSocket.send(tabKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '\b' -> {
+							try {
+								datagramSocket.send(backspaceKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '\u001B' -> {
+							try {
+								datagramSocket.send(escKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+					}
+
+					switch (e.getKeyCode()) {
+						case KeyEvent.VK_CAPS_LOCK: {
+							System.out.println("Caps Lock Key");
+							try {
+								datagramSocket.send(capsLockKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_DELETE: {
+							System.out.println("Delete Key");
+							try {
+								datagramSocket.send(deleteKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F1: {
+							System.out.println("F1 Key");
+							try {
+								datagramSocket.send(f1KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F2: {
+							System.out.println("F2 Key");
+							try {
+								datagramSocket.send(f2KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F3: {
+							System.out.println("F3 Key");
+							try {
+								datagramSocket.send(f3KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F4: {
+							System.out.println("F4 Key");
+							try {
+								datagramSocket.send(f4KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F5: {
+							System.out.println("F5 Key");
+							try {
+								datagramSocket.send(f5KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F6: {
+							System.out.println("F6 Key");
+							try {
+								datagramSocket.send(f6KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F7: {
+							System.out.println("F7 Key");
+							try {
+								datagramSocket.send(f7KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F8: {
+							System.out.println("F8 Key");
+							try {
+								datagramSocket.send(f8KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F9: {
+							System.out.println("F9 Key");
+							try {
+								datagramSocket.send(f9KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F10: {
+							System.out.println("F10 Key");
+							try {
+								datagramSocket.send(f10KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F11: {
+							System.out.println("F11 Key");
+							try {
+								datagramSocket.send(f11KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F12: {
+							System.out.println("F12 Key");
+							try {
+								datagramSocket.send(f12KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_OPEN_BRACKET:
+							System.out.println("Open Bracket Key");
+							try {
+								datagramSocket.send(openBracketKeyReleasedPacket);
+							} catch (IOException ex) {
+								throw new RuntimeException(ex);
+							}
+							break;
+
+						case KeyEvent.VK_CLOSE_BRACKET:
+							System.out.println("Close Bracket Key");
+							try {
+								datagramSocket.send(closeBracketKeyReleasedPacket);
+							} catch (IOException ex) {
+								throw new RuntimeException(ex);
+							}
+							break;
+
+						case KeyEvent.VK_SEMICOLON:
+							System.out.println("Semicolon Key");
+							try {
+								datagramSocket.send(semicolonKeyReleasedPacket);
+							} catch (IOException ex) {
+								throw new RuntimeException(ex);
+							}
+							break;
+
+						case KeyEvent.VK_SLASH:
+							System.out.println("Slash Key");
+							try {
+								datagramSocket.send(forwardSlashKeyReleasedPacket);
+							} catch (IOException ex) {
+								throw new RuntimeException(ex);
+							}
+							break;
+
+						case KeyEvent.VK_BACK_SLASH:
+							System.out.println("Backslash Key");
+							try {
+								datagramSocket.send(backslashKeyReleasedPacket);
+							} catch (IOException ex) {
+								throw new RuntimeException(ex);
+							}
+							break;
+
+						case KeyEvent.VK_QUOTE:
+							System.out.println("Quote Key");
+							try {
+								datagramSocket.send(quoteKeyReleasedPacket);
+							} catch (IOException ex) {
+								throw new RuntimeException(ex);
+							}
+							break;
+						case KeyEvent.VK_UP:
+							System.out.println("Up Arrow Key");
+							try {
+								datagramSocket.send(arrowUpKeyReleasedPacket);
+							} catch (IOException ex) {
+								throw new RuntimeException(ex);
+							}
+							break;
+
+						case KeyEvent.VK_DOWN:
+							System.out.println("Down Arrow Key");
+							try {
+								datagramSocket.send(arrowDownKeyReleasedPacket);
+							} catch (IOException ex) {
+								throw new RuntimeException(ex);
+							}
+							break;
+
+						case KeyEvent.VK_LEFT:
+							System.out.println("Left Arrow Key");
+							try {
+								datagramSocket.send(arrowLeftKeyReleasedPacket);
+							} catch (IOException ex) {
+								throw new RuntimeException(ex);
+							}
+							break;
+
+						case KeyEvent.VK_RIGHT:
+							System.out.println("Right Arrow Key");
+							try {
+								datagramSocket.send(arrowRightKeyReleasedPacket);
+							} catch (IOException ex) {
+								throw new RuntimeException(ex);
+							}
+							break;
+						// Comma Key
+						case KeyEvent.VK_COMMA:
+							System.out.println("Comma Key");
+							try {
+								datagramSocket.send(commaKeyReleasedPacket);
+							} catch (IOException ex) {
+								throw new RuntimeException(ex);
+							}
+							break;
+						case KeyEvent.VK_PERIOD:
+							System.out.println("Period Key");
+							try {
+								datagramSocket.send(periodKeyReleasedPacket);
+							} catch (IOException ex) {
+								throw new RuntimeException(ex);
+							}
+							break;
+						case KeyEvent.VK_EQUALS: // Equals (=) key
+							System.out.println("Equals (=) Key");
+							try {
+								datagramSocket.send(equalKeyReleasedPacket);
+							} catch (IOException ex) {
+								throw new RuntimeException(ex);
+							}
+							break;
+
+						case KeyEvent.VK_MINUS: // Minus (-) key
+							System.out.println("Minus (-) Key");
+							try {
+								datagramSocket.send(minusKeyReleasedPacket);
+							} catch (IOException ex) {
+								throw new RuntimeException(ex);
+							}
+							break;
+
+						case KeyEvent.VK_END: // End key
+							System.out.println("End Key");
+							try {
+								datagramSocket.send(endKeyReleasedPacket);
+							} catch (IOException ex) {
+								throw new RuntimeException(ex);
+							}
+							break;
+						case KeyEvent.VK_PAGE_UP:
+							System.out.println("Page Up Key");
+							try {
+								datagramSocket.send(pageUpKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						case KeyEvent.VK_PAGE_DOWN: // Page Down key
+							System.out.println("Page Down Key");
+							try {
+								datagramSocket.send(pageDownKeyReleasedPacket);
+							} catch (IOException ex) {
+								throw new RuntimeException(ex);
+							}
+							break;
+
+						case KeyEvent.VK_NUM_LOCK: // Num Lock key
+							System.out.println("Num Lock Key");
+							try {
+								datagramSocket.send(numLockKeyReleasedPacket);
+							} catch (IOException ex) {
+								throw new RuntimeException(ex);
+							}
+							break;
+
+						case KeyEvent.VK_HOME: // Home key
+							System.out.println("Home Key");
+							try {
+								datagramSocket.send(homeKeyReleasedPacket);
+							} catch (IOException ex) {
+								throw new RuntimeException(ex);
+							}
+							break;
+						case 192: // Backtick/Grave Accent key
+							System.out.println("Backtick/Grave Accent Key");
+							try {
+								datagramSocket.send(backtickKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+					}
+
+					// CTRL SHIFT ALT PRESS AND RELEASE
+					switch (e.getKeyCode()){
+
+						case KeyEvent.VK_SHIFT: {
+							System.out.println("Shift Key Released");
+							try {
+								datagramSocket.send(shiftKeyReleasedPacket);
+								shift  = false;
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_CONTROL: {
+							System.out.println("Ctrl Key Released");
+							try {
+								datagramSocket.send(ctrlKeyReleasedPacket);
+								ctrl = false;
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_ALT: {
+							System.out.println("Alt Key Released");
+							try {
+								datagramSocket.send(altKeyReleasedPacket);
+								alt = false;
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+					}
 				}
 			};
 			jFrame.addKeyListener(keyListener);
