@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="415f1adc-022f-4388-beed-b56ed265edc7" name="Changes" comment="Minor Changes">
-      <change afterPath="$PROJECT_DIR$/Patch2/src/main/java/KeybaordListener/KeyboardKeysTesting.java" afterDir="false" />
+    <list default="true" id="415f1adc-022f-4388-beed-b56ed265edc7" name="Changes" comment="Few More Keys ..">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Client/ReceivingCoordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Client/ReceivingCoordinates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch2/src/main/java/Server/KeyboardFunctionality.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch2/src/main/java/Server/KeyboardFunctionality.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +40,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Patch2",
     "last_opened_file_path": "D:/Java Projects/Java-In-Depth/PointerMoving/Pointer",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "VisualVMLauncher"
@@ -245,7 +243,31 @@
       <option name="project" value="LOCAL" />
       <updated>1694782808373</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="More Keys added">
+      <option name="closed" value="true" />
+      <created>1694834490249</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1694834490249</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Period Key Added">
+      <option name="closed" value="true" />
+      <created>1694835251091</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1694835251091</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Few More Keys ..">
+      <option name="closed" value="true" />
+      <created>1694837524254</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1694837524254</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -262,7 +284,10 @@
     <MESSAGE value="Adding KeyCodes" />
     <MESSAGE value="Adding KeyCodes For Rest Keys" />
     <MESSAGE value="Minor Changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Changes" />
+    <MESSAGE value="More Keys added" />
+    <MESSAGE value="Period Key Added" />
+    <MESSAGE value="Few More Keys .." />
+    <option name="LAST_COMMIT_MESSAGE" value="Few More Keys .." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
