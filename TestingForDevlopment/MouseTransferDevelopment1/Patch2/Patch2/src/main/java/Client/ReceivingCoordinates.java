@@ -457,6 +457,11 @@ public class ReceivingCoordinates implements Runnable{
 						robot.keyRelease(KeyEvent.VK_PAGE_DOWN);
 						System.out.println("Pressed Page Down key");
 						break;
+					case KeyEvent.VK_PAGE_UP: // Page Up key
+						robot.keyPress(KeyEvent.VK_PAGE_UP);
+						robot.keyRelease(KeyEvent.VK_PAGE_UP);
+						System.out.println("Pressed Page Up key");
+						break;
 					case KeyEvent.VK_NUM_LOCK: // Num Lock key
 						robot.keyPress(KeyEvent.VK_NUM_LOCK);
 						robot.keyRelease(KeyEvent.VK_NUM_LOCK);
@@ -466,6 +471,11 @@ public class ReceivingCoordinates implements Runnable{
 						robot.keyPress(KeyEvent.VK_HOME);
 						robot.keyRelease(KeyEvent.VK_HOME);
 						System.out.println("Pressed Home key");
+						break;
+					case 192: // Backtick/Grave Accent key
+						System.out.println("Backtick/Grave Accent Key");
+						robot.keyPress(KeyEvent.VK_BACK_QUOTE);
+						robot.keyRelease(KeyEvent.VK_BACK_QUOTE);
 						break;
 				}
 			}
