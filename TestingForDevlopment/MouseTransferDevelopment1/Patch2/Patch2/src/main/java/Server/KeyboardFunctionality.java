@@ -81,7 +81,9 @@
 			String numLockKey = "K:144";
 			String homeKey = "K:36";
 			String backtickKey = "K:192";
+			String pageUpKey = "K:33";
 
+			byte[] pageUpKeyBytes = pageUpKey.getBytes();
 			byte[] backtickKeyBytes = backtickKey.getBytes();
 			byte[] deleteKey_pressed = deleteKey.getBytes();
 			byte[] spaceKey_pressed = spaceKey.getBytes();
@@ -213,6 +215,7 @@
 			DatagramPacket packetNumLockKey = new DatagramPacket(numLockKeyBytes, numLockKeyBytes.length, inetAddress, portUDP);
 			DatagramPacket packetHomeKey = new DatagramPacket(homeKeyBytes, homeKeyBytes.length, inetAddress, portUDP);
 			DatagramPacket packetBacktickKey = new DatagramPacket(backtickKeyBytes, backtickKeyBytes.length, inetAddress, portUDP);
+			DatagramPacket packetPageUpKey = new DatagramPacket(pageUpKeyBytes, pageUpKeyBytes.length, inetAddress, portUDP);
 
 			String quoteKey = "K:222"; // Quote key (')
 			byte[] quoteKeyBytes = quoteKey.getBytes();
@@ -845,7 +848,14 @@
 								throw new RuntimeException(ex);
 							}
 							break;
-
+						case KeyEvent.VK_PAGE_UP:
+							System.out.println("Page Up Key");
+							try {
+								datagramSocket.send(packetPageUpKey);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
 						case KeyEvent.VK_PAGE_DOWN: // Page Down key
 							System.out.println("Page Down Key");
 							try {
