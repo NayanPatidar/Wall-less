@@ -11,11 +11,6 @@ import java.net.Socket;
 
 public class ReceivingCoordinates implements Runnable{
 
-	// Boolean Values for the Keys
-	boolean ctrl = false;
-	boolean alt = false;
-	boolean shift = false;
-
 	DatagramSocket datagramSocket;
 	InetAddress inetAddress;
 	Socket clientSocket;
@@ -90,7 +85,6 @@ public class ReceivingCoordinates implements Runnable{
 					case "32": // Space key
 						robot.keyPress(KeyEvent.VK_SPACE);
 						System.out.println("Pressed space key");
-
 						break;
 					case "10": // Enter key
 						robot.keyPress(KeyEvent.VK_ENTER);
@@ -101,37 +95,28 @@ public class ReceivingCoordinates implements Runnable{
 						System.out.println("Pressed Tab key");
 						break;
 					case "16": // Shift key
-						if (!shift) {
 							robot.keyPress(KeyEvent.VK_SHIFT);
 							System.out.println("Pressed Shift key");
-							shift = true;
-						}
 						break;
 					case "17": // Ctrl key
-						if (!ctrl) {
 							robot.keyPress(KeyEvent.VK_CONTROL);
 							System.out.println("Pressed Ctrl key");
-							ctrl = true;
-						}
 						break;
 					case "18": // Alt key
-						if (!alt) {
 							robot.keyPress(KeyEvent.VK_ALT);
 							System.out.println("Pressed Alt key");
-							alt = true;
-						}
 						break;
 					case "27": // Esc key
-						robot.keyPress(KeyEvent.VK_ESCAPE);
-						System.out.println("Pressed Esc key");
+							robot.keyPress(KeyEvent.VK_ESCAPE);
+							System.out.println("Pressed Esc key");
 						break;
 					case "8": // Backspace key
-						robot.keyPress(KeyEvent.VK_BACK_SPACE);
-						System.out.println("Pressed Backspace key");
+							robot.keyPress(KeyEvent.VK_BACK_SPACE);
+							System.out.println("Pressed Backspace key");
 						break;
 					case "20": // Caps Lock key
-						robot.keyPress(KeyEvent.VK_CAPS_LOCK);
-						System.out.println("Toggled Caps Lock");
+							robot.keyPress(KeyEvent.VK_CAPS_LOCK);
+							System.out.println("Toggled Caps Lock");
 						break;
 				}
 
@@ -434,17 +419,14 @@ public class ReceivingCoordinates implements Runnable{
 						case "16'": // Shift key
 							robot.keyRelease(KeyEvent.VK_SHIFT);
 							System.out.println("Released Shift key");
-							shift = false;
 							break;
 						case "17'": // Ctrl key
 							robot.keyRelease(KeyEvent.VK_CONTROL);
 							System.out.println("Released Ctrl key");
-							ctrl = false;
 							break;
 						case "18'": // Alt key
 							robot.keyRelease(KeyEvent.VK_ALT);
 							System.out.println("Released Alt key");
-							alt = false;
 							break;
 						case "27'": // Esc key
 							robot.keyRelease(KeyEvent.VK_ESCAPE);
