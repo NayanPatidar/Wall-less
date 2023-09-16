@@ -66,31 +66,26 @@ public class ReceivingCoordinates implements Runnable{
                 switch (msg) {
                     case "1" -> {
                         robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
-	                    break;
                     }
 										case "1'" -> {
 											robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
-											break;
 										}
                     case "2" -> {
 	                    robot.mousePress(InputEvent.BUTTON2_DOWN_MASK);
-	                    break;
                     }
 										case "2'" -> {
 											robot.mouseRelease(InputEvent.BUTTON2_DOWN_MASK);
-											break;
 										}
                     case "3" -> {
 	                    robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-											break;
                     }
 										case "3'" -> {
 											robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-											break;
 										}
                 }
 			} else if (receivedMsg.startsWith("K:")){
 				String msg = receivedMsg.substring(2);
+
 				switch (msg){
 					case "32": // Space key
 						robot.keyPress(KeyEvent.VK_SPACE);
@@ -138,6 +133,9 @@ public class ReceivingCoordinates implements Runnable{
 						robot.keyPress(KeyEvent.VK_CAPS_LOCK);
 						System.out.println("Toggled Caps Lock");
 						break;
+				}
+
+				switch (msg) {
 					case "112": // F1 key
 						robot.keyPress(KeyEvent.VK_F1);
 						System.out.println("Pressed F1 key");
@@ -226,6 +224,8 @@ public class ReceivingCoordinates implements Runnable{
 						robot.keyPress(KeyEvent.VK_9);
 						System.out.println("Pressed '9' key");
 						break;
+				}
+				switch (msg) {
 					case "65": // 'A' key
 						robot.keyPress(KeyEvent.VK_A);
 						System.out.println("Pressed 'A' key");
@@ -334,6 +334,8 @@ public class ReceivingCoordinates implements Runnable{
 						robot.keyPress(KeyEvent.VK_DELETE);
 						System.out.println("Pressed Delete key");
 						break;
+				}
+				switch (msg) {
 					case "38": // Up Arrow
 						robot.keyPress(KeyEvent.VK_UP);
 						System.out.println("Up Arrow Key");
@@ -414,48 +416,50 @@ public class ReceivingCoordinates implements Runnable{
 						System.out.println("Backtick/Grave Accent Key");
 						robot.keyPress(KeyEvent.VK_BACK_QUOTE);
 						break;
-
+				}
 						// Releasing the keys
-
-					case "32'": // Space key
-						robot.keyRelease(KeyEvent.VK_SPACE);
-						System.out.println("Released space key");
-						break;
-					case "10'": // Enter key
-						robot.keyRelease(KeyEvent.VK_ENTER);
-						System.out.println("Released Enter key");
-						break;
-					case "9'": // Tab key
-						robot.keyRelease(KeyEvent.VK_TAB);
-						System.out.println("Released Tab key");
-						break;
-					case "16'": // Shift key
-						robot.keyRelease(KeyEvent.VK_SHIFT);
-						System.out.println("Released Shift key");
-						shift = false;
-						break;
-					case "17'": // Ctrl key
-						robot.keyRelease(KeyEvent.VK_CONTROL);
-						System.out.println("Released Ctrl key");
-						ctrl = false;
-						break;
-					case "18'": // Alt key
-						robot.keyRelease(KeyEvent.VK_ALT);
-						System.out.println("Released Alt key");
-						alt = false;
-						break;
-					case "27'": // Esc key
-						robot.keyRelease(KeyEvent.VK_ESCAPE);
-						System.out.println("Released Esc key");
-						break;
-					case "8'": // Backspace key
-						robot.keyRelease(KeyEvent.VK_BACK_SPACE);
-						System.out.println("Released Backspace key");
-						break;
+					switch (msg) {
+						case "32'": // Space key
+							robot.keyRelease(KeyEvent.VK_SPACE);
+							System.out.println("Released space key");
+							break;
+						case "10'": // Enter key
+							robot.keyRelease(KeyEvent.VK_ENTER);
+							System.out.println("Released Enter key");
+							break;
+						case "9'": // Tab key
+							robot.keyRelease(KeyEvent.VK_TAB);
+							System.out.println("Released Tab key");
+							break;
+						case "16'": // Shift key
+							robot.keyRelease(KeyEvent.VK_SHIFT);
+							System.out.println("Released Shift key");
+							shift = false;
+							break;
+						case "17'": // Ctrl key
+							robot.keyRelease(KeyEvent.VK_CONTROL);
+							System.out.println("Released Ctrl key");
+							ctrl = false;
+							break;
+						case "18'": // Alt key
+							robot.keyRelease(KeyEvent.VK_ALT);
+							System.out.println("Released Alt key");
+							alt = false;
+							break;
+						case "27'": // Esc key
+							robot.keyRelease(KeyEvent.VK_ESCAPE);
+							System.out.println("Released Esc key");
+							break;
+						case "8'": // Backspace key
+							robot.keyRelease(KeyEvent.VK_BACK_SPACE);
+							System.out.println("Released Backspace key");
+							break;
+					}
 //					case "20'": // Caps Lock key
 //						robot.keyRelease(KeyEvent.VK_CAPS_LOCK);
 //						System.out.println("Toggled Caps Lock");
 //						break;
+				switch (msg) {
 					case "112'": // F1 key
 						robot.keyRelease(KeyEvent.VK_F1);
 						System.out.println("Released F1 key");
@@ -504,6 +508,8 @@ public class ReceivingCoordinates implements Runnable{
 						robot.keyRelease(KeyEvent.VK_F12);
 						System.out.println("Released F12 key");
 						break;
+				}
+				switch (msg){
 					case "48'": // '0' key
 						robot.keyRelease(KeyEvent.VK_0);
 						System.out.println("Pressed '0' key");
