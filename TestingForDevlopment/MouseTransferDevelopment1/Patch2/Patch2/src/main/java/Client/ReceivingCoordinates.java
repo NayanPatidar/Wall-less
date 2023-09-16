@@ -437,6 +437,36 @@ public class ReceivingCoordinates implements Runnable{
 						robot.keyPress(KeyEvent.VK_QUOTE);
 						robot.keyRelease(KeyEvent.VK_QUOTE);
 						break;
+					case KeyEvent.VK_EQUALS: // Equals (=) key
+						robot.keyPress(KeyEvent.VK_EQUALS);
+						robot.keyRelease(KeyEvent.VK_EQUALS);
+						System.out.println("Pressed Equals (=) key");
+						break;
+					case KeyEvent.VK_MINUS: // Minus (-) key
+						robot.keyPress(KeyEvent.VK_MINUS);
+						robot.keyRelease(KeyEvent.VK_MINUS);
+						System.out.println("Pressed Minus (-) key");
+						break;
+					case KeyEvent.VK_END: // End key
+						robot.keyPress(KeyEvent.VK_END);
+						robot.keyRelease(KeyEvent.VK_END);
+						System.out.println("Pressed End key");
+						break;
+					case KeyEvent.VK_PAGE_DOWN: // Page Down key
+						robot.keyPress(KeyEvent.VK_PAGE_DOWN);
+						robot.keyRelease(KeyEvent.VK_PAGE_DOWN);
+						System.out.println("Pressed Page Down key");
+						break;
+					case KeyEvent.VK_NUM_LOCK: // Num Lock key
+						robot.keyPress(KeyEvent.VK_NUM_LOCK);
+						robot.keyRelease(KeyEvent.VK_NUM_LOCK);
+						System.out.println("Pressed Num Lock key");
+						break;
+					case KeyEvent.VK_HOME: // Home key
+						robot.keyPress(KeyEvent.VK_HOME);
+						robot.keyRelease(KeyEvent.VK_HOME);
+						System.out.println("Pressed Home key");
+						break;
 				}
 			}
 		}

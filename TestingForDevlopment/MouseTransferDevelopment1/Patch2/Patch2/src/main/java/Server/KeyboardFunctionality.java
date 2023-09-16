@@ -74,6 +74,12 @@
 			String yKey = "K:89";
 			String zKey = "K:90";
 			String deleteKey = "K:46";
+			String equalKey = "K:61";
+			String minusKey = "K:45";
+			String endKey = "K:35";
+			String pageDownKey = "K:34";
+			String numLockKey = "K:144";
+			String homeKey = "K:36";
 
 
 			byte[] deleteKey_pressed = deleteKey.getBytes();
@@ -134,6 +140,12 @@
 			byte[] xKey_pressed = xKey.getBytes();
 			byte[] yKey_pressed = yKey.getBytes();
 			byte[] zKey_pressed = zKey.getBytes();
+			byte[] equalKeyBytes = equalKey.getBytes();
+			byte[] minusKeyBytes = minusKey.getBytes();
+			byte[] endKeyBytes = endKey.getBytes();
+			byte[] pageDownKeyBytes = pageDownKey.getBytes();
+			byte[] numLockKeyBytes = numLockKey.getBytes();
+			byte[] homeKeyBytes = homeKey.getBytes();
 
 			DatagramPacket packet_deleteKey_pressed = new DatagramPacket(deleteKey_pressed, deleteKey_pressed.length, inetAddress, portUDP);
 			DatagramPacket packet_spaceKey_pressed = new DatagramPacket(spaceKey_pressed, spaceKey_pressed.length, inetAddress, portUDP);
@@ -193,6 +205,12 @@
 			DatagramPacket packet_xKey_pressed = new DatagramPacket(xKey_pressed, xKey_pressed.length, inetAddress, portUDP);
 			DatagramPacket packet_yKey_pressed = new DatagramPacket(yKey_pressed, yKey_pressed.length, inetAddress, portUDP);
 			DatagramPacket packet_zKey_pressed = new DatagramPacket(zKey_pressed, zKey_pressed.length, inetAddress, portUDP);
+			DatagramPacket packetEqualKey = new DatagramPacket(equalKeyBytes, equalKeyBytes.length, inetAddress, portUDP);
+			DatagramPacket packetMinusKey = new DatagramPacket(minusKeyBytes, minusKeyBytes.length, inetAddress, portUDP);
+			DatagramPacket packetEndKey = new DatagramPacket(endKeyBytes, endKeyBytes.length, inetAddress, portUDP);
+			DatagramPacket packetPageDownKey = new DatagramPacket(pageDownKeyBytes, pageDownKeyBytes.length, inetAddress, portUDP);
+			DatagramPacket packetNumLockKey = new DatagramPacket(numLockKeyBytes, numLockKeyBytes.length, inetAddress, portUDP);
+			DatagramPacket packetHomeKey = new DatagramPacket(homeKeyBytes, homeKeyBytes.length, inetAddress, portUDP);
 
 			String quoteKey = "K:222"; // Quote key (')
 			byte[] quoteKeyBytes = quoteKey.getBytes();
@@ -799,7 +817,59 @@
 								throw new RuntimeException(ex);
 							}
 							break;
+						case KeyEvent.VK_EQUALS: // Equals (=) key
+							System.out.println("Equals (=) Key");
+							try {
+								datagramSocket.send(packetEqualKey);
+							} catch (IOException ex) {
+								throw new RuntimeException(ex);
+							}
+							break;
 
+						case KeyEvent.VK_MINUS: // Minus (-) key
+							System.out.println("Minus (-) Key");
+							try {
+								datagramSocket.send(packetMinusKey);
+							} catch (IOException ex) {
+								throw new RuntimeException(ex);
+							}
+							break;
+
+						case KeyEvent.VK_END: // End key
+							System.out.println("End Key");
+							try {
+								datagramSocket.send(packetEndKey);
+							} catch (IOException ex) {
+								throw new RuntimeException(ex);
+							}
+							break;
+
+						case KeyEvent.VK_PAGE_DOWN: // Page Down key
+							System.out.println("Page Down Key");
+							try {
+								datagramSocket.send(packetPageDownKey);
+							} catch (IOException ex) {
+								throw new RuntimeException(ex);
+							}
+							break;
+
+						case KeyEvent.VK_NUM_LOCK: // Num Lock key
+							System.out.println("Num Lock Key");
+							try {
+								datagramSocket.send(packetNumLockKey);
+							} catch (IOException ex) {
+								throw new RuntimeException(ex);
+							}
+							break;
+
+						case KeyEvent.VK_HOME: // Home key
+							System.out.println("Home Key");
+							try {
+								datagramSocket.send(packetHomeKey);
+							} catch (IOException ex) {
+								throw new RuntimeException(ex);
+							}
+							break;
 					}
 				}
 
