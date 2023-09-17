@@ -732,6 +732,76 @@
 								System.out.println(ex.getLocalizedMessage());
 							}
 						}
+						case '0' -> {
+							try {
+								datagramSocket.send(packet_num0Key_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '1' -> {
+							try {
+								datagramSocket.send(packet_num1Key_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '2' -> {
+							try {
+								datagramSocket.send(packet_num2Key_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '3' -> {
+							try {
+								datagramSocket.send(packet_num3Key_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '4' -> {
+							try {
+								datagramSocket.send(packet_num4Key_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '5' -> {
+							try {
+								datagramSocket.send(packet_num5Key_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '6' -> {
+							try {
+								datagramSocket.send(packet_num6Key_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '7' -> {
+							try {
+								datagramSocket.send(packet_num7Key_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '8' -> {
+							try {
+								datagramSocket.send(packet_num8Key_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '9' -> {
+							try {
+								datagramSocket.send(packet_num9Key_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
 					}
 				}
 
@@ -974,6 +1044,76 @@
 								System.out.println(ex.getLocalizedMessage());
 							}
 							break;
+						}
+						case '0' : {
+							try {
+								datagramSocket.send(num0KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '1' : {
+							try {
+								datagramSocket.send(num1KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '2' : {
+							try {
+								datagramSocket.send(num2KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '3' : {
+							try {
+								datagramSocket.send(num3KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '4' : {
+							try {
+								datagramSocket.send(num4KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '5' : {
+							try {
+								datagramSocket.send(num5KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '6' : {
+							try {
+								datagramSocket.send(num6KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '7' : {
+							try {
+								datagramSocket.send(num7KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '8' : {
+							try {
+								datagramSocket.send(num8KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '9' : {
+							try {
+								datagramSocket.send(num9KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
 						}
 					}
 				}

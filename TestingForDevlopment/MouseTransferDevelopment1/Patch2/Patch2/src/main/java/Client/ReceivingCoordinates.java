@@ -342,9 +342,47 @@ public class ReceivingCoordinates implements Runnable{
 						robot.keyPress(KeyEvent.VK_9);
 						System.out.println("Pressed '9' key");
 						break;
-
+					case "48'": // '0' key
+						robot.keyRelease(KeyEvent.VK_0);
+						System.out.println("Pressed '0' key");
+						break;
+					case "49'": // '1' key
+						robot.keyRelease(KeyEvent.VK_1);
+						System.out.println("Released '1' key");
+						break;
+					case "50'": // '2' key
+						robot.keyRelease(KeyEvent.VK_2);
+						System.out.println("Released '2' key");
+						break;
+					case "51'": // '3' key
+						robot.keyRelease(KeyEvent.VK_3);
+						System.out.println("Released '3' key");
+						break;
+					case "52'": // '4' key
+						robot.keyRelease(KeyEvent.VK_4);
+						System.out.println("Released '4' key");
+						break;
+					case "53'": // '5' key
+						robot.keyRelease(KeyEvent.VK_5);
+						System.out.println("Released '5' key");
+						break;
+					case "54'": // '6' key
+						robot.keyRelease(KeyEvent.VK_6);
+						System.out.println("Released '6' key");
+						break;
+					case "55'": // '7' key
+						robot.keyRelease(KeyEvent.VK_7);
+						System.out.println("Released '7' key");
+						break;
+					case "56'": // '8' key
+						robot.keyRelease(KeyEvent.VK_8);
+						System.out.println("Released '8' key");
+						break;
+					case "57'": // '9' key
+						robot.keyRelease(KeyEvent.VK_9);
+						System.out.println("Released '9' key");
+						break;
 				}
-
 			}
 		}
 	}
