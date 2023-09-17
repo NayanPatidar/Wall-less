@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 public class MyKeyListener implements KeyListener {
@@ -13,11 +14,12 @@ public class MyKeyListener implements KeyListener {
     private boolean tPressed = false;
 
     Socket socket;
-    OutputStream outputStream;
+    PrintWriter out ;;
+
 
     public MyKeyListener(Socket socket) throws IOException {
         this.socket = socket;
-        this.outputStream = socket.getOutputStream();
+        out = new PrintWriter(socket.getOutputStream(), true);
     }
 
     @Override
@@ -27,20 +29,16 @@ public class MyKeyListener implements KeyListener {
         String TPacketPress = "K:84";
         String shiftPacketPress = "K:16";
 
-        byte[] bytes_altPress = altPacketPress.getBytes();
-        byte[] bytes_ctrlPress = ctrlPacketPress.getBytes();
-        byte[] bytes_TPress = TPacketPress.getBytes();
-        byte[] bytes_shiftPress = shiftPacketPress.getBytes();
+//        byte[] bytes_altPress = altPacketPress.getBytes();
+//        byte[] bytes_ctrlPress = ctrlPacketPress.getBytes();
+//        byte[] bytes_TPress = TPacketPress.getBytes();
+//        byte[] bytes_shiftPress = shiftPacketPress.getBytes();
 
         int keyCode = e.getKeyCode();
 
         if (keyCode == KeyEvent.VK_ALT) {
             System.out.println("ALT is Pressed");
-            try {
-                outputStream.write(bytes_altPress);
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
+            out.println(altPacketPress);
         } else if (keyCode == KeyEvent.VK_CONTROL) {
             ctrlPressed = true;
         } else if (keyCode == KeyEvent.VK_T) {
@@ -57,20 +55,16 @@ public class MyKeyListener implements KeyListener {
         String TPacketRelease = "K:84'";
         String shiftPacketRelease = "K:16'";
 
-        byte[] bytes_altRelease = altPacketRelease.getBytes();
-        byte[] bytes_ctrlRelease = ctrlPacketRelease.getBytes();
-        byte[] bytes_TRelease = TPacketRelease.getBytes();
-        byte[] bytes_shiftRelease = shiftPacketRelease.getBytes();
+//        byte[] bytes_altRelease = altPacketRelease.getBytes();
+//        byte[] bytes_ctrlRelease = ctrlPacketRelease.getBytes();
+//        byte[] bytes_TRelease = TPacketRelease.getBytes();
+//        byte[] bytes_shiftRelease = shiftPacketRelease.getBytes();
 
         int keyCode = e.getKeyCode();
 
         if (keyCode == KeyEvent.VK_ALT) {
             altPressed = false;
-            try {
-                outputStream.write(bytes_altRelease);
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
+            out.println(altPacketRelease);
         } else if (keyCode == KeyEvent.VK_CONTROL) {
             ctrlPressed = false;
         } else if (keyCode == KeyEvent.VK_T) {
