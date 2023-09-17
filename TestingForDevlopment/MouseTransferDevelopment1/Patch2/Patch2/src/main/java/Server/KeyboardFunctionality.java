@@ -837,6 +837,115 @@
 								System.out.println(ex.getLocalizedMessage());
 							}
 						}
+						case KeyEvent.VK_F1 -> {
+							System.out.println("F1 Key");
+							try {
+								datagramSocket.send(packet_f1Key_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F2 -> {
+							System.out.println("F2 Key");
+							try {
+								datagramSocket.send(packet_f2Key_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F3 -> {
+							System.out.println("F3 Key");
+							try {
+								datagramSocket.send(packet_f3Key_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F4-> {
+							System.out.println("F4 Key");
+							try {
+								datagramSocket.send(packet_f4Key_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F5->{
+							System.out.println("F5 Key");
+							try {
+								datagramSocket.send(packet_f5Key_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F6-> {
+							System.out.println("F6 Key");
+							try {
+								datagramSocket.send(packet_f6Key_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F7-> {
+							System.out.println("F7 Key");
+							try {
+								datagramSocket.send(packet_f7Key_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F8-> {
+							System.out.println("F8 Key");
+							try {
+								datagramSocket.send(packet_f8Key_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F9-> {
+							System.out.println("F9 Key");
+							try {
+								datagramSocket.send(packet_f9Key_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F10->{
+							System.out.println("F10 Key");
+							try {
+								datagramSocket.send(packet_f10Key_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F11->{
+							System.out.println("F11 Key");
+							try {
+								datagramSocket.send(packet_f11Key_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F12-> {
+							System.out.println("F12 Key");
+							try {
+								datagramSocket.send(packet_f12Key_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+
 					}
 				}
 
@@ -1194,6 +1303,114 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+						}
+						case KeyEvent.VK_F1: {
+							System.out.println("F1 Key");
+							try {
+								datagramSocket.send(f1KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F2: {
+							System.out.println("F2 Key");
+							try {
+								datagramSocket.send(f2KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F3: {
+							System.out.println("F3 Key");
+							try {
+								datagramSocket.send(f3KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F4: {
+							System.out.println("F4 Key");
+							try {
+								datagramSocket.send(f4KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F5: {
+							System.out.println("F5 Key");
+							try {
+								datagramSocket.send(f5KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F6: {
+							System.out.println("F6 Key");
+							try {
+								datagramSocket.send(f6KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F7: {
+							System.out.println("F7 Key");
+							try {
+								datagramSocket.send(f7KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F8: {
+							System.out.println("F8 Key");
+							try {
+								datagramSocket.send(f8KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F9: {
+							System.out.println("F9 Key");
+							try {
+								datagramSocket.send(f9KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F10: {
+							System.out.println("F10 Key");
+							try {
+								datagramSocket.send(f10KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F11: {
+							System.out.println("F11 Key");
+							try {
+								datagramSocket.send(f11KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
+						}
+						case KeyEvent.VK_F12: {
+							System.out.println("F12 Key");
+							try {
+								datagramSocket.send(f12KeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+							break;
 						}
 					}
 				}
