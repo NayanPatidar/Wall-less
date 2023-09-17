@@ -14,7 +14,7 @@ public class Client {
         boolean ctrlPressed = false;
 
         Robot robot = new Robot();
-        Socket socket = new Socket("10.200.233.67", 8080);
+        Socket socket = new Socket("10.200.233.99", 8080);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
         byte[] buffer = new byte[1024];

@@ -517,39 +517,39 @@
 
 				@Override
 				public void keyPressed(KeyEvent e) {
-                    switch (e.getKeyCode()) {
-                        case KeyEvent.VK_SHIFT -> {
-                            if (!shiftPress) {
-                                try {
-                                    System.out.println("Shift Pressed");
-                                    datagramSocket.send(packet_shiftKey_pressed);
-                                    shiftPress = true;
-                                } catch (IOException ex) {
-                                    throw new RuntimeException(ex);
-                                }
-                            }
-                        }
-                        case KeyEvent.VK_ALT -> {
-                            if (!altPress) {
-                                try {
-                                    System.out.println("Alt Pressed");
-                                    datagramSocket.send(packet_altKey_pressed);
-                                    altPress = true;
-                                } catch (IOException ex) {
-                                    throw new RuntimeException(ex);
-                                }
-                            }
-                        }
-                        case KeyEvent.VK_CONTROL -> {
-                            if (!ctrlPress) {
-                                try {
-                                    System.out.println("Control Pressed");
-                                    datagramSocket.send(packet_ctrlKey_pressed);
-                                } catch (IOException ex) {
-                                    throw new RuntimeException(ex);
-                                }
-                            }
-                        }
+					switch (e.getKeyCode()) {
+						case KeyEvent.VK_SHIFT -> {
+							if (!shiftPress) {
+								try {
+									System.out.println("Shift Pressed");
+									datagramSocket.send(packet_shiftKey_pressed);
+									shiftPress = true;
+								} catch (IOException ex) {
+									throw new RuntimeException(ex);
+								}
+							}
+						}
+						case KeyEvent.VK_ALT -> {
+							if (!altPress) {
+								try {
+									System.out.println("Alt Pressed");
+									datagramSocket.send(packet_altKey_pressed);
+									altPress = true;
+								} catch (IOException ex) {
+									throw new RuntimeException(ex);
+								}
+							}
+						}
+						case KeyEvent.VK_CONTROL -> {
+							if (!ctrlPress) {
+								try {
+									System.out.println("Control Pressed");
+									datagramSocket.send(packet_ctrlKey_pressed);
+								} catch (IOException ex) {
+									throw new RuntimeException(ex);
+								}
+							}
+						}
 						case KeyEvent.VK_A -> {
 							try {
 								datagramSocket.send(packet_aKey_pressed);
@@ -732,12 +732,12 @@
 								System.out.println(ex.getLocalizedMessage());
 							}
 						}
-                    }
+					}
 				}
 
 				@Override
 				public void keyReleased(KeyEvent e) {
-					switch (e.getKeyChar()) {
+					switch (e.getKeyCode()) {
 						case KeyEvent.VK_SHIFT:
 								try {
 									System.out.println("Shift Released");
@@ -773,6 +773,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case KeyEvent.VK_B : {
 							try {
@@ -780,6 +781,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case KeyEvent.VK_C : {
 							try {
@@ -787,6 +789,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case KeyEvent.VK_D : {
 							try {
@@ -794,6 +797,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case KeyEvent.VK_E : {
 							try {
@@ -801,6 +805,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case KeyEvent.VK_F :{
 							try {
@@ -808,6 +813,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case KeyEvent.VK_G : {
 							try {
@@ -815,6 +821,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case KeyEvent.VK_H : {
 							try {
@@ -822,6 +829,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case KeyEvent.VK_I : {
 							try {
@@ -829,6 +837,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case KeyEvent.VK_J : {
 							try {
@@ -836,6 +845,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case KeyEvent.VK_K : {
 							try {
@@ -843,6 +853,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case KeyEvent.VK_L :{
 							try {
@@ -850,6 +861,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case KeyEvent.VK_M : {
 							try {
@@ -857,6 +869,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case KeyEvent.VK_N: {
 							try {
@@ -864,6 +877,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case KeyEvent.VK_O : {
 							try {
@@ -871,6 +885,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case KeyEvent.VK_P :{
 							try {
@@ -878,6 +893,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case KeyEvent.VK_Q :{
 							try {
@@ -885,6 +901,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case KeyEvent.VK_R : {
 							try {
@@ -892,6 +909,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case KeyEvent.VK_S : {
 							try {
@@ -899,6 +917,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case KeyEvent.VK_T :{
 							try {
@@ -906,6 +925,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case KeyEvent.VK_U : {
 							try {
@@ -913,6 +933,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case KeyEvent.VK_V :{
 							try {
@@ -920,6 +941,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case KeyEvent.VK_W : {
 							try {
@@ -927,6 +949,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case KeyEvent.VK_X : {
 							try {
@@ -934,6 +957,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case KeyEvent.VK_Y : {
 							try {
@@ -941,6 +965,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case KeyEvent.VK_Z : {
 							try {
@@ -948,6 +973,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 					}
 				}
