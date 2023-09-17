@@ -28,6 +28,23 @@ public class Client {
                     case "18'":
                         robot.keyRelease(18);
                         System.out.println("Alt Released");
+                        break;
+                    case "17":
+                        robot.keyPress(17);
+                        System.out.println("Ctrl Pressed");
+                        break;
+                    case "17'":
+                        robot.keyRelease(17);
+                        System.out.println("Ctrl Released");
+                        break;
+                    case "65":
+                        robot.keyPress(65);
+                        System.out.println("A Pressed");
+                        break;
+                    case "65'":
+                        robot.keyRelease(65);
+                        System.out.println("A Released");
+                        break;
                 }
             }
         }
