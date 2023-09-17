@@ -70,30 +70,6 @@ public class ReceivingCoordinates implements Runnable{
 				String msg = receivedMsg.substring(2);
 
 				switch (msg){
-					case "16":
-						robot.keyPress(KeyEvent.VK_SHIFT);
-						System.out.println("Pressed Shift");
-						break;
-					case "17":
-						robot.keyPress(KeyEvent.VK_CONTROL);
-						System.out.println("Pressed Control");
-						break;
-					case "18":
-						robot.keyPress(KeyEvent.VK_ALT);
-						System.out.println("Pressed Alt");
-						break;
-					case "16'":
-						robot.keyRelease(KeyEvent.VK_SHIFT);
-						System.out.println("Released Shift");
-						break;
-					case "17'":
-						robot.keyRelease(KeyEvent.VK_CONTROL);
-						System.out.println("Released Control");
-						break;
-					case "18'":
-						robot.keyRelease(KeyEvent.VK_ALT);
-						System.out.println("Released Alt");
-						break;
 					case "65": // 'A' key
 						robot.keyPress(KeyEvent.VK_A);
 						System.out.println("Pressed 'A' key");
@@ -198,6 +174,175 @@ public class ReceivingCoordinates implements Runnable{
 						robot.keyPress(KeyEvent.VK_Z);
 						System.out.println("Pressed 'Z' key");
 						break;
+					case "65'": // 'A' key
+						robot.keyRelease(KeyEvent.VK_A);
+						System.out.println("Released 'A' key");
+						break;
+					case "66'": // 'B' key
+						robot.keyRelease(KeyEvent.VK_B);
+						System.out.println("Released 'B' key");
+						break;
+					case "67'": // 'C' key
+						robot.keyRelease(KeyEvent.VK_C);
+						System.out.println("Released 'C' key");
+						break;
+					case "68'": // 'D' key
+						robot.keyRelease(KeyEvent.VK_D);
+						System.out.println("Released 'D' key");
+						break;
+					case "69'": // 'E' key
+						robot.keyRelease(KeyEvent.VK_E);
+						System.out.println("Released 'E' key");
+						break;
+					case "70'": // 'F' key
+						robot.keyRelease(KeyEvent.VK_F);
+						System.out.println("Released 'F' key");
+						break;
+					case "71'": // 'G' key
+						robot.keyRelease(KeyEvent.VK_G);
+						System.out.println("Released 'G' key");
+						break;
+					case "72'": // 'H' key
+						robot.keyRelease(KeyEvent.VK_H);
+						System.out.println("Released 'H' key");
+						break;
+					case "73'": // 'I' key
+						robot.keyRelease(KeyEvent.VK_I);
+						System.out.println("Released 'I' key");
+						break;
+					case "74'": // 'J' key
+						robot.keyRelease(KeyEvent.VK_J);
+						System.out.println("Released 'J' key");
+						break;
+					case "75'": // 'K' key
+						robot.keyRelease(KeyEvent.VK_K);
+						System.out.println("Released 'K' key");
+						break;
+					case "76'": // 'L' key
+						robot.keyRelease(KeyEvent.VK_L);
+						System.out.println("Released 'L' key");
+						break;
+					case "77'": // 'M' key
+						robot.keyRelease(KeyEvent.VK_M);
+						System.out.println("Released 'M' key");
+						break;
+					case "78'": // 'N' key
+						robot.keyRelease(KeyEvent.VK_N);
+						System.out.println("Released 'N' key");
+						break;
+					case "79'": // 'O' key
+						robot.keyRelease(KeyEvent.VK_O);
+						System.out.println("Released 'O' key");
+						break;
+					case "80'": // 'P' key
+						robot.keyRelease(KeyEvent.VK_P);
+						System.out.println("Released 'P' key");
+						break;
+					case "81'": // 'Q' key
+						robot.keyRelease(KeyEvent.VK_Q);
+						System.out.println("Released 'Q' key");
+						break;
+					case "82'": // 'R' key
+						robot.keyRelease(KeyEvent.VK_R);
+						System.out.println("Released 'R' key");
+						break;
+					case "83'": // 'S' key
+						robot.keyRelease(KeyEvent.VK_S);
+						System.out.println("Released 'S' key");
+						break;
+					case "84'": // 'T' key
+						robot.keyRelease(KeyEvent.VK_T);
+						System.out.println("Released 'T' key");
+						break;
+					case "85'": // 'U' key
+						robot.keyRelease(KeyEvent.VK_U);
+						System.out.println("Released 'U' key");
+						break;
+					case "86'": // 'V' key
+						robot.keyRelease(KeyEvent.VK_V);
+						System.out.println("Released 'V' key");
+						break;
+					case "87'": // 'W' key
+						robot.keyRelease(KeyEvent.VK_W);
+						System.out.println("Released 'W' key");
+						break;
+					case "88'": // 'X' key
+						robot.keyRelease(KeyEvent.VK_X);
+						System.out.println("Released 'X' key");
+						break;
+					case "89'": // 'Y' key
+						robot.keyRelease(KeyEvent.VK_Y);
+						System.out.println("Released 'Y' key");
+						break;
+					case "90'": // 'Z' key
+						robot.keyRelease(KeyEvent.VK_Z);
+						System.out.println("Released 'Z' key");
+						break;
+					case "16":
+						robot.keyPress(KeyEvent.VK_SHIFT);
+						System.out.println("Pressed Shift");
+						break;
+					case "17":
+						robot.keyPress(KeyEvent.VK_CONTROL);
+						System.out.println("Pressed Control");
+						break;
+					case "18":
+						robot.keyPress(KeyEvent.VK_ALT);
+						System.out.println("Pressed Alt");
+						break;
+					case "16'":
+						robot.keyRelease(KeyEvent.VK_SHIFT);
+						System.out.println("Released Shift");
+						break;
+					case "17'":
+						robot.keyRelease(KeyEvent.VK_CONTROL);
+						System.out.println("Released Control");
+						break;
+					case "18'":
+						robot.keyRelease(KeyEvent.VK_ALT);
+						System.out.println("Released Alt");
+						break;
+					case "48": // '0' key
+						robot.keyPress(KeyEvent.VK_0);
+						System.out.println("Pressed '0' key");
+						break;
+					case "49": // '1' key
+						robot.keyPress(KeyEvent.VK_1);
+						System.out.println("Pressed '1' key");
+						break;
+					case "50": // '2' key
+						robot.keyPress(KeyEvent.VK_2);
+						System.out.println("Pressed '2' key");
+						break;
+					case "51": // '3' key
+						robot.keyPress(KeyEvent.VK_3);
+						System.out.println("Pressed '3' key");
+						break;
+					case "52": // '4' key
+						robot.keyPress(KeyEvent.VK_4);
+						System.out.println("Pressed '4' key");
+						break;
+					case "53": // '5' key
+						robot.keyPress(KeyEvent.VK_5);
+						System.out.println("Pressed '5' key");
+						break;
+					case "54": // '6' key
+						robot.keyPress(KeyEvent.VK_6);
+						System.out.println("Pressed '6' key");
+						break;
+					case "55": // '7' key
+						robot.keyPress(KeyEvent.VK_7);
+						System.out.println("Pressed '7' key");
+						break;
+					case "56": // '8' key
+						robot.keyPress(KeyEvent.VK_8);
+						System.out.println("Pressed '8' key");
+						break;
+					case "57": // '9' key
+						robot.keyPress(KeyEvent.VK_9);
+						System.out.println("Pressed '9' key");
+						break;
+
 				}
 
 			}
