@@ -1,10 +1,8 @@
 package KeyboardConnection.Server;
 
-import javax.naming.ldap.SortKey;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 
