@@ -802,6 +802,41 @@
 								System.out.println(ex.getLocalizedMessage());
 							}
 						}
+						case ' ' -> {
+							try {
+								datagramSocket.send(packet_spaceKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '\n' -> {
+							try {
+								datagramSocket.send(packet_enterKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '\t' -> {
+							try {
+								datagramSocket.send(packet_tabKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '\b' -> {
+							try {
+								datagramSocket.send(packet_backspaceKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '\u001B' -> {
+							try {
+								datagramSocket.send(packet_escKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
 					}
 				}
 
@@ -1124,6 +1159,41 @@
 								System.out.println(ex.getLocalizedMessage());
 							}
 							break;
+						}
+						case ' ' : {
+							try {
+								datagramSocket.send(spaceKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '\n' : {
+							try {
+								datagramSocket.send(enterKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '\t' : {
+							try {
+								datagramSocket.send(tabKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '\b' : {
+							try {
+								datagramSocket.send(backspaceKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case '\u001B' : {
+							try {
+								datagramSocket.send(escKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
 						}
 					}
 				}

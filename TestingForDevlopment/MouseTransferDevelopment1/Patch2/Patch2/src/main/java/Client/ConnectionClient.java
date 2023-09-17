@@ -12,11 +12,9 @@ public class ConnectionClient {
 	Socket clientSocket;
 	boolean connectionEstablished;
 	OutputStream outputStream;
-
 	{
-
 		try {
-			inetAddress = InetAddress.getByName("10.200.233.99");
+			inetAddress = InetAddress.getByName("10.200.233.67");
 		} catch (UnknownHostException e) {
 			throw new RuntimeException(e);
 		}
