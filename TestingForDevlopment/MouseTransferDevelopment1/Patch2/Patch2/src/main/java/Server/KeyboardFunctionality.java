@@ -1051,6 +1051,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case '1' : {
 							try {
@@ -1058,6 +1059,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case '2' : {
 							try {
@@ -1065,6 +1067,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case '3' : {
 							try {
@@ -1072,6 +1075,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case '4' : {
 							try {
@@ -1079,6 +1083,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case '5' : {
 							try {
@@ -1086,6 +1091,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case '6' : {
 							try {
@@ -1093,6 +1099,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case '7' : {
 							try {
@@ -1100,6 +1107,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case '8' : {
 							try {
@@ -1107,6 +1115,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case '9' : {
 							try {
@@ -1114,6 +1123,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 					}
 				}
