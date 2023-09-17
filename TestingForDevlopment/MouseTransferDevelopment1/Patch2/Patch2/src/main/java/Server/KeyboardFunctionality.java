@@ -517,40 +517,222 @@
 
 				@Override
 				public void keyPressed(KeyEvent e) {
-					switch (e.getKeyCode()) {
-						case KeyEvent.VK_SHIFT:
-							if (!shiftPress){
-								try {
-									System.out.println("Shift Pressed");
-									datagramSocket.send(packet_shiftKey_pressed);
-									shiftPress = true;
-								} catch (IOException ex) {
-									throw new RuntimeException(ex);
-								}
+                    switch (e.getKeyCode()) {
+                        case KeyEvent.VK_SHIFT -> {
+                            if (!shiftPress) {
+                                try {
+                                    System.out.println("Shift Pressed");
+                                    datagramSocket.send(packet_shiftKey_pressed);
+                                    shiftPress = true;
+                                } catch (IOException ex) {
+                                    throw new RuntimeException(ex);
+                                }
+                            }
+                        }
+                        case KeyEvent.VK_ALT -> {
+                            if (!altPress) {
+                                try {
+                                    System.out.println("Alt Pressed");
+                                    datagramSocket.send(packet_altKey_pressed);
+                                    altPress = true;
+                                } catch (IOException ex) {
+                                    throw new RuntimeException(ex);
+                                }
+                            }
+                        }
+                        case KeyEvent.VK_CONTROL -> {
+                            if (!ctrlPress) {
+                                try {
+                                    System.out.println("Control Pressed");
+                                    datagramSocket.send(packet_ctrlKey_pressed);
+                                } catch (IOException ex) {
+                                    throw new RuntimeException(ex);
+                                }
+                            }
+                        }
+						case KeyEvent.VK_A -> {
+							try {
+								datagramSocket.send(packet_aKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
 							}
-							break;
-						case KeyEvent.VK_ALT:
-							if (!altPress){
-								try {
-									System.out.println("Alt Pressed");
-									datagramSocket.send(packet_altKey_pressed);
-									altPress = true;
-								} catch (IOException ex) {
-									throw new RuntimeException(ex);
-								}
+						}
+						case KeyEvent.VK_B -> {
+							try {
+								datagramSocket.send(packet_bKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
 							}
-							break;
-						case KeyEvent.VK_CONTROL:
-							if (!ctrlPress){
-								try {
-									System.out.println("Control Pressed");
-									datagramSocket.send(packet_ctrlKey_pressed);
-								} catch (IOException ex) {
-									throw new RuntimeException(ex);
-								}
+						}
+						case KeyEvent.VK_C -> {
+							try {
+								datagramSocket.send(packet_cKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
 							}
-							break;
-					}
+						}
+						case KeyEvent.VK_D -> {
+							try {
+								datagramSocket.send(packet_dKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_E -> {
+							try {
+								datagramSocket.send(packet_eKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_F -> {
+							try {
+								datagramSocket.send(packet_fKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_G -> {
+							try {
+								datagramSocket.send(packet_gKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_H -> {
+							try {
+								datagramSocket.send(packet_hKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_I -> {
+							try {
+								datagramSocket.send(packet_iKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_J -> {
+							try {
+								datagramSocket.send(packet_jKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_K -> {
+							try {
+								datagramSocket.send(packet_kKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_L -> {
+							try {
+								datagramSocket.send(packet_lKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_M -> {
+							try {
+								datagramSocket.send(packet_mKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_N -> {
+							try {
+								datagramSocket.send(packet_nKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_O -> {
+							try {
+								datagramSocket.send(packet_oKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_P -> {
+							try {
+								datagramSocket.send(packet_pKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_Q -> {
+							try {
+								datagramSocket.send(packet_qKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_R -> {
+							try {
+								datagramSocket.send(packet_rKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_S -> {
+							try {
+								datagramSocket.send(packet_sKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_T -> {
+							try {
+								datagramSocket.send(packet_tKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_U -> {
+							try {
+								datagramSocket.send(packet_uKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_V -> {
+							try {
+								datagramSocket.send(packet_vKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_W -> {
+							try {
+								datagramSocket.send(packet_wKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_X -> {
+							try {
+								datagramSocket.send(packet_xKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_Y -> {
+							try {
+								datagramSocket.send(packet_yKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_Z -> {
+							try {
+								datagramSocket.send(packet_zKey_pressed);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+                    }
 				}
 
 				@Override
@@ -585,6 +767,188 @@
 									throw new RuntimeException(ex);
 							}
 							break;
+						case KeyEvent.VK_A :{
+							try {
+								datagramSocket.send(aKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_B : {
+							try {
+								datagramSocket.send(bKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_C : {
+							try {
+								datagramSocket.send(cKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_D : {
+							try {
+								datagramSocket.send(dKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_E : {
+							try {
+								datagramSocket.send(eKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_F :{
+							try {
+								datagramSocket.send(fKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_G : {
+							try {
+								datagramSocket.send(gKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_H : {
+							try {
+								datagramSocket.send(hKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_I : {
+							try {
+								datagramSocket.send(iKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_J : {
+							try {
+								datagramSocket.send(jKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_K : {
+							try {
+								datagramSocket.send(kKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_L :{
+							try {
+								datagramSocket.send(lKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_M : {
+							try {
+								datagramSocket.send(mKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_N: {
+							try {
+								datagramSocket.send(nKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_O : {
+							try {
+								datagramSocket.send(oKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_P :{
+							try {
+								datagramSocket.send(pKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_Q :{
+							try {
+								datagramSocket.send(qKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_R : {
+							try {
+								datagramSocket.send(rKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_S : {
+							try {
+								datagramSocket.send(sKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_T :{
+							try {
+								datagramSocket.send(tKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_U : {
+							try {
+								datagramSocket.send(uKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_V :{
+							try {
+								datagramSocket.send(vKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_W : {
+							try {
+								datagramSocket.send(wKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_X : {
+							try {
+								datagramSocket.send(xKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_Y : {
+							try {
+								datagramSocket.send(yKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
+						case KeyEvent.VK_Z : {
+							try {
+								datagramSocket.send(zKeyReleasedPacket);
+							} catch (IOException ex) {
+								System.out.println(ex.getLocalizedMessage());
+							}
+						}
 					}
 				}
 
