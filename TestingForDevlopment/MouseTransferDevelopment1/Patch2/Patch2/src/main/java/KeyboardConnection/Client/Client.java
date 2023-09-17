@@ -45,6 +45,14 @@ public class Client {
                         robot.keyRelease(65);
                         System.out.println("A Released");
                         break;
+                    case "16":
+                        robot.keyRelease(16);
+                        System.out.println("Shift Pressed");
+                        break;
+                    case "16'":
+                        robot.keyRelease(16);
+                        System.out.println("Shift Released");
+                        break;
                 }
             }
         }
