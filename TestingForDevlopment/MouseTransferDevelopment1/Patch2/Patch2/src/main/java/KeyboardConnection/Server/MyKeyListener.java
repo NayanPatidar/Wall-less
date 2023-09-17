@@ -41,8 +41,10 @@ public class MyKeyListener implements KeyListener {
             out.println(altPacketPress);
         } else if (keyCode == KeyEvent.VK_CONTROL) {
             ctrlPressed = true;
+            out.println(ctrlPacketPress);
         } else if (keyCode == KeyEvent.VK_T) {
             tPressed = true;
+            out.println(ctrlPacketPress);
         }
 
         checkKeys();
@@ -67,8 +69,10 @@ public class MyKeyListener implements KeyListener {
             out.println(altPacketRelease);
         } else if (keyCode == KeyEvent.VK_CONTROL) {
             ctrlPressed = false;
+            out.println(ctrlPacketRelease);
         } else if (keyCode == KeyEvent.VK_T) {
             tPressed = false;
+            out.println(TPacketRelease);
         }
 
         checkKeys();
