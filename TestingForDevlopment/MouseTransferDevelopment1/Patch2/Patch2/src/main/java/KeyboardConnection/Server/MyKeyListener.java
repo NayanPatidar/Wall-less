@@ -45,6 +45,8 @@ public class MyKeyListener implements KeyListener {
         } else if (keyCode == KeyEvent.VK_A) {
             tPressed = true;
             out.println(APacketPress);
+        } else if (keyCode == KeyEvent.VK_SHIFT) {
+            out.println(shiftPacketPress);
         }
 
         checkKeys();
@@ -73,6 +75,8 @@ public class MyKeyListener implements KeyListener {
         } else if (keyCode == KeyEvent.VK_A) {
             tPressed = false;
             out.println(APacketRelease);
+        } else if (keyCode == KeyEvent.VK_SHIFT) {
+            out.println(shiftPacketRelease);
         }
 
         checkKeys();
