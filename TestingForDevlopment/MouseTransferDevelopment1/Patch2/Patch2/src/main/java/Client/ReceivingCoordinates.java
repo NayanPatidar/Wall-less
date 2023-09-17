@@ -382,6 +382,46 @@ public class ReceivingCoordinates implements Runnable{
 						robot.keyRelease(KeyEvent.VK_9);
 						System.out.println("Released '9' key");
 						break;
+					case "32'": // Space key
+						robot.keyRelease(KeyEvent.VK_SPACE);
+						System.out.println("Released space key");
+						break;
+					case "10'": // Enter key
+						robot.keyRelease(KeyEvent.VK_ENTER);
+						System.out.println("Released Enter key");
+						break;
+					case "9'": // Tab key
+						robot.keyRelease(KeyEvent.VK_TAB);
+						System.out.println("Released Tab key");
+						break;
+					case "27'": // Esc key
+						robot.keyRelease(KeyEvent.VK_ESCAPE);
+						System.out.println("Released Esc key");
+						break;
+					case "8'": // Backspace key
+						robot.keyRelease(KeyEvent.VK_BACK_SPACE);
+						System.out.println("Released Backspace key");
+						break;
+					case "27": // Esc key
+						robot.keyPress(KeyEvent.VK_ESCAPE);
+						System.out.println("Pressed Esc key");
+						break;
+					case "8": // Backspace key
+						robot.keyPress(KeyEvent.VK_BACK_SPACE);
+						System.out.println("Pressed Backspace key");
+						break;
+					case "32": // Space key
+						robot.keyPress(KeyEvent.VK_SPACE);
+						System.out.println("Pressed space key");
+						break;
+					case "10": // Enter key
+						robot.keyPress(KeyEvent.VK_ENTER);
+						System.out.println("Pressed Enter key");
+						break;
+					case "9": // Tab key
+						robot.keyPress(KeyEvent.VK_TAB);
+						System.out.println("Pressed Tab key");
+						break;
 				}
 			}
 		}
