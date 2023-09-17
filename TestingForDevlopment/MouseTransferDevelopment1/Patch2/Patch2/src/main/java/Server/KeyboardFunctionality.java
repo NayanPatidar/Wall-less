@@ -7,14 +7,15 @@
 	import java.net.DatagramPacket;
 	import java.net.DatagramSocket;
 	import java.net.InetAddress;
+	import java.net.Socket;
 
 	public class KeyboardFunctionality  {
 		static private JFrame jFrame;
 		private final KeyListener keyListener;
 
-		boolean alt = false;
-		boolean ctrl = false;
-		boolean shift = false;
+		boolean altPress = false;
+		boolean ctrlPress = false;
+		boolean shiftPress = false;
 
 		public KeyboardFunctionality(JFrame jFrame, DatagramSocket datagramSocket, InetAddress inetAddress, int portUDP) {
 
@@ -512,23 +513,84 @@
 
 			keyListener = new KeyListener() {
 
-				@Override
-				public void keyTyped(KeyEvent e) {
 
-				}
 
 				@Override
 				public void keyPressed(KeyEvent e) {
-					switch (e.getKeyChar()) {
-
+					switch (e.getKeyCode()) {
+						case KeyEvent.VK_SHIFT:
+							if (!shiftPress){
+								try {
+									System.out.println("Shift Pressed");
+									datagramSocket.send(packet_shiftKey_pressed);
+									shiftPress = true;
+								} catch (IOException ex) {
+									throw new RuntimeException(ex);
+								}
+							}
+							break;
+						case KeyEvent.VK_ALT:
+							if (!altPress){
+								try {
+									System.out.println("Alt Pressed");
+									datagramSocket.send(packet_altKey_pressed);
+									altPress = true;
+								} catch (IOException ex) {
+									throw new RuntimeException(ex);
+								}
+							}
+							break;
+						case KeyEvent.VK_CONTROL:
+							if (!ctrlPress){
+								try {
+									System.out.println("Control Pressed");
+									datagramSocket.send(packet_ctrlKey_pressed);
+								} catch (IOException ex) {
+									throw new RuntimeException(ex);
+								}
+							}
+							break;
 					}
 				}
 
 				@Override
 				public void keyReleased(KeyEvent e) {
 					switch (e.getKeyChar()) {
+						case KeyEvent.VK_SHIFT:
+								try {
+									System.out.println("Shift Released");
+									datagramSocket.send(shiftKeyReleasedPacket);
+									shiftPress = false;
+								} catch (IOException ex) {
+									throw new RuntimeException(ex);
 
+							}
+							break;
+						case KeyEvent.VK_ALT:
+								try {
+									System.out.println("Alt Released");
+									datagramSocket.send(altKeyReleasedPacket);
+									altPress = false;
+								} catch (IOException ex) {
+									throw new RuntimeException(ex);
+
+							}
+							break;
+						case KeyEvent.VK_CONTROL:
+								try {
+									System.out.println("Control Released");
+									datagramSocket.send(ctrlKeyReleasedPacket);
+									ctrlPress = false;
+								} catch (IOException ex) {
+									throw new RuntimeException(ex);
+							}
+							break;
 					}
+				}
+
+				@Override
+				public void keyTyped(KeyEvent e) {
+
 				}
 			};
 			jFrame.addKeyListener(keyListener);

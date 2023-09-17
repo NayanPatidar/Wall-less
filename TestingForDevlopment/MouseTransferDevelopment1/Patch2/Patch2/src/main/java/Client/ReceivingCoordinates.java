@@ -81,6 +81,33 @@ public class ReceivingCoordinates implements Runnable{
 			} else if (receivedMsg.startsWith("K:")){
 				String msg = receivedMsg.substring(2);
 
+				switch (msg){
+					case "16":
+						robot.keyPress(KeyEvent.VK_SHIFT);
+						System.out.println("Pressed Shift");
+						break;
+					case "17":
+						robot.keyPress(KeyEvent.VK_CONTROL);
+						System.out.println("Pressed Control");
+						break;
+					case "18":
+						robot.keyPress(KeyEvent.VK_ALT);
+						System.out.println("Pressed Alt");
+						break;
+					case "16'":
+						robot.keyRelease(KeyEvent.VK_SHIFT);
+						System.out.println("Released Shift");
+						break;
+					case "17'":
+						robot.keyRelease(KeyEvent.VK_CONTROL);
+						System.out.println("Released Control");
+						break;
+					case "18'":
+						robot.keyRelease(KeyEvent.VK_ALT);
+						System.out.println("Released Alt");
+						break;
+				}
+
 			}
 		}
 	}
