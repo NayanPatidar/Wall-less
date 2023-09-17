@@ -10,9 +10,11 @@ import java.net.Socket;
 public class Client {
     public static void main(String[] args) throws IOException, AWTException {
         boolean shiftPressed = false;
+        boolean altPressed = false;
+        boolean ctrlPressed = false;
 
         Robot robot = new Robot();
-        Socket socket = new Socket("10.200.233.99", 8080);
+        Socket socket = new Socket("10.200.233.67", 8080);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
         byte[] buffer = new byte[1024];
@@ -20,30 +22,38 @@ public class Client {
             String message = bufferedReader.readLine();
             if (message.startsWith("K:")) {
                 String code = message.substring(2);
-                System.out.println(code);
-
                 switch (code){
 
                     case "18":
-                        robot.keyPress(18);
-                        System.out.println("Alt Pressed");
+                        if (!altPressed) {
+                            robot.keyPress(18);
+                            System.out.println("Alt Pressed");
+                            altPressed = true;
+                        }
                         break;
                     case "18'":
                         robot.keyRelease(18);
                         System.out.println("Alt Released");
+                        altPressed = false;
                         break;
                     case "17":
-                        robot.keyPress(17);
-                        System.out.println("Ctrl Pressed");
+                        if (!ctrlPressed) {
+                            robot.keyPress(17);
+                            System.out.println("Ctrl Pressed");
+                            ctrlPressed = true;
+                        }
                         break;
                     case "17'":
                         robot.keyRelease(17);
                         System.out.println("Ctrl Released");
+                        ctrlPressed = false;
                         break;
                     case "16":
-                        robot.keyRelease(16);
-                        System.out.println("Shift Pressed");
-                        shiftPressed = true;
+                        if (!shiftPressed) {
+                            robot.keyRelease(16);
+                            System.out.println("Shift Pressed");
+                            shiftPressed = true;
+                        }
                         break;
                     case "16'":
                         robot.keyRelease(16);
@@ -66,7 +76,7 @@ public class Client {
                         robot.keyRelease(65);
                         System.out.println("A Released");
                         break;
-
+//aaA
                 }
             }
         }
