@@ -26,7 +26,7 @@ public class MyKeyListener implements KeyListener {
     public void keyPressed(KeyEvent e) {
         String altPacketPress = "K:18";
         String ctrlPacketPress = "K:17";
-        String TPacketPress = "K:84";
+        String APacketPress = "K:65";
         String shiftPacketPress = "K:16";
 
 //        byte[] bytes_altPress = altPacketPress.getBytes();
@@ -42,9 +42,9 @@ public class MyKeyListener implements KeyListener {
         } else if (keyCode == KeyEvent.VK_CONTROL) {
             ctrlPressed = true;
             out.println(ctrlPacketPress);
-        } else if (keyCode == KeyEvent.VK_T) {
+        } else if (keyCode == KeyEvent.VK_A) {
             tPressed = true;
-            out.println(ctrlPacketPress);
+            out.println(APacketPress);
         }
 
         checkKeys();
@@ -54,7 +54,7 @@ public class MyKeyListener implements KeyListener {
     public void keyReleased(KeyEvent e) {
         String altPacketRelease = "K:18'";
         String ctrlPacketRelease = "K:17'";
-        String TPacketRelease = "K:84'";
+        String APacketRelease = "K:65'";
         String shiftPacketRelease = "K:16'";
 
 //        byte[] bytes_altRelease = altPacketRelease.getBytes();
@@ -70,9 +70,9 @@ public class MyKeyListener implements KeyListener {
         } else if (keyCode == KeyEvent.VK_CONTROL) {
             ctrlPressed = false;
             out.println(ctrlPacketRelease);
-        } else if (keyCode == KeyEvent.VK_T) {
+        } else if (keyCode == KeyEvent.VK_A) {
             tPressed = false;
-            out.println(TPacketRelease);
+            out.println(APacketRelease);
         }
 
         checkKeys();
@@ -86,7 +86,7 @@ public class MyKeyListener implements KeyListener {
     private void checkKeys() {
         if (altPressed && ctrlPressed && tPressed) {
             // Alt + Ctrl + T is pressed
-            System.out.println("Alt + Ctrl + T is pressed");
+            System.out.println("Alt + Ctrl + A is pressed");
             // Reset the flags
             altPressed = false;
             ctrlPressed = false;
