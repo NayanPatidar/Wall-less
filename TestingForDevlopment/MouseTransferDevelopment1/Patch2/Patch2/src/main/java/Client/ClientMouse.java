@@ -35,6 +35,4 @@ public class ClientMouse {
 			throw new RuntimeException(e);
 		}
 	}
-
-
 }
