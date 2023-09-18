@@ -843,7 +843,6 @@
                             } catch (IOException ex) {
                                 System.out.println(ex.getLocalizedMessage());
                             }
-                            break;
                         }
                         case KeyEvent.VK_F2 -> {
                             System.out.println("F2 Key");
@@ -852,7 +851,6 @@
                             } catch (IOException ex) {
                                 System.out.println(ex.getLocalizedMessage());
                             }
-                            break;
                         }
                         case KeyEvent.VK_F3 -> {
                             System.out.println("F3 Key");
@@ -861,7 +859,7 @@
                             } catch (IOException ex) {
                                 System.out.println(ex.getLocalizedMessage());
                             }
-                            break;
+
                         }
                         case KeyEvent.VK_F4 -> {
                             System.out.println("F4 Key");
@@ -1478,6 +1476,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case '\n' : {
 							try {
@@ -1485,6 +1484,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case '\t' : {
 							try {
@@ -1492,6 +1492,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case '\b' : {
 							try {
@@ -1499,6 +1500,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case '\u001B' : {
 							try {
@@ -1506,6 +1508,7 @@
 							} catch (IOException ex) {
 								System.out.println(ex.getLocalizedMessage());
 							}
+							break;
 						}
 						case KeyEvent.VK_F1: {
 							System.out.println("F1 Key");
