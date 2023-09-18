@@ -54,7 +54,7 @@ public class ReceivingCoordinates implements Runnable{
 
 				if (x >= dimension.width-2){
 					System.out.println("Left Screen");
-					robot.mouseMove(750,350);
+					robot.mouseMove(70,toolkit.getScreenSize().height);
 				}
 			} else if (receivedMsg.startsWith("B:")) {
 				String msg = receivedMsg.substring(2);
