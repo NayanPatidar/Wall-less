@@ -7,7 +7,6 @@
 	import java.net.DatagramPacket;
 	import java.net.DatagramSocket;
 	import java.net.InetAddress;
-	import java.net.Socket;
 
 	public class KeyboardFunctionality  {
 		static private JFrame jFrame;
@@ -1132,15 +1131,24 @@
                             break;
                         }
                         case 192 -> {
-                         // Backtick/Grave Accent key
-                        System.out.println("Backtick/Grave Accent Key");
-                        try {
-                            datagramSocket.send(packetBacktickKey);
-                        } catch (IOException ex) {
-                            System.out.println(ex.getLocalizedMessage());
+                            // Backtick/Grave Accent key
+                            System.out.println("Backtick/Grave Accent Key");
+                            try {
+                                datagramSocket.send(packetBacktickKey);
+                            } catch (IOException ex) {
+                                System.out.println(ex.getLocalizedMessage());
+                            }
+                            break;
                         }
-                        break;
-                    }
+                        case KeyEvent.VK_CAPS_LOCK -> {
+                            System.out.println("Caps Lock Key");
+                            try {
+                                datagramSocket.send(packet_capsLockKey_pressed);
+                            } catch (IOException ex) {
+                                System.out.println(ex.getLocalizedMessage());
+                            }
+                            break;
+                        }
 					}
 				}
 
@@ -1619,7 +1627,7 @@
                         case KeyEvent.VK_OPEN_BRACKET:
                             System.out.println("Open Bracket Key");
                             try {
-                                datagramSocket.send(packetOpenBracketKey);
+                                datagramSocket.send(openBracketKeyReleasedPacket);
                             } catch (IOException ex) {
                                 throw new RuntimeException(ex);
                             }
@@ -1628,7 +1636,7 @@
                         case KeyEvent.VK_CLOSE_BRACKET:
                             System.out.println("Close Bracket Key");
                             try {
-                                datagramSocket.send(packetCloseBracketKey);
+                                datagramSocket.send(closeBracketKeyReleasedPacket);
                             } catch (IOException ex) {
                                 throw new RuntimeException(ex);
                             }
@@ -1637,7 +1645,7 @@
                         case KeyEvent.VK_SEMICOLON:
                             System.out.println("Semicolon Key");
                             try {
-                                datagramSocket.send(packetSemicolonKey);
+                                datagramSocket.send(semicolonKeyReleasedPacket);
                             } catch (IOException ex) {
                                 throw new RuntimeException(ex);
                             }
@@ -1646,7 +1654,7 @@
                         case KeyEvent.VK_SLASH:
                             System.out.println("Slash Key");
                             try {
-                                datagramSocket.send(packetForwardSlashKey);
+                                datagramSocket.send(forwardSlashKeyReleasedPacket);
                             } catch (IOException ex) {
                                 throw new RuntimeException(ex);
                             }
@@ -1655,7 +1663,7 @@
                         case KeyEvent.VK_BACK_SLASH:
                             System.out.println("Backslash Key");
                             try {
-                                datagramSocket.send(packetBackslashKey);
+                                datagramSocket.send(backslashKeyReleasedPacket);
                             } catch (IOException ex) {
                                 throw new RuntimeException(ex);
                             }
@@ -1664,7 +1672,7 @@
                         case KeyEvent.VK_QUOTE:
                             System.out.println("Quote Key");
                             try {
-                                datagramSocket.send(packetQuoteKey);
+                                datagramSocket.send(quoteKeyReleasedPacket);
                             } catch (IOException ex) {
                                 throw new RuntimeException(ex);
                             }
@@ -1672,7 +1680,7 @@
                         case KeyEvent.VK_UP:
                             System.out.println("Up Arrow Key");
                             try {
-                                datagramSocket.send(packetArrowUpKey);
+                                datagramSocket.send(arrowUpKeyReleasedPacket);
                             } catch (IOException ex) {
                                 throw new RuntimeException(ex);
                             }
@@ -1681,7 +1689,7 @@
                         case KeyEvent.VK_DOWN:
                             System.out.println("Down Arrow Key");
                             try {
-                                datagramSocket.send(packetArrowDownKey);
+                                datagramSocket.send(arrowDownKeyReleasedPacket);
                             } catch (IOException ex) {
                                 throw new RuntimeException(ex);
                             }
@@ -1690,7 +1698,7 @@
                         case KeyEvent.VK_LEFT:
                             System.out.println("Left Arrow Key");
                             try {
-                                datagramSocket.send(packetArrowLeftKey);
+                                datagramSocket.send(arrowLeftKeyReleasedPacket);
                             } catch (IOException ex) {
                                 throw new RuntimeException(ex);
                             }
@@ -1699,7 +1707,7 @@
                         case KeyEvent.VK_RIGHT:
                             System.out.println("Right Arrow Key");
                             try {
-                                datagramSocket.send(packetArrowRightKey);
+                                datagramSocket.send(arrowRightKeyReleasedPacket);
                             } catch (IOException ex) {
                                 throw new RuntimeException(ex);
                             }
@@ -1708,7 +1716,7 @@
                         case KeyEvent.VK_COMMA:
                             System.out.println("Comma Key");
                             try {
-                                datagramSocket.send(packetCommaKey);
+                                datagramSocket.send(commaKeyReleasedPacket);
                             } catch (IOException ex) {
                                 throw new RuntimeException(ex);
                             }
@@ -1716,7 +1724,7 @@
                         case KeyEvent.VK_PERIOD:
                             System.out.println("Period Key");
                             try {
-                                datagramSocket.send(packetPeriodKey);
+                                datagramSocket.send(periodKeyReleasedPacket);
                             } catch (IOException ex) {
                                 throw new RuntimeException(ex);
                             }
@@ -1724,7 +1732,7 @@
                         case KeyEvent.VK_EQUALS: // Equals (=) key
                             System.out.println("Equals (=) Key");
                             try {
-                                datagramSocket.send(packetEqualKey);
+                                datagramSocket.send(equalKeyReleasedPacket);
                             } catch (IOException ex) {
                                 throw new RuntimeException(ex);
                             }
@@ -1733,7 +1741,7 @@
                         case KeyEvent.VK_MINUS: // Minus (-) key
                             System.out.println("Minus (-) Key");
                             try {
-                                datagramSocket.send(packetMinusKey);
+                                datagramSocket.send(minusKeyReleasedPacket);
                             } catch (IOException ex) {
                                 throw new RuntimeException(ex);
                             }
@@ -1742,7 +1750,7 @@
                         case KeyEvent.VK_END: // End key
                             System.out.println("End Key");
                             try {
-                                datagramSocket.send(packetEndKey);
+                                datagramSocket.send(endKeyReleasedPacket);
                             } catch (IOException ex) {
                                 throw new RuntimeException(ex);
                             }
@@ -1750,7 +1758,7 @@
                         case KeyEvent.VK_PAGE_UP:
                             System.out.println("Page Up Key");
                             try {
-                                datagramSocket.send(packetPageUpKey);
+                                datagramSocket.send(pageUpKeyReleasedPacket);
                             } catch (IOException ex) {
                                 System.out.println(ex.getLocalizedMessage());
                             }
@@ -1758,7 +1766,7 @@
                         case KeyEvent.VK_PAGE_DOWN: // Page Down key
                             System.out.println("Page Down Key");
                             try {
-                                datagramSocket.send(packetPageDownKey);
+                                datagramSocket.send(pageDownKeyReleasedPacket);
                             } catch (IOException ex) {
                                 throw new RuntimeException(ex);
                             }
@@ -1767,7 +1775,7 @@
                         case KeyEvent.VK_NUM_LOCK: // Num Lock key
                             System.out.println("Num Lock Key");
                             try {
-                                datagramSocket.send(packetNumLockKey);
+                                datagramSocket.send(numLockKeyReleasedPacket);
                             } catch (IOException ex) {
                                 throw new RuntimeException(ex);
                             }
@@ -1776,7 +1784,7 @@
                         case KeyEvent.VK_HOME: // Home key
                             System.out.println("Home Key");
                             try {
-                                datagramSocket.send(packetHomeKey);
+                                datagramSocket.send(homeKeyReleasedPacket);
                             } catch (IOException ex) {
                                 throw new RuntimeException(ex);
                             }
@@ -1784,11 +1792,20 @@
                         case 192: // Backtick/Grave Accent key
                             System.out.println("Backtick/Grave Accent Key");
                             try {
-                                datagramSocket.send(packetBacktickKey);
+                                datagramSocket.send(backtickKeyReleasedPacket);
                             } catch (IOException ex) {
                                 System.out.println(ex.getLocalizedMessage());
                             }
                             break;
+                        case KeyEvent.VK_CAPS_LOCK: {
+                            System.out.println("Caps Lock Key");
+                            try {
+                                datagramSocket.send(capsLockKeyReleasedPacket);
+                            } catch (IOException ex) {
+                                System.out.println(ex.getLocalizedMessage());
+                            }
+                            break;
+                        }
 
 					}
 				}
