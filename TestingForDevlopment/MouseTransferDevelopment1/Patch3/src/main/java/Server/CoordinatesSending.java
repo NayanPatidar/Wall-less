@@ -19,6 +19,7 @@ public class CoordinatesSending {
 	DatagramSocket datagramSocket;
 	InetAddress inetAddress;
 	int portUDP;
+	int portTCP;
 	boolean stop = false;
 	String clientScreenSize = " ";
 	int ClientWidth;
