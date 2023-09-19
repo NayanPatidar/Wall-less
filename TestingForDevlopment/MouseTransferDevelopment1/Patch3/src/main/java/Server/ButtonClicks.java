@@ -10,16 +10,15 @@ public class ButtonClicks implements Runnable {
 	static private JWindow jWindow;
 	private int val = 0;
 	private final SharedData sharedData;
-	Socket socket;
 	DatagramSocket datagramSocket;
 	KeyboardFunctionality keyboardFunctionality;
 	InetAddress inetAddress;
 	int portUDP;
 
-	public ButtonClicks(JWindow jWindow, SharedData sharedData, Socket socket, DatagramSocket datagramSocket, InetAddress inetAddress, int portUDP) {
+	public ButtonClicks(JWindow jWindow, SharedData sharedData, DatagramSocket datagramSocket, InetAddress inetAddress,
+	                    int portUDP) {
 		ButtonClicks.jWindow = jWindow;
 		this.sharedData = sharedData;
-		this.socket = socket;
 		this.datagramSocket = datagramSocket;
 		this.portUDP = portUDP;
 		this.inetAddress = inetAddress;

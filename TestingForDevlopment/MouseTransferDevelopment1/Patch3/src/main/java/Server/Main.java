@@ -8,10 +8,11 @@ import java.util.concurrent.TimeUnit;
 
 public class Main {
 
-	JWindow jWindow = new JWindow();
+	static JFrame jFrame = new JFrame();
+	static JWindow jWindow = new JWindow(jFrame);
 
 	DatagramSocket datagramSocket;
-	Socket socket;
+	ServerSocket serverSocket;
 	String clientScreenSize;
 
 	int portUDP = 12345;
@@ -35,19 +36,27 @@ public class Main {
 		Dimension screenSize = toolkit.getScreenSize();
 		int screenWidth = screenSize.width;
 		int screenHeight = screenSize.height;
+		jFrame.setSize(screenWidth, screenHeight);
+		jFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		jFrame.setUndecorated(true);
+		jFrame.setOpacity(0f);
+		jFrame.setAlwaysOnTop(false);
+		jFrame.setVisible(true);
 
-		SwingUtilities.invokeLater(() -> {
+		jWindow.setSize(screenWidth, screenHeight);
+		jWindow.setBackground(new Color(0, 0, 0, 1));  // Semi-transparent background
 
-			jWindow.setSize(screenWidth, screenHeight);
-			jWindow.setBackground(new Color(0, 0, 0, 1));
+		// Add a JPanel to the JWindow to capture key events
+		JPanel panel = new JPanel();
+		panel.setFocusable(true);
+		panel.setBackground(new Color(0, 0, 0, 1));
+		panel.setFocusable(true);
 
-			UDPConnectionValidation();
+		UDPConnectionValidation();
 
-			System.out.println("Threads Started");
+		System.out.println("Threads Started");
 			GUIAndMouse();
-			System.out.println("ENDED");
-		});
-
+		System.out.println("ENDED");
 
 	}
 
@@ -55,8 +64,8 @@ public class Main {
 		SharedData sharedData = new SharedData();
 
 		Thread threadA = new Thread(new GUI(jWindow, sharedData, inetAddress, datagramSocket, portUDP, clientScreenSize));
-		Thread threadB = new Thread(new MouseClicks(jWindow, sharedData, socket, datagramSocket, inetAddress, portUDP));
-		Thread threadC = new Thread(new ButtonClicks(jWindow, sharedData, socket, datagramSocket, inetAddress, portUDP));
+		Thread threadB = new Thread(new MouseClicks(jWindow, sharedData, datagramSocket, inetAddress, portUDP));
+		Thread threadC = new Thread(new ButtonClicks(jWindow, sharedData, datagramSocket, inetAddress, portUDP));
 
 
 		threadA.start();
