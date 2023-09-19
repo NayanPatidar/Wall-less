@@ -1818,11 +1818,11 @@
 
 				}
 			};
-			jFrame.addKeyListener(keyListener);
+			jWindow.addKeyListener(keyListener);
 			}
 
 		public void removeKeyListener() {
-			jFrame.removeKeyListener(keyListener);
+			jWindow.removeKeyListener(keyListener);
 			System.out.println("KeyListener removed");
 		}
 	}
