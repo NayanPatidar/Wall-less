@@ -14,13 +14,10 @@ public class ClientMouse {
 	int portTCP;
 	int portUDP;
 
-	public ClientMouse(DatagramSocket datagramSocket, InetAddress inetAddress, Socket clientSocket, int portTCP, int portUDP, OutputStream outputStream) {
+	public ClientMouse(DatagramSocket datagramSocket, InetAddress inetAddress, int portUDP) {
 		this.datagramSocket = datagramSocket;
-		this.clientSocket = clientSocket;
 		this.inetAddress = inetAddress;
-		this.portTCP = portTCP;
 		this.portUDP = portUDP;
-		this.outputStream = outputStream;
 		Operator();
 	}
 
