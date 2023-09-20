@@ -3,18 +3,23 @@ package Server;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.*;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
 
-	JWindow jWindow = new JWindow();
+	static JFrame jFrame = new JFrame();
 
 	DatagramSocket datagramSocket;
+	ServerSocket serverSocket;
 	Socket socket;
 	String clientScreenSize;
 
 	int portUDP = 12345;
+	int portTCP = 12346;
+	boolean connectionEstablished = false;
 
 	InetAddress inetAddress;
 	String msgFromClient = "";
@@ -30,40 +35,40 @@ public class Main {
 	public Main() {
 
 		// Creating a JFrame
-
 		final Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = toolkit.getScreenSize();
 		int screenWidth = screenSize.width;
 		int screenHeight = screenSize.height;
+		jFrame.setSize(screenWidth, screenHeight);
+		jFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		jFrame.setUndecorated(true);
+		jFrame.setOpacity(0.05f);
+		jFrame.setAlwaysOnTop(false);
 
-		SwingUtilities.invokeLater(() -> {
+		UDPConnectionValidation();
 
-			jWindow.setSize(screenWidth, screenHeight);
-			jWindow.setBackground(new Color(0, 0, 0, 1));
-
-			UDPConnectionValidation();
-
-			System.out.println("Threads Started");
-			GUIAndMouse();
-			System.out.println("ENDED");
-		});
-
+		System.out.println("Threads Started");
+		GUIAndMouse();
+		System.out.println("ENDED");
 
 	}
 
 	private void GUIAndMouse() {
 		SharedData sharedData = new SharedData();
 
-		Thread threadA = new Thread(new GUI(jWindow, sharedData, inetAddress, datagramSocket, portUDP, clientScreenSize));
-		Thread threadD = new Thread(new EventCaller(jWindow, sharedData, socket, datagramSocket, inetAddress, portUDP));
+		Thread threadA = new Thread(new GUI(jFrame, sharedData, inetAddress, datagramSocket, serverSocket, portTCP, portUDP, clientScreenSize));
+		Thread threadB = new Thread(new MouseClicks(jFrame, sharedData, datagramSocket, inetAddress, portUDP));
+		Thread threadC = new Thread(new ButtonClicks(jFrame, sharedData, datagramSocket, inetAddress, portUDP));
+
 
 		threadA.start();
-
-		threadD.start();
+		threadB.start();
+		threadC.start();
 
 		try {
 			threadA.join();
-			threadD.join();
+			threadB.join();
+			threadC.join();
 			System.out.println("Threads closed");
 
 		} catch (InterruptedException e) {
