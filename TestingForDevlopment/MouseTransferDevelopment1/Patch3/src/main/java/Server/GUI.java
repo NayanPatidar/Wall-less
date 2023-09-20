@@ -47,7 +47,8 @@ public class GUI implements Runnable {
 			} else if (cursor.getX() >= 5 && (sharedData.getForGui() == 0)) {
 				System.out.println("Entering Screen");
 				jWindow.dispose();
-				sharedData.setForGui(1);			}
+				sharedData.setForGui(1);
+			}
 		}
 	}
 }
