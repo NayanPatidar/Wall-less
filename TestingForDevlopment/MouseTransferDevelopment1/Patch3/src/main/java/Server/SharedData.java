@@ -5,6 +5,7 @@ public 	class SharedData {
 	public static volatile int forGui = 1;
 	public static volatile int forMouseClicks;
 	public static volatile int forButtonClicks;
+	public static volatile int forButton_Keys;
 
 	public int getForGui(){
 		return forGui;
@@ -21,6 +22,11 @@ public 	class SharedData {
 
 	public int getForButtonClicks(){
 		forButtonClicks = forGui;
+		return forButtonClicks;
+	}
+
+	public int getForMouse_Keyboard(){
+		forButton_Keys = forGui;
 		return forButtonClicks;
 	}
 }

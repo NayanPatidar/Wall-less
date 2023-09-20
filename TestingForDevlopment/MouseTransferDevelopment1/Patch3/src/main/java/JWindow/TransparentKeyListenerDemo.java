@@ -14,8 +14,9 @@ public class TransparentKeyListenerDemo {
 		SwingUtilities.invokeLater(() -> {
 
 			JFrame jFrame = new JFrame();
-			jFrame.setVisible(true);
 			jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			jFrame.setUndecorated(true);
+			jFrame.setVisible(true);
 
 			JWindow window = new JWindow(jFrame);
 			Toolkit toolkit = Toolkit.getDefaultToolkit();
