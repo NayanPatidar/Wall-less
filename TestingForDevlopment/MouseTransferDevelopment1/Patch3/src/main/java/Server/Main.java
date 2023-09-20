@@ -55,18 +55,20 @@ public class Main {
 		SharedData sharedData = new SharedData();
 
 		Thread threadA = new Thread(new GUI(jWindow, sharedData, inetAddress, datagramSocket, portUDP, clientScreenSize));
-		Thread threadB = new Thread(new MouseClicks(jWindow, sharedData, socket, datagramSocket, inetAddress, portUDP));
-		Thread threadC = new Thread(new ButtonClicks(jWindow, sharedData, socket, datagramSocket, inetAddress, portUDP));
-
+//		Thread threadB = new Thread(new MouseClicks(jWindow, sharedData, socket, datagramSocket, inetAddress, portUDP));
+//		Thread threadC = new Thread(new ButtonClicks(jWindow, sharedData, socket, datagramSocket, inetAddress, portUDP));
+		Thread threadD = new Thread(new EventCaller(jWindow, sharedData, socket, datagramSocket, inetAddress, portUDP));
 
 		threadA.start();
-		threadB.start();
-		threadC.start();
+//		threadB.start();
+//		threadC.start();
+		threadD.start();
 
 		try {
 			threadA.join();
-			threadB.join();
-			threadC.join();
+//			threadB.join();
+//			threadC.join();
+			threadD.join();
 			System.out.println("Threads closed");
 
 		} catch (InterruptedException e) {

@@ -13,7 +13,7 @@ public class ConnectionClient {
 	boolean connectionEstablished;
 	{
 		try {
-			inetAddress = InetAddress.getByName("10.200.233.67");
+			inetAddress = InetAddress.getByName("10.200.233.31");
 		} catch (UnknownHostException e) {
 			throw new RuntimeException(e);
 		}

@@ -511,9 +511,6 @@
 			DatagramPacket packetSemicolonKey = new DatagramPacket(semicolonKeyBytes, semicolonKeyBytes.length, inetAddress, portUDP);
 
 			keyListener = new KeyListener() {
-
-
-
 				@Override
 				public void keyPressed(KeyEvent e) {
 					switch (e.getKeyCode()) {
