@@ -14,7 +14,7 @@ public class MouseFunctionality  {
 	private final MouseAdapter mouseAdapter;
 
 	public MouseFunctionality(JWindow jWindow, DatagramSocket datagramSocket, InetAddress inetAddress,int portUDP) {
-		MouseFunctionality.jWindow =jWindow;
+		this.jWindow = jWindow;
 		String leftClickPressed = "B:3";
 		String middleClickPressed = "B:2";
 		String rightClickPressed = "B:1";

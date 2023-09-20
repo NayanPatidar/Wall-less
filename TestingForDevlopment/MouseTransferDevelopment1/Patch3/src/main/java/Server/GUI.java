@@ -2,7 +2,6 @@ package Server;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.ServerSocket;
@@ -16,12 +15,8 @@ public class GUI implements Runnable {
 	int portUDP ;
 	String clientScreenSize;
 
-	// Transparent Cursor
-	BufferedImage cursorImage = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
-	Cursor transparentCursor = Toolkit.getDefaultToolkit().createCustomCursor(
-					cursorImage, new Point(0, 0), "TransparentCursor");
-
-	public GUI(JWindow jWindow, SharedData sharedData, InetAddress inetAddress, DatagramSocket datagramSocket, int portUDP, String clientScreenSize) {
+	public GUI(JWindow jWindow, SharedData sharedData, InetAddress inetAddress, DatagramSocket datagramSocket, int portUDP
+					, String clientScreenSize) {
 		this.sharedData = sharedData;
 		this.jWindow = jWindow;
 		this.inetAddress = inetAddress;
@@ -41,7 +36,10 @@ public class GUI implements Runnable {
 				System.out.println("Leaving Screen");
 				jWindow.setVisible(true);
 				sharedData.setForGui(0);
-				jWindow.setCursor(transparentCursor);
+				Image blankImage = Toolkit.getDefaultToolkit().createImage(new byte[0]);
+				Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(blankImage, new Point(0, 0),
+								"blankCursor");
+				jWindow.setCursor(blankCursor);
 				new CoordinatesSending( datagramSocket, inetAddress, portUDP, clientScreenSize);
 
 			} else if (cursor.getX() >= 5 && (sharedData.getForGui() == 0)) {
