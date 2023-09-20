@@ -9,18 +9,19 @@ public class EventCaller implements Runnable{
     static private JWindow jWindow;
     private int val = 0;
     private final SharedData sharedData;
-    Socket socket;
     DatagramSocket datagramSocket;
     EventListener eventListener;
     InetAddress inetAddress;
     int portUDP;
-    public EventCaller(JWindow jWindow, SharedData sharedData, Socket socket, DatagramSocket datagramSocket, InetAddress inetAddress, int portUDP) {
+    JPanel jPanel;
+
+    public EventCaller(JPanel jPanel, JWindow jWindow, SharedData sharedData, DatagramSocket datagramSocket, InetAddress inetAddress, int portUDP) {
         EventCaller.jWindow = jWindow;
         this.sharedData = sharedData;
-        this.socket = socket;
         this.datagramSocket = datagramSocket;
         this.portUDP = portUDP;
         this.inetAddress = inetAddress;
+        this.jPanel = jPanel;
     }
 
     @Override
@@ -30,7 +31,7 @@ public class EventCaller implements Runnable{
                 System.out.println("Calling Keyboard Functionality");
 
                 SwingUtilities.invokeLater(() -> {
-                    eventListener = new EventListener(jWindow,datagramSocket, inetAddress, portUDP);
+                    eventListener = new EventListener(jPanel,jWindow,datagramSocket,inetAddress,portUDP);
                 });
                 val ++;
             } else if ((sharedData.getForButtonClicks() == 1) && (val == 1)){

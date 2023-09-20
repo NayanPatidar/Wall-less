@@ -17,8 +17,8 @@ public class EventListener {
     boolean altPress = false;
     boolean ctrlPress = false;
     boolean shiftPress = false;
-    public EventListener(JWindow jWindow, DatagramSocket datagramSocket, InetAddress inetAddress, int portUDP) {
-//        EventListener.jWindow =jWindow;
+    public EventListener(JPanel jPanel, JWindow jWindow, DatagramSocket datagramSocket, InetAddress inetAddress, int portUDP) {
+        EventListener.jWindow =jWindow;
         String leftClickPressed = "B:3";
         String middleClickPressed = "B:2";
         String rightClickPressed = "B:1";
@@ -1899,8 +1899,16 @@ public class EventListener {
             }
         };
 
-        jWindow.addMouseListener(mouseAdapter);
-        jWindow.addKeyListener(keyListener);
+        System.out.println("Adding keyListener and MouseListener");
+        jPanel.addMouseListener(mouseAdapter);
+        jPanel.addKeyListener(keyListener);
+//        jWindow.addMouseListener(mouseAdapter);
+//        jWindow.addKeyListener(keyListener);
+
+        System.out.println("Adding jPanel");
+        jWindow.add(jPanel);
+//        jWindow.addMouseListener(mouseAdapter);
+//        jWindow.addKeyListener(keyListener);
 
 
     }
