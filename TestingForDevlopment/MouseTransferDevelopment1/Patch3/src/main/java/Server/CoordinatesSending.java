@@ -16,11 +16,9 @@ public class CoordinatesSending {
 		}
 	}
 
-	Socket socket;
 	DatagramSocket datagramSocket;
 	InetAddress inetAddress;
 	int portUDP;
-	int portTCP;
 	boolean stop = false;
 	String clientScreenSize = " ";
 	int ClientWidth;
@@ -30,21 +28,15 @@ public class CoordinatesSending {
 	int loopNumX = 1;
 	int loopNumY = 1;
 
-	CoordinatesSending( DatagramSocket datagramSocket, InetAddress inetAddress, int port, int portTCP, String clientScreenSize){
-		this.socket = socket;
+	CoordinatesSending( DatagramSocket datagramSocket, InetAddress inetAddress, int portUDP, String clientScreenSize){
 		this.datagramSocket = datagramSocket;
 		this.inetAddress = inetAddress;
-		this.portUDP = port;
-		this.portTCP = portTCP;
+		this.portUDP = portUDP;
 		this.clientScreenSize = clientScreenSize;
 
-		operator();
+		sendingCoordinates();
 	}
 
-	private void operator() {
-
-	sendingCoordinates();
-	}
 
 	public void sendingCoordinates(){
 

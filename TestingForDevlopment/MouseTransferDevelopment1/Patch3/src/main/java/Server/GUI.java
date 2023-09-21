@@ -5,54 +5,52 @@ import java.awt.*;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.ServerSocket;
-import java.net.Socket;
 
-public class GUI implements Runnable {
+public class GUI {
 	DatagramSocket datagramSocket;
 	ServerSocket serverSocket;
-	Socket socket;
 	JFrame jFrame;
-	SharedData sharedData;
 	InetAddress inetAddress;
 	int portUDP ;
-	int portTCP;
 	String clientScreenSize;
-	JWindow jWindow;
-	JPanel panel;
+	EventListener eventListener;
+	int val = 0;
 
-	public GUI(JWindow jWindow, JPanel panel,JFrame jFrame, SharedData sharedData, InetAddress inetAddress, DatagramSocket datagramSocket, ServerSocket serverSocket, int portTCP, int portUDP, String clientScreenSize) {
-		this.sharedData = sharedData;
+	public GUI(JFrame jFrame, InetAddress inetAddress, DatagramSocket datagramSocket, int portUDP, String clientScreenSize) {
 		this.jFrame = jFrame;
 		this.inetAddress = inetAddress;
 		this.datagramSocket = datagramSocket;
-		this.portTCP = portTCP;
 		this.portUDP = portUDP;
-		this.serverSocket = serverSocket;
 		this.clientScreenSize = clientScreenSize;
-		this.jWindow = jWindow;
-		this.panel = panel;
+
+		Start();
 	}
 
-	@Override
-	public void run() {
+
+	public void Start() {
 		System.out.println("Screen Sharing started !!");
 
 		while (true){
 			Point cursor = MouseInfo.getPointerInfo().getLocation();
 
-			if (cursor.getX() < 5 && (sharedData.getForGui() == 1)){
+			if (cursor.getX() < 5 && (val == 0)){
 				System.out.println("Leaving Screen");
-				jWindow.setVisible(true);
-				sharedData.setForGui(0);
+				System.out.println("Calling Keyboard Functionality");
+				jFrame.setVisible(true);
 				Image blankImage = Toolkit.getDefaultToolkit().createImage(new byte[0]);
 				Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(blankImage, new Point(0, 0), "blankCursor");
-				jWindow.setCursor(blankCursor);
-				new CoordinatesSending( datagramSocket, inetAddress, portUDP, portTCP, clientScreenSize);
+				SwingUtilities.invokeLater(() -> {
+					eventListener = new EventListener(jFrame,datagramSocket,inetAddress,portUDP);
+				});
+				jFrame.setCursor(blankCursor);
+				new CoordinatesSending( datagramSocket, inetAddress, portUDP, clientScreenSize);
+				val++;
 
-			} else if (cursor.getX() >= 5 && (sharedData.getForGui() == 0)) {
+			} else if (cursor.getX() >= 5 && (val == 1)) {
 				System.out.println("Entering Screen");
-				jWindow.dispose();
-				sharedData.setForGui(1);
+				jFrame.dispose();
+				eventListener.removeEventListeners();
+				val--;
 			}
 		}
 	}
