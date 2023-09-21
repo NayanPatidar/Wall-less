@@ -17,8 +17,10 @@ public class GUI implements Runnable {
 	int portUDP ;
 	int portTCP;
 	String clientScreenSize;
+	JWindow jWindow;
+	JPanel panel;
 
-	public GUI(JFrame jFrame, SharedData sharedData, InetAddress inetAddress, DatagramSocket datagramSocket, ServerSocket serverSocket, int portTCP, int portUDP, String clientScreenSize) {
+	public GUI(JWindow jWindow, JPanel panel,JFrame jFrame, SharedData sharedData, InetAddress inetAddress, DatagramSocket datagramSocket, ServerSocket serverSocket, int portTCP, int portUDP, String clientScreenSize) {
 		this.sharedData = sharedData;
 		this.jFrame = jFrame;
 		this.inetAddress = inetAddress;
@@ -27,6 +29,8 @@ public class GUI implements Runnable {
 		this.portUDP = portUDP;
 		this.serverSocket = serverSocket;
 		this.clientScreenSize = clientScreenSize;
+		this.jWindow = jWindow;
+		this.panel = panel;
 	}
 
 	@Override
@@ -38,17 +42,18 @@ public class GUI implements Runnable {
 
 			if (cursor.getX() < 5 && (sharedData.getForGui() == 1)){
 				System.out.println("Leaving Screen");
-				jFrame.setVisible(true);
+				jWindow.setVisible(true);
 				sharedData.setForGui(0);
 				Image blankImage = Toolkit.getDefaultToolkit().createImage(new byte[0]);
 				Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(blankImage, new Point(0, 0), "blankCursor");
-				jFrame.setCursor(blankCursor);
-				new CoordinatesSending(socket, datagramSocket, inetAddress, portUDP, portTCP, clientScreenSize);
+				jWindow.setCursor(blankCursor);
+				new CoordinatesSending( datagramSocket, inetAddress, portUDP, portTCP, clientScreenSize);
 
 			} else if (cursor.getX() >= 5 && (sharedData.getForGui() == 0)) {
 				System.out.println("Entering Screen");
-				jFrame.dispose();
-				sharedData.setForGui(1);			}
+				jWindow.dispose();
+				sharedData.setForGui(1);
+			}
 		}
 	}
 }
