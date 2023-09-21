@@ -11,16 +11,9 @@ import java.util.concurrent.TimeUnit;
 public class Main {
 
 	static JFrame jFrame = new JFrame();
-	static JWindow window = new JWindow(jFrame);
-	static JPanel panel = new JPanel();
-
 	DatagramSocket datagramSocket;
-	ServerSocket serverSocket;
 	String clientScreenSize;
-
 	int portUDP = 12345;
-	int portTCP = 12346;
-	boolean connectionEstablished = false;
 
 	InetAddress inetAddress;
 	String msgFromClient = "";
@@ -44,36 +37,19 @@ public class Main {
 		jFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		jFrame.setUndecorated(true);
 		jFrame.setAlwaysOnTop(true);
-		jFrame.setVisible(true);
-		Dimension dimension = toolkit.getScreenSize();
-		window.setSize(dimension.width, dimension.height);
-		window.setBackground(new Color(0, 0, 0, 1));  // Semi-transparent background
-		panel.setFocusable(true);
-		panel.setBackground(new Color(0, 0, 0, 1));
-		panel.setFocusable(true);
+		jFrame.setBackground(new Color(0,0,0,3));
+		jFrame.setType(Window.Type.UTILITY);
 
 		UDPConnectionValidation();
 
-		System.out.println("Threads Started");
+		System.out.println("Program Started");
 		GUIAndMouse();
 		System.out.println("ENDED");
 
 	}
 
 	private void GUIAndMouse() {
-		SharedData sharedData = new SharedData();
-
-		Thread threadA = new Thread(new GUI(window, panel, jFrame,  sharedData, inetAddress, datagramSocket, serverSocket, portTCP, portUDP, clientScreenSize));
-		threadA.start();
-		new EventCaller(jFrame, panel, window, sharedData, datagramSocket, inetAddress, portUDP);
-
-		try {
-			threadA.join();
-			System.out.println("Threads closed");
-
-		} catch (InterruptedException e) {
-			throw new RuntimeException(e);
-		}
+		new GUI( jFrame, inetAddress, datagramSocket, portUDP, clientScreenSize);
 	}
 
 	private void UDPConnectionValidation() {
