@@ -3,19 +3,24 @@ package Server;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.*;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
 
 	static JFrame jFrame = new JFrame();
-	static JWindow jWindow = new JWindow(jFrame);
+	static JWindow window = new JWindow(jFrame);
+	static JPanel panel = new JPanel();
 
 	DatagramSocket datagramSocket;
 	ServerSocket serverSocket;
 	String clientScreenSize;
 
 	int portUDP = 12345;
+	int portTCP = 12346;
+	boolean connectionEstablished = false;
 
 	InetAddress inetAddress;
 	String msgFromClient = "";
@@ -31,7 +36,6 @@ public class Main {
 	public Main() {
 
 		// Creating a JFrame
-
 		final Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = toolkit.getScreenSize();
 		int screenWidth = screenSize.width;
@@ -39,15 +43,11 @@ public class Main {
 		jFrame.setSize(screenWidth, screenHeight);
 		jFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		jFrame.setUndecorated(true);
-		jFrame.setOpacity(0f);
-		jFrame.setAlwaysOnTop(false);
+		jFrame.setAlwaysOnTop(true);
 		jFrame.setVisible(true);
-
-		jWindow.setSize(screenWidth, screenHeight);
-		jWindow.setBackground(new Color(0, 0, 0, 1));  // Semi-transparent background
-
-		// Add a JPanel to the JWindow to capture key events
-		JPanel panel = new JPanel();
+		Dimension dimension = toolkit.getScreenSize();
+		window.setSize(dimension.width, dimension.height);
+		window.setBackground(new Color(0, 0, 0, 1));  // Semi-transparent background
 		panel.setFocusable(true);
 		panel.setBackground(new Color(0, 0, 0, 1));
 		panel.setFocusable(true);
@@ -55,7 +55,7 @@ public class Main {
 		UDPConnectionValidation();
 
 		System.out.println("Threads Started");
-			GUIAndMouse();
+		GUIAndMouse();
 		System.out.println("ENDED");
 
 	}
@@ -63,19 +63,12 @@ public class Main {
 	private void GUIAndMouse() {
 		SharedData sharedData = new SharedData();
 
-		Thread threadA = new Thread(new GUI(jWindow, sharedData, inetAddress, datagramSocket, portUDP, clientScreenSize));
-		Thread threadB = new Thread(new MouseClicks(jWindow, sharedData, datagramSocket, inetAddress, portUDP));
-		Thread threadC = new Thread(new ButtonClicks(jWindow, sharedData, datagramSocket, inetAddress, portUDP));
-
-
+		Thread threadA = new Thread(new GUI(window, panel, jFrame,  sharedData, inetAddress, datagramSocket, serverSocket, portTCP, portUDP, clientScreenSize));
 		threadA.start();
-		threadB.start();
-		threadC.start();
+		new EventCaller(jFrame, panel, window, sharedData, datagramSocket, inetAddress, portUDP);
 
 		try {
 			threadA.join();
-			threadB.join();
-			threadC.join();
 			System.out.println("Threads closed");
 
 		} catch (InterruptedException e) {

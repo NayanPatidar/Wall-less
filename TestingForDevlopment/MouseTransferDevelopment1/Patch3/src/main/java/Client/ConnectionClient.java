@@ -11,16 +11,16 @@ public class ConnectionClient {
 	InetAddress inetAddress;
 	Socket clientSocket;
 	boolean connectionEstablished;
+	OutputStream outputStream;
 	{
 		try {
-			inetAddress = InetAddress.getByName("10.200.233.67");
+			inetAddress = InetAddress.getByName("10.200.233.31");
 		} catch (UnknownHostException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
 	int portUDP = 12345;
-
 
 	public ConnectionClient(){
 		UDPConnection();
@@ -29,7 +29,7 @@ public class ConnectionClient {
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
 		}
-		new ClientMouse(datagramSocket, inetAddress, portUDP);
+		new ClientMouse(datagramSocket, inetAddress, clientSocket,portUDP, outputStream);
 	}
 
 	public void UDPConnection() {

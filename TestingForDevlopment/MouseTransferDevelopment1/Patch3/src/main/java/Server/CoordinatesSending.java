@@ -16,6 +16,7 @@ public class CoordinatesSending {
 		}
 	}
 
+	Socket socket;
 	DatagramSocket datagramSocket;
 	InetAddress inetAddress;
 	int portUDP;
@@ -29,10 +30,12 @@ public class CoordinatesSending {
 	int loopNumX = 1;
 	int loopNumY = 1;
 
-	CoordinatesSending( DatagramSocket datagramSocket, InetAddress inetAddress, int port, String clientScreenSize){
+	CoordinatesSending( DatagramSocket datagramSocket, InetAddress inetAddress, int port, int portTCP, String clientScreenSize){
+		this.socket = socket;
 		this.datagramSocket = datagramSocket;
 		this.inetAddress = inetAddress;
 		this.portUDP = port;
+		this.portTCP = portTCP;
 		this.clientScreenSize = clientScreenSize;
 
 		operator();
@@ -40,23 +43,16 @@ public class CoordinatesSending {
 
 	private void operator() {
 
-		Thread sendingPosition = new Thread(() -> {
-			String[] clientScreen = clientScreenSize.split(" ");
-			ClientHeight = Integer.parseInt(clientScreen[0]);
-			ClientWidth = Integer.parseInt(clientScreen[1]);
-			System.out.println("Thread to sending the position is running !!");
-			sendingCoordinates();
-		});
-		sendingPosition.start();
-
-		try {
-			sendingPosition.join();
-		} catch (InterruptedException e) {
-			throw new RuntimeException(e);
-		}
+	sendingCoordinates();
 	}
 
 	public void sendingCoordinates(){
+
+		String[] clientScreen = clientScreenSize.split(" ");
+		ClientHeight = Integer.parseInt(clientScreen[0]);
+		ClientWidth = Integer.parseInt(clientScreen[1]);
+		System.out.println("Starting to send the position is running !!");
+
 		Point First = MouseInfo.getPointerInfo().getLocation();
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Dimension dimension = toolkit.getScreenSize();
