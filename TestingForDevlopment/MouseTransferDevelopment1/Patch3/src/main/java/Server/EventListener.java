@@ -12,12 +12,16 @@ import java.net.InetAddress;
 
 public class EventListener {
     static private JWindow jWindow;
+    private  JFrame jFrame;
     private final MouseAdapter mouseAdapter;
     private final KeyListener keyListener;
     boolean altPress = false;
     boolean ctrlPress = false;
     boolean shiftPress = false;
-    public EventListener(JPanel jPanel, JWindow jWindow, DatagramSocket datagramSocket, InetAddress inetAddress, int portUDP) {
+
+
+    public EventListener(JFrame frame, JPanel jPanel, JWindow jWindow, DatagramSocket datagramSocket, InetAddress inetAddress, int portUDP) {
+        jFrame = frame;
         EventListener.jWindow =jWindow;
         String leftClickPressed = "B:3";
         String middleClickPressed = "B:2";
@@ -1900,16 +1904,8 @@ public class EventListener {
         };
 
         System.out.println("Adding keyListener and MouseListener");
-        jPanel.addMouseListener(mouseAdapter);
-        jPanel.addKeyListener(keyListener);
-//        jWindow.addMouseListener(mouseAdapter);
-//        jWindow.addKeyListener(keyListener);
-
-        System.out.println("Adding jPanel");
-        jWindow.add(jPanel);
-//        jWindow.addMouseListener(mouseAdapter);
-//        jWindow.addKeyListener(keyListener);
-
+        jFrame.addMouseListener(mouseAdapter);
+        jFrame.addKeyListener(keyListener);
 
     }
     public void removeEventListeners() {

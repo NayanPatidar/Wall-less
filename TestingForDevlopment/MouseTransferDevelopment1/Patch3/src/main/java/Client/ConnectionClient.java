@@ -22,7 +22,6 @@ public class ConnectionClient {
 
 	int portUDP = 12345;
 
-
 	public ConnectionClient(){
 		UDPConnection();
 		try {
