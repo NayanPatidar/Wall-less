@@ -1,0 +1,266 @@
+Index: Patch3/src/main/java/Server/SharedData.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Server;\r\n\r\npublic \tclass SharedData {\r\n\t// It is the shared data according to which the threads are working with\r\n\tpublic static volatile int forGui = 1;\r\n\tpublic static volatile int forMouseClicks;\r\n\tpublic static volatile int forButtonClicks;\r\n\r\n\tpublic int getForGui(){\r\n\t\treturn forGui;\r\n\t}\r\n\r\n\tpublic void setForGui(int val){\r\n\t\tforGui = val;\r\n\t}\r\n\r\n\tpublic int getForMouseClicks(){\r\n\t\tforMouseClicks = forGui;\r\n\t\treturn forMouseClicks;\r\n\t}\r\n\r\n\tpublic int getForButtonClicks(){\r\n\t\tforButtonClicks = forGui;\r\n\t\treturn forButtonClicks;\r\n\t}\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Patch3/src/main/java/Server/SharedData.java b/Patch3/src/main/java/Server/SharedData.java
+--- a/Patch3/src/main/java/Server/SharedData.java	(revision c7720f9df47e67a311d97e5463c28593b310a7eb)
++++ b/Patch3/src/main/java/Server/SharedData.java	(date 1695144234119)
+@@ -5,6 +5,7 @@
+ 	public static volatile int forGui = 1;
+ 	public static volatile int forMouseClicks;
+ 	public static volatile int forButtonClicks;
++	public static volatile int forButton_Keys;
+ 
+ 	public int getForGui(){
+ 		return forGui;
+@@ -23,4 +24,9 @@
+ 		forButtonClicks = forGui;
+ 		return forButtonClicks;
+ 	}
++
++	public int getForMouse_Keyboard(){
++		forButton_Keys = forGui;
++		return forButtonClicks;
++	}
+ }
+\ No newline at end of file
+Index: Patch3/src/main/java/Server/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Server;\r\n\r\nimport javax.swing.*;\r\nimport java.awt.*;\r\nimport java.io.IOException;\r\nimport java.net.*;\r\nimport java.util.concurrent.TimeUnit;\r\n\r\npublic class Main {\r\n\r\n\tstatic JFrame jFrame = new JFrame();\r\n\tstatic JWindow jWindow = new JWindow(jFrame);\r\n\r\n\tDatagramSocket datagramSocket;\r\n\tServerSocket serverSocket;\r\n\tString clientScreenSize;\r\n\r\n\tint portUDP = 12345;\r\n\r\n\tInetAddress inetAddress;\r\n\tString msgFromClient = \"\";\r\n\r\n\t{\r\n\t\ttry {\r\n\t\t\tinetAddress = InetAddress.getByName(\"10.200.233.107\");\r\n\t\t} catch (UnknownHostException e) {\r\n\t\t\tthrow new RuntimeException(e);\r\n\t\t}\r\n\t}\r\n\r\n\tpublic Main() {\r\n\r\n\t\t// Creating a JFrame\r\n\r\n\t\tfinal Toolkit toolkit = Toolkit.getDefaultToolkit();\r\n\t\tDimension screenSize = toolkit.getScreenSize();\r\n\t\tint screenWidth = screenSize.width;\r\n\t\tint screenHeight = screenSize.height;\r\n\t\tjFrame.setSize(screenWidth, screenHeight);\r\n\t\tjFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);\r\n\t\tjFrame.setUndecorated(true);\r\n\t\tjFrame.setOpacity(0f);\r\n\t\tjFrame.setAlwaysOnTop(false);\r\n\t\tjFrame.setVisible(true);\r\n\r\n\t\tjWindow.setSize(screenWidth, screenHeight);\r\n\t\tjWindow.setBackground(new Color(0, 0, 0, 1));  // Semi-transparent background\r\n\r\n\t\t// Add a JPanel to the JWindow to capture key events\r\n\t\tJPanel panel = new JPanel();\r\n\t\tpanel.setFocusable(true);\r\n\t\tpanel.setBackground(new Color(0, 0, 0, 1));\r\n\t\tpanel.setFocusable(true);\r\n\r\n\t\tUDPConnectionValidation();\r\n\r\n\t\tSystem.out.println(\"Threads Started\");\r\n\t\t\tGUIAndMouse();\r\n\t\tSystem.out.println(\"ENDED\");\r\n\r\n\t}\r\n\r\n\tprivate void GUIAndMouse() {\r\n\t\tSharedData sharedData = new SharedData();\r\n\r\n\t\tThread threadA = new Thread(new GUI(jWindow, sharedData, inetAddress, datagramSocket, portUDP, clientScreenSize));\r\n\t\tThread threadB = new Thread(new MouseClicks(jWindow, sharedData, datagramSocket, inetAddress, portUDP));\r\n\t\tThread threadC = new Thread(new ButtonClicks(jWindow, sharedData, datagramSocket, inetAddress, portUDP));\r\n\r\n\r\n\t\tthreadA.start();\r\n\t\tthreadB.start();\r\n\t\tthreadC.start();\r\n\r\n\t\ttry {\r\n\t\t\tthreadA.join();\r\n\t\t\tthreadB.join();\r\n\t\t\tthreadC.join();\r\n\t\t\tSystem.out.println(\"Threads closed\");\r\n\r\n\t\t} catch (InterruptedException e) {\r\n\t\t\tthrow new RuntimeException(e);\r\n\t\t}\r\n\t}\r\n\r\n\tprivate void UDPConnectionValidation() {\r\n\t\t// Making the UDP Connection\r\n\t\ttry {\r\n\t\t\tdatagramSocket = new DatagramSocket(portUDP);\r\n\t\t} catch (SocketException e) {\r\n\t\t\tthrow new RuntimeException(e);\r\n\t\t}\r\n\r\n\t\tThread senderThread = new Thread(() -> {\r\n\t\t\ttry {\r\n\t\t\t\tSystem.out.println(\"Starting senderThread\");\r\n\t\t\t\tString sendClient = \"StartingUDP\";\r\n\r\n\t\t\t\tdo {\r\n\t\t\t\t\tbyte[] sendData = sendClient.getBytes();\r\n\t\t\t\t\tDatagramPacket acknowledgmentPacket = new DatagramPacket(sendData, sendData.length,\r\n\t\t\t\t\t\t\t\t\tinetAddress, portUDP);\r\n\t\t\t\t\tdatagramSocket.send(acknowledgmentPacket);\r\n\r\n\t\t\t\t\tTimeUnit.SECONDS.sleep(2);\r\n\t\t\t\t\tSystem.out.println(\"Sent\");\r\n\r\n\t\t\t\t} while (!msgFromClient.equals(\"Got it\"));\r\n\t\t\t\tSystem.out.println(\"Exiting the senderThread\");\r\n\r\n\t\t\t} catch (IOException | InterruptedException e) {\r\n\t\t\t\tthrow new RuntimeException(e);\r\n\t\t\t}\r\n\t\t});\r\n\r\n\t\tThread receiverThread = new Thread(() -> {\r\n\t\t\ttry {\r\n\t\t\t\tSystem.out.println(\"Starting receiverThread\");\r\n\t\t\t\tdo {\r\n\t\t\t\t\tbyte[] receiveData = new byte[1024];\r\n\t\t\t\t\tDatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);\r\n\t\t\t\t\tdatagramSocket.receive(receivePacket);\r\n\t\t\t\t\tString msg = new String(receivePacket.getData(), 0, receivePacket.getLength());\r\n\t\t\t\t\tString[] arr = msg.split(\"  \");\r\n\t\t\t\t\tmsgFromClient = arr[0];\r\n\t\t\t\t\tclientScreenSize = arr[1];\r\n\t\t\t\t\tSystem.out.println(\"Received from client: \" + msgFromClient);\r\n\t\t\t\t} while (!msgFromClient.equals(\"Got it\"));\r\n\t\t\t\tSystem.out.println(\"Exiting the receiverThread\");\r\n\t\t\t} catch (IOException e) {\r\n\t\t\t\tthrow new RuntimeException(e);\r\n\t\t\t}\r\n\t\t});\r\n\r\n\t\tsenderThread.start();\r\n\t\treceiverThread.start();\r\n\t\ttry {\r\n\t\t\treceiverThread.join();\r\n\t\t\tsenderThread.join();\r\n\r\n\t\t} catch (InterruptedException e) {\r\n\t\t\tthrow new RuntimeException(e);\r\n\t\t}\r\n\t}\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Patch3/src/main/java/Server/Main.java b/Patch3/src/main/java/Server/Main.java
+--- a/Patch3/src/main/java/Server/Main.java	(revision c7720f9df47e67a311d97e5463c28593b310a7eb)
++++ b/Patch3/src/main/java/Server/Main.java	(date 1695144234112)
+@@ -12,7 +12,6 @@
+ 	static JWindow jWindow = new JWindow(jFrame);
+ 
+ 	DatagramSocket datagramSocket;
+-	ServerSocket serverSocket;
+ 	String clientScreenSize;
+ 
+ 	int portUDP = 12345;
+@@ -64,18 +63,20 @@
+ 		SharedData sharedData = new SharedData();
+ 
+ 		Thread threadA = new Thread(new GUI(jWindow, sharedData, inetAddress, datagramSocket, portUDP, clientScreenSize));
+-		Thread threadB = new Thread(new MouseClicks(jWindow, sharedData, datagramSocket, inetAddress, portUDP));
+-		Thread threadC = new Thread(new ButtonClicks(jWindow, sharedData, datagramSocket, inetAddress, portUDP));
+-
++//		Thread threadB = new Thread(new MouseClicks(jWindow, sharedData, datagramSocket, inetAddress, portUDP));
++//		Thread threadC = new Thread(new ButtonClicks(jWindow, sharedData, datagramSocket, inetAddress, portUDP));
++			Thread threadD = new Thread(new Mouse_Keyboard(jWindow, sharedData, datagramSocket, inetAddress, portUDP));
+ 
+ 		threadA.start();
+-		threadB.start();
+-		threadC.start();
++//		threadB.start();
++//		threadC.start();
++		threadD.start();
+ 
+ 		try {
+ 			threadA.join();
+-			threadB.join();
+-			threadC.join();
++//			threadB.join();
++//			threadC.join();
++			threadD.join();
+ 			System.out.println("Threads closed");
+ 
+ 		} catch (InterruptedException e) {
+Index: Patch3/src/main/java/Server/Mouse_Keyboard.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Patch3/src/main/java/Server/Mouse_Keyboard.java b/Patch3/src/main/java/Server/Mouse_Keyboard.java
+new file mode 100644
+--- /dev/null	(date 1695144990114)
++++ b/Patch3/src/main/java/Server/Mouse_Keyboard.java	(date 1695144990114)
+@@ -0,0 +1,58 @@
++package Server;
++
++import javax.swing.*;
++import java.net.DatagramSocket;
++import java.net.InetAddress;
++
++public class Mouse_Keyboard implements Runnable{
++	static private JWindow jWindow;
++	private int val = 0;
++	private final SharedData sharedData;
++	DatagramSocket datagramSocket;
++	MouseFunctionality mouseFunctionality;
++	KeyboardFunctionality keyboardFunctionality;
++	InetAddress inetAddress;
++	int portUDP;
++
++
++	public Mouse_Keyboard(JWindow jWindow, SharedData sharedData, DatagramSocket datagramSocket, InetAddress inetAddress,
++	                      int portUDP){
++		Mouse_Keyboard.jWindow = jWindow;
++		this.sharedData = sharedData;
++		this.datagramSocket = datagramSocket;
++		this.portUDP = portUDP;
++		this.inetAddress = inetAddress;
++	}
++
++	@Override
++	public void run() {
++		if ((sharedData.getForMouse_Keyboard() == 0) && (val == 0)){
++
++			System.out.println("Calling Mouse & Keyboard Functionality");
++			SwingUtilities.invokeLater(() -> {
++		Thread threadB = new Thread(new MouseClicks(jWindow, sharedData, datagramSocket, inetAddress, portUDP));
++		Thread threadC = new Thread(new ButtonClicks(jWindow, sharedData, datagramSocket, inetAddress, portUDP));
++
++		threadB.start();
++		threadC.start();
++			});
++
++			val ++;
++
++		} else if ((sharedData.getForMouse_Keyboard() == 1) && (val == 1)){
++
++			System.out.println("Disposing Mouse Functionality");
++			if (mouseFunctionality != null) {
++				mouseFunctionality.disposeMouseListener();
++			}
++
++			if (keyboardFunctionality != null) {
++				System.out.println("Disposing Keyboard Functionality");
++				keyboardFunctionality.removeKeyListener();
++			}
++
++			jWindow.dispose();
++			val --;
++		}
++	}
++}
+Index: Patch3/src/main/java/JWindow/EventListenerClass.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Patch3/src/main/java/JWindow/EventListenerClass.java b/Patch3/src/main/java/JWindow/EventListenerClass.java
+new file mode 100644
+--- /dev/null	(date 1695147045087)
++++ b/Patch3/src/main/java/JWindow/EventListenerClass.java	(date 1695147045087)
+@@ -0,0 +1,80 @@
++package JWindow;
++
++import javax.swing.*;
++import java.awt.event.KeyEvent;
++import java.awt.event.KeyListener;
++import java.awt.event.MouseEvent;
++import java.awt.event.MouseListener;
++
++public class EventListenerClass extends JPanel implements MouseListener, KeyListener {
++
++	public EventListenerClass() {
++		// Add mouse listener
++		this.addMouseListener(this);
++
++		// Add key listener
++		this.addKeyListener(this);
++
++		// Set the component as focusable so it can receive key events
++		this.setFocusable(true);
++	}
++
++	@Override
++	public void mouseClicked(MouseEvent e) {
++		System.out.println("Mouse clicked at: " + e.getX() + ", " + e.getY());
++	}
++
++	@Override
++	public void mousePressed(MouseEvent e) {
++		// Implement mousePressed if needed
++	}
++
++	@Override
++	public void mouseReleased(MouseEvent e) {
++		// Implement mouseReleased if needed
++	}
++
++	@Override
++	public void mouseEntered(MouseEvent e) {
++		// Implement mouseEntered if needed
++	}
++
++	@Override
++	public void mouseExited(MouseEvent e) {
++		// Implement mouseExited if needed
++	}
++
++	@Override
++	public void keyTyped(KeyEvent e) {
++		System.out.println("Key typed: " + e.getKeyChar());
++	}
++
++	@Override
++	public void keyPressed(KeyEvent e) {
++		// Implement keyPressed if needed
++	}
++
++	@Override
++	public void keyReleased(KeyEvent e) {
++		// Implement keyReleased if needed
++	}
++
++	public static void main(String[] args) {
++		// Create a frame to display the panel
++		JFrame frame = new JFrame("Event Listener Example");
++		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
++		frame.setSize(400, 400);
++
++		// Create an instance of EventListenerClass
++		EventListenerClass eventListenerPanel = new EventListenerClass();
++
++		// Add the panel to the frame
++		frame.add(eventListenerPanel);
++
++		// Set frame visibility
++		frame.setVisible(true);
++
++		// Request focus on the panel so it can receive key events
++		eventListenerPanel.requestFocusInWindow();
++	}
++}
+Index: Patch3/src/main/java/Server/CoordinatesSending.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Server;\r\n\r\nimport java.awt.*;\r\nimport java.io.IOException;\r\n\r\nimport java.net.*;\r\n\r\npublic class CoordinatesSending {\r\n\tRobot robot;\r\n\r\n\t{\r\n\t\ttry {\r\n\t\t\trobot = new Robot();\r\n\t\t} catch (AWTException e) {\r\n\t\t\tthrow new RuntimeException(e);\r\n\t\t}\r\n\t}\r\n\r\n\tDatagramSocket datagramSocket;\r\n\tInetAddress inetAddress;\r\n\tint portUDP;\r\n\tint portTCP;\r\n\tboolean stop = false;\r\n\tString clientScreenSize = \" \";\r\n\tint ClientWidth;\r\n\tint ClientHeight;\r\n\tint ServerWidth;\r\n\tint ServerHeight;\r\n\tint loopNumX = 1;\r\n\tint loopNumY = 1;\r\n\r\n\tCoordinatesSending( DatagramSocket datagramSocket, InetAddress inetAddress, int port, String clientScreenSize){\r\n\t\tthis.datagramSocket = datagramSocket;\r\n\t\tthis.inetAddress = inetAddress;\r\n\t\tthis.portUDP = port;\r\n\t\tthis.clientScreenSize = clientScreenSize;\r\n\r\n\t\toperator();\r\n\t}\r\n\r\n\tprivate void operator() {\r\n\r\n\t\tThread sendingPosition = new Thread(() -> {\r\n\t\t\tString[] clientScreen = clientScreenSize.split(\" \");\r\n\t\t\tClientHeight = Integer.parseInt(clientScreen[0]);\r\n\t\t\tClientWidth = Integer.parseInt(clientScreen[1]);\r\n\t\t\tSystem.out.println(\"Thread to sending the position is running !!\");\r\n\t\t\tsendingCoordinates();\r\n\t\t});\r\n\t\tsendingPosition.start();\r\n\r\n\t\ttry {\r\n\t\t\tsendingPosition.join();\r\n\t\t} catch (InterruptedException e) {\r\n\t\t\tthrow new RuntimeException(e);\r\n\t\t}\r\n\t}\r\n\r\n\tpublic void sendingCoordinates(){\r\n\t\tPoint First = MouseInfo.getPointerInfo().getLocation();\r\n\t\tToolkit toolkit = Toolkit.getDefaultToolkit();\r\n\t\tDimension dimension = toolkit.getScreenSize();\r\n\t\tServerHeight = dimension.height;\r\n\t\tServerWidth = dimension.width;\r\n\t\trobot.mouseMove(dimension.width - 3, First.y);\r\n\r\n\t\twhile (!stop){\r\n\t\t\tPoint cursorInfo = MouseInfo.getPointerInfo().getLocation();\r\n\t\t\tint x = cursorInfo.x;\r\n\t\t\tint y = cursorInfo.y;\r\n\t\t\tint X = gettingX(x, y);\r\n\t\t\tint Y = gettingY(x, y);\r\n\r\n\t\t\tString msg = \"C:\" + X + \" \" + Y;\r\n\t\t\tbyte[] sendData = msg.getBytes();\r\n\r\n\t\t\tDatagramPacket packet = new DatagramPacket(sendData, sendData.length, inetAddress, portUDP);\r\n\t\t\ttry {\r\n\t\t\t\tdatagramSocket.send(packet);\r\n\t\t\t\tif(X > ClientWidth-2 ){\r\n\t\t\t\t\tstop = true;\r\n\t\t\t\t\trobot.mouseMove(6,Y);\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t\tThread.sleep(2);\r\n\t\t\t} catch (IOException | InterruptedException e) {\r\n\t\t\t\tthrow new RuntimeException(e);\r\n\t\t\t}\r\n\t\t}\r\n\t}\r\n\r\n\tpublic int gettingX(int x, int y){\r\n\t\tif (loopNumX == 1) {\r\n\t\t\tint msg = x+(ClientWidth-ServerWidth);\r\n\t\t\tif (x < 1){\r\n\t\t\t\tloopNumX = 2;\r\n\t\t\t\trobot.mouseMove(ClientWidth - ServerWidth, y);\r\n\t\t\t}\r\n\t\t\treturn msg;\r\n\r\n\t\t} else if (loopNumX == 2){\r\n\t\t\tif (x > (ClientWidth-ServerWidth) ){\r\n\t\t\t\tloopNumX = 1;\r\n\t\t\t\trobot.mouseMove(1, y);\r\n\t\t\t}\r\n\t\t\treturn x;\r\n\t\t}\r\n\t\treturn 0;\r\n\t}\r\n\r\n\tpublic int gettingY(int x, int y){\r\n\t\tif (loopNumY == 1){\r\n\t\t\tif (y > ServerHeight-2){\r\n\t\t\t\trobot.mouseMove(x, ServerHeight-(ClientHeight-ServerHeight));\r\n\t\t\t\tloopNumY = 2;\r\n\t\t\t}\r\n\t\t\treturn y;\r\n\t\t} else if (loopNumY == 2) {\r\n\t\t\tif (y < ServerHeight-(ClientHeight-ServerHeight)){\r\n\t\t\t\trobot.mouseMove(x, ServerHeight-2);\r\n\t\t\t\tloopNumY = 1;\r\n\t\t\t}\r\n\t\t\treturn y+(ClientHeight-ServerHeight);\r\n\t\t}\r\n\t\treturn 0;\r\n\t}\r\n\r\n\r\n\r\n//\t\ttry {\r\n//\t\t\tBufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));\r\n//\t\t\tSystem.out.println(socket.isConnected());\r\n//\t\t\ttry {\r\n//\t\t\t\tSystem.out.println(socket.getInetAddress());\r\n//\t\t\t\tSystem.out.println(\"Waiting for msg\");\r\n//\r\n//\t\t\t\twhile (!stop) {\r\n//\t\t\t\t\tSystem.out.println(socket.isInputShutdown());\r\n//\r\n//\t\t\t\t\tInputStream inputStream = socket.getInputStream();\r\n//\t\t\t\t\tbyte[] buffer = new byte[1024];\r\n//\t\t\t\t\tint bytesRead = inputStream.read(buffer);\r\n//\t\t\t\t\tString clientMessage = new String(buffer, 0, bytesRead);\r\n//\t\t\t\t\tSystem.out.println(\"Received from client: \" + clientMessage);\r\n//\r\n//\t\t\t\t\tif (clientMessage.equals(\"stop\")){\r\n//\t\t\t\t\t\tSystem.out.println(\"Stopping receiving ...\");\r\n//\t\t\t\t\t\tstop = true;\r\n//\t\t\t\t\t}\r\n//\r\n//\r\n//\t\t\t\t}\r\n//\t\t\t} catch (IOException e) {\r\n//\t\t\t\tSystem.err.println(\"Error reading message from client: \" + e.getMessage());\r\n//\t\t\t}\r\n//\t\t} catch (IOException e) {\r\n//\t\t\tthrow new RuntimeException(e);\r\n//\t\t}\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Patch3/src/main/java/Server/CoordinatesSending.java b/Patch3/src/main/java/Server/CoordinatesSending.java
+--- a/Patch3/src/main/java/Server/CoordinatesSending.java	(revision c7720f9df47e67a311d97e5463c28593b310a7eb)
++++ b/Patch3/src/main/java/Server/CoordinatesSending.java	(date 1695143103892)
+@@ -19,7 +19,6 @@
+ 	DatagramSocket datagramSocket;
+ 	InetAddress inetAddress;
+ 	int portUDP;
+-	int portTCP;
+ 	boolean stop = false;
+ 	String clientScreenSize = " ";
+ 	int ClientWidth;
+Index: Patch3/.idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"MavenProjectsManager\">\r\n    <option name=\"originalFiles\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_19\" default=\"true\" project-jdk-name=\"openjdk-20 (2)\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Patch3/.idea/misc.xml b/Patch3/.idea/misc.xml
+--- a/Patch3/.idea/misc.xml	(revision c7720f9df47e67a311d97e5463c28593b310a7eb)
++++ b/Patch3/.idea/misc.xml	(date 1695143047950)
+@@ -1,4 +1,3 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ExternalStorageConfigurationManager" enabled="true" />
+   <component name="MavenProjectsManager">

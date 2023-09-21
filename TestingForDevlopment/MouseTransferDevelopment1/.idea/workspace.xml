@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b6966fb5-3d0a-4a5a-8e0c-5d5245a120ed" name="Changes" comment="Few Changes" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/../.." value="Patch-3" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2Vcl6GoRcvDx5Bdp99ogxciYQ58" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/VisualVM/visualvm_216/bin/visualvm.exe"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="Server" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="EventListenerClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="JWindow.EventListenerClass" />
+      <module name="MouseTransferDevelopment1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="JWindow.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Start" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Server.Start" />
+      <module name="MouseTransferDevelopment1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TransparentKeyListenerDemo (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="JWindow.TransparentKeyListenerDemo" />
+      <module name="MouseTransferDevelopment1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="JWindow.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TransparentKeyListenerDemo (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="JWindow.TransparentKeyListenerDemo" />
+      <module name="MouseTransferDevelopment1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="JWindow.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TransparentKeyListenerDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="JWindow.TransparentKeyListenerDemo" />
+      <module name="MouseTransferDevelopment1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="JWindow.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TransparentKeyListenerDemo (1)" />
+        <item itemvalue="Application.TransparentKeyListenerDemo" />
+        <item itemvalue="Application.Start" />
+        <item itemvalue="Application.EventListenerClass" />
+        <item itemvalue="Application.Start" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b6966fb5-3d0a-4a5a-8e0c-5d5245a120ed" name="Changes" comment="" />
+      <created>1695143071621</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1695143071621</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Files Modified">
+      <option name="closed" value="true" />
+      <created>1695223180348</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1695223180348</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Changes RollBacked">
+      <option name="closed" value="true" />
+      <created>1695227786412</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1695227786412</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Few Changes">
+      <option name="closed" value="true" />
+      <created>1695292698244</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1695292698244</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Files Modified" />
+    <MESSAGE value="Changes RollBacked" />
+    <MESSAGE value="Few Changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Few Changes" />
+  </component>
+</project>
