@@ -8,7 +8,6 @@ import java.net.ServerSocket;
 
 public class GUI {
 	DatagramSocket datagramSocket;
-	ServerSocket serverSocket;
 	JFrame jFrame;
 	InetAddress inetAddress;
 	int portUDP ;
@@ -45,12 +44,17 @@ public class GUI {
 				jFrame.setCursor(blankCursor);
 				new CoordinatesSending( datagramSocket, inetAddress, portUDP, clientScreenSize);
 				val++;
-
 			} else if (cursor.getX() >= 5 && (val == 1)) {
 				System.out.println("Entering Screen");
 				jFrame.dispose();
 				eventListener.removeEventListeners();
 				val--;
+			}
+
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				throw new RuntimeException(e);
 			}
 		}
 	}
