@@ -1,5 +1,6 @@
 package Client;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
@@ -16,6 +17,8 @@ public class ReceivingCoordinates implements Runnable{
 	Socket clientSocket;
 	Robot robot;
 
+	private JFrame dummyFrame;
+
 	{
 		try {
 			robot = new Robot();
@@ -29,6 +32,14 @@ public class ReceivingCoordinates implements Runnable{
 		this.datagramSocket = datagramSocket;
 		this.inetAddress = inetAddress;
 		this.clientSocket = clientSocket;
+
+		// Create a dummy invisible frame
+		dummyFrame = new JFrame();
+		dummyFrame.setUndecorated(true);
+		dummyFrame.setSize(1, 1);
+		dummyFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		dummyFrame.setVisible(true);
+		dummyFrame.setAlwaysOnTop(true);
 	}
 
 	@Override
