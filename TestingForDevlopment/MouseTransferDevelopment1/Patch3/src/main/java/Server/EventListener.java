@@ -13,6 +13,7 @@ import java.net.InetAddress;
 public class EventListener {
     static private JWindow jWindow;
     private  JFrame jFrame;
+    JTextField jTextField = new JTextField();
     private final MouseAdapter mouseAdapter;
     private final KeyListener keyListener;
     boolean altPress = false;
@@ -22,6 +23,7 @@ public class EventListener {
 
     public EventListener(JFrame frame, DatagramSocket datagramSocket, InetAddress inetAddress, int portUDP) {
         jFrame = frame;
+        jFrame.add(jTextField);
         String leftClickPressed = "B:3";
         String middleClickPressed = "B:2";
         String rightClickPressed = "B:1";
@@ -1833,6 +1835,18 @@ public class EventListener {
                 }
             }
         };
+        jTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                if (evt.getKeyCode() == KeyEvent.VK_TAB) {
+                    System.out.println("Tab key pressed in textField1");
+                }
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                if (evt.getKeyCode() == KeyEvent.VK_TAB) {
+                    System.out.println("Tab key released in textField1");
+                }
+            }
+        });
 
 
         System.out.println("Adding keyListener and MouseListener");

@@ -9,6 +9,7 @@
         <module name="Patch1" />
         <module name="Patch2" />
         <module name="Patch3" />
+        <module name="Gestures" />
       </profile>
     </annotationProcessing>
   </component>
