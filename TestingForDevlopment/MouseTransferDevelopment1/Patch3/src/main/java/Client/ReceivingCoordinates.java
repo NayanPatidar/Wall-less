@@ -77,6 +77,17 @@ public class ReceivingCoordinates implements Runnable{
 									case "3"  -> robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
 									case "3'" -> robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
                 }
+			} else if (receivedMsg.startsWith("M:")) {
+				String msg = receivedMsg.substring(2);
+
+				switch (msg){
+					case "1":
+						robot.mouseWheel(1);
+						break;
+					case "-1":
+						robot.mouseWheel(-1);
+						break;
+				}
 			} else if (receivedMsg.startsWith("K:")){
 				String msg = receivedMsg.substring(2);
 
