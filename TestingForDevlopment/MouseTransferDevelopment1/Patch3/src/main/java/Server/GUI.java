@@ -9,14 +9,16 @@ import java.net.ServerSocket;
 public class GUI {
 	DatagramSocket datagramSocket;
 	JFrame jFrame;
+	JTextField jTextField;
 	InetAddress inetAddress;
 	int portUDP ;
 	String clientScreenSize;
 	EventListener eventListener;
 	int val = 0;
 
-	public GUI(JFrame jFrame, InetAddress inetAddress, DatagramSocket datagramSocket, int portUDP, String clientScreenSize) {
+	public GUI(JFrame jFrame, JTextField jTextField, InetAddress inetAddress, DatagramSocket datagramSocket, int portUDP, String clientScreenSize) {
 		this.jFrame = jFrame;
+		this.jTextField = jTextField;
 		this.inetAddress = inetAddress;
 		this.datagramSocket = datagramSocket;
 		this.portUDP = portUDP;
@@ -39,7 +41,7 @@ public class GUI {
 				Image blankImage = Toolkit.getDefaultToolkit().createImage(new byte[0]);
 				Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(blankImage, new Point(0, 0), "blankCursor");
 				SwingUtilities.invokeLater(() -> {
-					eventListener = new EventListener(jFrame,datagramSocket,inetAddress,portUDP);
+					eventListener = new EventListener(jFrame, datagramSocket,inetAddress,portUDP);
 				});
 				jFrame.setCursor(blankCursor);
 				new CoordinatesSending( datagramSocket, inetAddress, portUDP, clientScreenSize);
