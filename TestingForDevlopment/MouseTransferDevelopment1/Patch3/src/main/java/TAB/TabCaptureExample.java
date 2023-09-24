@@ -2,23 +2,37 @@ package TAB;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class TabCaptureExample {
-	public static void main(String[] args) {
-		JFrame jFrame = new JFrame();
-		jFrame.setSize(500,500);
-		jFrame.setUndecorated(true);
-		jFrame.setOpacity(0.04f);
-//		jFrame.setBackground(new Color(0, 0, 0, 4));
-		jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		JPanel panel = new JPanel();
-//		panel.setBackground(new Color(0, 0, 0, 4));
-		JTextField jTextField = new JTextField();
-		jFrame.add(jTextField);
-		jFrame.setVisible(true);
-		MouseListener mouseListener = new MouseListener(jFrame, jTextField);
+	private static boolean tabPressed = false;
 
+	public static void main(String[] args) {
+		JFrame frame = new JFrame("Tab Capture Example");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(300, 200);
+		frame.setUndecorated(true);
+		frame.setBackground(new Color(0,0,0,40));
+
+		// Create a dummy component to request focus and capture key events
+//		JPanel panel = new JPanel();
+
+
+		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(e -> {
+			if (e.getKeyCode() == KeyEvent.VK_TAB) {
+				if (e.getID() == KeyEvent.KEY_PRESSED) {
+					tabPressed = true;
+					System.out.println("Tab key pressed");
+				} else if (e.getID() == KeyEvent.KEY_RELEASED) {
+					tabPressed = false;
+					System.out.println("Tab key released");
+				}
+			}
+			return false;  // Let other components handle the event as well
+		});
+
+		frame.setVisible(true);
+//		panel.requestFocus();  // Request focus for the panel to capture key events
 	}
 }

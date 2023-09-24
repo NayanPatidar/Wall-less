@@ -19,24 +19,17 @@ public class MouseListener {
 		jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jFrame.setVisible(true);
 
-		textField.addKeyListener(new java.awt.event.KeyAdapter() {
+		JTextField textField = new JTextField() {
 			@Override
-			public void keyTyped(KeyEvent e) {
-
-			}
-
-			@Override
-			public void keyPressed(KeyEvent e) {
+			protected void processKeyEvent(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_TAB) {
-					System.out.println("Tab key pressed in textField1");
+					// Handle Tab key press
+					System.out.println("Tab pressed");
 				}
 			}
+		};
 
-			@Override
-			public void keyReleased(KeyEvent e) {
-
-			}
-		});
 		jFrame.add(textField);
+		jFrame.setVisible(true);
 	}
 }
