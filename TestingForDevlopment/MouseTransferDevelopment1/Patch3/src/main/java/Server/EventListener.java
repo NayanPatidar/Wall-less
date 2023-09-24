@@ -1844,7 +1844,6 @@ public class EventListener {
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }
-
                 }
             }
 
@@ -1876,23 +1875,9 @@ public class EventListener {
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }
-
                 }
             }
         };
-//        jTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-//            public void keyPressed(java.awt.event.KeyEvent evt) {
-//                if (evt.getKeyCode() == KeyEvent.VK_TAB) {
-//                    System.out.println("Tab key pressed in textField1");
-//                }
-//            }
-//            public void keyReleased(java.awt.event.KeyEvent evt) {
-//                if (evt.getKeyCode() == KeyEvent.VK_TAB) {
-//                    System.out.println("Tab key released in textField1");
-//                }
-//            }
-//        });
-
 
         System.out.println("Adding keyListener and MouseListener");
         jFrame.addMouseListener(mouseAdapter);
@@ -1907,6 +1892,3 @@ public class EventListener {
         System.out.println("KeyListener removed");
     }
 }
-/*
-
- */
