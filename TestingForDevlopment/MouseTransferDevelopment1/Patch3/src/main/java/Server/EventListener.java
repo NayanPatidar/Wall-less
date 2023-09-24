@@ -1897,11 +1897,13 @@ public class EventListener {
         System.out.println("Adding keyListener and MouseListener");
         jFrame.addMouseListener(mouseAdapter);
         jFrame.addKeyListener(keyListener);
+        jFrame.addMouseWheelListener(mouseWheelListener);
 
     }
     public void removeEventListeners() {
         jFrame.removeKeyListener(keyListener);
         jFrame.removeMouseListener(mouseAdapter);
+        jFrame.removeMouseWheelListener(mouseWheelListener);
         System.out.println("KeyListener removed");
     }
 }
