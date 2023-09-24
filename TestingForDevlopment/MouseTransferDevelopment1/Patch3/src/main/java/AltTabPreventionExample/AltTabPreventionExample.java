@@ -21,8 +21,14 @@ public class AltTabPreventionExample {
 
 		// Wait for the AutoHotkey script to finish executing
 		Thread.sleep(10000);
-		System.out.println("here" );
+		process.destroy();
 
+//		String scriptPath2 = "D:\\AllowAltTab.ahk";
+//
+//		String command2 = autoHotkeyPath + " " + scriptPath2;
+//
+//		// Start the AutoHotkey script using Runtime.exec
+//		Process process2 = Runtime.getRuntime().exec(command2);
 
 	}
 }
