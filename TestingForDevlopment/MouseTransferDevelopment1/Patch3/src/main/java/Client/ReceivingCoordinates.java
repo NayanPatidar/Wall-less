@@ -1,5 +1,6 @@
 package Client;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
@@ -16,6 +17,8 @@ public class ReceivingCoordinates implements Runnable{
 	Socket clientSocket;
 	Robot robot;
 
+	private JFrame dummyFrame;
+
 	{
 		try {
 			robot = new Robot();
@@ -29,6 +32,14 @@ public class ReceivingCoordinates implements Runnable{
 		this.datagramSocket = datagramSocket;
 		this.inetAddress = inetAddress;
 		this.clientSocket = clientSocket;
+
+		// Create a dummy invisible frame
+		dummyFrame = new JFrame();
+		dummyFrame.setUndecorated(true);
+		dummyFrame.setSize(1, 1);
+		dummyFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		dummyFrame.setVisible(true);
+		dummyFrame.setAlwaysOnTop(true);
 	}
 
 	@Override
@@ -59,12 +70,12 @@ public class ReceivingCoordinates implements Runnable{
 			} else if (receivedMsg.startsWith("B:")) {
 				String msg = receivedMsg.substring(2);
                 switch (msg) {
-                    case "1"  -> robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
-					case "1'" -> robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
-                    case "2"  -> robot.mousePress(InputEvent.BUTTON2_DOWN_MASK);
-					case "2'" -> robot.mouseRelease(InputEvent.BUTTON2_DOWN_MASK);
-                    case "3"  -> robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-					case "3'" -> robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+									case "1"  -> robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
+									case "1'" -> robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
+									case "2"  -> robot.mousePress(InputEvent.BUTTON2_DOWN_MASK);
+									case "2'" -> robot.mouseRelease(InputEvent.BUTTON2_DOWN_MASK);
+									case "3"  -> robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+									case "3'" -> robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
                 }
 			} else if (receivedMsg.startsWith("K:")){
 				String msg = receivedMsg.substring(2);

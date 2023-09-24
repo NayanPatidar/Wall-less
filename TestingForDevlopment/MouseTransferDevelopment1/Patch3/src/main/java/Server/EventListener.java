@@ -1,6 +1,7 @@
 package Server;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
@@ -13,6 +14,7 @@ import java.net.InetAddress;
 public class EventListener {
     static private JWindow jWindow;
     private  JFrame jFrame;
+    private static boolean tabPressed = false;
     private final MouseAdapter mouseAdapter;
     private final KeyListener keyListener;
     boolean altPress = false;
@@ -20,7 +22,7 @@ public class EventListener {
     boolean shiftPress = false;
 
 
-    public EventListener(JFrame frame, DatagramSocket datagramSocket, InetAddress inetAddress, int portUDP) {
+    public EventListener(JFrame frame,  DatagramSocket datagramSocket, InetAddress inetAddress, int portUDP) {
         jFrame = frame;
         String leftClickPressed = "B:3";
         String middleClickPressed = "B:2";
@@ -530,6 +532,30 @@ public class EventListener {
         byte[] semicolonKeyBytes = semicolonKey.getBytes();
         DatagramPacket packetSemicolonKey = new DatagramPacket(semicolonKeyBytes, semicolonKeyBytes.length, inetAddress, portUDP);
 
+        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(e -> {
+            if (e.getKeyCode() == KeyEvent.VK_TAB) {
+                if (e.getID() == KeyEvent.KEY_PRESSED && !tabPressed) {
+                    tabPressed = true;
+                    System.out.println("Tab key pressed");
+                    try {
+                        datagramSocket.send(packet_tabKey_pressed);
+                    } catch (IOException ex) {
+                        System.out.println(ex.getLocalizedMessage());
+                    }
+                } else if (e.getID() == KeyEvent.KEY_RELEASED && tabPressed) {
+                    tabPressed = false;
+                    System.out.println("Tab key released");
+                    try {
+                        datagramSocket.send(tabKeyReleasedPacket);
+                    } catch (IOException ex) {
+                        System.out.println(ex.getLocalizedMessage());
+                    }
+                }
+            }
+            return false;  // Let other components handle the event as well
+        });
+
+
         keyListener = new KeyListener() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -828,13 +854,6 @@ public class EventListener {
                     case '\n' -> {
                         try {
                             datagramSocket.send(packet_enterKey_pressed);
-                        } catch (IOException ex) {
-                            System.out.println(ex.getLocalizedMessage());
-                        }
-                    }
-                    case '\t' -> {
-                        try {
-                            datagramSocket.send(packet_tabKey_pressed);
                         } catch (IOException ex) {
                             System.out.println(ex.getLocalizedMessage());
                         }
@@ -1833,6 +1852,18 @@ public class EventListener {
                 }
             }
         };
+//        jTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+//            public void keyPressed(java.awt.event.KeyEvent evt) {
+//                if (evt.getKeyCode() == KeyEvent.VK_TAB) {
+//                    System.out.println("Tab key pressed in textField1");
+//                }
+//            }
+//            public void keyReleased(java.awt.event.KeyEvent evt) {
+//                if (evt.getKeyCode() == KeyEvent.VK_TAB) {
+//                    System.out.println("Tab key released in textField1");
+//                }
+//            }
+//        });
 
 
         System.out.println("Adding keyListener and MouseListener");

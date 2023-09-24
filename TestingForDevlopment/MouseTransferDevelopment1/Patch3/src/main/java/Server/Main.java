@@ -11,6 +11,8 @@ import java.util.concurrent.TimeUnit;
 public class Main {
 
 	static JFrame jFrame = new JFrame();
+	JTextField jTextField = new JTextField();
+
 	DatagramSocket datagramSocket;
 	String clientScreenSize;
 	int portUDP = 12345;
@@ -40,6 +42,11 @@ public class Main {
 		jFrame.setBackground(new Color(0,0,0,3));
 		jFrame.setType(Window.Type.UTILITY);
 
+		jTextField.setBackground(new Color(0,0,0,3));
+		jTextField.setSize(50,50);
+		jTextField.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.WHITE));
+
+
 		UDPConnectionValidation();
 
 		System.out.println("Program Started");
@@ -49,7 +56,7 @@ public class Main {
 	}
 
 	private void GUIAndMouse() {
-		new GUI( jFrame, inetAddress, datagramSocket, portUDP, clientScreenSize);
+		new GUI( jFrame, jTextField, inetAddress, datagramSocket, portUDP, clientScreenSize);
 	}
 
 	private void UDPConnectionValidation() {
