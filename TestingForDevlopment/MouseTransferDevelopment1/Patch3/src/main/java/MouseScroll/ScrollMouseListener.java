@@ -7,7 +7,7 @@ import java.awt.event.*;
 public class ScrollMouseListener implements MouseWheelListener {
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e){
-		int notches = e.getScrollType();
+		int notches = e.getWheelRotation();
 		System.out.println("Mouse Wheel Moved " + notches + "notches.");
 	}
 
@@ -18,12 +18,12 @@ public class ScrollMouseListener implements MouseWheelListener {
 		JPanel jPanel = new JPanel();
 		jFrame.add(jPanel);
 
-//		ScrollMouseListener listener = new ScrollMouseListener();
-//		jPanel.addMouseWheelListener(listener);
-//		jFrame.setVisible(true);
+		ScrollMouseListener listener = new ScrollMouseListener();
+		jPanel.addMouseWheelListener(listener);
+		jFrame.setVisible(true);
 
-		Robot robot = new Robot();
-		robot.mouseWheel(-1);
+//		Robot robot = new Robot();
+//		robot.mouseWheel(-1);
 
 	}
 }

@@ -1,11 +1,11 @@
 package Server;
 
+import TAB.MouseListener;
+
 import javax.swing.*;
+import javax.xml.crypto.Data;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -17,6 +17,7 @@ public class EventListener {
     private static boolean tabPressed = false;
     private final MouseAdapter mouseAdapter;
     private final KeyListener keyListener;
+    private final MouseWheelListener mouseWheelListener;
     boolean altPress = false;
     boolean ctrlPress = false;
     boolean shiftPress = false;
@@ -200,7 +201,11 @@ public class EventListener {
         String arrowRightKey_released = "K:39'"; // Arrow Right key
         String backslashKey_released = "K:92'"; // Backslash key (\)
         String forwardSlashKey_released = "K:47'"; // Forward Slash key (/)
+        String mouseScrollDown = "M:1";
+        String mouseScrollUp = "M:-1";
 
+        byte[] scrollBytesDown = mouseScrollDown.getBytes();
+        byte[] scrollBytesUp = mouseScrollUp.getBytes();
         byte[] pageUpKeyBytes = pageUpKey.getBytes();
         byte[] backtickKeyBytes = backtickKey.getBytes();
         byte[] deleteKey_pressed = deleteKey.getBytes();
@@ -347,7 +352,8 @@ public class EventListener {
         byte[] backslashKey_released_bytes = backslashKey_released.getBytes();
         byte[] forwardSlashKey_released_bytes = forwardSlashKey_released.getBytes();
 
-
+        DatagramPacket packet_mouseScrollDown = new DatagramPacket(scrollBytesDown, scrollBytesDown.length, inetAddress, portUDP);
+        DatagramPacket packet_mouseScrollUp = new DatagramPacket(scrollBytesUp, scrollBytesUp.length, inetAddress, portUDP);
         DatagramPacket packet_deleteKey_pressed = new DatagramPacket(deleteKey_pressed, deleteKey_pressed.length, inetAddress, portUDP);
         DatagramPacket packet_spaceKey_pressed = new DatagramPacket(spaceKey_pressed, spaceKey_pressed.length, inetAddress, portUDP);
         DatagramPacket packet_enterKey_pressed = new DatagramPacket(enterKey_pressed, enterKey_pressed.length, inetAddress, portUDP);
@@ -532,6 +538,27 @@ public class EventListener {
         byte[] semicolonKeyBytes = semicolonKey.getBytes();
         DatagramPacket packetSemicolonKey = new DatagramPacket(semicolonKeyBytes, semicolonKeyBytes.length, inetAddress, portUDP);
 
+        mouseWheelListener= new MouseWheelListener() {
+            @Override
+            public void mouseWheelMoved(MouseWheelEvent e) {
+                int notches = e.getWheelRotation();
+                System.out.println("Mouse Wheel Moved " + notches + " notches.");
+                if (notches == 1) {
+                    try {
+                        datagramSocket.send(packet_mouseScrollDown);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                } else if (notches == -1){
+                    try {
+                        datagramSocket.send(packet_mouseScrollUp);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+            }
+        };
+
         KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(e -> {
             if (e.getKeyCode() == KeyEvent.VK_TAB) {
                 if (e.getID() == KeyEvent.KEY_PRESSED && !tabPressed) {
@@ -554,6 +581,7 @@ public class EventListener {
             }
             return false;  // Let other components handle the event as well
         });
+
 
 
         keyListener = new KeyListener() {
