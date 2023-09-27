@@ -1,6 +1,5 @@
 package Server;
 
-import TAB.MouseListener;
 
 import javax.swing.*;
 import javax.xml.crypto.Data;
@@ -21,6 +20,30 @@ public class EventListener {
     boolean altPress = false;
     boolean ctrlPress = false;
     boolean shiftPress = false;
+
+    String autoHotkeyPath = "C:\\Program Files\\AutoHotkey\\v2\\AutoHotkey64.exe";
+
+    // Path to the AutoHotkey script
+    String scriptPath = "D:\\AltTab.ahk";
+    String scriptPath2 = "D:\\JavaProjects\\Wall-less\\TestingForDevlopment\\MouseTransferDevelopment1\\Patch3\\src\\main\\java\\AltTabPreventionExample\\WindowButton.ahk";
+
+    // Build the command to run the script
+    String command = autoHotkeyPath + " " + scriptPath;
+    String command2 = autoHotkeyPath + " " + scriptPath2;
+
+    // Start the AutoHotkey script using Runtime.exec
+        Process process, process2;
+
+    {
+        try {
+            process = Runtime.getRuntime().exec(command);
+            process2 = Runtime.getRuntime().exec(command2);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 
 
     public EventListener(JFrame frame,  DatagramSocket datagramSocket, InetAddress inetAddress, int portUDP) {
@@ -559,67 +582,63 @@ public class EventListener {
             }
         };
 
-        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(e -> {
-            if (e.getKeyCode() == KeyEvent.VK_TAB) {
-                if (e.getID() == KeyEvent.KEY_PRESSED && !tabPressed) {
-                    tabPressed = true;
-                    System.out.println("Tab key pressed");
-                    try {
-                        datagramSocket.send(packet_tabKey_pressed);
-                    } catch (IOException ex) {
-                        System.out.println(ex.getLocalizedMessage());
-                    }
-                } else if (e.getID() == KeyEvent.KEY_RELEASED && tabPressed) {
-                    tabPressed = false;
-                    System.out.println("Tab key released");
-                    try {
-                        datagramSocket.send(tabKeyReleasedPacket);
-                    } catch (IOException ex) {
-                        System.out.println(ex.getLocalizedMessage());
+            KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(e -> {
+                if (e.getKeyCode() == KeyEvent.VK_TAB) {
+                    if (e.getID() == KeyEvent.KEY_PRESSED && !tabPressed) {
+                        tabPressed = true;
+                        System.out.println("Tab key pressed");
+                        try {
+                            datagramSocket.send(packet_tabKey_pressed);
+                        } catch (IOException ex) {
+                            System.out.println(ex.getLocalizedMessage());
+                        }
+                    } else if (e.getID() == KeyEvent.KEY_RELEASED && tabPressed) {
+                        tabPressed = false;
+                        System.out.println("Tab key released");
+                        try {
+                            datagramSocket.send(tabKeyReleasedPacket);
+                        } catch (IOException ex) {
+                            System.out.println(ex.getLocalizedMessage());
+                        }
                     }
                 }
-            }
-            return false;  // Let other components handle the event as well
-        });
-
-
+                return false;
+            });
 
         keyListener = new KeyListener() {
             @Override
             public void keyPressed(KeyEvent e) {
+
+                if (!shiftPress && e.getKeyCode() == 16) {
+                    try {
+                        System.out.println("Shift Pressed");
+                        datagramSocket.send(packet_shiftKey_pressed);
+                        shiftPress = true;
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+                if (!altPress && e.getKeyCode() == 18) {
+                    try {
+                        System.out.println("Alt Pressed");
+                        datagramSocket.send(packet_altKey_pressed);
+                        altPress = true;
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+
+                if (!ctrlPress && e.getKeyCode() == 17) {
+                    try {
+                        System.out.println("Control Pressed");
+                        datagramSocket.send(packet_ctrlKey_pressed);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+
+
                 switch (e.getKeyCode()) {
-                    case KeyEvent.VK_SHIFT -> {
-                        if (!shiftPress) {
-                            try {
-                                System.out.println("Shift Pressed");
-                                datagramSocket.send(packet_shiftKey_pressed);
-                                shiftPress = true;
-                            } catch (IOException ex) {
-                                throw new RuntimeException(ex);
-                            }
-                        }
-                    }
-                    case KeyEvent.VK_ALT -> {
-                        if (!altPress) {
-                            try {
-                                System.out.println("Alt Pressed");
-                                datagramSocket.send(packet_altKey_pressed);
-                                altPress = true;
-                            } catch (IOException ex) {
-                                throw new RuntimeException(ex);
-                            }
-                        }
-                    }
-                    case KeyEvent.VK_CONTROL -> {
-                        if (!ctrlPress) {
-                            try {
-                                System.out.println("Control Pressed");
-                                datagramSocket.send(packet_ctrlKey_pressed);
-                            } catch (IOException ex) {
-                                throw new RuntimeException(ex);
-                            }
-                        }
-                    }
                     case KeyEvent.VK_A -> {
                         try {
                             datagramSocket.send(packet_aKey_pressed);
@@ -1883,12 +1902,13 @@ public class EventListener {
         jFrame.addMouseListener(mouseAdapter);
         jFrame.addKeyListener(keyListener);
         jFrame.addMouseWheelListener(mouseWheelListener);
-
     }
     public void removeEventListeners() {
         jFrame.removeKeyListener(keyListener);
         jFrame.removeMouseListener(mouseAdapter);
         jFrame.removeMouseWheelListener(mouseWheelListener);
+        process.destroy();
+        process2.destroy();
         System.out.println("KeyListener removed");
     }
 }

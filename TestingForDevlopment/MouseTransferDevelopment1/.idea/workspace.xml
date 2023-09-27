@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c2e3e124-061c-49d2-91eb-a2e64b216bf3" name="Changes" comment=".ahk File Used">
+      <change afterPath="$PROJECT_DIR$/../../.idea/Wall-less.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Patch3/src/main/java/AltTabPreventionExample/!alt.ahk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Patch3/src/main/java/AltTabPreventionExample/WindowButton.ahk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Patch3/src/main/java/KeysPressed/KeysTesting.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Patch3/src/main/java/KeysPressed/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Patch3/src/main/java/TAB/Alt+Tab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Patch3/src/main/java/TAB/Example.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/AltTabPreventionExample/AltTabPreventionExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/AltTabPreventionExample/AltTabPreventionExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Server/EventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Server/EventListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/TAB/MouseListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/TAB/TabCaptureExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/TAB/TabCaptureExample.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2VmMSiiHLuQy9J3SbySNvx7rtIU" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "Patch-3",
+    "last_opened_file_path": "D:/JavaProjects/Wall-less/TestingForDevlopment/MouseTransferDevelopment1",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="MouseScroll" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.TabCaptureExample (2)">
+    <configuration name="AltTabPreventionExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AltTabPreventionExample.AltTabPreventionExample" />
+      <module name="Patch3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="AltTabPreventionExample.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Start" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Server.Start" />
+      <module name="Patch3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TabCaptureExample (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TAB.TabCaptureExample" />
+      <module name="Patch3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="TAB.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TabCaptureExample (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TAB.TabCaptureExample" />
+      <module name="Patch3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="TAB.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TabCaptureExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TAB.TabCaptureExample" />
+      <module name="Patch3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="TAB.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TabCaptureExample (2)" />
+        <item itemvalue="Application.AltTabPreventionExample" />
+        <item itemvalue="Application.TabCaptureExample" />
+        <item itemvalue="Application.TabCaptureExample (1)" />
+        <item itemvalue="Application.Start" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c2e3e124-061c-49d2-91eb-a2e64b216bf3" name="Changes" comment="" />
+      <created>1695436803425</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1695436803425</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Tab Feature Added">
+      <option name="closed" value="true" />
+      <created>1695527720898</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1695527720898</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Scroll Feature">
+      <option name="closed" value="true" />
+      <created>1695530461864</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1695530461864</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Scroll Feature Server">
+      <option name="closed" value="true" />
+      <created>1695532315432</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1695532315432</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Scroll Feature Client">
+      <option name="closed" value="true" />
+      <created>1695532417122</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1695532417122</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Scroll Feature added Completely">
+      <option name="closed" value="true" />
+      <created>1695534934314</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1695534934314</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Alt + Keys">
+      <option name="closed" value="true" />
+      <created>1695562048720</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1695562048720</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Alt + Keys">
+      <option name="closed" value="true" />
+      <created>1695562075796</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1695562075796</updated>
+    </task>
+    <task id="LOCAL-00008" summary=".ahk File Used">
+      <option name="closed" value="true" />
+      <created>1695562768388</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1695562768388</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Tab Feature Added" />
+    <MESSAGE value="Scroll Feature" />
+    <MESSAGE value="Scroll Feature Server" />
+    <MESSAGE value="Scroll Feature Client" />
+    <MESSAGE value="Scroll Feature added Completely" />
+    <MESSAGE value="Alt + Keys" />
+    <MESSAGE value=".ahk File Used" />
+    <option name="LAST_COMMIT_MESSAGE" value=".ahk File Used" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

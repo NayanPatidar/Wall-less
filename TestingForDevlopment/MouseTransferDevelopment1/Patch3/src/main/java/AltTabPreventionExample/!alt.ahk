@@ -1,0 +1,3 @@
+!Tab::
+Send(Hello)
+return
