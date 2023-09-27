@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6966fb5-3d0a-4a5a-8e0c-5d5245a120ed" name="Changes" comment="Few Changes" />
+    <list default="true" id="b6966fb5-3d0a-4a5a-8e0c-5d5245a120ed" name="Changes" comment=".ahk File Used">
+      <change afterPath="$PROJECT_DIR$/Patch3/src/main/java/AutoHotKeysTab/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Patch3/src/main/java/AutoHotKeysTab/Server.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Patch3/src/main/java/AutoHotKeysTab/TabPacket.ahk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_20-09-2023_07_11_pm__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_20-09-2023_07_11_pm__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_20-09-2023_07_11_pm__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_20-09-2023_07_11_pm__Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_20-09-2023_07_11_pm__Changes_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_20-09-2023_07_11_pm__Changes_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20-09-2023_05_47_pm__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20-09-2023_05_47_pm__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,6 +47,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "D:/VisualVM/visualvm_216/bin/visualvm.exe"
   }
 }]]></component>
@@ -46,7 +56,7 @@
       <recent name="Server" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.EventListenerClass">
     <configuration name="EventListenerClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="JWindow.EventListenerClass" />
       <module name="MouseTransferDevelopment1" />
@@ -162,6 +172,7 @@
     <MESSAGE value="Files Modified" />
     <MESSAGE value="Changes RollBacked" />
     <MESSAGE value="Few Changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Few Changes" />
+    <MESSAGE value=".ahk File Used" />
+    <option name="LAST_COMMIT_MESSAGE" value=".ahk File Used" />
   </component>
 </project>
