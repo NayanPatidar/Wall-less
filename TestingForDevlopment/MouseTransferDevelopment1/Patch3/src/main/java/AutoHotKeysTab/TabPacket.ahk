@@ -1,5 +1,12 @@
-!Tab::
-; Send a UDP message to the client.
-Send, {ClientAddress},{ClientPort},Alt+Tab Pressed
-WinActivate, Next
-return
+Loop
+{
+    IfWinActive, ahk_class ProgramManager
+    {
+        IfWinExist, ahk_class TaskSwitcherWnd
+        {
+            ; Alt+Tab is pressed
+            Break
+        }
+    }
+    Sleep, 100
+}

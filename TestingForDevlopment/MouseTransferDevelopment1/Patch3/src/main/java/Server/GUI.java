@@ -54,7 +54,7 @@ public class GUI {
 			}
 
 			try {
-				Thread.sleep(100);
+				Thread.sleep(35);
 			} catch (InterruptedException e) {
 				throw new RuntimeException(e);
 			}

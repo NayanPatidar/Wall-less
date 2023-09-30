@@ -4,15 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6966fb5-3d0a-4a5a-8e0c-5d5245a120ed" name="Changes" comment=".ahk File Used">
-      <change afterPath="$PROJECT_DIR$/Patch3/src/main/java/AutoHotKeysTab/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Patch3/src/main/java/AutoHotKeysTab/Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Patch3/src/main/java/AutoHotKeysTab/TabPacket.ahk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_20-09-2023_07_11_pm__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_20-09-2023_07_11_pm__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_20-09-2023_07_11_pm__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_20-09-2023_07_11_pm__Changes_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_20-09-2023_07_11_pm__Changes_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_20-09-2023_07_11_pm__Changes_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20-09-2023_05_47_pm__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20-09-2023_05_47_pm__Changes_.xml" afterDir="false" />
+    <list default="true" id="b6966fb5-3d0a-4a5a-8e0c-5d5245a120ed" name="Changes" comment="TabKey by AHK">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_20-09-2023_07_11_pm_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_20-09-2023_07_11_pm_[Changes]2/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_20-09-2023_07_11_pm__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_20-09-2023_07_11_pm__Changes_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20-09-2023_05_47_pm_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20-09-2023_05_47_pm__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/AltTabPreventionExample/AltTabPreventionExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/AltTabPreventionExample/AltTabPreventionExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/AutoHotKeysTab/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/AutoHotKeysTab/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/AutoHotKeysTab/TabPacket.ahk" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/AutoHotKeysTab/TabPacket.ahk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Server/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Server/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/TAB/TabCaptureExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/TAB/TabCaptureExample.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,26 +47,49 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/VisualVM/visualvm_216/bin/visualvm.exe"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/VisualVM/visualvm_216/bin/visualvm.exe&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="Server" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.EventListenerClass">
-    <configuration name="EventListenerClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="JWindow.EventListenerClass" />
-      <module name="MouseTransferDevelopment1" />
+  <component name="RunManager" selected="Application.Start">
+    <configuration name="TabPacket" type="AhkRunConfiguration" temporary="true">
+      <option name="runner" value="AutoHotkey v2.0.10" />
+      <option name="pathToScript" value="$PROJECT_DIR$/Patch3/src/main/java/AutoHotKeysTab/TabPacket.ahk" />
+      <option name="arguments" value="" />
+      <switches>
+        <switch name="/ErrorStdOut" enabled="true" />
+      </switches>
+      <method v="2" />
+    </configuration>
+    <configuration name="AltTabPreventionExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AltTabPreventionExample.AltTabPreventionExample" />
+      <module name="Patch3" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="JWindow.*" />
+          <option name="PATTERN" value="AltTabPreventionExample.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AutoHotKeysTab.Server" />
+      <module name="Patch3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="AutoHotKeysTab.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -72,7 +99,7 @@
     </configuration>
     <configuration name="Start" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Server.Start" />
-      <module name="MouseTransferDevelopment1" />
+      <module name="Patch3" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Server.*" />
@@ -83,38 +110,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TransparentKeyListenerDemo (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="JWindow.TransparentKeyListenerDemo" />
-      <module name="MouseTransferDevelopment1" />
+    <configuration name="TabCaptureExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TAB.TabCaptureExample" />
+      <module name="Patch3" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="JWindow.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TransparentKeyListenerDemo (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="JWindow.TransparentKeyListenerDemo" />
-      <module name="MouseTransferDevelopment1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="JWindow.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TransparentKeyListenerDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="JWindow.TransparentKeyListenerDemo" />
-      <module name="MouseTransferDevelopment1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="JWindow.*" />
+          <option name="PATTERN" value="TAB.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -124,11 +125,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TransparentKeyListenerDemo (1)" />
-        <item itemvalue="Application.TransparentKeyListenerDemo" />
         <item itemvalue="Application.Start" />
-        <item itemvalue="Application.EventListenerClass" />
-        <item itemvalue="Application.Start" />
+        <item itemvalue="Application.AltTabPreventionExample" />
+        <item itemvalue="Application.Server" />
+        <item itemvalue="Application.TabCaptureExample" />
+        <item itemvalue="AutoHotkey.TabPacket" />
       </list>
     </recent_temporary>
   </component>
@@ -165,7 +166,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695292698244</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="TabKey by AHK">
+      <option name="closed" value="true" />
+      <created>1695835425475</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1695835425475</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -173,6 +182,7 @@
     <MESSAGE value="Changes RollBacked" />
     <MESSAGE value="Few Changes" />
     <MESSAGE value=".ahk File Used" />
-    <option name="LAST_COMMIT_MESSAGE" value=".ahk File Used" />
+    <MESSAGE value="TabKey by AHK" />
+    <option name="LAST_COMMIT_MESSAGE" value="TabKey by AHK" />
   </component>
 </project>
