@@ -97,6 +97,7 @@ public class Client {
 				case "57":
 					robot.keyPress(KeyEvent.VK_9);
 					robot.keyRelease(KeyEvent.VK_9);
+					break;
 				case "65":
 					robot.keyPress(KeyEvent.VK_A);
 					robot.keyRelease(KeyEvent.VK_A);
@@ -202,6 +203,87 @@ public class Client {
 					robot.keyPress(KeyEvent.VK_Z);
 					robot.keyRelease(KeyEvent.VK_Z);
 					break;
+				case "219": // [
+					robot.keyPress(KeyEvent.VK_OPEN_BRACKET);
+					robot.keyRelease(KeyEvent.VK_OPEN_BRACKET);
+					break;
+				case "221": // ]
+					robot.keyPress(KeyEvent.VK_CLOSE_BRACKET);
+					robot.keyRelease(KeyEvent.VK_CLOSE_BRACKET);
+					break;
+				case "186": // ;
+					robot.keyPress(KeyEvent.VK_SEMICOLON);
+					robot.keyRelease(KeyEvent.VK_SEMICOLON);
+					break;
+				case "222": // '
+					robot.keyPress(KeyEvent.VK_QUOTE);
+					robot.keyRelease(KeyEvent.VK_QUOTE);
+					break;
+				case "190": // .
+					robot.keyPress(KeyEvent.VK_PERIOD);
+					robot.keyRelease(KeyEvent.VK_PERIOD);
+					break;
+				case "191": // /
+					robot.keyPress(KeyEvent.VK_SLASH);
+					robot.keyRelease(KeyEvent.VK_SLASH);
+					break;
+				case "220": // \
+					robot.keyPress(KeyEvent.VK_BACK_SLASH);
+					robot.keyRelease(KeyEvent.VK_BACK_SLASH);
+					break;
+				case "189": // -
+					robot.keyPress(KeyEvent.VK_MINUS);
+					robot.keyRelease(KeyEvent.VK_MINUS);
+					break;
+				case "187": // =
+					robot.keyPress(KeyEvent.VK_EQUALS);
+					robot.keyRelease(KeyEvent.VK_EQUALS);
+					break;
+				case "188": // ,
+					robot.keyPress(KeyEvent.VK_COMMA);
+					robot.keyRelease(KeyEvent.VK_COMMA);
+					break;
+				case "37": // Left arrow
+					robot.keyPress(KeyEvent.VK_LEFT);
+					robot.keyRelease(KeyEvent.VK_LEFT);
+					break;
+				case "38": // Up arrow
+					robot.keyPress(KeyEvent.VK_UP);
+					robot.keyRelease(KeyEvent.VK_UP);
+					break;
+				case "39": // Right arrow
+					robot.keyPress(KeyEvent.VK_RIGHT);
+					robot.keyRelease(KeyEvent.VK_RIGHT);
+					break;
+				case "40": // Down arrow
+					robot.keyPress(KeyEvent.VK_DOWN);
+					robot.keyRelease(KeyEvent.VK_DOWN);
+					break;
+				case "27": // ESC
+					robot.keyPress(KeyEvent.VK_ESCAPE);
+					robot.keyRelease(KeyEvent.VK_ESCAPE);
+					break;
+				case "8": // Backspace
+					robot.keyPress(KeyEvent.VK_BACK_SPACE);
+					robot.keyRelease(KeyEvent.VK_BACK_SPACE);
+					break;
+				case "33": // Page Up
+					robot.keyPress(KeyEvent.VK_PAGE_UP);
+					robot.keyRelease(KeyEvent.VK_PAGE_UP);
+					break;
+				case "34": // Page Down
+					robot.keyPress(KeyEvent.VK_PAGE_DOWN);
+					robot.keyRelease(KeyEvent.VK_PAGE_DOWN);
+					break;
+				case "36": // Home
+					robot.keyPress(KeyEvent.VK_HOME);
+					robot.keyRelease(KeyEvent.VK_HOME);
+					break;
+				case "35": // End
+					robot.keyPress(KeyEvent.VK_END);
+					robot.keyRelease(KeyEvent.VK_END);
+					break;
+
 			}
 		}
 	}
