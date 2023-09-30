@@ -26,11 +26,11 @@ public class Client {
 			String message = new String(packet.getData(), 0, packet.getLength());
 			System.out.println("Received message:" + message);
 			switch (message) {
-				case "160":
+				case "160", "161":
 					robot.keyPress(KeyEvent.VK_SHIFT);
 					System.out.println("Pressed Shift");
 					break;
-				case "162":
+                case "162":
 					robot.keyPress(KeyEvent.VK_CONTROL);
 					System.out.println("Pressed Control");
 					break;
@@ -38,7 +38,7 @@ public class Client {
 					robot.keyPress(KeyEvent.VK_ALT);
 					System.out.println("Pressed Alt");
 					break;
-				case "160'":
+				case "160'", "161'":
 					robot.keyRelease(KeyEvent.VK_SHIFT);
 					System.out.println("Released Shift");
 					break;
@@ -283,8 +283,23 @@ public class Client {
 					robot.keyPress(KeyEvent.VK_END);
 					robot.keyRelease(KeyEvent.VK_END);
 					break;
+				case "32": // Space
+					robot.keyPress(KeyEvent.VK_SPACE);
+					robot.keyRelease(KeyEvent.VK_SPACE);
+					break;
+				case "10": // Return (or Enter)
+					robot.keyPress(KeyEvent.VK_ENTER);
+					robot.keyRelease(KeyEvent.VK_ENTER);
+					break;
+				case "20": // CapsLock
+					robot.keyPress(KeyEvent.VK_CAPS_LOCK);
+					break;
+				case "20'": // CapsLock
+					robot.keyRelease(KeyEvent.VK_CAPS_LOCK);
+					break;
 
 			}
 		}
 	}
 }
+//
