@@ -559,31 +559,6 @@ public class EventListener {
             }
         };
 
-        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(e -> {
-            if (e.getKeyCode() == KeyEvent.VK_TAB) {
-                if (e.getID() == KeyEvent.KEY_PRESSED && !tabPressed) {
-                    tabPressed = true;
-                    System.out.println("Tab key pressed");
-                    try {
-                        datagramSocket.send(packet_tabKey_pressed);
-                    } catch (IOException ex) {
-                        System.out.println(ex.getLocalizedMessage());
-                    }
-                } else if (e.getID() == KeyEvent.KEY_RELEASED && tabPressed) {
-                    tabPressed = false;
-                    System.out.println("Tab key released");
-                    try {
-                        datagramSocket.send(tabKeyReleasedPacket);
-                    } catch (IOException ex) {
-                        System.out.println(ex.getLocalizedMessage());
-                    }
-                }
-            }
-            return false;  // Let other components handle the event as well
-        });
-
-
-
         keyListener = new KeyListener() {
             @Override
             public void keyPressed(KeyEvent e) {
