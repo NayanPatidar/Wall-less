@@ -34,19 +34,19 @@ public class GUI {
 		while (true){
 			Point cursor = MouseInfo.getPointerInfo().getLocation();
 
-			if (cursor.getX() < 5 && (val == 0)){
+			if (cursor.getX() < 5 && (val == 0)) {
 				System.out.println("Leaving Screen");
 				System.out.println("Calling Keyboard Functionality");
 				jFrame.setVisible(true);
 				Image blankImage = Toolkit.getDefaultToolkit().createImage(new byte[0]);
 				Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(blankImage, new Point(0, 0), "blankCursor");
+				new CoordinatesSending(datagramSocket, inetAddress, portUDP, clientScreenSize);
 				SwingUtilities.invokeLater(() -> {
-					eventListener = new EventListener(jFrame, datagramSocket,inetAddress,portUDP);
+					eventListener = new EventListener(jFrame, datagramSocket, inetAddress, portUDP);
 				});
 				jFrame.setCursor(blankCursor);
-				new CoordinatesSending( datagramSocket, inetAddress, portUDP, clientScreenSize);
 				val++;
-			} else if (cursor.getX() >= 5 && (val == 1)) {
+			}else if (cursor.getX() >= 5 && (val == 1)) {
 				System.out.println("Entering Screen");
 				jFrame.dispose();
 				eventListener.removeEventListeners();
@@ -54,7 +54,7 @@ public class GUI {
 			}
 
 			try {
-				Thread.sleep(100);
+				Thread.sleep(35);
 			} catch (InterruptedException e) {
 				throw new RuntimeException(e);
 			}

@@ -70,12 +70,12 @@ public class ReceivingCoordinates implements Runnable{
 			} else if (receivedMsg.startsWith("B:")) {
 				String msg = receivedMsg.substring(2);
                 switch (msg) {
-									case "1"  -> robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
-									case "1'" -> robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
-									case "2"  -> robot.mousePress(InputEvent.BUTTON2_DOWN_MASK);
-									case "2'" -> robot.mouseRelease(InputEvent.BUTTON2_DOWN_MASK);
-									case "3"  -> robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-									case "3'" -> robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+	                case "1"  : robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
+	                case "1'" : robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
+	                case "2"  : robot.mousePress(InputEvent.BUTTON2_DOWN_MASK);
+	                case "2'" : robot.mouseRelease(InputEvent.BUTTON2_DOWN_MASK);
+	                case "3"  : robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+	                case "3'" : robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
                 }
 			} else if (receivedMsg.startsWith("M:")) {
 				String msg = receivedMsg.substring(2);

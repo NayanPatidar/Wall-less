@@ -32,7 +32,25 @@ public class TabCaptureExample {
 			return false;  // Let other components handle the event as well
 		});
 
+		KeyListener keyListener = new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				System.out.println(e.getKeyChar());
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+
+			}
+		};
+
 		frame.setVisible(true);
+		frame.addKeyListener(keyListener);
 //		panel.requestFocus();  // Request focus for the panel to capture key events
 	}
 }
