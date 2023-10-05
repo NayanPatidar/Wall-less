@@ -1,3 +1,0 @@
-﻿Start.obj : error LNK2005: "int __cdecl SetWindow(void)" (?SetWindow@@YAHXZ) already defined in Main.obj
-Start.obj : error LNK2005: "__int64 __cdecl WindowProc(struct HWND__ *,unsigned int,unsigned __int64,__int64)" (?WindowProc@@YA_JPEAUHWND__@@I_K_J@Z) already defined in Main.obj
-D:\C++\Basic\Project1\x64\Debug\Project1.exe : fatal error LNK1169: one or more multiply defined symbols found
