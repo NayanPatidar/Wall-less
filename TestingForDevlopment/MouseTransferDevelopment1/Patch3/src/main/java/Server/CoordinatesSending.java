@@ -4,6 +4,7 @@ import java.awt.*;
 import java.io.IOException;
 
 import java.net.*;
+import java.util.Objects;
 
 public class CoordinatesSending {
 	Robot robot;
@@ -28,11 +29,14 @@ public class CoordinatesSending {
 	int loopNumX = 1;
 	int loopNumY = 1;
 
-	CoordinatesSending( DatagramSocket datagramSocket, InetAddress inetAddress, int portUDP, String clientScreenSize){
+	String side = "";
+
+	CoordinatesSending( String side ,DatagramSocket datagramSocket, InetAddress inetAddress, int portUDP, String clientScreenSize){
 		this.datagramSocket = datagramSocket;
 		this.inetAddress = inetAddress;
 		this.portUDP = portUDP;
 		this.clientScreenSize = clientScreenSize;
+		this.side = side;
 
 		sendingCoordinates();
 	}
@@ -56,28 +60,30 @@ public class CoordinatesSending {
 			Point cursorInfo = MouseInfo.getPointerInfo().getLocation();
 			int x = cursorInfo.x;
 			int y = cursorInfo.y;
-			int X = gettingX(x, y);
-			int Y = gettingY(x, y);
 
-			String msg = "C:" + X + " " + Y;
-			byte[] sendData = msg.getBytes();
+			if (Objects.equals(side, "Left")) {
+				int X = gettingXLeft(x, y);
+				int Y = gettingYLeft(x, y);
+				String msg = "C:" + X + " " + Y;
+				byte[] sendData = msg.getBytes();
 
-			DatagramPacket packet = new DatagramPacket(sendData, sendData.length, inetAddress, portUDP);
-			try {
-				datagramSocket.send(packet);
-				if(X > ClientWidth-2 ){
-					stop = true;
-					robot.mouseMove(6,Y);
-					break;
+				DatagramPacket packet = new DatagramPacket(sendData, sendData.length, inetAddress, portUDP);
+				try {
+					datagramSocket.send(packet);
+					if(X > ClientWidth-2 && Objects.equals(side, "Left")){
+						stop = true;
+						robot.mouseMove(6,Y);
+						break;
+					}
+					Thread.sleep(2);
+				} catch (IOException | InterruptedException e) {
+					throw new RuntimeException(e);
 				}
-				Thread.sleep(2);
-			} catch (IOException | InterruptedException e) {
-				throw new RuntimeException(e);
 			}
 		}
 	}
 
-	public int gettingX(int x, int y){
+	public int gettingXLeft(int x, int y){
 		if (loopNumX == 1) {
 			int msg = x+(ClientWidth-ServerWidth);
 			if (x < 1){
@@ -96,7 +102,7 @@ public class CoordinatesSending {
 		return 0;
 	}
 
-	public int gettingY(int x, int y){
+	public int gettingYLeft(int x, int y){
 		if (loopNumY == 1){
 			if (y > ServerHeight-2){
 				robot.mouseMove(x, ServerHeight-(ClientHeight-ServerHeight));

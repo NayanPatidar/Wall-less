@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6966fb5-3d0a-4a5a-8e0c-5d5245a120ed" name="Changes" comment="Final Changes">
+      <change afterPath="$PROJECT_DIR$/Patch3/src/main/java/LinuxJframe/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Server/EventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Server/EventListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Client/ConnectionClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Client/ConnectionClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Server/CoordinatesSending.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Server/CoordinatesSending.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Server/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Server/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Server/Main.java" afterDir="false" />
     </list>
@@ -53,22 +55,39 @@
       <recent name="Server" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Start">
-    <configuration name="TabPacket" type="AhkRunConfiguration" temporary="true">
-      <option name="runner" value="AutoHotkey v2.0.10" />
-      <option name="pathToScript" value="$PROJECT_DIR$/Patch3/src/main/java/AutoHotKeysTab/TabPacket.ahk" />
-      <option name="arguments" value="" />
-      <switches>
-        <switch name="/ErrorStdOut" enabled="true" />
-      </switches>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Application.Client.Start">
     <configuration name="AltTabPreventionExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="AltTabPreventionExample.AltTabPreventionExample" />
       <module name="Patch3" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="AltTabPreventionExample.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client.Start" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Client.Start" />
+      <module name="Patch3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="LinuxJframe.Main" />
+      <module name="Patch3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="LinuxJframe.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -102,26 +121,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TabCaptureExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TAB.TabCaptureExample" />
-      <module name="Patch3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="TAB.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Client.Start" />
         <item itemvalue="Application.Start" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.AltTabPreventionExample" />
         <item itemvalue="Application.Server" />
-        <item itemvalue="Application.TabCaptureExample" />
-        <item itemvalue="AutoHotkey.TabPacket" />
       </list>
     </recent_temporary>
   </component>

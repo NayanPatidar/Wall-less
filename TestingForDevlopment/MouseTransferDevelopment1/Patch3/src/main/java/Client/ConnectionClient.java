@@ -14,7 +14,7 @@ public class ConnectionClient {
 	OutputStream outputStream;
 	{
 		try {
-			inetAddress = InetAddress.getByName("10.200.233.107");
+			inetAddress = InetAddress.getByName("10.200.233.31");
 		} catch (UnknownHostException e) {
 			throw new RuntimeException(e);
 		}
@@ -45,8 +45,9 @@ public class ConnectionClient {
 			DatagramPacket datagramPacket = new DatagramPacket(receiveData, receiveData.length);
 			datagramSocket.receive(datagramPacket);
 			String receivedMsg = new String(datagramPacket.getData(), 0, datagramPacket.getLength());
+			System.out.println(receivedMsg);
 
-			if (receivedMsg.equals("StartingUDP")){
+			if (receivedMsg.equals("StartingUDP:Left")){
 				System.out.println("Got the Msg From Server");
 				DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, inetAddress, portUDP);
 				datagramSocket.send(sendPacket);

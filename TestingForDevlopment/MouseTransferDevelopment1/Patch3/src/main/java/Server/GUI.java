@@ -14,15 +14,17 @@ public class GUI {
 	int portUDP ;
 	String clientScreenSize;
 	EventListener eventListener;
+	String side;
 	int val = 0;
 
-	public GUI(JFrame jFrame, JTextField jTextField, InetAddress inetAddress, DatagramSocket datagramSocket, int portUDP, String clientScreenSize) {
+	public GUI(String side, JFrame jFrame, JTextField jTextField, InetAddress inetAddress, DatagramSocket datagramSocket, int portUDP, String clientScreenSize) {
 		this.jFrame = jFrame;
 		this.jTextField = jTextField;
 		this.inetAddress = inetAddress;
 		this.datagramSocket = datagramSocket;
 		this.portUDP = portUDP;
 		this.clientScreenSize = clientScreenSize;
+		this.side = side;
 
 		Start();
 	}
@@ -44,7 +46,7 @@ public class GUI {
 				SwingUtilities.invokeLater(() -> {
 					eventListener = new EventListener(jFrame, datagramSocket, inetAddress, portUDP);
 				});
-				new CoordinatesSending(datagramSocket, inetAddress, portUDP, clientScreenSize);
+				new CoordinatesSending(side, datagramSocket, inetAddress, portUDP, clientScreenSize);
 				val++;
 			}else if (cursor.getX() >= 5 && (val == 1)) {
 				System.out.println("Entering Screen");

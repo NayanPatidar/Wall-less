@@ -19,6 +19,7 @@ public class Main {
 
 	InetAddress inetAddress;
 	String msgFromClient = "";
+	String side = "Left";
 
 	{
 		try {
@@ -56,7 +57,7 @@ public class Main {
 	}
 
 	private void GUIAndMouse() {
-		new GUI( jFrame, jTextField, inetAddress, datagramSocket, portUDP, clientScreenSize);
+		new GUI(side, jFrame, jTextField, inetAddress, datagramSocket, portUDP, clientScreenSize);
 	}
 
 	private void UDPConnectionValidation() {
