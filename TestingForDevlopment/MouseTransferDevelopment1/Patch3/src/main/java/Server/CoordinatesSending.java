@@ -1,5 +1,7 @@
 package Server;
 
+import AutoHotKeysTab.Client;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -79,6 +81,24 @@ public class CoordinatesSending {
 				} catch (IOException | InterruptedException e) {
 					throw new RuntimeException(e);
 				}
+			} else if (Objects.equals(side, "Right")){
+				int X = gettingXRight(x, y);
+				int Y = gettingYRight(x, y);
+				String msg = "C:" + X + " " + Y;
+				byte[] sendData = msg.getBytes();
+
+				DatagramPacket packet = new DatagramPacket(sendData, sendData.length, inetAddress, portUDP);
+				try {
+					datagramSocket.send(packet);
+					if(X < 2 && Objects.equals(side, "Right")){
+						stop = true;
+						robot.mouseMove(ServerWidth - 3,Y);
+						break;
+					}
+					Thread.sleep(2);
+				} catch (IOException | InterruptedException e) {
+					throw new RuntimeException(e);
+				}
 			}
 		}
 	}
@@ -103,6 +123,42 @@ public class CoordinatesSending {
 	}
 
 	public int gettingYLeft(int x, int y){
+		if (loopNumY == 1){
+			if (y > ServerHeight-2){
+				robot.mouseMove(x, ServerHeight-(ClientHeight-ServerHeight));
+				loopNumY = 2;
+			}
+			return y;
+		} else if (loopNumY == 2) {
+			if (y < ServerHeight-(ClientHeight-ServerHeight)){
+				robot.mouseMove(x, ServerHeight-2);
+				loopNumY = 1;
+			}
+			return y+(ClientHeight-ServerHeight);
+		}
+		return 0;
+	}
+
+	public int gettingXRight(int x, int y){
+		if (loopNumX == 1) {
+			if (x > ServerWidth - 1){
+				loopNumX = 2;
+				robot.mouseMove(ServerWidth - (ClientWidth - ServerWidth) , y);
+			}
+			return x;
+
+		} else if (loopNumX == 2){
+			int msg = x + (ServerWidth - (ClientWidth - ServerWidth));
+			if (x < (ServerWidth - (ClientWidth - ServerWidth)) ){
+				loopNumX = 1;
+				robot.mouseMove(ServerWidth - 1, y);
+			}
+			return msg;
+		}
+		return 0;
+	}
+
+	public int gettingYRight(int x, int y){
 		if (loopNumY == 1){
 			if (y > ServerHeight-2){
 				robot.mouseMove(x, ServerHeight-(ClientHeight-ServerHeight));

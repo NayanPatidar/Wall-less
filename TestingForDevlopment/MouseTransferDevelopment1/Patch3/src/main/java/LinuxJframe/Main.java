@@ -1,7 +1,5 @@
 package LinuxJframe;
 
-import com.sun.jna.Pointer;
-
 import javax.swing.*;
 import java.awt.*;
 

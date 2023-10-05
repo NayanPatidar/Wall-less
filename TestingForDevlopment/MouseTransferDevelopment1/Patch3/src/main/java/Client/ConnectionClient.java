@@ -48,6 +48,8 @@ public class ConnectionClient {
 			System.out.println(receivedMsg);
 
 			if (receivedMsg.equals("StartingUDP:Left")){
+				String msg = receivedMsg.substring(13);
+				System.out.println(msg);
 				System.out.println("Got the Msg From Server");
 				DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, inetAddress, portUDP);
 				datagramSocket.send(sendPacket);

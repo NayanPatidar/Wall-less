@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6966fb5-3d0a-4a5a-8e0c-5d5245a120ed" name="Changes" comment="Final Changes">
-      <change afterPath="$PROJECT_DIR$/Patch3/src/main/java/LinuxJframe/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Client/ConnectionClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Client/ConnectionClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/LinuxJframe/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/LinuxJframe/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Server/CoordinatesSending.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Server/CoordinatesSending.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Server/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Server/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Server/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +53,7 @@
       <recent name="Server" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Client.Start">
+  <component name="RunManager" selected="Application.Start">
     <configuration name="AltTabPreventionExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="AltTabPreventionExample.AltTabPreventionExample" />
       <module name="Patch3" />
@@ -123,8 +121,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Client.Start" />
         <item itemvalue="Application.Start" />
+        <item itemvalue="Application.Client.Start" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.AltTabPreventionExample" />
         <item itemvalue="Application.Server" />
