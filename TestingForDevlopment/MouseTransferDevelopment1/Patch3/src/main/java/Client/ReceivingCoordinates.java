@@ -9,6 +9,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.Objects;
 
 public class ReceivingCoordinates implements Runnable{
 
@@ -16,6 +17,7 @@ public class ReceivingCoordinates implements Runnable{
 	InetAddress inetAddress;
 	Socket clientSocket;
 	Robot robot;
+	String side;
 
 	private JFrame dummyFrame;
 
@@ -28,10 +30,11 @@ public class ReceivingCoordinates implements Runnable{
 	}
 
 
-	public ReceivingCoordinates(DatagramSocket datagramSocket, InetAddress inetAddress, Socket clientSocket) {
+	public ReceivingCoordinates(String side, DatagramSocket datagramSocket, InetAddress inetAddress, Socket clientSocket) {
 		this.datagramSocket = datagramSocket;
 		this.inetAddress = inetAddress;
 		this.clientSocket = clientSocket;
+		this.side = side;
 
 		// Create a dummy invisible frame
 		dummyFrame = new JFrame();
@@ -63,7 +66,10 @@ public class ReceivingCoordinates implements Runnable{
 				int y = Integer.parseInt(parts[1]);
 				robot.mouseMove(x, y);
 
-				if (x >= dimension.width-2){
+				if (x >= dimension.width-2 && Objects.equals(side, "Left")){
+					System.out.println("Left Screen");
+					robot.mouseMove(70,toolkit.getScreenSize().height);
+				} else if (x < 2 && Objects.equals(side, "Right")){
 					System.out.println("Left Screen");
 					robot.mouseMove(70,toolkit.getScreenSize().height);
 				}

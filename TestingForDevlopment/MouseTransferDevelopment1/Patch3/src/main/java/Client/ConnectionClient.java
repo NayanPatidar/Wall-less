@@ -12,6 +12,7 @@ public class ConnectionClient {
 	Socket clientSocket;
 	boolean connectionEstablished;
 	OutputStream outputStream;
+	String side = "";
 	{
 		try {
 			inetAddress = InetAddress.getByName("10.200.233.31");
@@ -29,7 +30,7 @@ public class ConnectionClient {
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
 		}
-		new ClientMouse(datagramSocket, inetAddress, clientSocket,portUDP, outputStream);
+		new ClientMouse(side, datagramSocket, inetAddress, clientSocket, portUDP, outputStream);
 	}
 
 	public void UDPConnection() {
@@ -48,8 +49,9 @@ public class ConnectionClient {
 			System.out.println(receivedMsg);
 
 			if (receivedMsg.equals("StartingUDP:Left")){
-				String msg = receivedMsg.substring(13);
+				String msg = receivedMsg.substring(12);
 				System.out.println(msg);
+				this.side = msg;
 				System.out.println("Got the Msg From Server");
 				DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, inetAddress, portUDP);
 				datagramSocket.send(sendPacket);

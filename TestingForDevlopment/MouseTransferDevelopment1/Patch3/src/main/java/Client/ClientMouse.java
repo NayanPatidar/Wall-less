@@ -11,19 +11,21 @@ public class ClientMouse {
 	InetAddress inetAddress;
 	Socket clientSocket;
 	OutputStream outputStream;
+	String side;
 	int portUDP;
 
-	public ClientMouse(DatagramSocket datagramSocket, InetAddress inetAddress, Socket clientSocket, int portUDP, OutputStream outputStream) {
+	public ClientMouse(String side, DatagramSocket datagramSocket, InetAddress inetAddress, Socket clientSocket, int portUDP, OutputStream outputStream) {
 		this.datagramSocket = datagramSocket;
 		this.clientSocket = clientSocket;
 		this.inetAddress = inetAddress;
 		this.portUDP = portUDP;
 		this.outputStream = outputStream;
+		this.side = side;
 		Operator();
 	}
 
 	private void Operator() {
-		Thread receiveCoordinates = new Thread(new ReceivingCoordinates(datagramSocket, inetAddress, clientSocket));
+		Thread receiveCoordinates = new Thread(new ReceivingCoordinates(side, datagramSocket, inetAddress, clientSocket));
 
 		receiveCoordinates.start();
 
