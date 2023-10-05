@@ -19,7 +19,7 @@ public class Main {
 
 	InetAddress inetAddress;
 	String msgFromClient = "";
-	String side = "Left";
+	String side = "Right";
 
 	{
 		try {

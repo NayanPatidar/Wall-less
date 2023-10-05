@@ -2,6 +2,7 @@ package Server;
 
 import AutoHotKeysTab.Client;
 
+import javax.swing.plaf.basic.BasicSplitPaneUI;
 import java.awt.*;
 import java.io.IOException;
 
@@ -56,8 +57,11 @@ public class CoordinatesSending {
 		Dimension dimension = toolkit.getScreenSize();
 		ServerHeight = dimension.height;
 		ServerWidth = dimension.width;
-		robot.mouseMove(dimension.width - 3, First.y);
-
+		if (Objects.equals(side, "Left")) {
+			robot.mouseMove(dimension.width - 3, First.y);
+		} else if (Objects.equals(side, "Right")) {
+			robot.mouseMove(3, First.y);
+		}
 		while (!stop){
 			Point cursorInfo = MouseInfo.getPointerInfo().getLocation();
 			int x = cursorInfo.x;
@@ -84,6 +88,7 @@ public class CoordinatesSending {
 			} else if (Objects.equals(side, "Right")){
 				int X = gettingXRight(x, y);
 				int Y = gettingYRight(x, y);
+
 				String msg = "C:" + X + " " + Y;
 				byte[] sendData = msg.getBytes();
 
@@ -141,17 +146,18 @@ public class CoordinatesSending {
 
 	public int gettingXRight(int x, int y){
 		if (loopNumX == 1) {
-			if (x > ServerWidth - 1){
+			if (x > ServerWidth - 2){
+				System.out.println("Loop 2");
 				loopNumX = 2;
 				robot.mouseMove(ServerWidth - (ClientWidth - ServerWidth) , y);
 			}
 			return x;
 
 		} else if (loopNumX == 2){
-			int msg = x + (ServerWidth - (ClientWidth - ServerWidth));
+			int msg = x + ((ClientWidth - ServerWidth));
 			if (x < (ServerWidth - (ClientWidth - ServerWidth)) ){
 				loopNumX = 1;
-				robot.mouseMove(ServerWidth - 1, y);
+				robot.mouseMove(ServerWidth - 2, y);
 			}
 			return msg;
 		}

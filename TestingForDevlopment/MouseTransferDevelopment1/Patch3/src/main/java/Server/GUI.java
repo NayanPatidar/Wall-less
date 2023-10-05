@@ -5,6 +5,7 @@ import java.awt.*;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.ServerSocket;
+import java.util.Objects;
 
 public class GUI {
 	DatagramSocket datagramSocket;
@@ -32,11 +33,12 @@ public class GUI {
 
 	public void Start() {
 		System.out.println("Screen Sharing started !!");
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
 
 		while (true){
 			Point cursor = MouseInfo.getPointerInfo().getLocation();
 
-			if (cursor.getX() < 5 && (val == 0)) {
+			if (cursor.getX() < 5 && (val == 0) && Objects.equals(side, "Left")) {
 				System.out.println("Leaving Screen");
 				System.out.println("Calling Keyboard Functionality");
 				jFrame.setVisible(true);
@@ -48,7 +50,24 @@ public class GUI {
 				});
 				new CoordinatesSending(side, datagramSocket, inetAddress, portUDP, clientScreenSize);
 				val++;
-			}else if (cursor.getX() >= 5 && (val == 1)) {
+			}else if (cursor.getX() >= 5 && (val == 1) && Objects.equals(side, "Left")) {
+				System.out.println("Entering Screen");
+				jFrame.dispose();
+				eventListener.removeEventListeners();
+				val--;
+			} else if (cursor.getX() >= toolkit.getScreenSize().width - 2 && (val == 0) && Objects.equals(side, "Right")) {
+				System.out.println("Leaving Screen");
+				System.out.println("Calling Keyboard Functionality");
+				jFrame.setVisible(true);
+				Image blankImage = Toolkit.getDefaultToolkit().createImage(new byte[0]);
+				Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(blankImage, new Point(0, 0), "blankCursor");
+				jFrame.setCursor(blankCursor);
+				SwingUtilities.invokeLater(() -> {
+					eventListener = new EventListener(jFrame, datagramSocket, inetAddress, portUDP);
+				});
+				new CoordinatesSending(side, datagramSocket, inetAddress, portUDP, clientScreenSize);
+				val++;
+			} else if (cursor.getX() < toolkit.getScreenSize().width - 2  && (val == 1) && Objects.equals(side, "Right")) {
 				System.out.println("Entering Screen");
 				jFrame.dispose();
 				eventListener.removeEventListeners();
