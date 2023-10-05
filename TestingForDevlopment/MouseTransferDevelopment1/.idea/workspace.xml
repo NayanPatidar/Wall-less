@@ -4,19 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6966fb5-3d0a-4a5a-8e0c-5d5245a120ed" name="Changes" comment="TabKey by AHK">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_20-09-2023_07_11_pm_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_20-09-2023_07_11_pm_[Changes]2/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_20-09-2023_07_11_pm__Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_20-09-2023_07_11_pm__Changes_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20-09-2023_05_47_pm_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20-09-2023_05_47_pm__Changes_.xml" beforeDir="false" />
+    <list default="true" id="b6966fb5-3d0a-4a5a-8e0c-5d5245a120ed" name="Changes" comment="Final Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/AltTabPreventionExample/AltTabPreventionExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/AltTabPreventionExample/AltTabPreventionExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/AutoHotKeysTab/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/AutoHotKeysTab/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/AutoHotKeysTab/TabPacket.ahk" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/AutoHotKeysTab/TabPacket.ahk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Server/EventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Server/EventListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Server/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Server/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/TAB/TabCaptureExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/TAB/TabCaptureExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Server/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,6 +175,7 @@
     <MESSAGE value="Few Changes" />
     <MESSAGE value=".ahk File Used" />
     <MESSAGE value="TabKey by AHK" />
-    <option name="LAST_COMMIT_MESSAGE" value="TabKey by AHK" />
+    <MESSAGE value="Final Changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final Changes" />
   </component>
 </project>

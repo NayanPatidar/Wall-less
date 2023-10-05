@@ -15,9 +15,9 @@ public class EventListener {
     static private JWindow jWindow;
     private  JFrame jFrame;
     private static boolean tabPressed = false;
-    private final MouseAdapter mouseAdapter;
-    private final KeyListener keyListener;
-    private final MouseWheelListener mouseWheelListener;
+    private  MouseAdapter mouseAdapter;
+    private  KeyListener keyListener;
+    private  MouseWheelListener mouseWheelListener;
     boolean altPress = false;
     boolean ctrlPress = false;
     boolean shiftPress = false;
@@ -558,32 +558,6 @@ public class EventListener {
                 }
             }
         };
-
-        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(e -> {
-            if (e.getKeyCode() == KeyEvent.VK_TAB) {
-                if (e.getID() == KeyEvent.KEY_PRESSED && !tabPressed) {
-                    tabPressed = true;
-                    System.out.println("Tab key pressed");
-                    try {
-                        datagramSocket.send(packet_tabKey_pressed);
-                    } catch (IOException ex) {
-                        System.out.println(ex.getLocalizedMessage());
-                    }
-                } else if (e.getID() == KeyEvent.KEY_RELEASED && tabPressed) {
-                    tabPressed = false;
-                    System.out.println("Tab key released");
-                    try {
-                        datagramSocket.send(tabKeyReleasedPacket);
-                    } catch (IOException ex) {
-                        System.out.println(ex.getLocalizedMessage());
-                    }
-                }
-            }
-            return false;  // Let other components handle the event as well
-        });
-
-
-
         keyListener = new KeyListener() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -594,17 +568,6 @@ public class EventListener {
                                 System.out.println("Shift Pressed");
                                 datagramSocket.send(packet_shiftKey_pressed);
                                 shiftPress = true;
-                            } catch (IOException ex) {
-                                throw new RuntimeException(ex);
-                            }
-                        }
-                    }
-                    case KeyEvent.VK_ALT -> {
-                        if (!altPress) {
-                            try {
-                                System.out.println("Alt Pressed");
-                                datagramSocket.send(packet_altKey_pressed);
-                                altPress = true;
                             } catch (IOException ex) {
                                 throw new RuntimeException(ex);
                             }

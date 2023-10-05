@@ -40,11 +40,11 @@ public class GUI {
 				jFrame.setVisible(true);
 				Image blankImage = Toolkit.getDefaultToolkit().createImage(new byte[0]);
 				Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(blankImage, new Point(0, 0), "blankCursor");
-				new CoordinatesSending(datagramSocket, inetAddress, portUDP, clientScreenSize);
+				jFrame.setCursor(blankCursor);
 				SwingUtilities.invokeLater(() -> {
 					eventListener = new EventListener(jFrame, datagramSocket, inetAddress, portUDP);
 				});
-				jFrame.setCursor(blankCursor);
+				new CoordinatesSending(datagramSocket, inetAddress, portUDP, clientScreenSize);
 				val++;
 			}else if (cursor.getX() >= 5 && (val == 1)) {
 				System.out.println("Entering Screen");

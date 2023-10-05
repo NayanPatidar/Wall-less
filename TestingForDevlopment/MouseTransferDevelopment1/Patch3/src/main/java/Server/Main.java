@@ -70,7 +70,7 @@ public class Main {
 		Thread senderThread = new Thread(() -> {
 			try {
 				System.out.println("Starting senderThread");
-				String sendClient = "StartingUDP";
+				String sendClient = "StartingUDP:Left";
 
 				do {
 					byte[] sendData = sendClient.getBytes();
