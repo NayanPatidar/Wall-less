@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6966fb5-3d0a-4a5a-8e0c-5d5245a120ed" name="Changes" comment="ConnectionClient Line:51">
+    <list default="true" id="b6966fb5-3d0a-4a5a-8e0c-5d5245a120ed" name="Changes" comment="Right Side Feature added">
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05-10-2023_05_58_pm_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05-10-2023_05_58_pm__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Patch3/src/main/java/FTP/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Patch3/src/main/java/FTP/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Server/CoordinatesSending.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Server/CoordinatesSending.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Server/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Server/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Server/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch1/Patch1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +197,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696511763392</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Right Side Feature added">
+      <option name="closed" value="true" />
+      <created>1696513704037</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1696513704037</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -207,6 +218,7 @@
     <MESSAGE value="Right Left Changes" />
     <MESSAGE value="Right  Changes" />
     <MESSAGE value="ConnectionClient Line:51" />
-    <option name="LAST_COMMIT_MESSAGE" value="ConnectionClient Line:51" />
+    <MESSAGE value="Right Side Feature added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Right Side Feature added" />
   </component>
 </project>
