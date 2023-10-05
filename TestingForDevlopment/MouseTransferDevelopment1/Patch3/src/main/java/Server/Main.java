@@ -71,7 +71,7 @@ public class Main {
 		Thread senderThread = new Thread(() -> {
 			try {
 				System.out.println("Starting senderThread");
-				String sendClient = "StartingUDP:Left";
+				String sendClient = "StartingUDP:Right";
 
 				do {
 					byte[] sendData = sendClient.getBytes();

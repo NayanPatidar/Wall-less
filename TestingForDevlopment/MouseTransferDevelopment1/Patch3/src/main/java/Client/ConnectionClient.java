@@ -48,7 +48,7 @@ public class ConnectionClient {
 			String receivedMsg = new String(datagramPacket.getData(), 0, datagramPacket.getLength());
 			System.out.println(receivedMsg);
 
-			if (receivedMsg.equals("StartingUDP:Left")){
+			if (receivedMsg.equals("StartingUDP:Left") || receivedMsg.equals("StartingUDP:Right")){
 				String msg = receivedMsg.substring(12);
 				System.out.println(msg);
 				this.side = msg;
