@@ -38,7 +38,7 @@ public class Main {
 		jFrame.setSize(screenWidth, screenHeight);
 		jFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		jFrame.setUndecorated(true);
-//		jFrame.setAlwaysOnTop(true);
+		jFrame.setAlwaysOnTop(true);
 		jFrame.setBackground(new Color(0,0,0,3));
 		jFrame.setType(Window.Type.UTILITY);
 
