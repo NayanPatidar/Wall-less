@@ -68,22 +68,38 @@ public class ReceivingCoordinates implements Runnable{
 
 				if (x >= dimension.width-2 && Objects.equals(side, "Left")){
 					System.out.println("Left Screen");
-					robot.mouseMove(70,toolkit.getScreenSize().height);
+					robot.mouseMove(90,toolkit.getScreenSize().height);
 				} else if (x < 2 && Objects.equals(side, "Right")){
 					System.out.println("Left Screen");
-					robot.mouseMove(70,toolkit.getScreenSize().height);
+					robot.mouseMove(400,toolkit.getScreenSize().height);
 				}
 			} else if (receivedMsg.startsWith("B:")) {
+				System.out.println(receivedMsg);
 				String msg = receivedMsg.substring(2);
                 switch (msg) {
-	                case "1"  : robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
-	                case "1'" : robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
-	                case "2"  : robot.mousePress(InputEvent.BUTTON2_DOWN_MASK);
-	                case "2'" : robot.mouseRelease(InputEvent.BUTTON2_DOWN_MASK);
-	                case "3"  : robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-	                case "3'" : robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+	                case "1"  :
+										robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
+										break;
+	                case "1'" :
+										robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
+										break;
+	                case "2"  :
+										robot.mousePress(InputEvent.BUTTON2_DOWN_MASK);
+										break;
+	                case "2'" :
+										robot.mouseRelease(InputEvent.BUTTON2_DOWN_MASK);
+										break;
+	                case "3"  :
+										robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+		                System.out.println("Left Button Pressed");
+										break;
+	                case "3'" :
+										robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+		                System.out.println("Left Button Released");
+										break;
                 }
 			} else if (receivedMsg.startsWith("M:")) {
+				System.out.println(receivedMsg);
 				String msg = receivedMsg.substring(2);
 
 				switch (msg){
@@ -95,6 +111,7 @@ public class ReceivingCoordinates implements Runnable{
 						break;
 				}
 			} else if (receivedMsg.startsWith("K:")){
+				System.out.println(receivedMsg);
 				String msg = receivedMsg.substring(2);
 
 				switch (msg){

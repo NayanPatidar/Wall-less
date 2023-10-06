@@ -8,11 +8,11 @@ public class Server {
 	public static void main(String[] args) {
 		try {
 			JSch jSch = new JSch();
-			int port = 2222;
+			int port = 8089;
 
-			jSch.addIdentity("D:\\JavaProjects\\.ssh");
+			jSch.addIdentity("D:\\JavaProjects\\id_rsa");
 
-			Session session = jSch.getSession("Nayan", null, 8089);
+			Session session = jSch.getSession("Nayan", "10.200.233.107", port);
 			session.setConfig("StrictHostKeyChecking", "no");
 			session.connect();
 

@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6966fb5-3d0a-4a5a-8e0c-5d5245a120ed" name="Changes" comment="Right Side Feature added">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05-10-2023_05_58_pm_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05-10-2023_05_58_pm__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Patch3/src/main/java/FTP/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Patch3/src/main/java/FTP/Server.java" afterDir="false" />
+    <list default="true" id="b6966fb5-3d0a-4a5a-8e0c-5d5245a120ed" name="Changes" comment="FTP By SSH Testing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch1/Patch1.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Client/ConnectionClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Client/ConnectionClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Client/ReceivingCoordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Client/ReceivingCoordinates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/FTP/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/FTP/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/FTP/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/FTP/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +54,7 @@
       <recent name="Server" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Start">
+  <component name="RunManager" selected="Application.Client.Start">
     <configuration name="AltTabPreventionExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="AltTabPreventionExample.AltTabPreventionExample" />
       <module name="Patch3" />
@@ -83,12 +81,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="LinuxJframe.Main" />
+    <configuration name="FTP.Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="FTP.Server" />
       <module name="Patch3" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="LinuxJframe.*" />
+          <option name="PATTERN" value="FTP.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -96,12 +94,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="AutoHotKeysTab.Server" />
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="LinuxJframe.Main" />
       <module name="Patch3" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="AutoHotKeysTab.*" />
+          <option name="PATTERN" value="LinuxJframe.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -124,11 +122,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Start" />
         <item itemvalue="Application.Client.Start" />
+        <item itemvalue="Application.FTP.Server" />
+        <item itemvalue="Application.Start" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.AltTabPreventionExample" />
-        <item itemvalue="Application.Server" />
       </list>
     </recent_temporary>
   </component>
@@ -205,7 +203,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696513704037</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="FTP By SSH Testing">
+      <option name="closed" value="true" />
+      <created>1696521155414</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1696521155414</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -219,6 +225,7 @@
     <MESSAGE value="Right  Changes" />
     <MESSAGE value="ConnectionClient Line:51" />
     <MESSAGE value="Right Side Feature added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Right Side Feature added" />
+    <MESSAGE value="FTP By SSH Testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="FTP By SSH Testing" />
   </component>
 </project>
