@@ -1,10 +1,9 @@
-package Server;
+package ServerLinux;
 
 import javax.swing.*;
 import java.awt.*;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.net.ServerSocket;
 import java.util.Objects;
 
 public class GUI {
@@ -16,9 +15,10 @@ public class GUI {
 	String clientScreenSize;
 	EventListener eventListener;
 	String side;
+	String OS;
 	int val = 0;
 
-	public GUI(String side, JFrame jFrame, JTextField jTextField, InetAddress inetAddress, DatagramSocket datagramSocket, int portUDP, String clientScreenSize) {
+	public GUI(String OS, String side, JFrame jFrame, JTextField jTextField, InetAddress inetAddress, DatagramSocket datagramSocket, int portUDP, String clientScreenSize) {
 		this.jFrame = jFrame;
 		this.jTextField = jTextField;
 		this.inetAddress = inetAddress;
@@ -26,7 +26,7 @@ public class GUI {
 		this.portUDP = portUDP;
 		this.clientScreenSize = clientScreenSize;
 		this.side = side;
-
+		this.OS = OS;
 		Start();
 	}
 
@@ -44,11 +44,11 @@ public class GUI {
 				jFrame.setVisible(true);
 				Image blankImage = Toolkit.getDefaultToolkit().createImage(new byte[0]);
 				Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(blankImage, new Point(0, 0), "blankCursor");
-				jFrame.setCursor(blankCursor);
+//				jFrame.setCursor(blankCursor);
 				SwingUtilities.invokeLater(() -> {
 					eventListener = new EventListener(jFrame, datagramSocket, inetAddress, portUDP);
 				});
-				new CoordinatesSending(side, datagramSocket, inetAddress, portUDP, clientScreenSize);
+				new CoordinatesSending(OS, side, datagramSocket, inetAddress, portUDP, clientScreenSize);
 				val++;
 			}else if (cursor.getX() >= 5 && (val == 1) && Objects.equals(side, "Left")) {
 				System.out.println("Entering Screen");
@@ -58,14 +58,14 @@ public class GUI {
 			} else if (cursor.getX() >= toolkit.getScreenSize().width - 2 && (val == 0) && Objects.equals(side, "Right")) {
 				System.out.println("Leaving Screen");
 				System.out.println("Calling Keyboard Functionality");
-				jFrame.setVisible(true);
+//				jFrame.setVisible(true);
 				Image blankImage = Toolkit.getDefaultToolkit().createImage(new byte[0]);
 				Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(blankImage, new Point(0, 0), "blankCursor");
 				jFrame.setCursor(blankCursor);
 				SwingUtilities.invokeLater(() -> {
 					eventListener = new EventListener(jFrame, datagramSocket, inetAddress, portUDP);
 				});
-				new CoordinatesSending(side, datagramSocket, inetAddress, portUDP, clientScreenSize);
+				new CoordinatesSending(OS, side, datagramSocket, inetAddress, portUDP, clientScreenSize);
 				val++;
 			} else if (cursor.getX() < toolkit.getScreenSize().width - 2  && (val == 1) && Objects.equals(side, "Right")) {
 				System.out.println("Entering Screen");

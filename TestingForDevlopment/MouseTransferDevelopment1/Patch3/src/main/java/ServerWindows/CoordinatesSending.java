@@ -1,4 +1,4 @@
-package Server;
+package ServerWindows;
 
 import AutoHotKeysTab.Client;
 
@@ -31,15 +31,17 @@ public class CoordinatesSending {
 	int ServerHeight;
 	int loopNumX = 1;
 	int loopNumY = 1;
+	String OS;
 
 	String side = "";
 
-	CoordinatesSending( String side ,DatagramSocket datagramSocket, InetAddress inetAddress, int portUDP, String clientScreenSize){
+	CoordinatesSending(String OS, String side ,DatagramSocket datagramSocket, InetAddress inetAddress, int portUDP, String clientScreenSize){
 		this.datagramSocket = datagramSocket;
 		this.inetAddress = inetAddress;
 		this.portUDP = portUDP;
 		this.clientScreenSize = clientScreenSize;
 		this.side = side;
+		this.OS	 = OS;
 
 		sendingCoordinates();
 	}

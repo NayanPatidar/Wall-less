@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6966fb5-3d0a-4a5a-8e0c-5d5245a120ed" name="Changes" comment="FTP By SSH Testing">
+      <change afterPath="$PROJECT_DIR$/Patch3/src/main/java/ServerLinux/CoordinatesSending.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Patch3/src/main/java/ServerLinux/EventListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Patch3/src/main/java/ServerLinux/GUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Patch3/src/main/java/ServerLinux/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Patch3/src/main/java/ServerLinux/Start.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Client/ConnectionClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Client/ConnectionClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Client/ReceivingCoordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Client/ReceivingCoordinates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/FTP/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/FTP/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/FTP/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/FTP/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Server/CoordinatesSending.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/ServerWindows/CoordinatesSending.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Server/EventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/ServerWindows/EventListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Server/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/ServerWindows/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/ServerWindows/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Server/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/ServerWindows/Start.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,21 +59,11 @@
     <key name="CreateClassDialog.RecentsKey">
       <recent name="Server" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ServerLinux" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.Client.Start">
-    <configuration name="AltTabPreventionExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="AltTabPreventionExample.AltTabPreventionExample" />
-      <module name="Patch3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="AltTabPreventionExample.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.ServerLinux.Start">
     <configuration name="Client.Start" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client.Start" />
       <module name="Patch3" />
@@ -94,12 +90,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="LinuxJframe.Main" />
+    <configuration name="ServerLinux.Start" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ServerLinux.Start" />
       <module name="Patch3" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="LinuxJframe.*" />
+          <option name="PATTERN" value="ServerLinux.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServerWindows.Start" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ServerWindows.Start" />
+      <module name="Patch3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ServerWindows.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -122,11 +131,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ServerLinux.Start" />
+        <item itemvalue="Application.ServerWindows.Start" />
         <item itemvalue="Application.Client.Start" />
         <item itemvalue="Application.FTP.Server" />
         <item itemvalue="Application.Start" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.AltTabPreventionExample" />
       </list>
     </recent_temporary>
   </component>

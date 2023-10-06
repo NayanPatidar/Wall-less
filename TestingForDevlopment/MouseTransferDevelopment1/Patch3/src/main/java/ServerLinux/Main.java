@@ -1,10 +1,8 @@
-package Server;
+package ServerLinux;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.*;
 import java.util.concurrent.TimeUnit;
 
@@ -19,11 +17,12 @@ public class Main {
 
 	InetAddress inetAddress;
 	String msgFromClient = "";
-	String side = "Right";
+	String side = "Left";
+	String OS = "Linux";
 
 	{
 		try {
-			inetAddress = InetAddress.getByName("10.200.233.107");
+			inetAddress = InetAddress.getByName("10.200.233.31");
 		} catch (UnknownHostException e) {
 			throw new RuntimeException(e);
 		}
@@ -39,7 +38,7 @@ public class Main {
 		jFrame.setSize(screenWidth, screenHeight);
 		jFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		jFrame.setUndecorated(true);
-		jFrame.setAlwaysOnTop(true);
+//		jFrame.setAlwaysOnTop(true);
 		jFrame.setBackground(new Color(0,0,0,3));
 		jFrame.setType(Window.Type.UTILITY);
 
@@ -57,7 +56,7 @@ public class Main {
 	}
 
 	private void GUIAndMouse() {
-		new GUI(side, jFrame, jTextField, inetAddress, datagramSocket, portUDP, clientScreenSize);
+		new GUI(OS, side, jFrame, jTextField, inetAddress, datagramSocket, portUDP, clientScreenSize);
 	}
 
 	private void UDPConnectionValidation() {
@@ -71,7 +70,7 @@ public class Main {
 		Thread senderThread = new Thread(() -> {
 			try {
 				System.out.println("Starting senderThread");
-				String sendClient = "StartingUDP:Right";
+				String sendClient = "StartingUDP:Left";
 
 				do {
 					byte[] sendData = sendClient.getBytes();

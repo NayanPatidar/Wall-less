@@ -1,4 +1,4 @@
-package Server;
+package ServerWindows;
 
 import TAB.MouseListener;
 
@@ -561,6 +561,7 @@ public class EventListener {
         keyListener = new KeyListener() {
             @Override
             public void keyPressed(KeyEvent e) {
+                System.out.println("Key Pressed: " + e.getKeyChar());
                 switch (e.getKeyCode()) {
                     case KeyEvent.VK_SHIFT -> {
                         if (!shiftPress) {

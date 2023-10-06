@@ -68,7 +68,7 @@ public class ReceivingCoordinates implements Runnable{
 
 				if (x >= dimension.width-2 && Objects.equals(side, "Left")){
 					System.out.println("Left Screen");
-					robot.mouseMove(90,toolkit.getScreenSize().height);
+					robot.mouseMove(400,toolkit.getScreenSize().height);
 				} else if (x < 2 && Objects.equals(side, "Right")){
 					System.out.println("Left Screen");
 					robot.mouseMove(400,toolkit.getScreenSize().height);
