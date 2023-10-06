@@ -41,8 +41,10 @@ public class ReceivingCoordinates implements Runnable{
 		dummyFrame.setUndecorated(true);
 		dummyFrame.setSize(1, 1);
 		dummyFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		dummyFrame.setVisible(true);
 		dummyFrame.setAlwaysOnTop(true);
+
+		dummyFrame.setVisible(true);
+
 	}
 
 	@Override
