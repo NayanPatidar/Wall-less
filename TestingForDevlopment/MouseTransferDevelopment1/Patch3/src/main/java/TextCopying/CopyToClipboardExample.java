@@ -1,18 +1,20 @@
 package TextCopying;
 
-import java.awt.*;
-import java.awt.datatransfer.*;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 
 public class CopyToClipboardExample {
-	public static void main(String[] args) {
-		String textToCopy = "This is the text to be copied to the clipboard.";
-		copyToClipboard(textToCopy);
-		System.out.println("Text copied to clipboard: " + textToCopy);
-	}
 
-	private static void copyToClipboard(String text) {
-		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-		StringSelection selection = new StringSelection(text);
-		clipboard.setContents(selection, null);
+	public static void main(String[] args) {
+		String textToCopy = "This is the text to copy.";
+
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		Clipboard clipboard = toolkit.getSystemClipboard();
+
+		StringSelection stringSelection = new StringSelection(textToCopy);
+		clipboard.setContents(stringSelection, null);
+
+		System.out.println("Text has been copied to the clipboard.");
 	}
 }

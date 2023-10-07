@@ -1,6 +1,10 @@
 package ServerLinux;
 
 import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -60,6 +64,9 @@ public class CoordinatesSending {
 			robot.mouseMove(33, First.y);
 		}
 		while (!stop){
+			Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+			ClipboardFunctionality(clipboard);
+
 			Point cursorInfo = MouseInfo.getPointerInfo().getLocation();
 			int x = cursorInfo.x;
 			int y = cursorInfo.y;
@@ -182,6 +189,30 @@ public class CoordinatesSending {
 			return y+(ClientHeight-ServerHeight);
 		}
 		return 0;
+	}
+
+	public void ClipboardFunctionality(Clipboard clipboard){
+		clipboard.addFlavorListener(e -> {
+			Transferable contents = clipboard.getContents(null);
+
+			if (contents != null && contents.isDataFlavorSupported(DataFlavor.stringFlavor)) {
+				try {
+					String clipboardText = "T:' " + (String) contents.getTransferData(DataFlavor.stringFlavor) + "'";
+
+					sendToClient(clipboardText);
+
+				} catch (UnsupportedFlavorException | IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+	}
+
+	private void sendToClient(String clipboardText) {
+		byte[] sendData = clipboardText.getBytes();
+
+		DatagramPacket packet = new DatagramPacket(sendData, sendData.length, inetAddress, portUDP);
+		System.out.println("Data sent to client: " + clipboardText);
 	}
 
 

@@ -4,6 +4,10 @@ import AutoHotKeysTab.Client;
 
 import javax.swing.plaf.basic.BasicSplitPaneUI;
 import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
 
 import java.net.*;
@@ -65,6 +69,7 @@ public class CoordinatesSending {
 			robot.mouseMove(3, First.y);
 		}
 		while (!stop){
+
 			Point cursorInfo = MouseInfo.getPointerInfo().getLocation();
 			int x = cursorInfo.x;
 			int y = cursorInfo.y;
@@ -182,6 +187,8 @@ public class CoordinatesSending {
 		}
 		return 0;
 	}
+
+
 
 
 

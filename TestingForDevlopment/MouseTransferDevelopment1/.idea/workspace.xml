@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6966fb5-3d0a-4a5a-8e0c-5d5245a120ed" name="Changes" comment="FTP By SSH Testing">
+    <list default="true" id="b6966fb5-3d0a-4a5a-8e0c-5d5245a120ed" name="Changes" comment="Clipboard Functionality">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/ServerLinux/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/ServerLinux/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/TextCopying/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/TextCopying/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/ServerWindows/CoordinatesSending.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/ServerWindows/CoordinatesSending.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/TextCopying/CopyToClipboardExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/TextCopying/CopyToClipboardExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/TextCopying/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/TextCopying/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +57,7 @@
       <recent name="ServerLinux" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CopyToClipboardExample">
+  <component name="RunManager" selected="Application.Server">
     <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="TextCopying.Client" />
       <module name="Patch3" />
@@ -95,6 +97,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TextCopying.Server" />
+      <module name="Patch3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="TextCopying.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ServerLinux.Start" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ServerLinux.Start" />
       <module name="Patch3" />
@@ -108,26 +123,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ServerWindows.Start" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ServerWindows.Start" />
-      <module name="Patch3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ServerWindows.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Server" />
         <item itemvalue="Application.CopyToClipboardExample" />
         <item itemvalue="Application.Client" />
         <item itemvalue="Application.Client.Start" />
         <item itemvalue="Application.ServerLinux.Start" />
-        <item itemvalue="Application.ServerWindows.Start" />
       </list>
     </recent_temporary>
   </component>
@@ -212,7 +214,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696521155414</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Clipboard Functionality">
+      <option name="closed" value="true" />
+      <created>1696599042883</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1696599042883</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -227,6 +237,7 @@
     <MESSAGE value="ConnectionClient Line:51" />
     <MESSAGE value="Right Side Feature added" />
     <MESSAGE value="FTP By SSH Testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="FTP By SSH Testing" />
+    <MESSAGE value="Clipboard Functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Clipboard Functionality" />
   </component>
 </project>

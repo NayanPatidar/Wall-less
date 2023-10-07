@@ -112,7 +112,10 @@ public class ReceivingCoordinates implements Runnable{
 						robot.mouseWheel(-1);
 						break;
 				}
-			} else if (receivedMsg.startsWith("K:")){
+			} else if (receivedMsg.startsWith("T:'")) {
+				System.out.println(receivedMsg);
+
+			}else if (receivedMsg.startsWith("K:")){
 				System.out.println(receivedMsg);
 				String msg = receivedMsg.substring(2);
 

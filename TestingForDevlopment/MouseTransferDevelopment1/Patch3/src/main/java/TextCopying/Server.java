@@ -15,8 +15,6 @@ public class Server {
 		     PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
 			out.println(clipboardData);
 			System.out.println("Data sent to client: " + clipboardData);
-		} catch (UnknownHostException e) {
-			throw new RuntimeException(e);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
@@ -26,11 +24,9 @@ public class Server {
 		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 		Transferable transferable = clipboard.getContents(null);
 		try {
-			return (String) transferable.getTransferData(DataFlavor.stringFlavor);
-		} catch (UnsupportedFlavorException e) {
-			throw new RuntimeException(e);
-		} catch (IOException e) {
+			return "T:'" + (String) transferable.getTransferData(DataFlavor.stringFlavor) + "'";
+		} catch (UnsupportedFlavorException | IOException e) {
 			throw new RuntimeException(e);
 		}
-	}
+    }
 }
