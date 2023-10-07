@@ -26,12 +26,15 @@ public class ClientMouse {
 
 	private void Operator() {
 		Thread receiveCoordinates = new Thread(new ReceivingCoordinates(side, datagramSocket, inetAddress, clientSocket));
-
+		Thread keysMouseData = new Thread(new ClicksAndData(datagramSocket, inetAddress, clientSocket));
 		receiveCoordinates.start();
+		keysMouseData.start();
 
 		try {
 			receiveCoordinates.join();
+			keysMouseData.join();
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
-		}	}
+		}
+	}
 }
