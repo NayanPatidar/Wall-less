@@ -25,7 +25,7 @@ public class TCPServer {
 			out.println(message);
 
 			try {
-				Thread.sleep(2);
+				Thread.sleep(3);
 			} catch (InterruptedException e) {
 				System.out.println("Error Received: " + e.getLocalizedMessage());
 			}
