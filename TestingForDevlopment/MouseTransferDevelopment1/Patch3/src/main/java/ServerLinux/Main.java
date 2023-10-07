@@ -30,17 +30,17 @@ public class Main {
 
 	public Main() {
 
-		// Creating a JFrame
-		final Toolkit toolkit = Toolkit.getDefaultToolkit();
-		Dimension screenSize = toolkit.getScreenSize();
-		int screenWidth = screenSize.width;
-		int screenHeight = screenSize.height;
-		jFrame.setSize(screenWidth, screenHeight);
-		jFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		jFrame.setUndecorated(true);
-		jFrame.setAlwaysOnTop(true);
-		jFrame.setBackground(new Color(0,0,0,3));
-		jFrame.setType(Window.Type.UTILITY);
+			// Creating a JFrame
+			final Toolkit toolkit = Toolkit.getDefaultToolkit();
+			Dimension screenSize = toolkit.getScreenSize();
+			int screenWidth = screenSize.width;
+			int screenHeight = screenSize.height;
+			jFrame.setSize(screenWidth, screenHeight);
+			jFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+			jFrame.setUndecorated(true);
+			jFrame.setAlwaysOnTop(true);
+			jFrame.setBackground(new Color(0,0,0,3));
+			jFrame.setType(Window.Type.UTILITY);
 
 		jTextField.setBackground(new Color(0,0,0,3));
 		jTextField.setSize(50,50);
