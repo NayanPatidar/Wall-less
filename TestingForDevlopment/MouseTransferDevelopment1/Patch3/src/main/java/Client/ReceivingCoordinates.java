@@ -80,6 +80,12 @@ public class ReceivingCoordinates implements Runnable {
 					System.out.println("Left Screen");
 					robot.mouseMove(400, toolkit.getScreenSize().height);
 				}
+			} else if (receivedMsg.startsWith("T:'")) {
+				System.out.println(receivedMsg);
+				String msg = receivedMsg.substring(3);
+				StringSelection string = new StringSelection(msg);
+				clipboard.setContents(string, null);
+
 			} else if (receivedMsg.startsWith("B:")) {
 				System.out.println(receivedMsg);
 				String msg = receivedMsg.substring(2);
@@ -238,11 +244,228 @@ public class ReceivingCoordinates implements Runnable {
 					case "90": // 'Z' key
 						robot.keyPress(KeyEvent.VK_Z);
 						robot.keyRelease(KeyEvent.VK_Z);
-
 						System.out.println("Pressed 'Z' key");
 						break;
+					case "16":
+						robot.keyPress(KeyEvent.VK_SHIFT);
+						System.out.println("Pressed Shift");
+						break;
+					case "17":
+						robot.keyPress(KeyEvent.VK_CONTROL);
+						System.out.println("Pressed Control");
+						break;
+					case "18":
+						robot.keyPress(KeyEvent.VK_ALT);
+						System.out.println("Pressed Alt");
+						break;
+					case "16'":
+						robot.keyRelease(KeyEvent.VK_SHIFT);
+						System.out.println("Released Shift");
+						break;
+					case "17'":
+						robot.keyRelease(KeyEvent.VK_CONTROL);
+						System.out.println("Released Control");
+						break;
+					case "18'":
+						robot.keyRelease(KeyEvent.VK_ALT);
+						System.out.println("Released Alt");
+						break;
+					case "48": // '0' key
+						robot.keyPress(KeyEvent.VK_0);
+						robot.keyRelease(KeyEvent.VK_0);
+						System.out.println("Pressed '0' key");
+						break;
+					case "49": // '1' key
+						robot.keyPress(KeyEvent.VK_1);
+						robot.keyRelease(KeyEvent.VK_1);
+						System.out.println("Pressed '1' key");
+						break;
+					case "50": // '2' key
+						robot.keyPress(KeyEvent.VK_2);
+						robot.keyRelease(KeyEvent.VK_2);
+						System.out.println("Pressed '2' key");
+						break;
+					case "51": // '3' key
+						robot.keyPress(KeyEvent.VK_3);
+						robot.keyRelease(KeyEvent.VK_3);
+						System.out.println("Pressed '3' key");
+						break;
+					case "52": // '4' key
+						robot.keyPress(KeyEvent.VK_4);
+						robot.keyRelease(KeyEvent.VK_4);
+						System.out.println("Pressed '4' key");
+						break;
+					case "53": // '5' key
+						robot.keyPress(KeyEvent.VK_5);
+						robot.keyRelease(KeyEvent.VK_5);
+						System.out.println("Pressed '5' key");
+						break;
+					case "54": // '6' key
+						robot.keyPress(KeyEvent.VK_6);
+						robot.keyRelease(KeyEvent.VK_6);
+						System.out.println("Pressed '6' key");
+						break;
+					case "55": // '7' key
+						robot.keyPress(KeyEvent.VK_7);
+						robot.keyRelease(KeyEvent.VK_8);
+						System.out.println("Pressed '7' key");
+						break;
+					case "56": // '8' key
+						robot.keyPress(KeyEvent.VK_8);
+						robot.keyRelease(KeyEvent.VK_8);
+						System.out.println("Pressed '8' key");
+						break;
+					case "57": // '9' key
+						robot.keyPress(KeyEvent.VK_9);
+						robot.keyRelease(KeyEvent.VK_9);
+						System.out.println("Pressed '9' key");
+						break;
+					case "27": // Esc key
+						robot.keyPress(KeyEvent.VK_ESCAPE);
+						robot.keyRelease(KeyEvent.VK_ESCAPE);
+						System.out.println("Pressed Esc key");
+						break;
+					case "8": // Backspace key
+						robot.keyPress(KeyEvent.VK_BACK_SPACE);
+						robot.keyRelease(KeyEvent.VK_BACK_SPACE);
+						System.out.println("Pressed Backspace key");
+						break;
+					case "32": // Space key
+						robot.keyPress(KeyEvent.VK_SPACE);
+						robot.keyRelease(KeyEvent.VK_SPACE);
+						System.out.println("Pressed space key");
+						break;
+					case "10": // Enter key
+						robot.keyPress(KeyEvent.VK_ENTER);
+						robot.keyRelease(KeyEvent.VK_ENTER);
+						System.out.println("Pressed Enter key");
+						break;
+					case "9": // Tab key
+						robot.keyPress(KeyEvent.VK_TAB);
+						robot.keyRelease(KeyEvent.VK_TAB);
+						System.out.println("Pressed Tab key");
+						break;
+					case "127": // Delete key
+						robot.keyPress(KeyEvent.VK_DELETE);
+						robot.keyRelease(KeyEvent.VK_DELETE);
+						System.out.println("Pressed Delete key");
+						break;
+					case "38": // Up Arrow
+						robot.keyPress(KeyEvent.VK_UP);
+						robot.keyRelease(KeyEvent.VK_UP);
+						System.out.println("Up Arrow Key");
+						break;
+					case "40": // Down Arrow
+						robot.keyPress(KeyEvent.VK_DOWN);
+						robot.keyRelease(KeyEvent.VK_DOWN);
+						System.out.println("Down Arrow Key");
+						break;
+					case "37": // Left Arrow
+						robot.keyPress(KeyEvent.VK_LEFT);
+						robot.keyRelease(KeyEvent.VK_LEFT);
+						System.out.println("Left Arrow Key");
+						break;
+					case "39": // Right Arrow
+						robot.keyPress(KeyEvent.VK_RIGHT);
+						robot.keyRelease(KeyEvent.VK_RIGHT);
+						System.out.println("Right Arrow Key");
+						break;
+					case "44": // Comma (,)
+						System.out.println("Comma (,) Key");
+						robot.keyPress(KeyEvent.VK_COMMA);
+						robot.keyRelease(KeyEvent.VK_COMMA);
+						break;
+					case "46": // Period (.)
+						System.out.println("Period (.) Key");
+						robot.keyPress(KeyEvent.VK_PERIOD);
+						robot.keyRelease(KeyEvent.VK_PERIOD);
+						break;
+					case "47": // Slash (/)
+						System.out.println("Slash (/) Key");
+						robot.keyPress(KeyEvent.VK_SLASH);
+						robot.keyRelease(KeyEvent.VK_SLASH);
+						break;
+					case "92": // Backslash (\)
+						System.out.println("Backslash (\\) Key");
+						robot.keyPress(KeyEvent.VK_BACK_SLASH);
+						robot.keyRelease(KeyEvent.VK_BACK_SLASH);
+						break;
+					case "91": // Open Bracket ([)
+						System.out.println("Open Bracket ([) Key");
+						robot.keyPress(KeyEvent.VK_OPEN_BRACKET);
+						robot.keyRelease(KeyEvent.VK_OPEN_BRACKET);
+						break;
+					case "93": // Close Bracket (])
+						System.out.println("Close Bracket (]) Key");
+						robot.keyPress(KeyEvent.VK_CLOSE_BRACKET);
+						robot.keyRelease(KeyEvent.VK_CLOSE_BRACKET);
+						break;
+					case "59": // Semicolon (;)
+						System.out.println("Semicolon (;) Key");
+						robot.keyPress(KeyEvent.VK_SEMICOLON);
+						robot.keyRelease(KeyEvent.VK_SEMICOLON);
+						break;
+					case "222": // Quote (')
+						System.out.println("Quote (') Key");
+						robot.keyPress(KeyEvent.VK_QUOTE);
+						robot.keyRelease(KeyEvent.VK_QUOTE);
+						break;
+					case "61": // Equals (=) key
+						robot.keyPress(KeyEvent.VK_EQUALS);
+						robot.keyRelease(KeyEvent.VK_EQUALS);
+						System.out.println("Pressed Equals (=) key");
+						break;
+					case "45": // Minus (-) key
+						robot.keyPress(KeyEvent.VK_MINUS);
+						robot.keyRelease(KeyEvent.VK_MINUS);
+						System.out.println("Pressed Minus (-) key");
+						break;
+					case "35": // End key
+						robot.keyPress(KeyEvent.VK_END);
+						robot.keyRelease(KeyEvent.VK_END);
+						System.out.println("Pressed End key");
+						break;
+					case "34": // Page Down key
+						robot.keyPress(KeyEvent.VK_PAGE_DOWN);
+						robot.keyRelease(KeyEvent.VK_PAGE_DOWN);
+						System.out.println("Pressed Page Down key");
+						break;
+					case "33": // Page Up key
+						robot.keyPress(KeyEvent.VK_PAGE_UP);
+						robot.keyRelease(KeyEvent.VK_PAGE_UP);
+						System.out.println("Pressed Page Up key");
+						break;
+					case "144": // Num Lock key
+						robot.keyPress(KeyEvent.VK_NUM_LOCK);
+						robot.keyRelease(KeyEvent.VK_NUM_LOCK);
+						System.out.println("Pressed Num Lock key");
+						break;
+					case "36": // Home key
+						robot.keyPress(KeyEvent.VK_HOME);
+						robot.keyRelease(KeyEvent.VK_HOME);
+						System.out.println("Pressed Home key");
+						break;
+					case "192": // Backtick/Grave Accent key
+						System.out.println("Backtick/Grave Accent Key");
+						robot.keyPress(KeyEvent.VK_BACK_QUOTE);
+						robot.keyRelease(KeyEvent.VK_BACK_QUOTE);
+						break;
+				}
+			}
+			else if (receivedMsg.startsWith("M:")) {
+					System.out.println(receivedMsg);
+					String msg = receivedMsg.substring(2);
+
+					switch (msg){
+						case "1":
+							robot.mouseWheel(1);
+							break;
+						case "-1":
+							robot.mouseWheel(-1);
+							break;
+					}
 				}
 			}
 		}
 	}
-}
+

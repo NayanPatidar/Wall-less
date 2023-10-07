@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6966fb5-3d0a-4a5a-8e0c-5d5245a120ed" name="Changes" comment="Clipboard Sharing Second Test Bug Fix">
+    <list default="true" id="b6966fb5-3d0a-4a5a-8e0c-5d5245a120ed" name="Changes" comment="Keyboard Changes Pressing&amp;Releasing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Client/ClicksAndData.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Client/ClicksAndData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Client/ClientMouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Client/ClientMouse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Client/ReceivingCoordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Client/ReceivingCoordinates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/TextCopying/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/TextCopying/Client.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,7 +243,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696657260724</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Keyboard Changes Pressing&amp;Releasing">
+      <option name="closed" value="true" />
+      <created>1696660128818</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1696660128819</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -265,6 +270,7 @@
     <MESSAGE value="Clipboard Sharing Initial Test" />
     <MESSAGE value="Clipboard Sharing Second Test" />
     <MESSAGE value="Clipboard Sharing Second Test Bug Fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Clipboard Sharing Second Test Bug Fix" />
+    <MESSAGE value="Keyboard Changes Pressing&amp;Releasing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Keyboard Changes Pressing&amp;Releasing" />
   </component>
 </project>
