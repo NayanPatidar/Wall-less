@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6966fb5-3d0a-4a5a-8e0c-5d5245a120ed" name="Changes" comment="Clipboard Sharing Initial Test">
-      <change afterPath="$PROJECT_DIR$/Patch3/src/main/java/ServerLinux/Data.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Client/ClientMouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Client/ClientMouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Client/ReceivingCoordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Client/ReceivingCoordinates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/ServerLinux/CoordinatesSending.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/ServerLinux/CoordinatesSending.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/ServerLinux/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/ServerLinux/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/ServerLinux/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/ServerLinux/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/ServerWindows/CoordinatesSending.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/ServerWindows/CoordinatesSending.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/ServerWindows/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/ServerWindows/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="b6966fb5-3d0a-4a5a-8e0c-5d5245a120ed" name="Changes" comment="Clipboard Sharing Second Test" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -234,7 +224,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696653979276</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Clipboard Sharing Second Test">
+      <option name="closed" value="true" />
+      <created>1696656914797</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1696656914797</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -251,6 +249,7 @@
     <MESSAGE value="FTP By SSH Testing" />
     <MESSAGE value="Clipboard Functionality" />
     <MESSAGE value="Clipboard Sharing Initial Test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Clipboard Sharing Initial Test" />
+    <MESSAGE value="Clipboard Sharing Second Test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Clipboard Sharing Second Test" />
   </component>
 </project>
