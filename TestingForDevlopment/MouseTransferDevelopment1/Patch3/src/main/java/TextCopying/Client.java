@@ -36,7 +36,5 @@ public class Client {
 		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 		StringSelection selection = new StringSelection(stringBuilder.toString());
 		clipboard.setContents(selection, null);
-
-
 	}
 }
