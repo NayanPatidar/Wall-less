@@ -66,15 +66,11 @@ public class CoordinatesSending {
 		}
 
 		while (!stop){
-
-
 			Point cursorInfo = MouseInfo.getPointerInfo().getLocation();
-			int x = cursorInfo.x;
-			int y = cursorInfo.y;
 
 			if (Objects.equals(side, "Left")) {
-				int X = gettingXLeft(x, y);
-				int Y = gettingYLeft(x, y);
+				int X = gettingXLeft(cursorInfo.x, cursorInfo.y);
+				int Y = gettingYLeft(cursorInfo.x, cursorInfo.y);
 				String msg = "C:" + X + " " + Y;
 				byte[] sendData = msg.getBytes();
 
@@ -86,31 +82,11 @@ public class CoordinatesSending {
 						robot.mouseMove(6,Y);
 						break;
 					}
-					Thread.sleep(2);
+					Thread.sleep(3);
 				} catch (IOException | InterruptedException e) {
 					throw new RuntimeException(e);
 				}
 			}
-//			else if (Objects.equals(side, "Right")){
-//				int X = gettingXRight(x, y);
-//				int Y = gettingYRight(x, y);
-//
-//				String msg = "C:" + X + " " + Y;
-//				byte[] sendData = msg.getBytes();
-//
-//				DatagramPacket packet = new DatagramPacket(sendData, sendData.length, inetAddress, portUDP);
-//				try {
-//					datagramSocket.send(packet);
-//					if(X < 2 && Objects.equals(side, "Right")){
-//						stop = true;
-//						robot.mouseMove(ServerWidth - 3,Y);
-//						break;
-//					}
-//					Thread.sleep(2);
-//				} catch (IOException | InterruptedException e) {
-//					throw new RuntimeException(e);
-//				}
-//			}
 		}
 	}
 

@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b6966fb5-3d0a-4a5a-8e0c-5d5245a120ed" name="Changes" comment="Clipboard Sharing Second Test Bug Fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Client/ClicksAndData.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Client/ClicksAndData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Client/ClientMouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Client/ClientMouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/Client/ReceivingCoordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/Client/ReceivingCoordinates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/TextCopying/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/TextCopying/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/ServerLinux/CoordinatesSending.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/ServerLinux/CoordinatesSending.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/ServerLinux/EventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/ServerLinux/EventListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patch3/src/main/java/ServerLinux/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Patch3/src/main/java/ServerLinux/GUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +56,7 @@
       <recent name="ServerLinux" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Client.Start">
+  <component name="RunManager" selected="Application.ServerLinux.Start">
     <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="TextCopying.Client" />
       <module name="Patch3" />
@@ -125,8 +124,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Client.Start" />
         <item itemvalue="Application.ServerLinux.Start" />
+        <item itemvalue="Application.Client.Start" />
         <item itemvalue="Application.Server" />
         <item itemvalue="Application.CopyToClipboardExample" />
         <item itemvalue="Application.Client" />

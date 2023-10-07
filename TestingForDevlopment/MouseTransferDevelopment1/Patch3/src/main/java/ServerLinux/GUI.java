@@ -34,8 +34,10 @@ public class GUI {
 	public void Start() {
 		System.out.println("Screen Sharing started !!");
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
+
 		while (true){
 			Point cursor = MouseInfo.getPointerInfo().getLocation();
+
 			if (cursor.getX() < 5 && (val == 0) && Objects.equals(side, "Left")) {
 				System.out.println("Leaving Screen");
 				System.out.println("Calling Keyboard Functionality");
@@ -63,7 +65,6 @@ public class GUI {
 				SwingUtilities.invokeLater(() -> {
 					eventListener = new EventListener(jFrame, datagramSocket, inetAddress, portUDP);
 				});
-
 				new CoordinatesSending(OS, side, datagramSocket, inetAddress, portUDP, clientScreenSize);
 				val++;
 			} else if (cursor.getX() < toolkit.getScreenSize().width - 2  && (val == 1) && Objects.equals(side, "Right")) {
@@ -74,7 +75,7 @@ public class GUI {
 			}
 
 			try {
-				Thread.sleep(35);
+				Thread.sleep(50);
 			} catch (InterruptedException e) {
 				throw new RuntimeException(e);
 			}
