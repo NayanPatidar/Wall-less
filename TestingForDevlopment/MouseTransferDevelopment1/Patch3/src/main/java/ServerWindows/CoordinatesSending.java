@@ -92,7 +92,8 @@ public class CoordinatesSending {
 				} catch (IOException | InterruptedException e) {
 					throw new RuntimeException(e);
 				}
-			} else if (Objects.equals(side, "Right")){
+			}
+			else if (Objects.equals(side, "Right")){
 				int X = gettingXRight(x, y);
 				int Y = gettingYRight(x, y);
 

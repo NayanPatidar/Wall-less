@@ -1,5 +1,6 @@
 package ServerLinux;
 
+import javax.swing.text.AbstractDocument;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
@@ -63,9 +64,9 @@ public class CoordinatesSending {
 		} else if (Objects.equals(side, "Right")) {
 			robot.mouseMove(33, First.y);
 		}
+
 		while (!stop){
-			Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-			ClipboardFunctionality(clipboard);
+
 
 			Point cursorInfo = MouseInfo.getPointerInfo().getLocation();
 			int x = cursorInfo.x;
@@ -89,26 +90,27 @@ public class CoordinatesSending {
 				} catch (IOException | InterruptedException e) {
 					throw new RuntimeException(e);
 				}
-			} else if (Objects.equals(side, "Right")){
-				int X = gettingXRight(x, y);
-				int Y = gettingYRight(x, y);
-
-				String msg = "C:" + X + " " + Y;
-				byte[] sendData = msg.getBytes();
-
-				DatagramPacket packet = new DatagramPacket(sendData, sendData.length, inetAddress, portUDP);
-				try {
-					datagramSocket.send(packet);
-					if(X < 2 && Objects.equals(side, "Right")){
-						stop = true;
-						robot.mouseMove(ServerWidth - 3,Y);
-						break;
-					}
-					Thread.sleep(2);
-				} catch (IOException | InterruptedException e) {
-					throw new RuntimeException(e);
-				}
 			}
+//			else if (Objects.equals(side, "Right")){
+//				int X = gettingXRight(x, y);
+//				int Y = gettingYRight(x, y);
+//
+//				String msg = "C:" + X + " " + Y;
+//				byte[] sendData = msg.getBytes();
+//
+//				DatagramPacket packet = new DatagramPacket(sendData, sendData.length, inetAddress, portUDP);
+//				try {
+//					datagramSocket.send(packet);
+//					if(X < 2 && Objects.equals(side, "Right")){
+//						stop = true;
+//						robot.mouseMove(ServerWidth - 3,Y);
+//						break;
+//					}
+//					Thread.sleep(2);
+//				} catch (IOException | InterruptedException e) {
+//					throw new RuntimeException(e);
+//				}
+//			}
 		}
 	}
 
@@ -191,29 +193,6 @@ public class CoordinatesSending {
 		return 0;
 	}
 
-	public void ClipboardFunctionality(Clipboard clipboard){
-		clipboard.addFlavorListener(e -> {
-			Transferable contents = clipboard.getContents(null);
-
-			if (contents != null && contents.isDataFlavorSupported(DataFlavor.stringFlavor)) {
-				try {
-					String clipboardText = "T:' " + (String) contents.getTransferData(DataFlavor.stringFlavor) + "'";
-
-					sendToClient(clipboardText);
-
-				} catch (UnsupportedFlavorException | IOException e1) {
-					e1.printStackTrace();
-				}
-			}
-		});
-	}
-
-	private void sendToClient(String clipboardText) {
-		byte[] sendData = clipboardText.getBytes();
-
-		DatagramPacket packet = new DatagramPacket(sendData, sendData.length, inetAddress, portUDP);
-		System.out.println("Data sent to client: " + clipboardText);
-	}
 
 
 

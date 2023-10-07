@@ -1,5 +1,7 @@
 package ServerWindows;
 
+import ServerLinux.Data;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
@@ -57,6 +59,7 @@ public class Main {
 
 	private void GUIAndMouse() {
 		new GUI(OS, side, jFrame, jTextField, inetAddress, datagramSocket, portUDP, clientScreenSize);
+
 	}
 
 	private void UDPConnectionValidation() {

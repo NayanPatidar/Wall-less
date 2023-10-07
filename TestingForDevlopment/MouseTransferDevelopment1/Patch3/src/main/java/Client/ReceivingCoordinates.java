@@ -2,6 +2,8 @@ package Client;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -20,6 +22,8 @@ public class ReceivingCoordinates implements Runnable{
 	String side;
 
 	private JFrame dummyFrame;
+	Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+
 
 	{
 		try {
@@ -114,6 +118,8 @@ public class ReceivingCoordinates implements Runnable{
 				}
 			} else if (receivedMsg.startsWith("T:'")) {
 				System.out.println(receivedMsg);
+				StringSelection stringSelection = new StringSelection(receivedMsg.substring(3));
+				clipboard.setContents(stringSelection, null);
 
 			}else if (receivedMsg.startsWith("K:")){
 				System.out.println(receivedMsg);

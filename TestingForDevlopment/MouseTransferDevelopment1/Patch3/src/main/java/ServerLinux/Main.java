@@ -56,7 +56,10 @@ public class Main {
 	}
 
 	private void GUIAndMouse() {
+		Thread thread = new Thread(new Data(datagramSocket, inetAddress, portUDP));
+		thread.start();
 		new GUI(OS, side, jFrame, jTextField, inetAddress, datagramSocket, portUDP, clientScreenSize);
+
 	}
 
 	private void UDPConnectionValidation() {

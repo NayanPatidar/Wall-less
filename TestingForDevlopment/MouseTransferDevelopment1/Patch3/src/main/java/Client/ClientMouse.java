@@ -25,14 +25,6 @@ public class ClientMouse {
 	}
 
 	private void Operator() {
-		Thread receiveCoordinates = new Thread(new ReceivingCoordinates(side, datagramSocket, inetAddress, clientSocket));
-
-		receiveCoordinates.start();
-
-		try {
-			receiveCoordinates.join();
-		} catch (InterruptedException e) {
-			throw new RuntimeException(e);
-		}
+		new ReceivingCoordinates(side, datagramSocket, inetAddress, clientSocket);
 	}
 }
