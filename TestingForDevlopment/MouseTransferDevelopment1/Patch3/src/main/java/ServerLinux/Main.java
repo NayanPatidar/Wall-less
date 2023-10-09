@@ -14,7 +14,6 @@ public class Main {
 	DatagramSocket datagramSocket;
 	String clientScreenSize;
 	int portUDP = 12345;
-
 	InetAddress inetAddress;
 	String msgFromClient = "";
 	String side = "Left";

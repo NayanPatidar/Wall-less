@@ -2,7 +2,6 @@ package Client;
 
 import java.awt.*;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.*;
 
@@ -32,6 +31,10 @@ public class ConnectionClient {
 		}
 		new ClientMouse(side, datagramSocket, inetAddress, clientSocket, portUDP, outputStream);
 	}
+
+
+
+
 
 	public void UDPConnection() {
 		Toolkit toolkit = Toolkit.getDefaultToolkit();

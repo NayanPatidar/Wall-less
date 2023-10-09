@@ -1,35 +1,26 @@
 package LinuxJframe;
 
-import javax.swing.*;
-import java.awt.*;
+import org.freedesktop.dbus.connections.impl.DBusConnection;
+import org.freedesktop.dbus.interfaces.DBusInterface;
 
 public class Main {
-    public static void main(String[] args) throws AWTException {
-        JFrame jFrame = new JFrame();
-        // Assuming you've set up the necessary dependencies and imported the required libraries.
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Dimension screenSize = toolkit.getScreenSize();
 
-// Assume the GNOME top bar is 30 pixels high (you may need to adjust this value based on your system).
-        int gnomeTopBarHeight = 30;
+    public static void main(String[] args) {
+        try {
+            // Connect to D-Bus
+            DBusConnection connection = DBusConnection.getConnection(DBusConnection.DEFAULT_SYSTEM_BUS_ADDRESS);
 
-        int screenHeight = screenSize.height;
-        int actualTaskbarHeight = screenHeight - gnomeTopBarHeight;
-        System.out.println(actualTaskbarHeight);
-// Subtract GNOME top bar height to get the actual taskbar height.
-        Robot robot = new Robot();
+            // Query GNOME Shell for taskbar size and position
+            Object gnomeShell = connection.getRemoteObject("org.gnome.Shell", "/org/gnome/Shell");
+            DBusInterface gnomeShellInterface = (DBusInterface) gnomeShell;
 
-        while (true){
+            int taskbarHeight = (int) gnomeShellInterface.getProperty("panelHeight");
+            int taskbarPosition = (int) gnomeShellInterface.getProperty("panelPosition");
 
-            Point cursorInfo = MouseInfo.getPointerInfo().getLocation();
-            int x = cursorInfo.x;
-            int y = cursorInfo.y;
-            System.out.println(x + " " + y);
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            System.out.println("Taskbar Height: " + taskbarHeight);
+            System.out.println("Taskbar Position (1: Top, 2: Bottom, 3: Left, 4: Right): " + taskbarPosition);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
