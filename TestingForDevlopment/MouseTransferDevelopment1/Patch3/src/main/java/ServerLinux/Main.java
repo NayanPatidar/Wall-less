@@ -11,14 +11,13 @@ public class Main {
 	static JFrame jFrame = new JFrame();
 	JTextField jTextField = new JTextField();
 
-	DatagramSocket datagramSocket;
 	String clientScreenSize;
-	int portUDP = 12345;
-	InetAddress inetAddress;
 	String msgFromClient = "";
 	String side = "Left";
 	String OS = "Linux";
-
+	DatagramSocket datagramSocket;
+	int portUDP = 12345;
+	InetAddress inetAddress;
 	{
 		try {
 			inetAddress = InetAddress.getByName("10.200.233.31");
