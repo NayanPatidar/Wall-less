@@ -23,18 +23,20 @@ public class Client {
         datagramSocket = new DatagramSocket(portUDP);
         byte[] buffer = new byte[1024];
         DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
-        try {
-            datagramSocket.receive(packet);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        String receivedMsg = new String(packet.getData(), 0, packet.getLength());
-        if (receivedMsg.startsWith("T:")) {
-            String msg = receivedMsg.substring(2);
-            System.out.println("Received ->"+msg);
-            StringSelection string = new StringSelection(msg);
-            clipboard.setContents(string, null);
+        while (true) {
+            try {
+                datagramSocket.receive(packet);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            String receivedMsg = new String(packet.getData(), 0, packet.getLength());
+            if (receivedMsg.startsWith("T:")) {
+                String msg = receivedMsg.substring(2);
+                System.out.println("Received ->" + msg);
+                StringSelection string = new StringSelection(msg);
+                clipboard.setContents(string, null);
 
+            }
         }
     }
 }

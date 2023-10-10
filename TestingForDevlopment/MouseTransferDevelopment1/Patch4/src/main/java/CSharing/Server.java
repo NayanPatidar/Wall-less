@@ -32,38 +32,38 @@ public class Server {
         }
 
         Thread threadOne = new Thread(() -> {
-            Transferable contents = clipboard.getContents(null);
+            while (true) {
+                Transferable contents = clipboard.getContents(null);
+                if (contents != null && contents.isDataFlavorSupported(DataFlavor.stringFlavor)) {
+                    String clipboardText = null;
+                    try {
+                        clipboardText = (String) contents.getTransferData(DataFlavor.stringFlavor);
+                    } catch (UnsupportedFlavorException | IOException e) {
+                        throw new RuntimeException(e);
+                    }
 
-            if (contents != null && contents.isDataFlavorSupported(DataFlavor.stringFlavor)) {
-                String clipboardText = null;
+                    if (!clipboardText.equals(lastCopiedText) && !clipboardText.equals(msgFromClient) && !clipboardText.isEmpty()) {
+                        lastCopiedText = clipboardText;
+                        sendToClient(clipboardText);
+                    }
+                }
                 try {
-                    clipboardText = "T:'" + (String) contents.getTransferData(DataFlavor.stringFlavor) + "'";
-                } catch (UnsupportedFlavorException | IOException e) {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-
-                if (!clipboardText.equals(lastCopiedText) && !clipboardText.equals(msgFromClient)) {
-                    lastCopiedText = clipboardText;
-                    sendToClient(clipboardText);
-                }
-
-            }
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
             }
         });
         threadOne.start();
         threadOne.join();
-        Thread threadTwo = new Thread(() -> {
-
-        });
+//        Thread threadTwo = new Thread(() -> {
+//
+//        });
     }
 
     private static void sendToClient(String clipboardText) {
-
-        byte[] sendData = clipboardText.getBytes();
+        String msg = "T:" + clipboardText;
+        byte[] sendData = msg.getBytes();
 
         DatagramPacket packet = new DatagramPacket(sendData, sendData.length, inetAddress, portUDP);
         try {
