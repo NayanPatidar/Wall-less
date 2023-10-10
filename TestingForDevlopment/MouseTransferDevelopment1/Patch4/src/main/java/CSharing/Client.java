@@ -1,14 +1,14 @@
 package CSharing;
 
 import java.awt.*;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.*;
 import java.io.IOException;
 import java.net.*;
 
 public class Client {
     static Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
     private static String lastCopiedText = "";
+    private static String msgFromClient = "";
     static int portUDP = 12345;
     static InetAddress inetAddress;
     {
@@ -21,8 +21,32 @@ public class Client {
     static DatagramSocket datagramSocket;
     public static void main(String[] args) throws SocketException, InterruptedException {
         datagramSocket = new DatagramSocket(portUDP);
-        byte[] buffer = new byte[1024];
+        byte[] buffer = new byte[4096];
         DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
+
+        Thread sending = new Thread(() -> {
+            while (true) {
+                Transferable contents = clipboard.getContents(null);
+                if (contents != null && contents.isDataFlavorSupported(DataFlavor.stringFlavor)) {
+                    String clipboardText = null;
+                    try {
+                        clipboardText = (String) contents.getTransferData(DataFlavor.stringFlavor);
+                    } catch (UnsupportedFlavorException | IOException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                    if (!clipboardText.equals(lastCopiedText) && !clipboardText.equals(msgFromClient) && !clipboardText.isEmpty()) {
+                        lastCopiedText = clipboardText;
+                        sendToClient(clipboardText);
+                    }
+                }
+                try {
+                    Thread.sleep(800);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
 
         Thread receiving = new Thread(() -> {
             while (true) {
@@ -34,6 +58,7 @@ public class Client {
                 String receivedMsg = new String(packet.getData(), 0, packet.getLength());
                 if (receivedMsg.startsWith("T:")) {
                     String msg = receivedMsg.substring(2);
+                    msgFromClient = msg;
                     System.out.println("Received ->" + msg);
                     StringSelection string = new StringSelection(msg);
                     clipboard.setContents(string, null);
@@ -41,8 +66,22 @@ public class Client {
             }
         });
 
+        sending.start();
         receiving.start();
+        sending.join();
         receiving.join();
+    }
 
+    private static void sendToClient(String clipboardText) {
+        String msg = "T:" + clipboardText;
+        byte[] sendData = msg.getBytes();
+
+        DatagramPacket packet = new DatagramPacket(sendData, sendData.length, inetAddress, portUDP);
+        try {
+            datagramSocket.send(packet);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("Data sent to client: " + clipboardText);
     }
 }

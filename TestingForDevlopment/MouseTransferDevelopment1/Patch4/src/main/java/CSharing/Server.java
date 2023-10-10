@@ -1,10 +1,7 @@
 package CSharing;
 
 import java.awt.*;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.Transferable;
-import java.awt.datatransfer.UnsupportedFlavorException;
+import java.awt.datatransfer.*;
 import java.io.IOException;
 import java.net.*;
 
@@ -31,7 +28,10 @@ public class Server {
             throw new RuntimeException(e);
         }
 
-        Thread threadOne = new Thread(() -> {
+        byte[] buffer = new byte[4096];
+        DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
+
+        Thread sending = new Thread(() -> {
             while (true) {
                 Transferable contents = clipboard.getContents(null);
                 if (contents != null && contents.isDataFlavorSupported(DataFlavor.stringFlavor)) {
@@ -54,11 +54,29 @@ public class Server {
                 }
             }
         });
-        threadOne.start();
-        threadOne.join();
-//        Thread threadTwo = new Thread(() -> {
-//
-//        });
+
+        Thread receiving = new Thread(() -> {
+            while (true) {
+                try {
+                    datagramSocket.receive(packet);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                String receivedMsg = new String(packet.getData(), 0, packet.getLength());
+                if (receivedMsg.startsWith("T:")) {
+                    String msg = receivedMsg.substring(2);
+                    msgFromClient = msg;
+                    System.out.println("Received ->" + msg);
+                    StringSelection string = new StringSelection(msg);
+                    clipboard.setContents(string, null);
+                }
+            }
+        });
+
+        sending.start();
+        receiving.start();
+        sending.join();
+        receiving.join();
     }
 
     private static void sendToClient(String clipboardText) {
