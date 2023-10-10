@@ -48,7 +48,7 @@ public class Server {
                     }
                 }
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(800);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
