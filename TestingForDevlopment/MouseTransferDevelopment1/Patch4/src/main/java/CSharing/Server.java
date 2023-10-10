@@ -11,9 +11,10 @@ import java.net.*;
 public class Server {
     static Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
     private static String lastCopiedText = "";
+    private static String msgFromClient = "";
     static int portUDP = 12345;
     static InetAddress inetAddress;
-    {
+    static {
         try {
             inetAddress = InetAddress.getByName("10.200.233.31");
         } catch (UnknownHostException e) {
@@ -24,10 +25,15 @@ public class Server {
 
     public static void main(String[] args) throws SocketException, InterruptedException {
 
-        datagramSocket = new DatagramSocket(portUDP);
+        try {
+            datagramSocket = new DatagramSocket(portUDP);
+        } catch (SocketException e) {
+            throw new RuntimeException(e);
+        }
 
         Thread threadOne = new Thread(() -> {
             Transferable contents = clipboard.getContents(null);
+
             if (contents != null && contents.isDataFlavorSupported(DataFlavor.stringFlavor)) {
                 String clipboardText = null;
                 try {
@@ -36,7 +42,7 @@ public class Server {
                     throw new RuntimeException(e);
                 }
 
-                if (!clipboardText.equals(lastCopiedText)) {
+                if (!clipboardText.equals(lastCopiedText) && !clipboardText.equals(msgFromClient)) {
                     lastCopiedText = clipboardText;
                     sendToClient(clipboardText);
                 }
@@ -56,6 +62,7 @@ public class Server {
     }
 
     private static void sendToClient(String clipboardText) {
+
         byte[] sendData = clipboardText.getBytes();
 
         DatagramPacket packet = new DatagramPacket(sendData, sendData.length, inetAddress, portUDP);
