@@ -7,7 +7,7 @@ import java.net.*;
 public class TCPClient {
 	public static void main(String[] args) throws IOException, AWTException {
 
-		Socket socket = new Socket("10.200.233.99", 12345);
+		Socket socket = new Socket("10.200.233.107", 12345);
 
 		BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		Robot robot = new Robot();
