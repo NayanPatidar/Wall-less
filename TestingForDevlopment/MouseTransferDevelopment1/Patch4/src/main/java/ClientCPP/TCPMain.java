@@ -1,5 +1,6 @@
 package ClientCPP;
 
+import java.awt.*;
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -20,18 +21,16 @@ public class TCPMain {
 
 		try(Socket socket = new Socket(inetAddress, 8085);) {
 			OutputStream out = socket.getOutputStream();
-			PrintWriter writer = new PrintWriter(out, true);
 
-			InputStream in = socket.getInputStream();
-			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+			while (true) {
+				Point mouseLocation = MouseInfo.getPointerInfo().getLocation();
+				int x = (int) mouseLocation.getX();
+				int y = (int) mouseLocation.getY();
+				String message = x + " " + y;
+				out.write(message.getBytes());
+				Thread.sleep(2);
+			}
 
-			String message = "Hello, server!";
-			writer.println(message);
-			String receivedData = reader.readLine();
-			System.out.println("Received: " + receivedData);
-
-			writer.close();
-			reader.close();
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
