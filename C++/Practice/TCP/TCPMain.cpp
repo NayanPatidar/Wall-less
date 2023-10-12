@@ -55,16 +55,19 @@ int main(){
 
      std::cout << "Connection accepted from " << inet_ntoa(clientAddr.sin_addr) << std::endl;
 
+    while (1)
+    {
     char buffer[1024];
     int valread = read(clientSocket, buffer, sizeof(buffer));
     std::cout << buffer << std::endl;
-    XWarpPointer(display, None, XRootWindow(display, XDefaultScreen(display)), 0, 0, 0, 0, x, y);
+    XWarpPointer(display, None, XRootWindow(display, XDefaultScreen(display)), 0, 0, 0, 0, x, y); 
+    }
+    
+    
+ 
+ 
     XFlush(display);
     XCloseDisplay(display);
-
-    const char *response = "Hell Yeah";
-    send(clientSocket, response, strlen(response), 0);
-    std::cout << "Response Sent" << std::endl;
 
     close(clientSocket);
     close(TCPSocket);
