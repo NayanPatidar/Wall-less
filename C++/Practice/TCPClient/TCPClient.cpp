@@ -1,7 +1,8 @@
 #include <iostream>
-#include <winsock2.h>
+#include <WinSock2.h>
+#include <ws2tcpip.h>
 
-#pragma comment(lib, "Ws2_32.lib")  // Link with Ws2_32.lib
+#pragma comment(lib, "Ws2_32.lib")
 
 const int PORT = 8080;
 int main() {
@@ -24,5 +25,9 @@ int main() {
         sockaddr_in serverAddr;
         memset(&serverAddr, 0, sizeof(serverAddr));
         serverAddr.sin_family = AF_INET;
-        serverAddr.sin_port = htons(PORT)   
+        serverAddr.sin_port = htons(PORT);
+        inet_pton(AF_INET, "127.0.0.1", &serverAddr.sin_addr);
+
+        
+
 }
