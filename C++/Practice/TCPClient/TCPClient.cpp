@@ -1,8 +1,8 @@
 #include <iostream>
-#include <WinSock2.h>
-#include <ws2tcpip.h>
+#include <string>
+#include <winsock2.h>
 
-#pragma comment(lib, "Ws2_32.lib")
+#pragma comment(lib, "Ws2_32.lib")  // Link with Ws2_32.lib
 
 const int PORT = 8080;
 int main() {
@@ -26,8 +26,45 @@ int main() {
         memset(&serverAddr, 0, sizeof(serverAddr));
         serverAddr.sin_family = AF_INET;
         serverAddr.sin_port = htons(PORT);
-        inet_pton(AF_INET, "127.0.0.1", &serverAddr.sin_addr);
 
-        
+        serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
+    if (serverAddr.sin_addr.s_addr == INADDR_NONE) {
+        std::cerr << "inet_addr failed with error: " << WSAGetLastError() << std::endl;
+        closesocket(sockfd);
+        WSACleanup();
+        return 1;
+    }
 
+        iResult = connect(sockfd, (sockaddr*)&serverAddr, sizeof(serverAddr));
+        if (iResult == SOCKET_ERROR) {
+            std::cerr << "Connection failed: " << WSAGetLastError() << std::endl;
+            closesocket(sockfd);
+            WSACleanup();
+            return -1;
+        }
+// Send data to the server
+    const char* sendData = "Hello, server!";
+    iResult = send(sockfd, sendData, strlen(sendData), 0);
+    if (iResult == SOCKET_ERROR) {
+        std::cerr << "send failed with error: " << WSAGetLastError() << std::endl;
+        closesocket(sockfd);
+        WSACleanup();
+        return 1;
+    }
+    std::cout << "Data sent: " << sendData << std::endl;
+
+    // Shutdown the connection for sending
+    iResult = shutdown(sockfd, SD_SEND);
+    if (iResult == SOCKET_ERROR) {
+        std::cerr << "shutdown failed with error: " << WSAGetLastError() << std::endl;
+        closesocket(sockfd);
+        WSACleanup();
+        return 1;
+    }
+
+    // Cleanup and close the socket
+    closesocket(sockfd);
+    WSACleanup();
+
+    return 0;
 }
