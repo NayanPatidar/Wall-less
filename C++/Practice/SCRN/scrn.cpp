@@ -1,35 +1,44 @@
 #include <X11/Xlib.h>
-#include <X11/Xatom.h>
-#include <iostream>
+#include <X11/Xutil.h>
 
 int main() {
     Display *display = XOpenDisplay(NULL);
-    if (display == NULL) {
-        std::cerr << "Unable to open X display." << std::endl;
+    if (!display) {
+        
         return 1;
     }
 
-    Window window = XCreateSimpleWindow(display, RootWindow(display, 0), 100, 100, 100, 100, 0, BlackPixel(display, 0), WhitePixel(display, 0));
+    int screen = XDefaultScreen(display);
+    Window rootWindow = XRootWindow(display, screen);
+    Window window = XCreateSimpleWindow(display, rootWindow, 0, 0, 800, 600, 0, 0, 0);
 
-    XSetWindowAttributes attributes;
-    attributes.override_redirect = True;
-    XChangeWindowAttributes(display, window, CWOverrideRedirect, &attributes);
+    // Allocate the grey color
+    XColor greyColor;
+    Colormap colormap = XDefaultColormap(display, screen);
+    Status status = XAllocNamedColor(display, colormap, "grey", &greyColor, &greyColor);
+    if (!status) {
+        
+        return 1;
+    }
 
-    XSetWindowBorder(display, window, 0);
+    // Set the background color to grey
+    XSetWindowAttributes windowAttributes;
+    windowAttributes.background_pixel = greyColor.pixel;
 
+    // This will remove the window manager decorations, including the title bar
+    windowAttributes.override_redirect = true;
+
+    XChangeWindowAttributes(display, window, CWBackPixel | CWOverrideRedirect, &windowAttributes);
+
+    // Map and manage window
     XMapWindow(display, window);
+    XFlush(display);
 
-    Atom WM_DELETE_WINDOW = XInternAtom(display, "WM_DELETE_WINDOW", False);
-    XSetWMProtocols(display, window, &WM_DELETE_WINDOW, 1);
-
-    XEvent event;
     while (1) {
+        XEvent event;
         XNextEvent(display, &event);
-        if (event.type == Expose) {
-            XFillRectangle(display, window, DefaultGC(display, 0), 0, 0, 100, 100);
-        } else if (event.type == ClientMessage && event.xclient.message_type == WM_DELETE_WINDOW) {
-            break;
-        }
+
+        // Handle events as needed
     }
 
     XCloseDisplay(display);
