@@ -53,7 +53,8 @@ int main() {
     }
     std::cout << "Data sent: " << sendData << std::endl;
 
-    char buffer[1024];
+    char buffer[2048];
+    memset(&buffer, 0, sizeof(buffer));
     int valRead = recv(sockfd, buffer, sizeof(buffer), 0);
     std::cout << "Recieved : " << buffer << std::endl;
 
