@@ -12,7 +12,7 @@ int main() {
                                       100, 100, 200, 200, 0, 0, WhitePixel(display, DefaultScreen(display)));
 
   Atom opacity_atom = XInternAtom(display, "_NET_WM_WINDOW_OPACITY", False);
-  unsigned long alpha = (unsigned long) (0xffffffff * 0.75);  // Example: set alpha to 75%
+  unsigned long alpha = (unsigned long) (0xffffffff * 0.1);  // Example: set alpha to 75%
   XChangeProperty(display, window, opacity_atom, XA_CARDINAL, 32, PropModeReplace,
                  (unsigned char*)&alpha, 1);
 
@@ -22,21 +22,6 @@ int main() {
   while (1) {
     XEvent event;
     XNextEvent(display, &event);
-
-    switch (event.type) {
-      case Expose:
-        // Handle expose event
-        break;
-      case ConfigureNotify:
-        // Handle configure notify event
-        break;
-      case DestroyNotify:
-        // Handle destroy notify event
-        break;
-      default:
-        // Ignore other events
-        break;
-    }
   }
 
   XCloseDisplay(display);
