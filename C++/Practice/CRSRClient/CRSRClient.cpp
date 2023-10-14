@@ -9,7 +9,7 @@ const int port = 8085;
 
 int main() {
     WSAData wsaData;
-    POINT point;
+    POINT crsr;
 
     if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
         std::cerr << "WSAStartup failed with error: " << WSAGetLastError() << std::endl;
@@ -57,7 +57,20 @@ int main() {
     std::cout << "Received: " << buffer << std::endl;
 
     if (strcmp(buffer, "Ready") == 0) {
-        std::cout << "Server is ready as hell!" << std::endl;
+        while (1) {
+            if (GetCursorPos(&crsr)) {
+                std::string coordiantes = std::to_string(crsr.x) + " " + std::to_string(crsr.y);
+                const char* coorToSend = coordiantes.c_str();
+                if (send(sockfd, coorToSend, strlen(checkClientPresence), 0) == SOCKET_ERROR) {
+                    std::cerr << "send failed with error: " << WSAGetLastError() << std::endl;
+                    closesocket(sockfd);
+                    WSACleanup();
+                    return -1;
+                }
+                std::cout << "Data sent: " << coorToSend << std::endl;
+            }
+            Sleep(2);
+        }
     }
 
     if (shutdown(sockfd, SD_SEND) == SOCKET_ERROR) {
