@@ -4,7 +4,7 @@
 
 #pragma comment(lib, "Ws2_32.lib")  // Link with Ws2_32.lib
 
-const int PORT = 8080;
+const int PORT = 8085;
 int main() {
         WSAData wsaData;
         int iResult;
@@ -27,7 +27,7 @@ int main() {
         serverAddr.sin_family = AF_INET;
         serverAddr.sin_port = htons(PORT);
 
-        serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
+        serverAddr.sin_addr.s_addr = inet_addr("10.200.233.107");
     if (serverAddr.sin_addr.s_addr == INADDR_NONE) {
         std::cerr << "inet_addr failed with error: " << WSAGetLastError() << std::endl;
         closesocket(sockfd);
@@ -52,6 +52,10 @@ int main() {
         return 1;
     }
     std::cout << "Data sent: " << sendData << std::endl;
+
+    char buffer[1024];
+    int valRead = recv(sockfd, buffer, sizeof(buffer), 0);
+    std::cout << "Recieved : " << buffer << std::endl;
 
     // Shutdown the connection for sending
     iResult = shutdown(sockfd, SD_SEND);
