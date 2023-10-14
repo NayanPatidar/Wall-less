@@ -42,6 +42,7 @@ int main() {
             WSACleanup();
             return -1;
         }
+
 // Send data to the server
     const char* sendData = "Hello, server!";
     iResult = send(sockfd, sendData, strlen(sendData), 0);
