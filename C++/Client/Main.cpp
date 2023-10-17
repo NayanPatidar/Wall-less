@@ -2,5 +2,6 @@
 #include "ConnecBuild.cpp"
 
 int main() {
-	ConnecBuilder connection;
+	int numConnection = 1;
+	ConnecBuilder connection = ConnecBuilder(numConnection);
 }
