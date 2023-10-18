@@ -1,62 +1,42 @@
 #include <iostream>
-#include <arpa/inet.h>
-#include <cstring>
-#include <unistd.h>
+#include <thread>
+#include "Connection.cpp"
 
-class Main {
-private:
+class Main{
+    private:
     int sockTCP, clientSocket;
-public:
-        int connection(){
-            // Creating the socket 
-            sockTCP = socket(AF_INET, SOCK_STREAM, 0);
-            if (sockTCP < 0){
-                std::cerr << "Error while creating the socket!";
-            }
+    ConnecTCP connecTCP;
+    int numOfClients = 2;
 
-            // reusing the port 
-            int opt = 1;
-            if (setsockopt(sockTCP, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) < 0) {
-                std::cerr << "Reuse the socket port";
-            }
+    public:
+        int controller(){
+        
+        if (connecTCP.initialize(numOfClients) < 0) {
+        std::cerr << "Initialization failed." << std::endl;
+        return -1;
+        } 
 
-            // Binding the socket 
-            struct sockaddr_in serverAddr, clientAddr;
-            memset(&serverAddr, 0, sizeof(serverAddr));
-            serverAddr.sin_family = AF_INET;
-            serverAddr.sin_port = htons(8085);
-            serverAddr.sin_addr.s_addr = INADDR_ANY;
+        std::thread connectionThread([this]() { this -> buildingConnection();});
+        connectionThread.join();
 
-            if(bind(sockTCP, (struct sockaddr *)&serverAddr, sizeof(serverAddr)) < 0){
-                std::cerr << "Got error while binding the socket";
-            }
+        return 0;
+        }
 
-            if (listen(sockTCP, 3) < 0) {
-                std::cerr << "Listen failed";
-                return -1;
-            }
+        int buildingConnection(){
 
-            std::cout << "Server listening on port 8085" << std::endl;
-
-            // Accept Incoming Connection
-            socklen_t addrLen = sizeof(struct sockaddr_in);
-
-            if ((clientSocket = accept(sockTCP, (struct sockaddr *)&clientAddr, &addrLen)) < 0) {
-            perror("Accept failed");
+        int clients = numOfClients;
+        while (clients > 0) {
+        // accepting the connection form the client
+        int clientSocket = connecTCP.acceptClient();
+        if (clientSocket < 0) {
+            std::cerr << "Failed to accept client." << std::endl;
             return -1;
-            }
+        }
 
-            std::cout << "Connection accepted from " << inet_ntoa(clientAddr.sin_addr) << std::endl;
-          
-            // Reading the data from the client 
-            char buffer[1024];
-            int valread = read(clientSocket, buffer, sizeof(buffer));
-            std::cout << "Received: " << buffer << std::endl;
-
-            const char *response = "Hell Yeah";
-            send(clientSocket, response, strlen(response), 0);
-            std::cout << "Response Sent" << std::endl;
-
-    return 0;
+        char buffer[1024];
+        int bytesRead = connecTCP.readFromTheClient(clientSocket, buffer, sizeof(buffer));
+        clients--;
+        }
+        return 0;
         }
 };

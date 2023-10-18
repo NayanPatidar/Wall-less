@@ -3,5 +3,5 @@
 
 int main(){
     Main main;
-    main.connection();
+    main.controller();
 }
