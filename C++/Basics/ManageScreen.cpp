@@ -50,14 +50,26 @@ int main() {
             int x = event.xbutton.x;
             int y = event.xbutton.y;
             if (x != prevX || y != prevY) {
-            if(x <= MIN_X)
-                x = MIN_X;
-            if(x >= MAX_X)
-                x = MAX_X;
-            if(y <= MIN_Y)
-                y = MIN_Y;
-            if(y >= MAX_Y)
-                y = MAX_Y;
+            if(x <= MIN_X){
+                x = MAX_X-1;
+                loopNumX--;
+                std::cout << "Loop " << loopNumX << " X " << std::endl;
+            }
+            if(x >= MAX_X){
+                x = MIN_X+1;
+                loopNumX++;
+                std::cout << "Loop " << loopNumX << " X " << std::endl;
+            }
+            if(y <= MIN_Y){
+                y = MAX_Y-1;
+                loopNumY--;
+                std::cout << "Loop " << loopNumY << " Y " << std::endl;
+            }
+            if(y >= MAX_Y){
+                y = MIN_Y+1;
+                loopNumY++;
+                std::cout << "Loop " << loopNumY << " Y " << std::endl;
+            }
                 moveCursor(x,y,display);
             prevX = x;
             prevY = y;
