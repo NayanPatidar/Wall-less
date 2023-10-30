@@ -11,7 +11,8 @@ const int CLIENT_WIDTH = 1280;
 const int CLIENT_HEIGHT = 720;
 int loopNumX = 1;
 int loopNumY = 1;
-int MAX_LOOPS;
+int MAX_LOOPS_X;
+int MAX_LOOPS_Y;
 
 void moveCursor(int x, int y, Display *display) {
     XWarpPointer(display, None, XRootWindow(display, XDefaultScreen(display)), 0, 0, 0, 0, x, y);
@@ -21,24 +22,23 @@ void moveCursor(int x, int y, Display *display) {
 void cursorPosition(int VPofX, int VPofY){
     int x = (VPofX-700)+(loopNumX-1)*100;
     int y = (VPofY-350)+(loopNumY-1)*100;
-    std::cout << x << "-" << y << "-" << loopNumX << std::endl;
+    std::cout << x << "-" << loopNumX << "  " << y << "-" << loopNumY << std::endl;
 }
 
 
 int CalculateX(int x){
-    if(x <= MIN_X){
+    if(x < MIN_X){
         if(loopNumX == 1){
         x = MIN_X;
         } else if(loopNumX > 1){
         x = MAX_X-1;
         loopNumX--;
         }
-
     }
     else if (x > MAX_X){
-        if(loopNumX == MAX_LOOPS){
+        if(loopNumX == MAX_LOOPS_X){
         x = MAX_X;
-        } else if(loopNumX < MAX_LOOPS){
+        } else if(loopNumX < MAX_LOOPS_X){
         x = MIN_X;
         loopNumX++;
         }
@@ -47,12 +47,21 @@ int CalculateX(int x){
 }
 
 int CalculateY(int y){
-    if(y <= MIN_Y){
+    if(y < MIN_Y){
+        if(loopNumY == 1){
         y = MIN_Y;
+        } else if(loopNumY > 1){
+        y = MAX_Y-1;
+        loopNumY--;
+        }    
     }
     else if (y > MAX_Y){
+        if(loopNumY == MAX_LOOPS_Y){
         y = MAX_Y;
-    }
+        } else if(loopNumY < MAX_LOOPS_Y){
+        y = MIN_Y;
+        loopNumY++;
+        }    }
     return y;
 }
 
@@ -63,11 +72,19 @@ int main(){
     }
 
     if(CLIENT_WIDTH%100 == 0){
-        MAX_LOOPS = CLIENT_WIDTH/100;
+        MAX_LOOPS_X = CLIENT_WIDTH/100;
     } else {
-        MAX_LOOPS = (CLIENT_WIDTH/100) + 1;
+        MAX_LOOPS_X = (CLIENT_WIDTH/100) + 1;
     }
-    std::cout << "MAX_LOOPS - " << MAX_LOOPS << std::endl;
+
+    if(CLIENT_HEIGHT%100 == 0){
+        MAX_LOOPS_Y = CLIENT_HEIGHT/100;
+    } else {
+        MAX_LOOPS_Y = (CLIENT_HEIGHT/100) + 1;
+    }
+    std::cout << "MAX_LOOPS - " << MAX_LOOPS_X << std::endl;
+
+    
 
     XEvent event;
         if (XQueryPointer(display, XRootWindow(display, DefaultScreen(display)),
