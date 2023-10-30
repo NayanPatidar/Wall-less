@@ -20,8 +20,8 @@ void moveCursor(int x, int y, Display *display) {
 
 void cursorPosition(int VPofX, int VPofY){
     int x = (VPofX-700)+(loopNumX-1)*100;
-    int x = (VPofY-350)+(loopNumY-1)*100;
-    std::cout << x << "-" << VPofY << "-" << loopNumX << std::endl;
+    int y = (VPofY-350)+(loopNumY-1)*100;
+    std::cout << x << "-" << y << "-" << loopNumX << std::endl;
 }
 
 
@@ -33,7 +33,7 @@ int CalculateX(int x){
         x = MAX_X-1;
         loopNumX--;
         }
-        std::cout << loopNumX << std::endl;
+
     }
     else if (x > MAX_X){
         if(loopNumX == MAX_LOOPS){
@@ -77,7 +77,6 @@ int main(){
                                   
                       int x = event.xbutton.x;
                       int y = event.xbutton.y;
-
                       }
 
 
@@ -101,7 +100,6 @@ int main(){
             cursorPosition(VPofX, VPofY);
 
             moveCursor(VPofX, VPofY, display);
-            
             
             oldX = x;
             oldY = y;
