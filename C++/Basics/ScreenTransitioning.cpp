@@ -43,6 +43,11 @@ int CalculateX(int x){
         loopNumX++;
         }
     }
+    else if (loopNumX == MAX_LOOPS_X){
+        if(x > MIN_X + CLIENT_WIDTH%100){
+        x = MIN_X + CLIENT_WIDTH%100;
+        }
+    }
     return x;
 }
 
@@ -61,7 +66,13 @@ int CalculateY(int y){
         } else if(loopNumY < MAX_LOOPS_Y){
         y = MIN_Y;
         loopNumY++;
-        }    }
+        }    
+    }
+    else if (loopNumY == MAX_LOOPS_Y){
+        if(y > MIN_Y + CLIENT_HEIGHT%100){
+        y = MIN_Y + CLIENT_HEIGHT%100;
+        }
+    }
     return y;
 }
 
@@ -96,9 +107,14 @@ int main(){
             int y = event.xbutton.y;
             
             std::cout << x%100 << std::endl;
-            loopNumX = x/100+1;          
+            loopNumX = x/100+1;         
+            std::cout << x/100+1 << std::endl;   
             x = MIN_X + x%100;
-            // std::cout << x/100+1 << std::endl;  
+
+            std::cout << y%100 << std::endl;
+            loopNumY = y/100+1;         
+            std::cout << y/100+1 << std::endl;   
+            y = MIN_Y + y%100;
             moveCursor(x, y, display);
 
             
