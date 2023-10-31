@@ -96,9 +96,9 @@ int main(){
             int y = event.xbutton.y;
             
             std::cout << x%100 << std::endl;
-            // x = MIN_X + x%100;
-            std::cout << x/100 << std::endl;  
-            // loopNumX = (x/100)+1;          
+            loopNumX = x/100+1;          
+            x = MIN_X + x%100;
+            // std::cout << x/100+1 << std::endl;  
             moveCursor(x, y, display);
 
             
