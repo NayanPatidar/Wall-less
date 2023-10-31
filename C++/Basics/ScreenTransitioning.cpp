@@ -84,7 +84,7 @@ int main(){
     }
     std::cout << "MAX_LOOPS - " << MAX_LOOPS_X << std::endl;
 
-    
+
 
     XEvent event;
         if (XQueryPointer(display, XRootWindow(display, DefaultScreen(display)),
@@ -92,9 +92,16 @@ int main(){
                       &event.xbutton.x_root, &event.xbutton.y_root,
                       &event.xbutton.x, &event.xbutton.y, &event.xbutton.state)) {
                                   
-                      int x = event.xbutton.x;
-                      int y = event.xbutton.y;
-                      }
+            int x = event.xbutton.x;
+            int y = event.xbutton.y;
+            
+            std::cout << x%100 << std::endl;
+            x = MIN_X + x%100;
+            std::cout << x/100+1 << std::endl;  
+            loopNumX = x/100+1;          
+
+            
+            }
 
 
 
