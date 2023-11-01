@@ -48,22 +48,15 @@ int main() {
 
 	while (1) {
 		memset(buffer, 0, sizeof(buffer));
-		int valRead = recv(sockfd, buffer, sizeof(buffer), 0);
+		int valRead = recv(sockfd, buffer, sizeof(buffer), 0	);
 
 		if (strlen(buffer) == 0) {
 			std::cout << "No coordinates from the User !!" << std::endl;
 			break;
 		}
 
-		int x, y;
-		std::istringstream iss(buffer);
+		std::cout << "Received: " << buffer << std::endl;		
 
-		if (!(iss >> x >> y)) {
-			std::cerr << "Failed to parse integers from buffer" << std::endl;
-			return -1;
-		}
-
-		std::cout << x << "-" << y;
 	}
 
 }
