@@ -48,30 +48,36 @@ int main() {
 		return -1;
 	}
 
-	u_long mode = 1;
-	if (ioctlsocket(sockfd, FIONBIO, &mode) == SOCKET_ERROR) {
-		std::cerr << "ioctlsocket() failed." << std::endl;
-		closesocket(sockfd);
-		WSACleanup();
-		return 1;
-	}
+	fd_set readSet;
+
 
 	char buffer[1024];
 	int bytesRead = 0;
 
 	while (1) {
-		bytesRead = recv(sockfd, buffer, sizeof(buffer), 0);
+		FD_ZERO(&readSet);
+		FD_SET(sockfd, &readSet);
 
-		if (bytesRead > 0) {
-			int x, y;
-			std::istringstream messageStream(std::string(buffer, bytesRead));
+		struct timeval timeout;
+		timeout.tv_sec = 0;
+		timeout.tv_usec = 10000;
 
-			messageStream >> x >> y;
-			SetCursorPos(x, y);
-		}
-		else if (bytesRead == 0) {
-			std::cout << "No coordinates from the User!" << std::endl;
-			break;
+		if (select(0, &readSet, NULL, NULL, &timeout) > 0) {
+			if (FD_ISSET(sockfd, &readSet)) {
+				memset(buffer, 0, sizeof(buffer));
+				int bytesRead = recv(sockfd, buffer, sizeof(buffer), 0);
+
+				if (bytesRead > 0) {
+					int x, y;
+					std::istringstream iss(buffer);
+					iss >> x >> y;
+					SetCursorPos(x, y);
+				}
+				else if (bytesRead == 0) {
+					std::cout << "No coordinates from the User!" << std::endl;
+					break;
+				}
+			}
 		}
 	}
 }
