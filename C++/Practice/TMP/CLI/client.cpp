@@ -4,6 +4,7 @@
 #include <Windows.h>
 #include <sstream>
 #include <cstring>
+#include <fcntl.h>
 
 
 
@@ -26,7 +27,6 @@ int main() {
 		WSACleanup();
 		return -1;
 	}
-
 
 	sockaddr_in sockAddr;
 	memset(&sockAddr, 0, sizeof(sockAddr));
@@ -60,7 +60,7 @@ int main() {
 
 		struct timeval timeout;
 		timeout.tv_sec = 0;
-		timeout.tv_usec = 10000;
+		timeout.tv_usec = 50;
 
 		if (select(0, &readSet, NULL, NULL, &timeout) > 0) {
 			if (FD_ISSET(sockfd, &readSet)) {
@@ -72,6 +72,7 @@ int main() {
 					std::istringstream iss(buffer);
 					iss >> x >> y;
 					SetCursorPos(x, y);
+					std::cout << "X: " << x << " Y: " << y << std::endl;
 				}
 				else if (bytesRead == 0) {
 					std::cout << "No coordinates from the User!" << std::endl;
