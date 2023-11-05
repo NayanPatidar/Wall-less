@@ -35,6 +35,7 @@ int main(){
     ip::tcp::socket socket(io);
     acceptor.accept(socket); 
     std::string message = "Hello, client!\n";
+    std::cout << "BOOM FOR TESTING" << std::endl;
     
     boost::system::error_code ignored_error;
 
@@ -68,7 +69,7 @@ int main(){
 
             std::string serializedData = ss.str();
             serializedData += '\n';
-            std::cout << serializedData << std::endl;
+            // std::cout << serializedData << std::endl;
             write(socket, buffer(serializedData), ignored_error);
             std::this_thread::sleep_for(std::chrono::milliseconds(POLLING_INTERVAL_MS));
 
