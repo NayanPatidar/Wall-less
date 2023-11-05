@@ -9,7 +9,9 @@
 
 using namespace boost::asio;
 
-const int WAITING_INTERVAL = 3;
+const int WAITING_INTERVAL_ONE = 3;
+const int WAITING_INTERVAL_TWO = 5;
+
 const int THRESHOLD_INACTIVITY = 1000; // if the cursor is not moving for 1 sec or more ...
 const int MIN_X = 700;
 const int MAX_X = 800;
@@ -23,15 +25,28 @@ int loopNumY = 1;
 int MAX_LOOPS_X;
 int MAX_LOOPS_Y;
 
+struct Position{
+    int x;
+    int y;
+    template <typename Archive>
+    void serialize(Archive &ar, const unsigned int version){
+        ar& x;
+        ar& y;
+    }
+};
+
 void moveCursor(int x, int y, Display *display) {
     XWarpPointer(display, None, XRootWindow(display, XDefaultScreen(display)), 0, 0, 0, 0, x, y);
         XFlush(display);
 }
 
-void cursorPosition(int VPofX, int VPofY){
+void cursorPosition(int VPofX, int VPofY, Position *Pos){
     int x = (VPofX-700)+(loopNumX-1)*100;
     int y = (VPofY-350)+(loopNumY-1)*100;
-    std::cout << x << "-" << loopNumX << "  " << y << "-" << loopNumY << std::endl;
+    // std::cout << x << "-" << loopNumX << "  " << y << "-" << loopNumY << std::endl;
+
+    Pos->x = x;
+    Pos->y = y;
 }
 
 
@@ -123,16 +138,6 @@ void initialMovement(Display* display){
     }
 }
 
-struct Position{
-    int x;
-    int y;
-    template <typename Archive>
-    void serialize(Archive &ar, const unsigned int version){
-        ar& x;
-        ar& y;
-    }
-};
-
 int main(){
     // Creating the display from the X Library
     Display* display = XOpenDisplay(NULL);
@@ -169,14 +174,12 @@ int main(){
                           &event.xbutton.root, &event.xbutton.window,
                           &event.xbutton.x_root, &event.xbutton.y_root,
                           &event.xbutton.x, &event.xbutton.y, &event.xbutton.state)) {
-            
-                Pos.x = event.xbutton.x;
-                Pos.y = event.xbutton.y;
+        
 
-                int VPofX = CalculateX(Pos.x);
-                int VPofY = CalculateY(Pos.y);
+                int VPofX = CalculateX(event.xbutton.x);
+                int VPofY = CalculateY(event.xbutton.y);
 
-                cursorPosition(VPofX, VPofY);
+                cursorPosition(VPofX, VPofY, &Pos);
                 moveCursor(VPofX, VPofY, display);
 
                 if (std::abs(VPofX- oldX) > 0 || std::abs(VPofY - oldY) > 0){
@@ -185,11 +188,25 @@ int main(){
 
                 if (std::chrono::duration_cast<std::chrono::milliseconds>(
                     std::chrono::steady_clock::now() - lastMovementTime).count() > THRESHOLD_INACTIVITY){
+                    std::this_thread::sleep_for(std::chrono::milliseconds(WAITING_INTERVAL_TWO));
+
                     continue;
                 }
 
+                std::stringstream ss;
+                boost::archive::text_oarchive oa(ss);
+                oa << Pos;
+
+                std::string serializedData = ss.str();
+                serializedData += '\n';
+                std::cout << serializedData << std::endl;
+                write(socket, buffer(serializedData), ignored_error);
+                std::this_thread::sleep_for(std::chrono::milliseconds(WAITING_INTERVAL_ONE));
+
+
                 oldX = VPofX;
                 oldY = VPofY;
+    }
     }
 
 }

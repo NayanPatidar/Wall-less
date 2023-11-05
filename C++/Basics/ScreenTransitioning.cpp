@@ -76,12 +76,7 @@ int CalculateY(int y){
     return y;
 }
 
-int main(){
-    Display* display = XOpenDisplay(NULL);
-    if(display == NULL){
-        std::cerr << "Error in opening the display";
-    }
-
+void initializer(){
     if(CLIENT_WIDTH%100 == 0){
         MAX_LOOPS_X = CLIENT_WIDTH/100;
     } else {
@@ -94,9 +89,9 @@ int main(){
         MAX_LOOPS_Y = (CLIENT_HEIGHT/100) + 1;
     }
     std::cout << "MAX_LOOPS - " << MAX_LOOPS_X << std::endl;
+}
 
-
-
+void initialMovement(Display* display){
     XEvent event;
         if (XQueryPointer(display, XRootWindow(display, DefaultScreen(display)),
                       &event.xbutton.root, &event.xbutton.window,
@@ -115,12 +110,20 @@ int main(){
             loopNumY = y/100+1;         
             std::cout << y/100+1 << std::endl;   
             y = MIN_Y + y%100;
-            moveCursor(x, y, display);
+            moveCursor(x, y, display);        
+    }
+}
 
-            
-            }
+int main(){
+    Display* display = XOpenDisplay(NULL);
+    if(display == NULL){
+        std::cerr << "Error in opening the display";
+    }
 
+    initializer();
 
+    initialMovement(display);
+    XEvent event;
 
     while (true)
     {

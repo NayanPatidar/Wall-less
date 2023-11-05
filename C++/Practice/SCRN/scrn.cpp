@@ -26,11 +26,11 @@ int main() {
     );
 
       Atom opacity_atom = XInternAtom(display, "_NET_WM_WINDOW_OPACITY", False);
-  unsigned long alpha = (unsigned long) (0xffffffff * 0);  // Example: set alpha to 75%
+    unsigned long alpha = (unsigned long) (0xffffffff * 0.5);  
   XChangeProperty(display, window, opacity_atom, XA_CARDINAL, 32, PropModeReplace,
                  (unsigned char*)&alpha, 1);
 
-    //  Set the colour as grey
+    // //  Set the colour as grey
     XColor greyColor;
     Colormap colormap = XDefaultColormap(display, screen);
     Status status = XAllocNamedColor(display, colormap, "grey50", &greyColor, &greyColor);
@@ -43,9 +43,14 @@ int main() {
     Pixmap cursorPixmap = XCreateBitmapFromData(display, window, "", 1, 1);
     Cursor cursor = XCreatePixmapCursor(display, cursorPixmap, cursorPixmap, &cursorColor, &cursorColor, 0, 0);
 
+    // Staying on the top ..
+    Atom wm_state = XInternAtom(display, "_NET_WM_STATE", False);
+    Atom wm_state_above = XInternAtom(display, "_NET_WM_STATE_ABOVE", False);
+    XChangeProperty(display, window, wm_state, XA_ATOM, 32, PropModeReplace, (unsigned char*)&wm_state_above, 1);
+
     // Set the window attributes 
+        // windowAttributes.background_pixel = greyColor.pixel;
     XSetWindowAttributes windowAttributes;
-    windowAttributes.background_pixel = greyColor.pixel;
 
     windowAttributes.override_redirect = true;
 
