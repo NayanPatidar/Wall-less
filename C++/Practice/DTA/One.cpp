@@ -8,7 +8,7 @@ int main() {
 
     // Triple Space expression Pattern
     std::regex pattern("\\s{3,}");
-     std::regex singleSpace("\\s{1,}");
+    std::regex singleSpace("\\s{1,}");
 
     // Use std::regex_token_iterator to split the input string
     std::sregex_token_iterator it(input.begin(), input.end(), pattern, -1);
@@ -37,13 +37,19 @@ int main() {
     }
 
     std::cout << "----------------\n" << std::endl;
+    std::vector<std::string>* nameOfEntities;
 
     for (const std::string& entity : entities) {
         // Print the first string obtained after splitting by three spaces
         std::sregex_token_iterator it(entity.begin(), entity.end(), singleSpace, -1);
         if (it != end) {
             std::cout << *it << std::endl;
+            (*nameOfEntities).push_back(*it);
         }
     }
+
+    for (const std::string& entity : *nameOfEntities) {
+        std::cout << entity << std::endl;
+    } 
     return 0;
 }
