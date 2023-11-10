@@ -3,13 +3,22 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "/media/nayan/Core 1/Downloads/boost_1_83_0" // Add the Boost include directory here
             ],
             "defines": [],
             "compilerPath": "/usr/bin/g++",
             "cStandard": "c17",
             "cppStandard": "c++14",
-            "intelliSenseMode": "${default}"
+            "intelliSenseMode": "${default}",
+            "browse": {
+                "path": [
+                    "/media/nayan/Core 1/Downloads/boost_1_83_0", // Add the Boost include directory here
+                    "${workspaceFolder}"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            }
         }
     ],
     "version": 4
