@@ -1,0 +1,14 @@
+std::regex SecondSpace("\\s{2,}");    
+    // Double space pattern
+    std::regex firstSpace("\\s{1,}");  
+    // Pattern --
+    std::regex customSeparator("--");   
+     // Empty End Iterator
+    std::sregex_token_iterator end;
+
+    std::vector<std::string> segments(
+        std::sregex_token_iterator(data.begin(), data.end(), SecondSpace, -1),
+        std::sregex_token_iterator()
+    );
+
+// Using regex to break tokens
