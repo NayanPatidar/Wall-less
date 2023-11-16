@@ -152,7 +152,7 @@ int main(){
     }
 }
 
-void CursorSharing::InitialMovement_Leaving(Display* display){
+void InitialMovement_Leaving(Display* display){
     XEvent event;
 
         if (XQueryPointer(display, XRootWindow(display, DefaultScreen(display)),
@@ -185,7 +185,7 @@ void CursorSharing::InitialMovement_Leaving(Display* display){
 }
 
 
-void CursorSharing::Movement_VirtualScreen(Display* display){
+void Movement_VirtualScreen(Display* display){
     XEvent event;
 
     if (XQueryPointer(display, XRootWindow(display, DefaultScreen(display)),
