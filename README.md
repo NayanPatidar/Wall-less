@@ -8,6 +8,8 @@ Currently in Development Phase
 - Patch 4
 
 Shifting From Java to C++
+C++ -> Mouse Sharing Added
+    -> Working on multiple clients
 
 To test the project follow to steps:
 
