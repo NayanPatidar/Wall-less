@@ -151,3 +151,35 @@ int main(){
         std::this_thread::sleep_for(std::chrono::milliseconds(POLLING_INTERVAL_MS));
     }
 }
+
+void CursorSharing::InitialMovement_Leaving(Display* display){
+    XEvent event;
+
+        if (XQueryPointer(display, XRootWindow(display, DefaultScreen(display)),
+                      &event.xbutton.root, &event.xbutton.window,
+                      &event.xbutton.x_root, &event.xbutton.y_root,
+                      &event.xbutton.x, &event.xbutton.y, &event.xbutton.state)) {
+                                  
+            int x = event.xbutton.x;
+            int y = event.xbutton.y;
+            // std::cout << CLIENT_WIDTH << " " << CLIENT_HEIGHT << std::endl;
+
+            if (CLIENT_SIDE == 1){
+                moveCursor(CLIENT_WIDTH - 2, y, display);
+                std::cout << "Leaving - Left"<< std::endl;
+
+            } else if (CLIENT_SIDE == 2){
+                moveCursor(x, CLIENT_HEIGHT - 2, display);
+                std::cout << "Leaving - Top"<< std::endl;
+
+            } else if (CLIENT_SIDE == 3){
+                moveCursor(2, y, display);
+                std::cout << "Leaving - Right"<< std::endl;
+
+            } else if (CLIENT_SIDE == 4){
+                moveCursor(x, 2, display);
+                std::cout << "Leaving - Botton"<< std::endl;
+            
+            }
+        }
+}
