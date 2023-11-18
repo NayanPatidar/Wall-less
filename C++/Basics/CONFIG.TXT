@@ -1,2 +1,15 @@
 So consider the Muliple Clients are present on the Left Side
 
+-----------------   -----------------   -----------------   -----------------
+-               -   -               -   -               -   -               -
+-     King      -   -     Queen     -   -     Nayan     -   -     Shaka     -
+-               -   -               -   -               -   - (Main Server) -
+-----------------   -----------------   -----------------   -----------------
+
+Initialy Shaka is main Server :
+
+When the cursor hits the left boundary of the shaka it enters the Nayan Screen 
+* Every Client has map that tell what all clients are present on four sides
+Now if the cursor hits the left boundary on Nayan then as the client exist on the left 
+of Nayan ... it will change the SUdoServer to Nayan which will Now send the data to Queen
+Now the same process will Continue
