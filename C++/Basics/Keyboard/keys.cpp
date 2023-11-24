@@ -1,3 +1,4 @@
+// Might be using just X11 on the Linux side
 #include <iostream>
 #include <keys.h>
 #include <boost/asio.hpp>
