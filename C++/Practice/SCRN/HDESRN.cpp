@@ -38,18 +38,21 @@ int main() {
         0
     );
 
-    // Set the opacity to tranparent - currently 0.25
+    // Set the opacity to transparent - currently 0.25
     Atom opacityController = XInternAtom(display, "_NET_WM_WINDOW_OPACITY", False);
-    unsigned long levelTransp = (unsigned long) (0xffffffff * 0.25);
+    unsigned long levelTransp = (unsigned long) (0xffffffff * 0);
     XChangeProperty(display, window, opacityController, XA_CARDINAL, 32, PropModeReplace,
                     (unsigned char*)&levelTransp, 1);
 
     // Setting the Cursor size on the screen
-    XColor cursorColor;
+    XColor dummyColor;
     Pixmap cursorPixmap = XCreateBitmapFromData(display, window, "", 1, 1);
-    Cursor cursor = XCreatePixmapCursor(display, cursorPixmap, cursorPixmap, &cursorColor, &cursorColor, 0, 0);
+    Cursor invisibleCursor = XCreatePixmapCursor(display, cursorPixmap, cursorPixmap, &dummyColor, &dummyColor, 0, 0);
 
-    // Staying on the top ..
+    // Hide the cursor
+    XDefineCursor(display, window, invisibleCursor);
+
+    // Staying on the top
     Atom wm_state = XInternAtom(display, "_NET_WM_STATE", False);
     Atom wm_state_above = XInternAtom(display, "_NET_WM_STATE_ABOVE", False);
     XChangeProperty(display, window, wm_state, XA_ATOM, 32, PropModeReplace, (unsigned char*)&wm_state_above, 1);
@@ -65,14 +68,23 @@ int main() {
 
     std::thread nextEventThread(nextEvent, display);
 
-    std::this_thread::sleep_for(std::chrono::seconds(3));
-    // allow = false;
-    // std::cout << "Here " << std::endl;
+    std::this_thread::sleep_for(std::chrono::seconds(30));
+
+    allow = false;  // Stop the event loop
+    nextEventThread.join();  // Wait for the event loop thread to finish
+
     XUnmapWindow(display, window);
-    std::this_thread::sleep_for(std::chrono::seconds(6));
+    std::this_thread::sleep_for(std::chrono::seconds(120));
+
+    allow = true;  // Restart the event loop
     XMapWindow(display, window);
 
-    nextEventThread.join();
+    nextEventThread = std::thread(nextEvent, display);  // Start a new event loop thread
+
+    std::this_thread::sleep_for(std::chrono::seconds(30));
+
+    allow = false;  // Stop the event loop
+    nextEventThread.join();  // Wait for the event loop thread to finish
 
     XCloseDisplay(display);
     return 0;
