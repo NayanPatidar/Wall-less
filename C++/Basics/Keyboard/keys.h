@@ -1,11 +1,13 @@
 #ifndef KEYS_H
 #define KEYS_H
 
-class keysSharing {
+#include <boost/asio.hpp>
+
+class KeysSharing{
     public:
         void connection();
 
-        void keyAnalyzer(ip::tcp::socket);
+        void keyAnalyzer(boost::asio::ip::tcp::socket);
 };
 
-#endif
+#endif 
