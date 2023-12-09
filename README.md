@@ -1,5 +1,4 @@
-# Wall-less
--> Created for testing every feature
+i# Wall-less
 
 Currently in Development Phase
 - Patch 1
