@@ -1,4 +1,4 @@
-i# Wall-less
+# Wall-less
 
 Currently in Development Phase
 - Patch 1
